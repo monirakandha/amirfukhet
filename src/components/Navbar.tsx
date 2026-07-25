@@ -39,7 +39,7 @@ export default function Navbar({ onOpenValuationModal }: NavbarProps) {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-black/95 backdrop-blur-md border-b border-slate-800/80 py-3 shadow-2xl'
+          ? 'bg-black border-b border-slate-800 py-3 shadow-2xl'
           : 'bg-transparent py-5'
       }`}
     >
@@ -145,21 +145,19 @@ export default function Navbar({ onOpenValuationModal }: NavbarProps) {
       {mobileMenuOpen && (
         <div className="md:hidden mt-3 px-4 pt-2 pb-6 bg-black border-b border-slate-800 shadow-2xl">
           <div className="flex flex-col gap-2">
-            {navLinks.map((link) => {
-              const IconComponent = link.icon;
+            {navLinks.map((link, idx) => {
               const isActive = pathname === link.path;
               return (
                 <Link
-                  key={link.path}
+                  key={idx}
                   href={link.path}
                   onClick={() => setMobileMenuOpen(false)}
                   className={`flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium transition-all ${
                     isActive
-                      ? 'bg-amber-500 text-slate-950 font-bold'
+                      ? 'bg-blue-600 text-white font-bold'
                       : 'text-slate-200 hover:bg-slate-900 hover:text-white'
                   }`}
                 >
-                  <IconComponent className="w-5 h-5" />
                   {link.name}
                 </Link>
               );
