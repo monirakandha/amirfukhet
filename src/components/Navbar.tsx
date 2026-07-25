@@ -38,23 +38,42 @@ export default function Navbar({ onOpenValuationModal }: NavbarProps) {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-slate-950/90 backdrop-blur-md border-b border-amber-500/20 py-3 shadow-xl'
-          : 'bg-gradient-to-b from-slate-950/90 to-transparent py-5'
+          ? 'bg-black/95 backdrop-blur-md border-b border-slate-800/80 py-3 shadow-2xl'
+          : 'bg-transparent py-5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-300 flex items-center justify-center text-slate-950 font-bold shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform">
-              <Building2 className="w-6 h-6 stroke-[2.5]" />
+            <div className="w-10 h-10 flex items-center justify-center group-hover:scale-105 transition-transform">
+              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 drop-shadow-[0_2px_10px_rgba(37,99,235,0.6)]">
+                <defs>
+                  <linearGradient id="amirLogoGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#1E40AF" />
+                    <stop offset="40%" stopColor="#2563EB" />
+                    <stop offset="80%" stopColor="#3B82F6" />
+                    <stop offset="100%" stopColor="#60A5FA" />
+                  </linearGradient>
+                </defs>
+                {/* Stylized 'A' Arch / Sail */}
+                <path
+                  d="M 12 90 C 8 60, 22 24, 84 8 C 62 28, 64 56, 76 90 C 65 90, 52 90, 42 90 C 52 68, 59 48, 64 26 C 44 42, 28 66, 12 90 Z"
+                  fill="url(#amirLogoGrad)"
+                />
+                {/* Crossbar */}
+                <path
+                  d="M 24 70 Q 48 64 68 76 Q 52 82 28 80 Z"
+                  fill="url(#amirLogoGrad)"
+                />
+              </svg>
             </div>
-            <div>
-              <span className="text-xl font-extrabold tracking-tight text-white flex items-center gap-1.5">
-                HAVEN<span className="text-amber-400 font-light">REALTY</span>
+            <div className="flex flex-col leading-tight">
+              <span className="text-lg font-black tracking-wider text-white uppercase leading-none">
+                AMIR KNOWS
               </span>
-              <span className="text-[10px] tracking-widest uppercase block text-slate-400 -mt-1 font-medium">
-                LUXURY REAL ESTATE
+              <span className="text-xs font-black tracking-[0.25em] text-blue-400 uppercase mt-0.5 leading-none">
+                PHUKET
               </span>
             </div>
           </Link>
@@ -116,7 +135,7 @@ export default function Navbar({ onOpenValuationModal }: NavbarProps) {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden mt-3 px-4 pt-2 pb-6 bg-slate-950 border-b border-slate-800 shadow-2xl">
+        <div className="md:hidden mt-3 px-4 pt-2 pb-6 bg-black border-b border-slate-800 shadow-2xl">
           <div className="flex flex-col gap-2">
             {navLinks.map((link) => {
               const IconComponent = link.icon;
