@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Building2, Phone, Menu, X, Award, Home, FileText, Star, Mail } from 'lucide-react';
+import { Phone, Menu, X, Award, Home, FileText, Star, Mail, MessageCircle, Linkedin, Building2 } from 'lucide-react';
 
 interface NavbarProps {
   onOpenValuationModal?: () => void;
@@ -27,11 +27,12 @@ export default function Navbar({ onOpenValuationModal }: NavbarProps) {
   }, []);
 
   const navLinks = [
-    { name: 'Home', path: '/', icon: Home },
-    { name: 'Properties', path: '/properties', icon: Building2 },
-    { name: 'Success Stories', path: '/success-stories', icon: Star },
-    { name: 'Market Blog', path: '/blog', icon: FileText },
-    { name: 'Contact Us', path: '/contact', icon: Mail },
+    { name: 'Insights', path: '/blog' },
+    { name: 'The Guide', path: '/blog' },
+    { name: 'Success Stories', path: '/success-stories' },
+    { name: 'Listings', path: '/properties' },
+    { name: 'About', path: '/contact' },
+    { name: 'Work With Me', path: '/contact' },
   ];
 
   return (
@@ -79,17 +80,17 @@ export default function Navbar({ onOpenValuationModal }: NavbarProps) {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-1 bg-slate-900/60 p-1.5 rounded-full border border-slate-800/80 backdrop-blur-sm">
-            {navLinks.map((link) => {
+          <nav className="hidden md:flex items-center gap-1">
+            {navLinks.map((link, idx) => {
               const isActive = pathname === link.path;
               return (
                 <Link
-                  key={link.path}
+                  key={idx}
                   href={link.path}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                  className={`px-3.5 py-2 text-sm font-semibold transition-all duration-200 ${
                     isActive
-                      ? 'bg-amber-500 text-slate-950 font-semibold shadow-md shadow-amber-500/20'
-                      : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+                      ? 'text-white border-b-2 border-blue-500'
+                      : 'text-slate-200 hover:text-white hover:bg-white/5 rounded-lg'
                   }`}
                 >
                   {link.name}
@@ -98,26 +99,33 @@ export default function Navbar({ onOpenValuationModal }: NavbarProps) {
             })}
           </nav>
 
-          {/* Action Buttons */}
-          <div className="hidden lg:flex items-center gap-4">
+          {/* Action Buttons / Social Icons */}
+          <div className="hidden md:flex items-center gap-3">
             <a
-              href="tel:+15553829102"
-              className="flex items-center gap-2 text-sm text-slate-300 hover:text-amber-400 transition-colors py-2 px-3 rounded-lg hover:bg-slate-900/50"
+              href="https://wa.me/66000000000"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full border border-white/30 hover:border-blue-400 bg-white/10 hover:bg-blue-600/30 flex items-center justify-center text-white hover:text-blue-400 transition-all backdrop-blur-sm"
+              title="WhatsApp"
             >
-              <Phone className="w-4 h-4 text-amber-400" />
-              <span className="font-semibold">+1 (555) 382-9102</span>
+              <MessageCircle className="w-5 h-5" />
             </a>
-
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full border border-white/30 hover:border-blue-400 bg-white/10 hover:bg-blue-600/30 flex items-center justify-center text-white hover:text-blue-400 transition-all backdrop-blur-sm"
+              title="LinkedIn"
+            >
+              <Linkedin className="w-5 h-5" />
+            </a>
             {onOpenValuationModal && (
               <button
                 onClick={onOpenValuationModal}
-                className="relative group overflow-hidden rounded-full p-[1px] font-semibold text-xs tracking-wide"
+                className="hidden lg:flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-bold text-xs uppercase tracking-wider transition-all shadow-lg shadow-blue-500/20"
               >
-                <span className="absolute inset-0 bg-gradient-to-r from-amber-500 via-amber-300 to-amber-600 rounded-full animate-gradient-x"></span>
-                <span className="relative block px-4 py-2.5 rounded-full bg-slate-950 text-amber-300 group-hover:bg-amber-500 group-hover:text-slate-950 transition-colors font-bold uppercase tracking-wider flex items-center gap-1.5">
-                  <Award className="w-4 h-4" />
-                  Free Home Valuation
-                </span>
+                <Award className="w-4 h-4" />
+                Valuation
               </button>
             )}
           </div>
