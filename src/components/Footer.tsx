@@ -101,9 +101,9 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-6 border-t border-white/10 text-center text-xs text-gray-400">
+        <div className="pt-6 border-t border-white/10 text-center font-desc-mona text-[16px] text-[#94a3b8] font-normal leading-none">
           <p>
-            © {new Date().getFullYear()} <strong className="text-white">Amir Ahmed Faisal</strong> · Phuket Real Estate Investment Insights &nbsp;|&nbsp; <Link href="#" className="hover:text-white transition-colors">Privacy</Link> · <Link href="#" className="hover:text-white transition-colors">Terms</Link>
+            © {new Date().getFullYear()} <strong className="text-white font-medium">Amir Ahmed Faisal</strong> · Phuket Real Estate Investment Insights &nbsp;|&nbsp; <Link href="#" className="hover:text-white transition-colors font-medium">Privacy</Link> · <Link href="#" className="hover:text-white transition-colors font-medium">Terms</Link>
           </p>
         </div>
       </div>
