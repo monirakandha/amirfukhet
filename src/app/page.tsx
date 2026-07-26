@@ -676,14 +676,14 @@ export default function HomePage() {
               Have a question about an area, a structure, or a specific property? Message Amir directly. You'll get a straight, honest answer – not a sales pitch.
             </p>
 
-            {/* CTA Buttons - Vertically stacked matching Figma screenshot */}
-            <div className="flex flex-col items-start gap-3.5 pt-2 w-full max-w-[440px]">
+            {/* CTA Buttons - Equal width stacked buttons matching Figma screenshot */}
+            <div className="flex flex-col items-start gap-3.5 pt-2 w-full max-w-[400px]">
               {/* WhatsApp Button */}
               <a
                 href="https://wa.me/8801875189361"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-desc-mona text-[16px] font-medium text-white leading-none inline-flex items-center justify-between sm:justify-start gap-3 px-6 py-3.5 bg-[#5870F7] hover:bg-blue-600 rounded-full transition-all shadow-[inset_0px_2px_4px_0px_rgba(255,255,255,0.35)] whitespace-nowrap"
+                className="font-desc-mona text-[16px] font-medium text-white leading-none w-full inline-flex items-center justify-between gap-3 px-6 py-3.5 bg-[#5870F7] hover:bg-blue-600 rounded-full transition-all shadow-[inset_0px_2px_4px_0px_rgba(255,255,255,0.35)] whitespace-nowrap"
               >
                 <span className="whitespace-nowrap">Chat on WhatsApp — replies within 24h</span>
                 <svg className="w-4 h-4 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -691,10 +691,10 @@ export default function HomePage() {
                 </svg>
               </a>
 
-              {/* Insights Button */}
+              {/* Insights Button - Same width as blue button */}
               <Link
                 href="/blog"
-                className="font-desc-mona text-[16px] font-medium text-[#020202] leading-none inline-flex items-center justify-center gap-3 px-8 py-3.5 bg-[#f8fafc] hover:bg-white rounded-full transition-all shadow-md whitespace-nowrap"
+                className="font-desc-mona text-[16px] font-medium text-[#020202] leading-none w-full inline-flex items-center justify-between gap-3 px-6 py-3.5 bg-[#f8fafc] hover:bg-white rounded-full transition-all shadow-md whitespace-nowrap"
               >
                 <span className="whitespace-nowrap">Explore market insights</span>
                 <svg className="w-4 h-4 text-[#020202] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
