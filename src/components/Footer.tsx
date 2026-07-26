@@ -91,37 +91,13 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Middle Banner: Giant Logo & Text */}
-        <div className="pt-12 pb-14 border-t border-white/10 flex flex-col items-center justify-center text-center">
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-3">
-            {/* Blue 'A' Sail Logo */}
-            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-16 h-16 sm:w-20 sm:h-20 shrink-0">
-              <defs>
-                <linearGradient id="footerSailGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#3B82F6" />
-                  <stop offset="100%" stopColor="#60A5FA" />
-                </linearGradient>
-              </defs>
-              <path
-                d="M 12 90 C 8 60, 22 24, 84 8 C 62 28, 64 56, 76 90 C 65 90, 52 90, 42 90 C 52 68, 59 48, 64 26 C 44 42, 28 66, 12 90 Z"
-                fill="url(#footerSailGrad)"
-              />
-              <path
-                d="M 24 70 Q 48 64 68 76 Q 52 82 28 80 Z"
-                fill="url(#footerSailGrad)"
-              />
-            </svg>
-
-            {/* Title Text */}
-            <h2 className="text-4xl sm:text-6xl font-black text-white tracking-tight">
-              Amir Knows Phuket
-            </h2>
-          </div>
-
-          {/* Subtitle with Wide Spacing */}
-          <p className="text-xs sm:text-sm font-semibold tracking-[0.45em] sm:tracking-[0.6em] text-gray-300 uppercase mt-2">
-            PHUKET PROPERTY INVESTMENT
-          </p>
+        {/* Middle Banner: Giant Logo & Text Image Asset matching Figma */}
+        <div className="pt-10 pb-12 border-t border-white/10 flex items-center justify-center text-center px-4">
+          <img
+            src="/images/footer-banner-asset.png"
+            alt="Amir Knows Phuket - Phuket Property Investment"
+            className="w-full max-w-4xl h-auto object-contain mx-auto select-none"
+          />
         </div>
 
         {/* Bottom Bar */}
@@ -131,6 +107,8 @@ export default function Footer() {
           </p>
         </div>
       </div>
+      {/* Bottom Blue Line Accent matching Figma Image 3 */}
+      <div className="w-full h-1 bg-[#4c70ff] mt-6" />
     </footer>
   );
 }
