@@ -92,11 +92,11 @@ export default function Footer() {
         </div>
 
         {/* Middle Banner: Giant Logo & Text Image Asset matching Figma */}
-        <div className="pt-10 pb-12 border-t border-white/10 flex items-center justify-center text-center px-4">
+        <div className="pt-12 pb-16 border-t border-white/10 flex items-center justify-center text-center px-2 sm:px-4">
           <img
             src="/images/footer-banner-asset.png"
             alt="Amir Knows Phuket - Phuket Property Investment"
-            className="w-full max-w-4xl h-auto object-contain mx-auto select-none"
+            className="w-full max-w-5xl lg:max-w-6xl h-auto object-contain mx-auto select-none"
           />
         </div>
 
