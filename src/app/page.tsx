@@ -406,22 +406,25 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Success Stories Section matching Figma mockup */}
+      {/* Success Stories Section matching exact Figma specs */}
       <section className="w-full bg-[#f4f6fa] py-16 sm:py-24 border-b border-gray-200/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="text-center space-y-3 mb-12 sm:mb-16">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-blue-100 text-[#4c70ff] text-xs font-semibold shadow-2xs">
-              <span className="w-2 h-2 rounded-full bg-[#4c70ff]" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-blue-100 font-desc-mona text-[16px] font-medium text-[#5870F7] leading-none shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
               Success stories
             </div>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight">
+            <h2
+              className="font-heading-bricolage text-[44px] font-semibold text-[#020202] leading-[100%] tracking-[-0.01em]"
+              style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+            >
               Real deals, told in full
             </h2>
 
-            <p className="text-sm sm:text-base text-gray-500 max-w-xl mx-auto leading-relaxed pt-1">
-              Not one-line testimonials – the complete story of how each buyer went from cautious researcher to confident owner.
+            <p className="font-desc-mona text-[16px] font-normal text-[#6B7280] max-w-xl mx-auto leading-[1.4] pt-1 text-center">
+              Not one-line testimonials — the complete story of how each buyer went from cautious researcher to confident owner.
             </p>
           </div>
 
@@ -444,29 +447,35 @@ export default function HomePage() {
 
                 {/* Content */}
                 <div className="p-6 sm:p-7 flex flex-col justify-between flex-1 space-y-4">
-                  <div className="space-y-2">
+                  <div className="space-y-2.5">
                     {/* Location & Property Type Badge */}
-                    <div className="flex items-center gap-1.5 text-xs font-medium text-gray-500">
-                      <svg className="w-3.5 h-3.5 text-rose-500 fill-rose-500" viewBox="0 0 24 24">
+                    <div className="flex items-center gap-1.5 font-desc-mona text-[16px] font-medium text-[#6B7280] leading-none">
+                      <svg className="w-3.5 h-3.5 text-rose-500 fill-rose-500 shrink-0" viewBox="0 0 24 24">
                         <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                       </svg>
                       <span>{story.location} · {story.propertyType}</span>
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-lg font-bold text-gray-900 leading-snug group-hover:text-[#4c70ff] transition-colors">
+                    <h3
+                      className="font-heading-bricolage text-[22px] font-medium text-[#020202] leading-[1.2] tracking-[-0.01em] group-hover:text-[#5870F7] transition-colors"
+                      style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+                    >
                       {story.title}
                     </h3>
 
                     {/* Subtitle */}
-                    <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
+                    <p className="font-desc-mona text-[16px] font-normal text-[#6B7280] leading-[1.4]">
                       {story.subtitle}
                     </p>
                   </div>
 
                   {/* Highlight Wavy Metric Link */}
                   <div className="pt-2">
-                    <span className="text-[#4c70ff] text-xs sm:text-sm font-semibold underline decoration-wavy decoration-[#4c70ff] underline-offset-4">
+                    <span
+                      className="font-heading-bricolage text-[18px] font-medium text-[#5870F7] leading-none underline decoration-wavy decoration-[#5870F7] underline-offset-4"
+                      style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+                    >
                       {story.metricHighlight}
                     </span>
                   </div>
@@ -479,10 +488,10 @@ export default function HomePage() {
           <div className="text-center">
             <Link
               href="/success-stories"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white hover:bg-gray-50 text-gray-900 text-sm font-semibold border border-gray-200 transition-colors shadow-2xs"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white hover:bg-gray-50 font-desc-mona text-[16px] font-medium text-[#020202] border border-gray-200 transition-colors shadow-2xs leading-none"
             >
-              Read all success stories
-              <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <span>Read all success stories</span>
+              <svg className="w-4 h-4 text-[#020202]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
               </svg>
             </Link>
@@ -563,7 +572,7 @@ export default function HomePage() {
             {/* Right Content */}
             <div className="lg:col-span-7 space-y-6">
               {/* Pill Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-blue-100 font-desc-mona text-[16px] font-medium text-[#020202] leading-none shadow-2xs">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-blue-100 font-desc-mona text-[16px] font-medium text-[#5870F7] leading-none shadow-2xs">
                 <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
                 Meet your advisor
               </div>
