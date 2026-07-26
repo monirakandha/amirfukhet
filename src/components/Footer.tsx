@@ -14,7 +14,7 @@ export default function Footer() {
             <h3 className="font-heading-bricolage text-white tracking-tight text-[24px] font-semibold leading-none">
               Amir Knows Phuket
             </h3>
-            <p className="font-desc-mona text-[#B3B3B3] leading-[1.4] pr-4 text-[16px] font-medium">
+            <p className="font-desc-mona text-[#B3B3B3] leading-[1.55] pr-4 text-[16px] font-medium">
               Independent property investment advice for foreigners buying in Phuket and Thailand.
             </p>
             {/* Social icons: X, LinkedIn, WhatsApp */}
