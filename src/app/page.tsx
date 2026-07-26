@@ -727,8 +727,8 @@ export default function HomePage() {
                 </h2>
 
                 {/* Description */}
-                <p className="font-desc-mona text-[16px] font-normal text-[#B3B3B3] leading-[1.5] max-w-[480px]">
-                  Join the list and get Amir's market updates and the complete buying guide delivered to your inbox. No spam, unsubscribe anytime.
+                <p className="font-desc-mona text-[16px] font-normal text-[#B3B3B3] leading-[1.5] max-w-[540px]">
+                  Join the list and get Amir's market updates and the complete<br className="hidden sm:inline" /> buying guide delivered to your inbox. No spam, unsubscribe anytime.
                 </p>
               </div>
 
@@ -791,7 +791,7 @@ export default function HomePage() {
                   </button>
 
                   {/* Footer note */}
-                  <p className="font-desc-mona text-[16px] font-medium text-[#B3B3B3] text-center mt-4 leading-none">
+                  <p className="font-desc-mona text-[14px] sm:text-[15px] font-medium text-[#B3B3B3] text-center mt-4 leading-none whitespace-nowrap">
                     Connects to Mailchimp / Brevo · 500+ investors on the list
                   </p>
                 </form>
