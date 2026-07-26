@@ -110,11 +110,11 @@ export default function HomePage() {
       </section>
 
       {/* Advisor Intro Section matching Figma mockup */}
-      <section className="w-full bg-[#f4f6fa] pt-12 lg:pt-16 pb-0 relative overflow-hidden border-b border-gray-200/50">
+      <section className="w-full bg-[#f4f6fa] pt-16 lg:pt-24 pb-0 relative overflow-hidden border-b border-gray-200/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
             {/* Left Content */}
-            <div className="lg:col-span-7 space-y-6 py-8 lg:py-16">
+            <div className="lg:col-span-7 space-y-6 py-8 lg:py-20 relative z-10">
               {/* Pill Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#E5E9F2] section-pill font-desc-mona text-[16px] font-medium text-[#5870F7] leading-none shadow-2xs">
                 <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
@@ -155,11 +155,11 @@ export default function HomePage() {
             </div>
 
             {/* Right Photo without drop shadow matching clean cutout in image */}
-            <div className="lg:col-span-5 flex justify-center lg:justify-end items-end self-end w-full">
+            <div className="lg:col-span-5 flex justify-center lg:justify-end items-end self-end w-full relative z-0">
               <img
                 src="/images/amir.png"
                 alt="Amir - Property Investment Advisor"
-                className="w-full h-auto max-w-[460px] sm:max-w-[520px] lg:max-w-[600px] xl:max-w-[660px] object-contain object-bottom scale-110 lg:scale-125 origin-bottom"
+                className="w-full h-auto max-w-[540px] sm:max-w-[640px] lg:max-w-[740px] xl:max-w-[840px] object-contain object-bottom scale-125 lg:scale-[1.4] xl:scale-[1.5] origin-bottom"
               />
             </div>
           </div>
