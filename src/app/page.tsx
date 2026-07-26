@@ -677,15 +677,15 @@ export default function HomePage() {
             </p>
 
             {/* CTA Buttons - Vertically stacked matching Figma screenshot */}
-            <div className="flex flex-col items-start gap-3.5 pt-2 max-w-[360px]">
+            <div className="flex flex-col items-start gap-3.5 pt-2 w-full max-w-[440px]">
               {/* WhatsApp Button */}
               <a
                 href="https://wa.me/8801875189361"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-desc-mona text-[16px] font-medium text-white leading-none w-full sm:w-auto inline-flex items-center justify-between sm:justify-start gap-3 px-6 py-3.5 bg-[#5870F7] hover:bg-blue-600 rounded-full transition-all shadow-[inset_0px_2px_4px_0px_rgba(255,255,255,0.35)]"
+                className="font-desc-mona text-[16px] font-medium text-white leading-none inline-flex items-center justify-between sm:justify-start gap-3 px-6 py-3.5 bg-[#5870F7] hover:bg-blue-600 rounded-full transition-all shadow-[inset_0px_2px_4px_0px_rgba(255,255,255,0.35)] whitespace-nowrap"
               >
-                <span>Chat on WhatsApp — replies within 24h</span>
+                <span className="whitespace-nowrap">Chat on WhatsApp — replies within 24h</span>
                 <svg className="w-4 h-4 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
                 </svg>
@@ -694,9 +694,9 @@ export default function HomePage() {
               {/* Insights Button */}
               <Link
                 href="/blog"
-                className="font-desc-mona text-[16px] font-medium text-[#020202] leading-none w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-3.5 bg-[#f8fafc] hover:bg-white rounded-full transition-all shadow-md"
+                className="font-desc-mona text-[16px] font-medium text-[#020202] leading-none inline-flex items-center justify-center gap-3 px-8 py-3.5 bg-[#f8fafc] hover:bg-white rounded-full transition-all shadow-md whitespace-nowrap"
               >
-                <span>Explore market insights</span>
+                <span className="whitespace-nowrap">Explore market insights</span>
                 <svg className="w-4 h-4 text-[#020202] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
                 </svg>
