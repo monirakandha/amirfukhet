@@ -701,41 +701,42 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Free Lead Magnet Section matching Figma mockup & user specs */}
+      {/* Free Lead Magnet Section matching Figma mockup pixel-for-pixel */}
       <section className="w-full bg-[#f4f6fa] py-16 sm:py-24 border-b border-gray-200/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-r from-[#1b2b52] via-[#1c2024] to-[#181a1d] rounded-3xl p-8 sm:p-12 lg:p-16 shadow-2xl border border-gray-800 relative overflow-hidden">
-            {/* Subtle blue background glow on left */}
-            <div className="absolute top-0 left-0 w-96 h-96 bg-[#4c70ff]/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="bg-[#1c2025] rounded-[32px] p-8 sm:p-12 lg:p-14 shadow-2xl border border-gray-800 relative overflow-hidden">
+            {/* Subtle blue gradient glow & grid texture background on left */}
+            <div className="absolute inset-0 bg-[radial-gradient(#ffffff0d_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
+            <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-gradient-to-br from-[#3b59d8]/35 via-[#233580]/15 to-transparent rounded-full blur-3xl pointer-events-none" />
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center relative z-10">
-              {/* Left Text */}
-              <div className="lg:col-span-6 space-y-6">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
+              {/* Left Text (7 Cols) */}
+              <div className="lg:col-span-7 space-y-6">
                 {/* Translucent Pill Badge */}
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 font-desc-mona text-[16px] font-medium text-white shadow-2xs">
+                <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/10 border border-white/20 font-desc-mona text-[16px] font-medium text-white shadow-2xs">
                   <span className="w-2 h-2 rounded-full bg-white" />
                   Free lead magnet
                 </div>
 
                 {/* Headline */}
-                <h2 className="font-heading-bricolage text-[44px] font-semibold text-white leading-[100%] tracking-[-0.01em]">
+                <h2 className="font-heading-bricolage text-[36px] sm:text-[44px] font-semibold text-white leading-[1.08] tracking-[-0.01em] max-w-[480px]">
                   Get the Phuket investor's guide — free
                 </h2>
 
                 {/* Description */}
-                <p className="font-desc-mona text-[16px] font-normal text-[#B3B3B3] leading-relaxed max-w-md">
+                <p className="font-desc-mona text-[16px] font-normal text-[#B3B3B3] leading-[1.5] max-w-[480px]">
                   Join the list and get Amir's market updates and the complete buying guide delivered to your inbox. No spam, unsubscribe anytime.
                 </p>
               </div>
 
-              {/* Right Form */}
-              <div className="lg:col-span-6">
+              {/* Right Form (5 Cols) */}
+              <div className="lg:col-span-5">
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
                     alert('Thank you! The guide will be sent to your email shortly.');
                   }}
-                  className="space-y-4 max-w-md w-full ml-auto"
+                  className="space-y-5 max-w-[460px] w-full lg:ml-auto"
                 >
                   {/* Name Input */}
                   <div>
@@ -746,7 +747,7 @@ export default function HomePage() {
                       type="text"
                       required
                       placeholder="Enter your name"
-                      className="font-desc-mona text-[16px] font-medium text-white placeholder-[#B3B3B3] leading-none w-full bg-[#272c33] border border-gray-700/80 rounded-2xl px-5 py-3.5 focus:outline-none focus:border-[#5870F7] transition-colors"
+                      className="font-desc-mona text-[16px] font-medium text-white placeholder-[#B3B3B3] leading-none w-full bg-[#272c33] border border-gray-600/50 rounded-[16px] px-5 py-3.5 focus:outline-none focus:border-[#5870F7] transition-colors"
                     />
                   </div>
 
@@ -759,7 +760,7 @@ export default function HomePage() {
                       type="email"
                       required
                       placeholder="Enter your email"
-                      className="font-desc-mona text-[16px] font-medium text-white placeholder-[#B3B3B3] leading-none w-full bg-[#272c33] border border-gray-700/80 rounded-2xl px-5 py-3.5 focus:outline-none focus:border-[#5870F7] transition-colors"
+                      className="font-desc-mona text-[16px] font-medium text-white placeholder-[#B3B3B3] leading-none w-full bg-[#272c33] border border-gray-600/50 rounded-[16px] px-5 py-3.5 focus:outline-none focus:border-[#5870F7] transition-colors"
                     />
                   </div>
 
@@ -771,14 +772,14 @@ export default function HomePage() {
                     <input
                       type="tel"
                       placeholder="+880"
-                      className="font-desc-mona text-[16px] font-medium text-white placeholder-[#B3B3B3] leading-none w-full bg-[#272c33] border border-gray-700/80 rounded-2xl px-5 py-3.5 focus:outline-none focus:border-[#5870F7] transition-colors"
+                      className="font-desc-mona text-[16px] font-medium text-white placeholder-[#B3B3B3] leading-none w-full bg-[#272c33] border border-gray-600/50 rounded-[16px] px-5 py-3.5 focus:outline-none focus:border-[#5870F7] transition-colors"
                     />
                   </div>
 
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    className="font-desc-mona text-[16px] font-medium text-white leading-none w-full py-4 px-6 rounded-full bg-[#5870F7] hover:bg-blue-600 transition-all flex items-center justify-center gap-2 mt-2 shadow-[inset_0px_2px_4px_0px_rgba(255,255,255,0.25)]"
+                    className="font-desc-mona text-[16px] font-medium text-white leading-none w-full py-4 px-6 rounded-full bg-[#5870F7] hover:bg-blue-600 transition-all flex items-center justify-center gap-2.5 mt-3 shadow-[inset_0px_2px_4px_0px_rgba(255,255,255,0.35)]"
                   >
                     Send me the free guide
                     <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -787,7 +788,7 @@ export default function HomePage() {
                   </button>
 
                   {/* Footer note */}
-                  <p className="font-desc-mona text-[16px] font-medium text-[#B3B3B3] text-center mt-3 leading-none">
+                  <p className="font-desc-mona text-[16px] font-medium text-[#B3B3B3] text-center mt-4 leading-none">
                     Connects to Mailchimp / Brevo · 500+ investors on the list
                   </p>
                 </form>
