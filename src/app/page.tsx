@@ -643,7 +643,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* WhatsApp Contact CTA Banner Section matching Figma mockup & user specs */}
+      {/* WhatsApp Contact CTA Banner Section matching Figma mockup pixel-for-pixel */}
       <section className="relative w-full py-20 lg:py-28 overflow-hidden text-white bg-[#43a19b]">
         {/* Resort Coastline Background Image */}
         <div className="absolute inset-0 z-0">
@@ -658,44 +658,46 @@ export default function HomePage() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-xl space-y-6">
             {/* Translucent Glassmorphism Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/40 font-desc-mona text-[16px] font-medium text-white leading-none shadow-xs">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/40 font-desc-mona text-[16px] font-medium text-white leading-none shadow-xs">
               <span className="w-2 h-2 rounded-full bg-white" />
               Ready when you are
             </div>
 
-            {/* Heading */}
+            {/* Heading - 2 lines pixel-perfect */}
             <h2
-              className="font-heading-bricolage text-[44px] font-semibold text-white leading-none tracking-[-0.01em] drop-shadow-sm"
-              style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif", fontSize: "44px", fontWeight: 600, lineHeight: "100%", letterSpacing: "-0.01em" }}
+              className="font-heading-bricolage text-[44px] font-semibold text-white leading-[1.1] tracking-[-0.01em] drop-shadow-sm max-w-[420px]"
+              style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif", fontSize: "44px", fontWeight: 600, lineHeight: "110%", letterSpacing: "-0.01em" }}
             >
-              One message is all it takes to start
+              One message<br className="hidden sm:inline" /> is all it takes to start
             </h2>
 
             {/* Description */}
-            <p className="font-desc-mona text-[18px] font-normal text-white/95 leading-relaxed drop-shadow-xs">
-              Have a question about an area, a structure, or a specific property? Message Amir directly. You'll get a straight, honest answer — not a sales pitch.
+            <p className="font-desc-mona text-[18px] font-normal text-white/95 leading-[1.45] drop-shadow-xs max-w-[440px]">
+              Have a question about an area, a structure, or a specific property? Message Amir directly. You'll get a straight, honest answer – not a sales pitch.
             </p>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
+            {/* CTA Buttons - Vertically stacked matching Figma screenshot */}
+            <div className="flex flex-col items-start gap-3.5 pt-2 max-w-[360px]">
+              {/* WhatsApp Button */}
               <a
                 href="https://wa.me/8801875189361"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-desc-mona text-[16px] font-medium text-white leading-none inline-flex items-center justify-center gap-2.5 px-7 py-4 bg-[#5870F7] hover:bg-blue-600 rounded-full transition-all shadow-[inset_0px_2px_4px_0px_rgba(255,255,255,0.35)]"
+                className="font-desc-mona text-[16px] font-medium text-white leading-none w-full sm:w-auto inline-flex items-center justify-between sm:justify-start gap-3 px-6 py-3.5 bg-[#5870F7] hover:bg-blue-600 rounded-full transition-all shadow-[inset_0px_2px_4px_0px_rgba(255,255,255,0.35)]"
               >
-                Chat on WhatsApp — replies within 24h
-                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <span>Chat on WhatsApp — replies within 24h</span>
+                <svg className="w-4 h-4 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
                 </svg>
               </a>
 
+              {/* Insights Button */}
               <Link
                 href="/blog"
-                className="font-desc-mona text-[16px] font-medium text-[#020202] leading-none inline-flex items-center justify-center gap-2.5 px-7 py-4 bg-white hover:bg-gray-100 rounded-full transition-all shadow-md"
+                className="font-desc-mona text-[16px] font-medium text-[#020202] leading-none w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-3.5 bg-[#f8fafc] hover:bg-white rounded-full transition-all shadow-md"
               >
-                Explore market insights
-                <svg className="w-4 h-4 text-[#020202]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <span>Explore market insights</span>
+                <svg className="w-4 h-4 text-[#020202] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
                 </svg>
               </Link>
