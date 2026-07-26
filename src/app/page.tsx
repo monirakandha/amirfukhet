@@ -602,17 +602,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Featured Properties Section matching Figma mockup */}
+      {/* Featured Properties Section matching Figma mockup & user specs */}
       <section className="w-full bg-white py-16 sm:py-24 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="text-center space-y-3 mb-12 sm:mb-16">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#f4f6fa] border border-blue-100 text-[#4c70ff] text-xs font-semibold">
+            <div className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-[#f4f6fa] border border-blue-100 font-desc-mona text-[16px] font-normal text-[#020202] leading-none">
               <span className="w-2 h-2 rounded-full bg-[#4c70ff]" />
               A few selected properties
             </div>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight">
+            <h2 className="font-heading-bricolage text-[44px] font-semibold text-[#020202] leading-none tracking-[-0.01em]">
               Hand-picked, not a portal
             </h2>
           </div>
@@ -632,10 +632,10 @@ export default function HomePage() {
           <div className="text-center">
             <Link
               href="/properties"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white hover:bg-gray-50 text-gray-900 text-sm font-semibold border border-gray-200 transition-colors shadow-2xs"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white hover:bg-gray-50 font-desc-mona text-[16px] font-normal text-[#020202] border border-gray-200 transition-colors shadow-2xs leading-none"
             >
               View listings
-              <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 text-[#020202]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
               </svg>
             </Link>
