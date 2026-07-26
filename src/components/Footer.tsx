@@ -5,14 +5,16 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#222629] text-gray-400 pt-16 pb-8 border-t border-white/10 font-sans">
+    <footer className="w-full bg-[#222629] text-gray-400 pt-20 pb-16 border-t border-white/10 font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Top 4-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-16">
-          {/* Column 1: Brand Info & Socials */}
-          <div className="space-y-4">
-            <h3 className="font-heading-bricolage text-white tracking-tight text-[24px] font-semibold leading-none">Amir Knows Phuket</h3>
-            <p className="font-desc-mona text-[#B3B3B3] leading-relaxed pr-2 text-[16px] font-medium">
+        {/* Top 4-Column Grid matching Figma pixel-for-pixel */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-14 pb-20">
+          {/* Column 1: Brand Info & Socials (4 Cols) */}
+          <div className="md:col-span-4 lg:col-span-4 space-y-6">
+            <h3 className="font-heading-bricolage text-white tracking-tight text-[24px] font-semibold leading-none">
+              Amir Knows Phuket
+            </h3>
+            <p className="font-desc-mona text-[#B3B3B3] leading-[1.4] pr-4 text-[16px] font-medium">
               Independent property investment advice for foreigners buying in Phuket and Thailand.
             </p>
             {/* Social icons: X, LinkedIn, WhatsApp */}
@@ -22,7 +24,7 @@ export default function Footer() {
                 href="https://x.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full border border-white/40 hover:border-white hover:bg-white/10 flex items-center justify-center text-white transition-all"
+                className="w-10 h-10 rounded-full border border-gray-600/70 hover:border-white hover:bg-white/10 flex items-center justify-center text-white/90 transition-all"
                 aria-label="X (Twitter)"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -35,7 +37,7 @@ export default function Footer() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full border border-white/40 hover:border-white hover:bg-white/10 flex items-center justify-center text-white transition-all text-xs font-bold"
+                className="w-10 h-10 rounded-full border border-gray-600/70 hover:border-white hover:bg-white/10 flex items-center justify-center text-white/90 transition-all text-xs font-bold"
                 aria-label="LinkedIn"
               >
                 in
@@ -46,7 +48,7 @@ export default function Footer() {
                 href="https://wa.me/8801875189361"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full border border-white/40 hover:border-white hover:bg-white/10 flex items-center justify-center text-white transition-all"
+                className="w-10 h-10 rounded-full border border-gray-600/70 hover:border-white hover:bg-white/10 flex items-center justify-center text-white/90 transition-all"
                 aria-label="WhatsApp"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -56,10 +58,12 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 2: Insights */}
-          <div>
-            <h4 className="font-heading-bricolage text-white mb-4 text-[24px] font-semibold leading-none">Insights</h4>
-            <ul className="space-y-3 font-desc-mona text-[16px] font-medium text-[#B3B3B3]">
+          {/* Column 2: Insights (3 Cols) */}
+          <div className="md:col-span-3 lg:col-span-3 space-y-4">
+            <h4 className="font-heading-bricolage text-white text-[24px] font-semibold leading-none mb-6">
+              Insights
+            </h4>
+            <ul className="space-y-4 font-desc-mona text-[16px] font-medium text-[#B3B3B3]">
               <li><Link href="/blog" className="hover:text-white transition-colors">Market Insights</Link></li>
               <li><Link href="/blog" className="hover:text-white transition-colors">Buyer Guides</Link></li>
               <li><Link href="/blog" className="hover:text-white transition-colors">Area Guides</Link></li>
@@ -67,10 +71,12 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Site */}
-          <div>
-            <h4 className="font-heading-bricolage text-white mb-4 text-[24px] font-semibold leading-none">Site</h4>
-            <ul className="space-y-3 font-desc-mona text-[16px] font-medium text-[#B3B3B3]">
+          {/* Column 3: Site (2 Cols) */}
+          <div className="md:col-span-2 lg:col-span-2 space-y-4">
+            <h4 className="font-heading-bricolage text-white text-[24px] font-semibold leading-none mb-6">
+              Site
+            </h4>
+            <ul className="space-y-4 font-desc-mona text-[16px] font-medium text-[#B3B3B3]">
               <li><Link href="/guide" className="hover:text-white transition-colors">The Guide</Link></li>
               <li><Link href="/success-stories" className="hover:text-white transition-colors">Success Stories</Link></li>
               <li><Link href="/properties" className="hover:text-white transition-colors">Listings</Link></li>
@@ -79,10 +85,12 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Contact */}
-          <div>
-            <h4 className="font-heading-bricolage text-white mb-4 text-[24px] font-semibold leading-none">Contact</h4>
-            <ul className="space-y-3 font-desc-mona text-[16px] font-medium text-[#B3B3B3]">
+          {/* Column 4: Contact (3 Cols) */}
+          <div className="md:col-span-3 lg:col-span-3 space-y-4">
+            <h4 className="font-heading-bricolage text-white text-[24px] font-semibold leading-none mb-6">
+              Contact
+            </h4>
+            <ul className="space-y-4 font-desc-mona text-[16px] font-medium text-[#B3B3B3]">
               <li><a href="tel:+8801875189361" className="hover:text-white transition-colors">+880 1875 189 361</a></li>
               <li><a href="https://wa.me/8801875189361" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">WhatsApp</a></li>
               <li><a href="mailto:amir@amirknowsphuket.com" className="hover:text-white transition-colors">amir@amirknowsphuket.com</a></li>
