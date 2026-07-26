@@ -349,7 +349,7 @@ export default function ContactPage() {
 
               <a
                 href="#contact-form"
-                className="px-6 py-3 bg-white hover:bg-gray-100 text-gray-900 font-semibold text-xs sm:text-sm rounded-full transition-all shadow-md"
+                className="group px-6 py-3 bg-white hover:bg-[#5870F7] text-[#020202] hover:text-white font-semibold text-xs sm:text-sm rounded-full transition-all shadow-md"
               >
                 Book a consultation
               </a>

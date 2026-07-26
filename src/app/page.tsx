@@ -147,7 +147,7 @@ export default function HomePage() {
 
                 <Link
                   href="/blog"
-                  className="inline-flex items-center justify-center px-6 py-3.5 rounded-full bg-[#F4F6F7] hover:bg-gray-200 font-desc-mona text-[16px] font-medium text-[#020202] leading-none border border-[#DFE3EB] transition-colors"
+                  className="group inline-flex items-center justify-center px-6 py-3.5 rounded-full bg-[#F4F6F7] hover:bg-[#5870F7] font-desc-mona text-[16px] font-medium text-[#020202] hover:text-white leading-none border border-[#DFE3EB] hover:border-[#5870F7] transition-all shadow-2xs"
                 >
                   Read the free guide
                 </Link>
@@ -210,7 +210,7 @@ export default function HomePage() {
 
             <Link
               href="/blog"
-              className="font-desc-mona text-[16px] font-medium text-[#020202] leading-none px-7 py-3.5 bg-[#F4F6F7] hover:bg-gray-200 rounded-full border border-[#DFE3EB] transition-colors inline-flex items-center justify-center"
+              className="group font-desc-mona text-[16px] font-medium text-[#020202] hover:text-white leading-none px-7 py-3.5 bg-[#F4F6F7] hover:bg-[#5870F7] rounded-full border border-[#DFE3EB] hover:border-[#5870F7] transition-all inline-flex items-center justify-center shadow-2xs"
             >
               Explore market insights
             </Link>
@@ -268,10 +268,10 @@ export default function HomePage() {
           <div className="text-center">
             <Link
               href="/blog"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#f4f6fa] hover:bg-gray-100 font-desc-mona text-[16px] font-medium text-[#020202] border border-gray-200/80 transition-colors shadow-2xs leading-none"
+              className="group inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#f4f6fa] hover:bg-[#5870F7] font-desc-mona text-[16px] font-medium text-[#020202] hover:text-white border border-gray-200/80 hover:border-[#5870F7] transition-all shadow-2xs leading-none"
             >
               <span>View all insights</span>
-              <svg className="w-4 h-4 text-[#020202]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 text-[#020202] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
               </svg>
             </Link>
@@ -518,10 +518,10 @@ export default function HomePage() {
           <div className="text-center">
             <Link
               href="/blog"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#f4f6fa] hover:bg-gray-100 font-desc-mona text-[16px] font-medium text-[#020202] border border-gray-200/80 transition-colors shadow-2xs leading-none"
+              className="group inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#f4f6fa] hover:bg-[#5870F7] font-desc-mona text-[16px] font-medium text-[#020202] hover:text-white border border-gray-200/80 hover:border-[#5870F7] transition-all shadow-2xs leading-none"
             >
               <span>Explore market insights</span>
-              <svg className="w-4 h-4 text-[#020202]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 text-[#020202] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
               </svg>
             </Link>

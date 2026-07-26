@@ -110,22 +110,72 @@ a:hover .box-description {
   color: rgba(255, 255, 255, 0.9) !important;
 }
 
-/* Global Hover CSS for buttons and link buttons with white backgrounds */
+/* Global Hover CSS for buttons and link buttons with white or light grey backgrounds */
 button[class*="bg-white"]:hover,
+button[class*="bg-[#F4F6F7]"]:hover,
+button[class*="bg-[#f4f6fa]"]:hover,
+button[class*="bg-[#DFE3EB]"]:hover,
+button[class*="bg-gray-1"]:hover,
+button[class*="bg-gray-5"]:hover,
 a[class*="bg-white"][class*="rounded-full"]:hover,
+a[class*="bg-[#F4F6F7]"][class*="rounded-full"]:hover,
+a[class*="bg-[#f4f6fa]"][class*="rounded-full"]:hover,
+a[class*="bg-[#DFE3EB]"][class*="rounded-full"]:hover,
+a[class*="bg-gray-1"][class*="rounded-full"]:hover,
+a[class*="bg-gray-5"][class*="rounded-full"]:hover,
 a[class*="bg-white"][class*="rounded-xl"]:hover,
+a[class*="bg-[#F4F6F7]"][class*="rounded-xl"]:hover,
+a[class*="bg-[#f4f6fa]"][class*="rounded-xl"]:hover,
+a[class*="bg-[#DFE3EB]"][class*="rounded-xl"]:hover,
+a[class*="bg-gray-1"][class*="rounded-xl"]:hover,
+a[class*="bg-gray-5"][class*="rounded-xl"]:hover,
 a[class*="bg-white"][class*="px-"]:hover,
-[role="button"][class*="bg-white"]:hover {
+a[class*="bg-[#F4F6F7]"][class*="px-"]:hover,
+a[class*="bg-[#f4f6fa]"][class*="px-"]:hover,
+a[class*="bg-[#DFE3EB]"][class*="px-"]:hover,
+a[class*="bg-gray-1"][class*="px-"]:hover,
+a[class*="bg-gray-5"][class*="px-"]:hover,
+[role="button"][class*="bg-white"]:hover,
+[role="button"][class*="bg-[#F4F6F7]"]:hover,
+[role="button"][class*="bg-[#f4f6fa]"]:hover,
+[role="button"][class*="bg-[#DFE3EB]"]:hover,
+[role="button"][class*="bg-gray-1"]:hover,
+[role="button"][class*="bg-gray-5"]:hover {
   background-color: #5870F7 !important;
   color: #FFFFFF !important;
   border-color: #5870F7 !important;
 }
 
 button[class*="bg-white"]:hover *,
+button[class*="bg-[#F4F6F7]"]:hover *,
+button[class*="bg-[#f4f6fa]"]:hover *,
+button[class*="bg-[#DFE3EB]"]:hover *,
+button[class*="bg-gray-1"]:hover *,
+button[class*="bg-gray-5"]:hover *,
 a[class*="bg-white"][class*="rounded-full"]:hover *,
+a[class*="bg-[#F4F6F7]"][class*="rounded-full"]:hover *,
+a[class*="bg-[#f4f6fa]"][class*="rounded-full"]:hover *,
+a[class*="bg-[#DFE3EB]"][class*="rounded-full"]:hover *,
+a[class*="bg-gray-1"][class*="rounded-full"]:hover *,
+a[class*="bg-gray-5"][class*="rounded-full"]:hover *,
 a[class*="bg-white"][class*="rounded-xl"]:hover *,
+a[class*="bg-[#F4F6F7]"][class*="rounded-xl"]:hover *,
+a[class*="bg-[#f4f6fa]"][class*="rounded-xl"]:hover *,
+a[class*="bg-[#DFE3EB]"][class*="rounded-xl"]:hover *,
+a[class*="bg-gray-1"][class*="rounded-xl"]:hover *,
+a[class*="bg-gray-5"][class*="rounded-xl"]:hover *,
 a[class*="bg-white"][class*="px-"]:hover *,
-[role="button"][class*="bg-white"]:hover * {
+a[class*="bg-[#F4F6F7]"][class*="px-"]:hover *,
+a[class*="bg-[#f4f6fa]"][class*="px-"]:hover *,
+a[class*="bg-[#DFE3EB]"][class*="px-"]:hover *,
+a[class*="bg-gray-1"][class*="px-"]:hover *,
+a[class*="bg-gray-5"][class*="px-"]:hover *,
+[role="button"][class*="bg-white"]:hover *,
+[role="button"][class*="bg-[#F4F6F7]"]:hover *,
+[role="button"][class*="bg-[#f4f6fa]"]:hover *,
+[role="button"][class*="bg-[#DFE3EB]"]:hover *,
+[role="button"][class*="bg-gray-1"]:hover *,
+[role="button"][class*="bg-gray-5"]:hover * {
   color: #FFFFFF !important;
   fill: #FFFFFF !important;
   stroke: #FFFFFF !important;
