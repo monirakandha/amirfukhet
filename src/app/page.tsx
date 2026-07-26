@@ -701,29 +701,29 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Free Lead Magnet Section matching Figma mockup */}
+      {/* Free Lead Magnet Section matching Figma mockup & user specs */}
       <section className="w-full bg-[#f4f6fa] py-16 sm:py-24 border-b border-gray-200/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-r from-[#1c284a] via-[#1a1e26] to-[#171a21] rounded-3xl p-8 sm:p-12 lg:p-16 shadow-2xl border border-gray-800 relative overflow-hidden">
+          <div className="bg-gradient-to-r from-[#1b2b52] via-[#1c2024] to-[#181a1d] rounded-3xl p-8 sm:p-12 lg:p-16 shadow-2xl border border-gray-800 relative overflow-hidden">
             {/* Subtle blue background glow on left */}
             <div className="absolute top-0 left-0 w-96 h-96 bg-[#4c70ff]/15 rounded-full blur-3xl pointer-events-none" />
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center relative z-10">
               {/* Left Text */}
-              <div className="lg:col-span-6 space-y-5">
+              <div className="lg:col-span-6 space-y-6">
                 {/* Translucent Pill Badge */}
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-medium text-white/90 shadow-2xs">
-                  <span className="w-1.5 h-1.5 rounded-full bg-white" />
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 font-desc-mona text-[16px] font-medium text-white shadow-2xs">
+                  <span className="w-2 h-2 rounded-full bg-white" />
                   Free lead magnet
                 </div>
 
                 {/* Headline */}
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight">
+                <h2 className="font-heading-bricolage text-[32px] sm:text-[44px] font-semibold text-white leading-[100%] tracking-[-0.01em]">
                   Get the Phuket investor's guide — free
                 </h2>
 
                 {/* Description */}
-                <p className="text-sm sm:text-base text-gray-300 leading-relaxed max-w-md">
+                <p className="font-desc-mona text-[16px] font-normal text-[#B3B3B3] leading-relaxed max-w-md">
                   Join the list and get Amir's market updates and the complete buying guide delivered to your inbox. No spam, unsubscribe anytime.
                 </p>
               </div>
@@ -739,46 +739,46 @@ export default function HomePage() {
                 >
                   {/* Name Input */}
                   <div>
-                    <label className="text-xs font-semibold text-gray-300 block mb-1.5">
+                    <label className="font-desc-mona text-[16px] font-medium text-white block mb-2 leading-none">
                       Name
                     </label>
                     <input
                       type="text"
                       required
                       placeholder="Enter your name"
-                      className="w-full bg-[#272c33] border border-gray-700/80 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-400 focus:outline-none focus:border-[#4c70ff] transition-colors"
+                      className="font-desc-mona text-[16px] font-medium text-white placeholder-[#B3B3B3] leading-none w-full bg-[#272c33] border border-gray-700/80 rounded-2xl px-5 py-3.5 focus:outline-none focus:border-[#5870F7] transition-colors"
                     />
                   </div>
 
                   {/* Email Input */}
                   <div>
-                    <label className="text-xs font-semibold text-gray-300 block mb-1.5">
+                    <label className="font-desc-mona text-[16px] font-medium text-white block mb-2 leading-none">
                       Email
                     </label>
                     <input
                       type="email"
                       required
                       placeholder="Enter your email"
-                      className="w-full bg-[#272c33] border border-gray-700/80 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-400 focus:outline-none focus:border-[#4c70ff] transition-colors"
+                      className="font-desc-mona text-[16px] font-medium text-white placeholder-[#B3B3B3] leading-none w-full bg-[#272c33] border border-gray-700/80 rounded-2xl px-5 py-3.5 focus:outline-none focus:border-[#5870F7] transition-colors"
                     />
                   </div>
 
                   {/* Phone Input */}
                   <div>
-                    <label className="text-xs font-semibold text-gray-300 block mb-1.5">
+                    <label className="font-desc-mona text-[16px] font-medium text-white block mb-2 leading-none">
                       Phone Number
                     </label>
                     <input
                       type="tel"
                       placeholder="+880"
-                      className="w-full bg-[#272c33] border border-gray-700/80 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-400 focus:outline-none focus:border-[#4c70ff] transition-colors"
+                      className="font-desc-mona text-[16px] font-medium text-white placeholder-[#B3B3B3] leading-none w-full bg-[#272c33] border border-gray-700/80 rounded-2xl px-5 py-3.5 focus:outline-none focus:border-[#5870F7] transition-colors"
                     />
                   </div>
 
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    className="w-full py-3.5 px-6 rounded-full bg-[#4c70ff] hover:bg-blue-600 text-white font-semibold text-sm transition-all shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2 mt-2"
+                    className="font-desc-mona text-[16px] font-medium text-white leading-none w-full py-4 px-6 rounded-full bg-[#5870F7] hover:bg-blue-600 transition-all flex items-center justify-center gap-2 mt-2 shadow-[inset_0px_2px_4px_0px_rgba(255,255,255,0.25)]"
                   >
                     Send me the free guide
                     <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -787,7 +787,7 @@ export default function HomePage() {
                   </button>
 
                   {/* Footer note */}
-                  <p className="text-xs text-gray-400 text-center mt-3 leading-relaxed">
+                  <p className="font-desc-mona text-[16px] font-medium text-[#B3B3B3] text-center mt-3 leading-none">
                     Connects to Mailchimp / Brevo · 500+ investors on the list
                   </p>
                 </form>
