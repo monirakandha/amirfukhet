@@ -718,7 +718,7 @@ export default function HomePage() {
                 </div>
 
                 {/* Headline */}
-                <h2 className="font-heading-bricolage text-[32px] sm:text-[44px] font-semibold text-white leading-[100%] tracking-[-0.01em]">
+                <h2 className="font-heading-bricolage text-[44px] font-semibold text-white leading-[100%] tracking-[-0.01em]">
                   Get the Phuket investor's guide — free
                 </h2>
 
