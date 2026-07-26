@@ -643,7 +643,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* WhatsApp Contact CTA Banner Section matching Figma mockup */}
+      {/* WhatsApp Contact CTA Banner Section matching Figma mockup & user specs */}
       <section className="relative w-full py-20 lg:py-28 overflow-hidden text-white bg-[#43a19b]">
         {/* Resort Coastline Background Image */}
         <div className="absolute inset-0 z-0">
@@ -658,19 +658,22 @@ export default function HomePage() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-xl space-y-6">
             {/* Translucent Glassmorphism Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/40 text-xs text-white font-medium shadow-xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-white" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/40 font-desc-mona text-[16px] font-medium text-white leading-none shadow-xs">
+              <span className="w-2 h-2 rounded-full bg-white" />
               Ready when you are
             </div>
 
             {/* Heading */}
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight drop-shadow-sm">
+            <h2
+              className="font-heading-bricolage text-[44px] font-semibold text-white leading-none tracking-[-0.01em] drop-shadow-sm"
+              style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif", fontSize: "44px", fontWeight: 600, lineHeight: "100%", letterSpacing: "-0.01em" }}
+            >
               One message is all it takes to start
             </h2>
 
             {/* Description */}
-            <p className="text-sm sm:text-base text-white/95 leading-relaxed drop-shadow-xs">
-              Have a question about an area, a structure, or a specific property? Message Amir directly. You'll get a straight, honest answer – not a sales pitch.
+            <p className="font-desc-mona text-[18px] font-normal text-white/95 leading-relaxed drop-shadow-xs">
+              Have a question about an area, a structure, or a specific property? Message Amir directly. You'll get a straight, honest answer — not a sales pitch.
             </p>
 
             {/* CTA Buttons */}
@@ -679,9 +682,9 @@ export default function HomePage() {
                 href="https://wa.me/8801875189361"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#4c70ff] hover:bg-blue-600 text-white font-semibold text-sm rounded-full transition-all shadow-lg shadow-blue-600/30"
+                className="font-desc-mona text-[16px] font-medium text-white leading-none inline-flex items-center justify-center gap-2.5 px-7 py-4 bg-[#5870F7] hover:bg-blue-600 rounded-full transition-all shadow-[inset_0px_2px_4px_0px_rgba(255,255,255,0.35)]"
               >
-                Chat on WhatsApp – replies within 24h
+                Chat on WhatsApp — replies within 24h
                 <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
                 </svg>
@@ -689,10 +692,10 @@ export default function HomePage() {
 
               <Link
                 href="/blog"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white hover:bg-gray-100 text-gray-900 font-semibold text-sm rounded-full transition-all shadow-lg"
+                className="font-desc-mona text-[16px] font-medium text-[#020202] leading-none inline-flex items-center justify-center gap-2.5 px-7 py-4 bg-white hover:bg-gray-100 rounded-full transition-all shadow-md"
               >
                 Explore market insights
-                <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 text-[#020202]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
                 </svg>
               </Link>
