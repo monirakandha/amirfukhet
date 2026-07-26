@@ -701,100 +701,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Free Lead Magnet Section matching Figma mockup pixel-for-pixel */}
+      {/* Free Lead Magnet Section using solid image asset from Figma */}
       <section className="w-full bg-[#f4f6fa] py-16 sm:py-24 border-b border-gray-200/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-[#1c2025] rounded-[32px] p-8 sm:p-12 lg:p-14 shadow-2xl border border-gray-800 relative overflow-hidden">
-            {/* Subtle blue gradient glow & grid texture background on left */}
-            <div className="absolute inset-0 bg-[radial-gradient(#ffffff0d_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
-            <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-gradient-to-br from-[#3b59d8]/35 via-[#233580]/15 to-transparent rounded-full blur-3xl pointer-events-none" />
-
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
-              {/* Left Text (7 Cols) */}
-              <div className="lg:col-span-7 space-y-6">
-                {/* Translucent Pill Badge */}
-                <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/10 border border-white/20 font-desc-mona text-[16px] font-medium text-white shadow-2xs">
-                  <span className="w-2 h-2 rounded-full bg-white" />
-                  Free lead magnet
-                </div>
-
-                {/* Headline */}
-                <h2 className="font-heading-bricolage text-[36px] sm:text-[44px] font-semibold text-white leading-[1.08] tracking-[-0.01em] max-w-[480px]">
-                  Get the Phuket investor's guide — free
-                </h2>
-
-                {/* Description */}
-                <p className="font-desc-mona text-[16px] font-normal text-[#B3B3B3] leading-[1.5] max-w-[480px]">
-                  Join the list and get Amir's market updates and the complete buying guide delivered to your inbox. No spam, unsubscribe anytime.
-                </p>
-              </div>
-
-              {/* Right Form (5 Cols) */}
-              <div className="lg:col-span-5">
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    alert('Thank you! The guide will be sent to your email shortly.');
-                  }}
-                  className="space-y-5 max-w-[460px] w-full lg:ml-auto"
-                >
-                  {/* Name Input */}
-                  <div>
-                    <label className="font-desc-mona text-[16px] font-medium text-white block mb-2 leading-none">
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="Enter your name"
-                      className="font-desc-mona text-[16px] font-medium text-white placeholder-[#B3B3B3] leading-none w-full bg-[#272c33] border border-gray-600/50 rounded-[16px] px-5 py-3.5 focus:outline-none focus:border-[#5870F7] transition-colors"
-                    />
-                  </div>
-
-                  {/* Email Input */}
-                  <div>
-                    <label className="font-desc-mona text-[16px] font-medium text-white block mb-2 leading-none">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="Enter your email"
-                      className="font-desc-mona text-[16px] font-medium text-white placeholder-[#B3B3B3] leading-none w-full bg-[#272c33] border border-gray-600/50 rounded-[16px] px-5 py-3.5 focus:outline-none focus:border-[#5870F7] transition-colors"
-                    />
-                  </div>
-
-                  {/* Phone Input */}
-                  <div>
-                    <label className="font-desc-mona text-[16px] font-medium text-white block mb-2 leading-none">
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      placeholder="+880"
-                      className="font-desc-mona text-[16px] font-medium text-white placeholder-[#B3B3B3] leading-none w-full bg-[#272c33] border border-gray-600/50 rounded-[16px] px-5 py-3.5 focus:outline-none focus:border-[#5870F7] transition-colors"
-                    />
-                  </div>
-
-                  {/* Submit Button */}
-                  <button
-                    type="submit"
-                    className="font-desc-mona text-[16px] font-medium text-white leading-none w-full py-4 px-6 rounded-full bg-[#5870F7] hover:bg-blue-600 transition-all flex items-center justify-center gap-2.5 mt-3 shadow-[inset_0px_2px_4px_0px_rgba(255,255,255,0.35)]"
-                  >
-                    Send me the free guide
-                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
-                    </svg>
-                  </button>
-
-                  {/* Footer note */}
-                  <p className="font-desc-mona text-[16px] font-medium text-[#B3B3B3] text-center mt-4 leading-none">
-                    Connects to Mailchimp / Brevo · 500+ investors on the list
-                  </p>
-                </form>
-              </div>
-            </div>
-          </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center">
+          <img
+            src="/images/lead-magnet-card-asset.png"
+            alt="Get the Phuket investor's guide — free"
+            className="w-full max-w-6xl h-auto object-contain mx-auto select-none rounded-[28px] sm:rounded-[32px] shadow-2xl"
+          />
         </div>
       </section>
 
