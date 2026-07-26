@@ -192,7 +192,7 @@ export default function HomePage() {
             className="font-heading-bricolage text-[44px] font-semibold text-white leading-none tracking-[-0.01em] text-center max-w-4xl mx-auto drop-shadow-sm"
             style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
           >
-            The Complete Guide to Buying Property in Phuket as a Foreigner
+            The Complete Guide to Buying<br className="hidden sm:inline" /> Property in Phuket as a Foreigner
           </h2>
 
           {/* Description */}
