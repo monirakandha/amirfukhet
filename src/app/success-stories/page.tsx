@@ -72,46 +72,50 @@ export default function SuccessStoriesPage() {
               className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
             >
               <div className="lg:col-span-5 relative h-72 lg:h-96 rounded-2xl overflow-hidden border border-slate-800">
-                <img src={story.image} alt={story.propertyTitle} className="w-full h-full object-cover" />
+                <img src={story.image} alt={story.title} className="w-full h-full object-cover" />
                 <div className="absolute top-3 left-3 px-3 py-1 bg-slate-950/80 text-amber-400 text-xs font-bold rounded-full border border-amber-500/30">
-                  {story.location}
+                  {story.location} · {story.propertyType}
                 </div>
               </div>
 
               <div className="lg:col-span-7 space-y-5">
                 <div className="flex items-center gap-2 text-amber-400">
                   <Quote className="w-6 h-6" />
-                  <span className="text-xs font-bold uppercase tracking-wider">{story.clientRole} Case Study</span>
+                  <span className="text-xs font-bold uppercase tracking-wider">{story.clientRole || 'Client'} Case Study</span>
                 </div>
 
-                <h2 className="text-2xl font-bold text-white">{story.propertyTitle}</h2>
+                <h2 className="text-2xl font-bold text-white">{story.title}</h2>
 
-                <p className="text-slate-300 text-sm leading-relaxed italic">
-                  {story.testimonial}
-                </p>
+                {story.testimonial && (
+                  <p className="text-slate-300 text-sm leading-relaxed italic">
+                    "{story.testimonial}"
+                  </p>
+                )}
 
                 <p className="text-slate-400 text-xs leading-relaxed">
-                  {story.story}
+                  {story.subtitle || story.story}
                 </p>
 
                 {/* Highlights */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                  {story.highlights.map((item, idx) => (
-                    <div key={idx} className="flex items-center gap-2 text-xs text-slate-200 bg-slate-950 p-2.5 rounded-xl border border-slate-800">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                      <span>{item}</span>
-                    </div>
-                  ))}
-                </div>
+                {story.highlights && story.highlights.length > 0 && (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                    {story.highlights.map((item, idx) => (
+                      <div key={idx} className="flex items-center gap-2 text-xs text-slate-200 bg-slate-950 p-2.5 rounded-xl border border-slate-800">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
 
                 <div className="pt-4 border-t border-slate-800 flex items-center justify-between">
                   <div>
-                    <h4 className="font-bold text-white text-sm">{story.clientName}</h4>
-                    <p className="text-xs text-slate-500">Closed in {story.dateClosed}</p>
+                    <h4 className="font-bold text-white text-sm">{story.clientName || 'Anonymous Buyer'}</h4>
+                    {story.dateClosed && <p className="text-xs text-slate-500">Closed in {story.dateClosed}</p>}
                   </div>
                   <div className="text-right">
-                    <span className="text-xs text-slate-500 block">Final Closing Price</span>
-                    <span className="text-xl font-black text-amber-400">${story.soldPrice.toLocaleString()}</span>
+                    <span className="text-xs text-slate-500 block">Metric Outcome</span>
+                    <span className="text-lg font-bold text-amber-400">{story.metricHighlight}</span>
                   </div>
                 </div>
               </div>

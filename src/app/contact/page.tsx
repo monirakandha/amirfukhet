@@ -4,9 +4,8 @@ import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import HomeValuationModal from '@/components/HomeValuationModal';
-import { primaryAgent } from '@/data/mockData';
 import { submitInquiry } from '@/services/api';
-import { Phone, Mail, MapPin, Award, Send, CheckCircle2, Building2, Clock } from 'lucide-react';
+import { Phone, Mail, MapPin, Send, CheckCircle2 } from 'lucide-react';
 
 export default function ContactPage() {
   const [name, setName] = useState('');
@@ -40,199 +39,470 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
+    <div className="min-h-screen bg-white text-gray-900 flex flex-col font-sans">
       <Navbar onOpenValuationModal={() => setIsValuationOpen(true)} />
 
-      {/* Header */}
-      <section className="pt-32 pb-12 bg-slate-900 border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <span className="text-xs uppercase tracking-widest text-amber-400 font-bold block mb-1">
-            Get In Touch
-          </span>
-          <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
-            Contact Realtor & Office
+      {/* Work With Me Hero Area matching Figma mockup */}
+      <section className="relative w-full pt-36 pb-20 sm:pt-40 sm:pb-24 overflow-hidden bg-[#f8fafc] border-b border-gray-200/60">
+        {/* Subtle geometric grid background pattern matching Figma mockup */}
+        <div
+          className="absolute inset-0 opacity-40 pointer-events-none"
+          style={{
+            backgroundImage: `radial-gradient(#CBD5E1 1px, transparent 1px)`,
+            backgroundSize: '24px 24px',
+          }}
+        />
+
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+          {/* Work with Amir Pill Badge */}
+          <div className="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-white border border-blue-100 text-xs font-semibold text-[#4c70ff] shadow-2xs">
+            Work with Amir
+          </div>
+
+          {/* Main Headline */}
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-[1.15] tracking-tight max-w-4xl mx-auto">
+            An advisor in your corner — from first question to keys in hand
           </h1>
-          <p className="text-slate-400 text-sm mt-2 max-w-2xl">
-            Schedule a private consultation, inquire about a listing, or discuss selling your luxury residence.
+
+          {/* Subtitle / Paragraph */}
+          <p className="text-sm sm:text-base text-gray-500 max-w-2xl mx-auto leading-relaxed pt-1">
+            No commission-chasing. No pressure. Just clear, independent guidance so you buy the right property under the right structure.
           </p>
+
+          {/* Primary Action CTA Button */}
+          <div className="pt-2">
+            <a
+              href="#contact-form"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#4c70ff] hover:bg-blue-600 text-white font-semibold text-sm rounded-full transition-all shadow-lg shadow-blue-600/25"
+            >
+              Book a free consultation
+              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+            </a>
+          </div>
         </div>
       </section>
 
-      {/* Content */}
-      <section className="py-16 flex-grow">
+      {/* Why work with an advisor, not a portal Section matching Figma mockup */}
+      <section className="py-20 bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          {/* Section Header */}
+          <div className="text-center space-y-3">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+              Why work with an advisor, not a portal
+            </h2>
+            <p className="text-sm sm:text-base text-gray-500 max-w-xl mx-auto leading-relaxed">
+              A listing site shows you what's for sale. An advisor tells you what's worth buying — and what to avoid.
+            </p>
+          </div>
+
+          {/* 3 Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Card 1: Independent */}
+            <div className="bg-[#f8fafc] border border-gray-200/80 rounded-3xl p-8 space-y-4 shadow-2xs hover:shadow-lg transition-all">
+              <div className="w-12 h-12 rounded-2xl bg-white border border-blue-100 flex items-center justify-center text-[#4c70ff] shadow-2xs">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900">
+                Independent
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
+                I'm paid to advise you well, not to push one developer's stock. You hear the downsides too.
+              </p>
+            </div>
+
+            {/* Card 2: Due-diligence first */}
+            <div className="bg-[#f8fafc] border border-gray-200/80 rounded-3xl p-8 space-y-4 shadow-2xs hover:shadow-lg transition-all">
+              <div className="w-12 h-12 rounded-2xl bg-white border border-blue-100 flex items-center justify-center text-[#4c70ff] shadow-2xs">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900">
+                Due-diligence first
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
+                Title checks, developer track record, lease terms — the unglamorous work that protects your money.
+              </p>
+            </div>
+
+            {/* Card 3: On the ground */}
+            <div className="bg-[#f8fafc] border border-gray-200/80 rounded-3xl p-8 space-y-4 shadow-2xs hover:shadow-lg transition-all">
+              <div className="w-12 h-12 rounded-2xl bg-white border border-blue-100 flex items-center justify-center text-[#4c70ff] shadow-2xs">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900">
+                On the ground
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
+                Based in Phuket. I view the property, meet the people, and represent your interests locally.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Everything you need to buy with confidence Section matching Figma mockup */}
+      <section className="py-20 bg-[#f8fafc] border-b border-gray-200/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            {/* Contact Information & Agent Card */}
-            <div className="lg:col-span-5 space-y-8">
-              {/* Primary Agent Card */}
-              <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6">
-                <div className="flex items-center gap-4">
-                  <img
-                    src={primaryAgent.avatar}
-                    alt={primaryAgent.name}
-                    className="w-16 h-16 rounded-2xl object-cover border-2 border-amber-400 shrink-0"
-                  />
-                  <div>
-                    <h3 className="text-xl font-bold text-white">{primaryAgent.name}</h3>
-                    <p className="text-xs text-amber-400 font-medium">{primaryAgent.title}</p>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            {/* Left Column Content */}
+            <div className="lg:col-span-6 space-y-6">
+              {/* What you get Pill Badge */}
+              <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-blue-100 text-xs font-semibold text-[#4c70ff] shadow-2xs">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#4c70ff]" />
+                What you get
+              </div>
+
+              {/* Headline */}
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                Everything you need to buy with confidence
+              </h2>
+
+              {/* 5 Checklist Items */}
+              <div className="space-y-4 pt-2">
+                {/* Item 1 */}
+                <div className="flex items-start gap-3.5 text-xs sm:text-sm text-gray-700 font-medium leading-snug">
+                  <div className="w-5 h-5 rounded-full border border-gray-300 bg-white flex items-center justify-center text-gray-900 shrink-0 mt-0.5 shadow-2xs">
+                    <svg className="w-3 h-3 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                    </svg>
                   </div>
+                  <span>A clear read on your goals – lifestyle, yield, or both</span>
                 </div>
 
-                <div className="space-y-4 pt-2 text-sm border-t border-slate-800">
-                  <div className="flex items-center gap-3 text-slate-300">
-                    <Phone className="w-4 h-4 text-amber-400 shrink-0" />
-                    <a href={`tel:${primaryAgent.phone}`} className="hover:text-amber-400 transition-colors">
-                      {primaryAgent.phone}
-                    </a>
+                {/* Item 2 */}
+                <div className="flex items-start gap-3.5 text-xs sm:text-sm text-gray-700 font-medium leading-snug">
+                  <div className="w-5 h-5 rounded-full border border-gray-300 bg-white flex items-center justify-center text-gray-900 shrink-0 mt-0.5 shadow-2xs">
+                    <svg className="w-3 h-3 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                    </svg>
                   </div>
+                  <span>A shortlist of properties that genuinely fit, with the trade-offs spelled out</span>
+                </div>
 
-                  <div className="flex items-center gap-3 text-slate-300">
-                    <Mail className="w-4 h-4 text-amber-400 shrink-0" />
-                    <a href={`mailto:${primaryAgent.email}`} className="hover:text-amber-400 transition-colors">
-                      {primaryAgent.email}
-                    </a>
+                {/* Item 3 */}
+                <div className="flex items-start gap-3.5 text-xs sm:text-sm text-gray-700 font-medium leading-snug">
+                  <div className="w-5 h-5 rounded-full border border-gray-300 bg-white flex items-center justify-center text-gray-900 shrink-0 mt-0.5 shadow-2xs">
+                    <svg className="w-3 h-3 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                    </svg>
                   </div>
+                  <span>Due diligence on title, developer and ownership structure</span>
+                </div>
 
-                  <div className="flex items-start gap-3 text-slate-300">
-                    <MapPin className="w-4 h-4 text-amber-400 shrink-0 mt-1" />
-                    <span>450 Rodeo Drive, Suite 800, Beverly Hills, CA 90210</span>
+                {/* Item 4 */}
+                <div className="flex items-start gap-3.5 text-xs sm:text-sm text-gray-700 font-medium leading-snug">
+                  <div className="w-5 h-5 rounded-full border border-gray-300 bg-white flex items-center justify-center text-gray-900 shrink-0 mt-0.5 shadow-2xs">
+                    <svg className="w-3 h-3 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                    </svg>
                   </div>
+                  <span>Guidance through negotiation, contracts and transfer</span>
+                </div>
 
-                  <div className="flex items-center gap-3 text-slate-300">
-                    <Clock className="w-4 h-4 text-amber-400 shrink-0" />
-                    <span>Mon - Sat: 8:00 AM - 7:00 PM (PST)</span>
+                {/* Item 5 */}
+                <div className="flex items-start gap-3.5 text-xs sm:text-sm text-gray-700 font-medium leading-snug">
+                  <div className="w-5 h-5 rounded-full border border-gray-300 bg-white flex items-center justify-center text-gray-900 shrink-0 mt-0.5 shadow-2xs">
+                    <svg className="w-3 h-3 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                    </svg>
                   </div>
+                  <span>Introductions to vetted lawyers, and rental management if you need it</span>
                 </div>
               </div>
 
-              {/* Free Valuation Promo Box */}
-              <div className="p-6 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 border border-amber-500/30 rounded-3xl space-y-4">
-                <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20 flex items-center justify-center">
-                  <Award className="w-5 h-5" />
-                </div>
-                <h4 className="text-lg font-bold text-white">Selling Your Property?</h4>
-                <p className="text-xs text-slate-400 leading-relaxed">
-                  Request a free professional Comparative Market Analysis (CMA) report tailored to your neighborhood.
-                </p>
-                <button
-                  onClick={() => setIsValuationOpen(true)}
-                  className="w-full py-3 bg-amber-500 text-slate-950 font-bold rounded-xl text-xs uppercase tracking-wider shadow-lg shadow-amber-500/10"
+              {/* Action Button */}
+              <div className="pt-2">
+                <a
+                  href="https://wa.me/8801875189361"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#4c70ff] hover:bg-blue-600 text-white font-semibold text-xs sm:text-sm rounded-full transition-all shadow-md shadow-blue-600/25"
                 >
-                  Start Home Valuation
-                </button>
+                  Ask Amir
+                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </a>
               </div>
             </div>
 
-            {/* Direct Form */}
-            <div className="lg:col-span-7 bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-10">
-              <h3 className="text-2xl font-bold text-white mb-2">Send Us a Direct Message</h3>
-              <p className="text-xs text-slate-400 mb-6">Fill out the form below and our team will get back to you within 2 hours.</p>
+            {/* Right Column Villa Image */}
+            <div className="lg:col-span-6">
+              <div className="rounded-3xl overflow-hidden shadow-2xl border border-gray-200 bg-gray-100 h-[380px] sm:h-[460px] w-full">
+                <img
+                  src="/images/confidence-villa.png"
+                  alt="Luxury Villa Pool - Buy with confidence"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-              {submitted ? (
-                <div className="py-12 text-center space-y-4">
-                  <div className="w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 mx-auto flex items-center justify-center">
-                    <CheckCircle2 className="w-8 h-8" />
-                  </div>
-                  <h4 className="text-xl font-bold text-white">Message Sent Successfully!</h4>
-                  <p className="text-sm text-slate-300 max-w-md mx-auto">
-                    Thank you <span className="text-amber-400 font-bold">{name}</span>. Eleanor Vance will review your message and contact you promptly.
-                  </p>
-                  <button
-                    onClick={() => setSubmitted(false)}
-                    className="px-6 py-2.5 bg-amber-500 text-slate-950 font-bold rounded-xl text-sm"
-                  >
-                    Send Another Message
-                  </button>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-semibold text-slate-300 mb-1">Your Full Name</label>
-                      <input
-                        type="text"
-                        required
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder="John Smith"
-                        className="w-full bg-slate-950 border border-slate-800 rounded-xl py-3 px-3 text-white text-sm focus:border-amber-500 focus:outline-none"
-                      />
-                    </div>
+      {/* A simple, no-pressure process Section matching Figma mockup */}
+      <section className="py-20 bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          {/* Section Header */}
+          <div className="text-center space-y-3">
+            <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#f8fafc] border border-blue-100 text-xs font-semibold text-[#4c70ff] shadow-2xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#4c70ff]" />
+              How to get started
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+              A simple, no-pressure process
+            </h2>
+          </div>
 
-                    <div>
-                      <label className="block text-xs font-semibold text-slate-300 mb-1">Email Address</label>
-                      <input
-                        type="email"
-                        required
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="john@example.com"
-                        className="w-full bg-slate-950 border border-slate-800 rounded-xl py-3 px-3 text-white text-sm focus:border-amber-500 focus:outline-none"
-                      />
-                    </div>
-                  </div>
+          {/* 4 Step Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Step 01 */}
+            <div className="bg-[#f8fafc] border border-gray-200/80 rounded-3xl p-6 sm:p-8 space-y-4 shadow-2xs hover:shadow-lg transition-all flex flex-col justify-between">
+              <div className="w-10 h-10 rounded-full bg-white border border-gray-200 text-gray-900 font-bold text-sm flex items-center justify-center shadow-2xs">
+                01
+              </div>
+              <div className="space-y-2">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900">
+                  Reach out
+                </h3>
+                <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
+                  A message on WhatsApp or the form. Tell me what you're considering.
+                </p>
+              </div>
+            </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-semibold text-slate-300 mb-1">Phone Number</label>
-                      <input
-                        type="tel"
-                        required
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        placeholder="+1 (555) 000-0000"
-                        className="w-full bg-slate-950 border border-slate-800 rounded-xl py-3 px-3 text-white text-sm focus:border-amber-500 focus:outline-none"
-                      />
-                    </div>
+            {/* Step 02 (Active Blue Highlight Card) */}
+            <div className="bg-[#4c70ff] rounded-3xl p-6 sm:p-8 space-y-4 shadow-xl text-white transform hover:-translate-y-1 transition-all flex flex-col justify-between">
+              <div className="w-10 h-10 rounded-full bg-white text-[#4c70ff] font-bold text-sm flex items-center justify-center shadow-sm">
+                02
+              </div>
+              <div className="space-y-2">
+                <h3 className="text-lg sm:text-xl font-bold text-white">
+                  Free consultation
+                </h3>
+                <p className="text-xs sm:text-sm text-white/90 leading-relaxed">
+                  We talk through goals, budget and areas. No obligation.
+                </p>
+              </div>
+            </div>
 
-                    <div>
-                      <label className="block text-xs font-semibold text-slate-300 mb-1">Inquiry Purpose</label>
-                      <select
-                        value={inquiryType}
-                        onChange={(e) => setInquiryType(e.target.value as any)}
-                        className="w-full bg-slate-950 border border-slate-800 rounded-xl py-3 px-3 text-white text-sm focus:border-amber-500 focus:outline-none"
-                      >
-                        <option value="general">General Inquiry</option>
-                        <option value="schedule-tour">Schedule Property Tour</option>
-                        <option value="home-valuation">List / Sell Property</option>
-                        <option value="ask-question">Investment Advice</option>
-                      </select>
-                    </div>
-                  </div>
+            {/* Step 03 */}
+            <div className="bg-[#f8fafc] border border-gray-200/80 rounded-3xl p-6 sm:p-8 space-y-4 shadow-2xs hover:shadow-lg transition-all flex flex-col justify-between">
+              <div className="w-10 h-10 rounded-full bg-white border border-gray-200 text-gray-900 font-bold text-sm flex items-center justify-center shadow-2xs">
+                03
+              </div>
+              <div className="space-y-2">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900">
+                  Research & shortlist
+                </h3>
+                <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
+                  I do the legwork and bring you properties that actually fit.
+                </p>
+              </div>
+            </div>
 
+            {/* Step 04 */}
+            <div className="bg-[#f8fafc] border border-gray-200/80 rounded-3xl p-6 sm:p-8 space-y-4 shadow-2xs hover:shadow-lg transition-all flex flex-col justify-between">
+              <div className="w-10 h-10 rounded-full bg-white border border-gray-200 text-gray-900 font-bold text-sm flex items-center justify-center shadow-2xs">
+                04
+              </div>
+              <div className="space-y-2">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900">
+                  Buy with confidence
+                </h3>
+                <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
+                  Due diligence, negotiation and transfer – I'm with you throughout.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Let's talk about your purchase CTA Section matching Figma mockup */}
+      <section className="py-20 bg-[#f8fafc] border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-[#1c2024] rounded-3xl p-8 sm:p-12 text-center text-white shadow-2xl border border-gray-800 space-y-6 max-w-4xl mx-auto">
+            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">
+              Let's talk about your purchase
+            </h3>
+            <p className="text-xs sm:text-sm text-gray-400 max-w-md mx-auto leading-relaxed">
+              The first conversation is free, and there's no pressure to go further.
+            </p>
+
+            <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+              <a
+                href="https://wa.me/8801875189361"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 bg-[#4c70ff] hover:bg-blue-600 text-white font-semibold text-xs sm:text-sm rounded-full transition-all shadow-md shadow-blue-500/20"
+              >
+                WhatsApp Amir
+              </a>
+
+              <a
+                href="#contact-form"
+                className="px-6 py-3 bg-white hover:bg-gray-100 text-gray-900 font-semibold text-xs sm:text-sm rounded-full transition-all shadow-md"
+              >
+                Book a consultation
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Content Form Section */}
+      <section id="contact-form" className="py-16 flex-grow bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            {/* Left Advisor Card */}
+            <div className="lg:col-span-5 space-y-8">
+              <div className="bg-[#f8fafc] border border-gray-200 rounded-3xl p-6 sm:p-8 space-y-6">
+                <div className="flex items-center gap-4">
+                  <img
+                    src="/images/amir.png"
+                    alt="Amir Ahmed Faisal"
+                    className="w-16 h-16 rounded-full object-cover border-2 border-blue-200 shrink-0 bg-white"
+                  />
                   <div>
-                    <label className="block text-xs font-semibold text-slate-300 mb-1">Message</label>
-                    <textarea
-                      rows={5}
-                      required
-                      value={message}
-                      onChange={(e) => setMessage(e.target.value)}
-                      placeholder="Tell us about your property requirements, target timeline, or questions..."
-                      className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-white text-sm focus:border-amber-500 focus:outline-none"
-                    />
+                    <h3 className="text-xl font-bold text-gray-900">Amir Ahmed Faisal</h3>
+                    <p className="text-xs text-[#4c70ff] font-semibold">Independent Property Advisor · Phuket</p>
+                  </div>
+                </div>
+
+                <div className="space-y-4 pt-2 text-sm border-t border-gray-200 text-gray-600">
+                  <div className="flex items-center gap-3">
+                    <Phone className="w-4 h-4 text-[#4c70ff] shrink-0" />
+                    <a href="tel:+8801875189361" className="hover:text-[#4c70ff] transition-colors">
+                      +880 1875-189361
+                    </a>
                   </div>
 
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full py-4 bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-bold rounded-2xl text-sm uppercase tracking-wider shadow-lg shadow-amber-500/20 transition-all flex items-center justify-center gap-2"
-                  >
-                    {isSubmitting ? (
-                      <span>Sending Message...</span>
-                    ) : (
-                      <>
-                        <Send className="w-4 h-4" /> Send Direct Inquiry
-                      </>
-                    )}
-                  </button>
-                </form>
-              )}
+                  <div className="flex items-center gap-3">
+                    <Mail className="w-4 h-4 text-[#4c70ff] shrink-0" />
+                    <a href="mailto:amir@fuketamir.com" className="hover:text-[#4c70ff] transition-colors">
+                      amir@fuketamir.com
+                    </a>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <MapPin className="w-4 h-4 text-[#4c70ff] shrink-0 mt-1" />
+                    <span>Bang Tao Beach, Cherngtalay, Phuket, Thailand</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Consultation Form */}
+            <div className="lg:col-span-7">
+              <div className="bg-[#f8fafc] border border-gray-200 rounded-3xl p-6 sm:p-10">
+                {submitted ? (
+                  <div className="text-center py-12 space-y-4">
+                    <CheckCircle2 className="w-16 h-16 text-emerald-500 mx-auto" />
+                    <h3 className="text-2xl font-bold text-gray-900">Consultation Requested!</h3>
+                    <p className="text-sm text-gray-500 max-w-md mx-auto">
+                      Thank you for reaching out. Amir will review your request and get back to you directly within 24 hours.
+                    </p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900">Schedule a Free Consultation</h3>
+                      <p className="text-xs text-gray-500 mt-1">
+                        Tell Amir about your target area, budget, or timeline.
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-semibold text-gray-700 mb-1.5">Full Name</label>
+                        <input
+                          type="text"
+                          required
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          placeholder="Your name"
+                          className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-gray-900 focus:border-[#4c70ff] focus:outline-none"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-semibold text-gray-700 mb-1.5">Email Address</label>
+                        <input
+                          type="email"
+                          required
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          placeholder="Your email"
+                          className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-gray-900 focus:border-[#4c70ff] focus:outline-none"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-semibold text-gray-700 mb-1.5">Phone / WhatsApp</label>
+                        <input
+                          type="tel"
+                          value={phone}
+                          onChange={(e) => setPhone(e.target.value)}
+                          placeholder="+880 1875-189361"
+                          className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-gray-900 focus:border-[#4c70ff] focus:outline-none"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-semibold text-gray-700 mb-1.5">Topic</label>
+                        <select
+                          value={inquiryType}
+                          onChange={(e) => setInquiryType(e.target.value as any)}
+                          className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-gray-900 focus:border-[#4c70ff] focus:outline-none"
+                        >
+                          <option value="general">Buying Advice / General</option>
+                          <option value="schedule-tour">Schedule Property Viewing</option>
+                          <option value="ask-question">Legal & Tax Structure</option>
+                          <option value="home-valuation">Property Valuation</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-semibold text-gray-700 mb-1.5">Message / Details</label>
+                      <textarea
+                        rows={4}
+                        required
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                        placeholder="Tell Amir what type of property, budget range, or questions you have..."
+                        className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-gray-900 focus:border-[#4c70ff] focus:outline-none"
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full py-3.5 px-6 rounded-full bg-[#4c70ff] hover:bg-blue-600 text-white font-semibold text-sm transition-all shadow-md shadow-blue-600/30 flex items-center justify-center gap-2"
+                    >
+                      {isSubmitting ? 'Sending Request...' : 'Send Message to Amir'}
+                      <Send className="w-4 h-4" />
+                    </button>
+                  </form>
+                )}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       <Footer />
+
       <HomeValuationModal isOpen={isValuationOpen} onClose={() => setIsValuationOpen(false)} />
     </div>
   );

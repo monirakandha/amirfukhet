@@ -1,231 +1,278 @@
 'use client';
 
-import React, { useState, useEffect, Suspense } from 'react';
-import { useSearchParams } from 'next/navigation';
+import React, { useState, Suspense } from 'react';
+import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import PropertyCard from '@/components/PropertyCard';
-import ScheduleViewingModal from '@/components/ScheduleViewingModal';
 import HomeValuationModal from '@/components/HomeValuationModal';
-import { Property, PropertyFilterParams } from '@/types';
-import { fetchProperties } from '@/services/api';
-import { Search, SlidersHorizontal, Building2, RotateCcw } from 'lucide-react';
+import ScheduleViewingModal from '@/components/ScheduleViewingModal';
+import { Property } from '@/types';
 
 function PropertyListContent() {
-  const searchParams = useSearchParams();
-
-  const [properties, setProperties] = useState<Property[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  // Filters State
-  const [status, setStatus] = useState(searchParams.get('status') || 'all');
-  const [propertyType, setPropertyType] = useState(searchParams.get('propertyType') || 'all');
-  const [search, setSearch] = useState(searchParams.get('search') || '');
-  const [maxPrice, setMaxPrice] = useState(searchParams.get('maxPrice') || '');
-  const [minBeds, setMinBeds] = useState(searchParams.get('minBeds') || '0');
-  const [sortBy, setSortBy] = useState<'price-asc' | 'price-desc' | 'newest' | 'sqft'>('newest');
+  const [areaFilter, setAreaFilter] = useState('all');
+  const [priceFilter, setPriceFilter] = useState('all');
+  const [tenureFilter, setTenureFilter] = useState('all');
 
   const [isValuationOpen, setIsValuationOpen] = useState(false);
   const [selectedViewingProperty, setSelectedViewingProperty] = useState<Property | null>(null);
 
-  useEffect(() => {
-    async function load() {
-      setLoading(true);
-      const params: PropertyFilterParams = {
-        status: status !== 'all' ? status : undefined,
-        propertyType: propertyType !== 'all' ? propertyType : undefined,
-        search: search || undefined,
-        maxPrice: maxPrice ? Number(maxPrice) : undefined,
-        minBeds: minBeds !== '0' ? Number(minBeds) : undefined,
-        sortBy,
-      };
+  // Hand-picked properties matching exact Figma mockup
+  const propertyList = [
+    {
+      id: 'prop-1',
+      title: '2-Bed Pool Villa, Laguna-side',
+      location: 'Thailand ,Bang Tao',
+      beds: 2,
+      baths: 2,
+      sqm: 180,
+      tenure: 'Leasehold',
+      originalPrice: '฿18.5M',
+      price: '฿18.5M',
+      image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800',
+    },
+    {
+      id: 'prop-2',
+      title: 'Sea-View Condo, Millionaire’s Mile',
+      location: 'Thailand ,Kamala',
+      beds: 1,
+      baths: 1,
+      sqm: 72,
+      tenure: 'Freehold',
+      originalPrice: '฿18.5M',
+      price: '฿12.9M',
+      image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80&w=800',
+    },
+    {
+      id: 'prop-3',
+      title: '3-Bed Family Villa, quiet south',
+      location: 'Thailand ,Rawai',
+      beds: 3,
+      baths: 3,
+      sqm: 220,
+      tenure: 'Leasehold',
+      originalPrice: '฿18.5M',
+      price: '฿9.8M',
+      image: 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&q=80&w=800',
+    },
+    {
+      id: 'prop-4',
+      title: 'Beachfront Modern Villa, Surin Bay',
+      location: 'Thailand ,Surin',
+      beds: 4,
+      baths: 4,
+      sqm: 340,
+      tenure: 'Freehold',
+      originalPrice: '฿45.0M',
+      price: '฿38.5M',
+      image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800',
+    },
+    {
+      id: 'prop-5',
+      title: 'Golf Course Estate Villa, Layan',
+      location: 'Thailand ,Layan',
+      beds: 5,
+      baths: 5,
+      sqm: 520,
+      tenure: 'Freehold',
+      originalPrice: '฿68.0M',
+      price: '฿59.0M',
+      image: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&q=80&w=800',
+    },
+    {
+      id: 'prop-6',
+      title: 'Luxury Sunset Penthouse, Bang Tao',
+      location: 'Thailand ,Bang Tao',
+      beds: 3,
+      baths: 3,
+      sqm: 240,
+      tenure: 'Freehold',
+      originalPrice: '฿28.0M',
+      price: '฿24.5M',
+      image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=800',
+    },
+  ];
 
-      const data = await fetchProperties(params);
-      setProperties(data);
-      setLoading(false);
-    }
-    load();
-  }, [status, propertyType, search, maxPrice, minBeds, sortBy]);
-
-  const handleReset = () => {
-    setStatus('all');
-    setPropertyType('all');
-    setSearch('');
-    setMaxPrice('');
-    setMinBeds('0');
-    setSortBy('newest');
-  };
+  const filteredProperties = propertyList.filter((item) => {
+    if (areaFilter !== 'all' && !item.location.toLowerCase().includes(areaFilter.toLowerCase())) return false;
+    if (tenureFilter !== 'all' && item.tenure !== tenureFilter) return false;
+    return true;
+  });
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
+    <div className="min-h-screen bg-white text-gray-900 flex flex-col font-sans">
       <Navbar onOpenValuationModal={() => setIsValuationOpen(true)} />
 
-      {/* Header Banner */}
-      <section className="pt-32 pb-12 bg-slate-900 border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <span className="text-xs uppercase tracking-widest text-amber-400 font-bold block mb-1">
-            Exclusive Listings
-          </span>
-          <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
-            Explore Property Portfolio
+      {/* Hero Area matching Figma mockup */}
+      <section className="relative w-full pt-36 pb-20 sm:pt-40 sm:pb-24 overflow-hidden bg-[#f8fafc] border-b border-gray-200/60">
+        {/* Subtle geometric grid background pattern matching Figma mockup */}
+        <div
+          className="absolute inset-0 opacity-40 pointer-events-none"
+          style={{
+            backgroundImage: `radial-gradient(#CBD5E1 1px, transparent 1px)`,
+            backgroundSize: '24px 24px',
+          }}
+        />
+
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
+          {/* Selected Listings Pill Badge */}
+          <div className="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-white border border-blue-100 text-xs font-semibold text-[#4c70ff] shadow-2xs">
+            Selected Listings
+          </div>
+
+          {/* Main Headline */}
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-[1.15] tracking-tight max-w-4xl mx-auto">
+            A few hand-picked properties
           </h1>
-          <p className="text-slate-400 text-sm mt-2 max-w-2xl">
-            Browse our luxury villas, high-rise penthouses, single-family estates, and premium rentals.
+
+          {/* Subtitle / Description */}
+          <p className="text-sm sm:text-base text-gray-500 max-w-2xl mx-auto leading-relaxed pt-1">
+            Not a portal – a small, curated selection. Every property here is one Amir would be comfortable recommending.
           </p>
         </div>
       </section>
 
-      {/* Main Catalog & Filter Layout */}
-      <section className="py-12 flex-grow">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            {/* Sidebar Filters */}
-            <div className="lg:col-span-3 space-y-6">
-              <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 space-y-6">
-                <div className="flex items-center justify-between border-b border-slate-800 pb-4">
-                  <h3 className="font-bold text-white text-base flex items-center gap-2">
-                    <SlidersHorizontal className="w-4 h-4 text-amber-400" /> Filters
-                  </h3>
-                  <button
-                    onClick={handleReset}
-                    className="text-xs text-slate-400 hover:text-amber-400 flex items-center gap-1 transition-colors"
-                  >
-                    <RotateCcw className="w-3 h-3" /> Reset
-                  </button>
-                </div>
+      {/* Main Catalog & Filter Section matching Figma mockup */}
+      <section className="py-16 flex-grow bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          {/* Top Filter Bar matching Figma layout */}
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-gray-100">
+            {/* Title */}
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 leading-snug max-w-xs">
+              Filters & search ship with portal expansion
+            </h2>
 
-                {/* Keyword Search */}
-                <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-2">Search Location / Keyword</label>
-                  <div className="relative">
-                    <Search className="w-4 h-4 text-slate-500 absolute left-3 top-3" />
-                    <input
-                      type="text"
-                      value={search}
-                      onChange={(e) => setSearch(e.target.value)}
-                      placeholder="City, ZIP, address..."
-                      className="w-full bg-slate-950 border border-slate-800 rounded-xl py-2.5 pl-9 pr-3 text-white text-xs focus:border-amber-500 focus:outline-none"
-                    />
-                  </div>
-                </div>
+            {/* 3 Select Dropdowns */}
+            <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+              {/* Select Areas */}
+              <div className="space-y-1">
+                <label className="text-xs font-semibold text-gray-800 block">
+                  Select Areas
+                </label>
+                <select
+                  value={areaFilter}
+                  onChange={(e) => setAreaFilter(e.target.value)}
+                  className="bg-[#f8fafc] border border-gray-200 rounded-full px-5 py-2.5 text-xs text-gray-700 font-medium focus:outline-none focus:border-[#4c70ff] transition-all min-w-[160px]"
+                >
+                  <option value="all">All areas</option>
+                  <option value="Bang Tao">Bang Tao</option>
+                  <option value="Kamala">Kamala</option>
+                  <option value="Rawai">Rawai</option>
+                  <option value="Surin">Surin</option>
+                  <option value="Layan">Layan</option>
+                </select>
+              </div>
 
-                {/* Listing Status */}
-                <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-2">Listing Status</label>
-                  <select
-                    value={status}
-                    onChange={(e) => setStatus(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl py-2.5 px-3 text-white text-xs focus:border-amber-500 focus:outline-none"
-                  >
-                    <option value="all">All Statuses</option>
-                    <option value="for-sale">For Sale</option>
-                    <option value="for-rent">For Rent</option>
-                    <option value="pending">Pending</option>
-                    <option value="sold">Sold</option>
-                  </select>
-                </div>
+              {/* Select Price */}
+              <div className="space-y-1">
+                <label className="text-xs font-semibold text-gray-800 block">
+                  Select Price
+                </label>
+                <select
+                  value={priceFilter}
+                  onChange={(e) => setPriceFilter(e.target.value)}
+                  className="bg-[#f8fafc] border border-gray-200 rounded-full px-5 py-2.5 text-xs text-gray-700 font-medium focus:outline-none focus:border-[#4c70ff] transition-all min-w-[160px]"
+                >
+                  <option value="all">Any price</option>
+                  <option value="under-10m">Under ฿10M</option>
+                  <option value="10m-20m">฿10M - ฿20M</option>
+                  <option value="20m-50m">฿20M - ฿50M</option>
+                  <option value="50m-plus">฿50M+</option>
+                </select>
+              </div>
 
-                {/* Property Type */}
-                <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-2">Property Type</label>
-                  <select
-                    value={propertyType}
-                    onChange={(e) => setPropertyType(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl py-2.5 px-3 text-white text-xs focus:border-amber-500 focus:outline-none"
-                  >
-                    <option value="all">All Categories</option>
-                    <option value="Villa">Luxury Villa</option>
-                    <option value="Penthouse">Penthouse</option>
-                    <option value="Single Family">Single Family</option>
-                    <option value="Townhouse">Townhouse</option>
-                  </select>
-                </div>
+              {/* Freehold / Leasehold */}
+              <div className="space-y-1">
+                <label className="text-xs font-semibold text-gray-800 block">
+                  Freehold / Leasehold
+                </label>
+                <select
+                  value={tenureFilter}
+                  onChange={(e) => setTenureFilter(e.target.value)}
+                  className="bg-[#f8fafc] border border-gray-200 rounded-full px-5 py-2.5 text-xs text-gray-700 font-medium focus:outline-none focus:border-[#4c70ff] transition-all min-w-[160px]"
+                >
+                  <option value="all">Select</option>
+                  <option value="Freehold">Freehold</option>
+                  <option value="Leasehold">Leasehold</option>
+                </select>
+              </div>
+            </div>
+          </div>
 
-                {/* Max Price */}
-                <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-2">Max Price ($)</label>
-                  <input
-                    type="number"
-                    value={maxPrice}
-                    onChange={(e) => setMaxPrice(e.target.value)}
-                    placeholder="e.g. 5000000"
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl py-2.5 px-3 text-white text-xs focus:border-amber-500 focus:outline-none"
+          {/* 3-Column Property Grid matching Figma mockup */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredProperties.map((prop) => (
+              <div
+                key={prop.id}
+                className="bg-white rounded-3xl border border-gray-200/80 hover:border-gray-300 shadow-xs hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group"
+              >
+                {/* Image Container */}
+                <div className="relative h-60 w-full overflow-hidden bg-gray-100">
+                  <img
+                    src={prop.image}
+                    alt={prop.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
 
-                {/* Min Bedrooms */}
-                <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-2">Min Bedrooms</label>
-                  <select
-                    value={minBeds}
-                    onChange={(e) => setMinBeds(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl py-2.5 px-3 text-white text-xs focus:border-amber-500 focus:outline-none"
-                  >
-                    <option value="0">Any Bedrooms</option>
-                    <option value="3">3+ Bedrooms</option>
-                    <option value="4">4+ Bedrooms</option>
-                    <option value="5">5+ Bedrooms</option>
-                  </select>
+                {/* Card Content */}
+                <div className="p-6 flex flex-col flex-grow justify-between space-y-4">
+                  <div className="space-y-2">
+                    {/* Location Badge */}
+                    <div className="flex items-center gap-1.5 text-xs text-gray-500 font-medium">
+                      <span className="text-rose-500 text-sm">📍</span>
+                      {prop.location}
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="font-bold text-gray-900 text-lg sm:text-xl leading-snug group-hover:text-[#4c70ff] transition-colors">
+                      {prop.title}
+                    </h3>
+                  </div>
+
+                  {/* 4 Specs Divider Row */}
+                  <div className="grid grid-cols-4 text-center border-t border-b border-gray-100 py-3 text-xs text-gray-500 font-medium my-2">
+                    <div>
+                      <div className="text-gray-400 mb-0.5">🛏️</div>
+                      {prop.beds} bed
+                    </div>
+                    <div>
+                      <div className="text-gray-400 mb-0.5">🛁</div>
+                      {prop.baths} bath
+                    </div>
+                    <div>
+                      <div className="text-gray-400 mb-0.5">📐</div>
+                      {prop.sqm} m²
+                    </div>
+                    <div>
+                      <div className="text-gray-400 mb-0.5">🏢</div>
+                      {prop.tenure}
+                    </div>
+                  </div>
+
+                  {/* Price & Action Row */}
+                  <div className="flex items-center justify-between pt-1">
+                    <div className="flex items-baseline gap-2">
+                      <span className="line-through text-gray-400 text-xs font-normal">
+                        {prop.originalPrice}
+                      </span>
+                      <span className="text-[#4c70ff] font-bold text-lg sm:text-xl">
+                        {prop.price}
+                      </span>
+                    </div>
+
+                    <Link
+                      href={`/properties/${prop.id}`}
+                      className="text-[#4c70ff] font-semibold text-xs flex items-center gap-1 hover:underline"
+                    >
+                      View Details
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
+                      </svg>
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            {/* Properties Grid */}
-            <div className="lg:col-span-9 space-y-6">
-              {/* Sort Bar */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
-                <span className="text-xs text-slate-400 font-medium">
-                  Showing <strong className="text-white">{properties.length}</strong> matching properties
-                </span>
-
-                <div className="flex items-center gap-2">
-                  <span className="text-xs text-slate-400">Sort By:</span>
-                  <select
-                    value={sortBy}
-                    onChange={(e) => setSortBy(e.target.value as any)}
-                    className="bg-slate-950 border border-slate-800 text-white text-xs rounded-xl py-2 px-3 focus:border-amber-500 focus:outline-none"
-                  >
-                    <option value="newest">Newest First</option>
-                    <option value="price-asc">Price: Low to High</option>
-                    <option value="price-desc">Price: High to Low</option>
-                    <option value="sqft">Largest Sq Ft</option>
-                  </select>
-                </div>
-              </div>
-
-              {/* Grid */}
-              {loading ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {[1, 2, 3, 4, 5, 6].map((n) => (
-                    <div key={n} className="h-96 rounded-2xl bg-slate-900 animate-pulse" />
-                  ))}
-                </div>
-              ) : properties.length === 0 ? (
-                <div className="bg-slate-900 border border-slate-800 rounded-3xl p-12 text-center space-y-4">
-                  <Building2 className="w-12 h-12 text-slate-600 mx-auto" />
-                  <h3 className="text-xl font-bold text-white">No Properties Found</h3>
-                  <p className="text-sm text-slate-400">
-                    Try adjusting your filters or search keywords to locate active properties.
-                  </p>
-                  <button
-                    onClick={handleReset}
-                    className="px-5 py-2.5 bg-amber-500 text-slate-950 font-bold rounded-xl text-xs"
-                  >
-                    Reset All Filters
-                  </button>
-                </div>
-              ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {properties.map((property) => (
-                    <PropertyCard
-                      key={property.id}
-                      property={property}
-                      onQuickInquire={(p) => setSelectedViewingProperty(p)}
-                    />
-                  ))}
-                </div>
-              )}
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -244,7 +291,7 @@ function PropertyListContent() {
 
 export default function PropertiesPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-slate-950 text-white p-20 text-center">Loading properties...</div>}>
+    <Suspense fallback={<div className="min-h-screen bg-white text-gray-900 p-20 text-center">Loading properties...</div>}>
       <PropertyListContent />
     </Suspense>
   );

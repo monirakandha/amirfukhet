@@ -2,124 +2,107 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Property } from '@/types';
-import { Bed, Bath, Square, MapPin, Eye, Calendar, Sparkles } from 'lucide-react';
 
 interface PropertyCardProps {
   property: Property;
   onQuickInquire?: (property: Property) => void;
 }
 
-export default function PropertyCard({ property, onQuickInquire }: PropertyCardProps) {
-  const statusColors = {
-    'for-sale': 'bg-emerald-500/90 text-white border-emerald-400/40',
-    'for-rent': 'bg-blue-500/90 text-white border-blue-400/40',
-    pending: 'bg-amber-500/90 text-slate-950 border-amber-400/40',
-    sold: 'bg-rose-500/90 text-white border-rose-400/40',
-  };
-
-  const statusText = {
-    'for-sale': 'For Sale',
-    'for-rent': 'For Rent',
-    pending: 'Pending Contract',
-    sold: 'Recently Sold',
-  };
+export default function PropertyCard({ property }: PropertyCardProps) {
+  const locationLabel = property.locationName || `Thailand ,${property.location.city}`;
+  const areaLabel = property.areaSqM ? `${property.areaSqM} m²` : `${property.features.sqft} sqft`;
+  const ownershipLabel = property.ownershipType || 'Freehold';
 
   return (
-    <div className="group bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 hover:border-amber-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-amber-500/10 flex flex-col h-full">
-      {/* Image Container */}
-      <div className="relative h-64 w-full overflow-hidden bg-slate-950">
+    <div className="group bg-white rounded-2xl border border-gray-200/80 shadow-xs flex flex-col justify-between hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+      {/* Top Image */}
+      <div className="relative h-60 sm:h-64 w-full bg-gray-100 overflow-hidden rounded-t-2xl">
         <img
           src={property.images[0]}
           alt={property.title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300"
         />
-
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-black/30" />
-
-        {/* Top badges */}
-        <div className="absolute top-3 left-3 right-3 flex items-center justify-between z-10">
-          <span
-            className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider backdrop-blur-md border ${
-              statusColors[property.status]
-            }`}
-          >
-            {statusText[property.status]}
-          </span>
-
-          {property.featured && (
-            <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-500 text-slate-950 flex items-center gap-1 shadow-md shadow-amber-500/20">
-              <Sparkles className="w-3 h-3 fill-slate-950" /> Featured
-            </span>
-          )}
-        </div>
-
-        {/* Price Tag Overlay */}
-        <div className="absolute bottom-3 left-3 z-10">
-          <div className="text-2xl font-black text-white tracking-tight drop-shadow-md">
-            {property.formattedPrice}
-          </div>
-          <span className="text-xs text-amber-300 font-medium">
-            {property.propertyType}
-          </span>
-        </div>
       </div>
 
       {/* Card Content */}
-      <div className="p-5 flex flex-col flex-grow justify-between gap-4">
+      <div className="pt-4 flex flex-col flex-1 justify-between">
         <div>
+          {/* Location Badge */}
+          <div className="flex items-center gap-1.5 text-xs font-medium text-gray-500 px-6">
+            <svg className="w-3.5 h-3.5 text-rose-500 fill-rose-500 shrink-0" viewBox="0 0 24 24">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+            <span className="truncate">{locationLabel}</span>
+          </div>
+
+          {/* Title */}
           <Link href={`/properties/${property.slug}`}>
-            <h3 className="text-lg font-bold text-white group-hover:text-amber-400 transition-colors line-clamp-1">
+            <h3 className="text-lg font-bold text-gray-900 leading-snug hover:text-[#4c70ff] transition-colors mt-1.5 px-6 line-clamp-1">
               {property.title}
             </h3>
           </Link>
 
-          <p className="text-xs text-slate-400 flex items-center gap-1.5 mt-1.5">
-            <MapPin className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-            <span className="truncate">
-              {property.location.address}, {property.location.city}, {property.location.state}
+          {/* 4 Feature Columns Row */}
+          <div className="border-y border-gray-100 py-3.5 my-4 mx-6 grid grid-cols-4 gap-1 text-center items-center">
+            {/* Beds */}
+            <div className="flex flex-col items-center justify-center space-y-1">
+              <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 10h18M3 14h18M5 10v7M19 10v7M3 18h18" />
+              </svg>
+              <span className="text-[11px] font-medium text-gray-500">{property.features.beds} bed</span>
+            </div>
+
+            {/* Baths */}
+            <div className="flex flex-col items-center justify-center space-y-1">
+              <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 12v6a2 2 0 002 2h12a2 2 0 002-2v-6M4 12h16M7 12V8a3 3 0 016 0v4" />
+              </svg>
+              <span className="text-[11px] font-medium text-gray-500">{property.features.baths} bath</span>
+            </div>
+
+            {/* Area */}
+            <div className="flex flex-col items-center justify-center space-y-1">
+              <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 8V4h4M20 8V4h-4M4 16v4h4M20 16v4h-4" />
+              </svg>
+              <span className="text-[11px] font-medium text-gray-500">{areaLabel}</span>
+            </div>
+
+            {/* Ownership */}
+            <div className="flex flex-col items-center justify-center space-y-1">
+              <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0v-5a2 2 0 012-2h2a2 2 0 012 2v5" />
+              </svg>
+              <span className="text-[11px] font-medium text-gray-500">{ownershipLabel}</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Price & View Details Bar */}
+        <div className="flex items-center justify-between px-6 pb-5">
+          {/* Price */}
+          <div className="flex items-baseline gap-2">
+            {property.originalPriceFormatted && property.originalPriceFormatted !== property.formattedPrice && (
+              <span className="text-xs text-gray-400 line-through">
+                {property.originalPriceFormatted}
+              </span>
+            )}
+            <span className="text-xl font-extrabold text-gray-900">
+              {property.formattedPrice}
             </span>
-          </p>
-
-          <p className="text-xs text-slate-400 line-clamp-2 mt-3 leading-relaxed">
-            {property.description}
-          </p>
-        </div>
-
-        {/* Spec Icons */}
-        <div className="pt-3 border-t border-slate-800/80 grid grid-cols-3 gap-2 text-center text-xs text-slate-300">
-          <div className="flex flex-col items-center bg-slate-950/60 p-2 rounded-xl border border-slate-800/60">
-            <Bed className="w-4 h-4 text-amber-400 mb-1" />
-            <span className="font-bold text-white">{property.features.beds} Beds</span>
           </div>
-          <div className="flex flex-col items-center bg-slate-950/60 p-2 rounded-xl border border-slate-800/60">
-            <Bath className="w-4 h-4 text-amber-400 mb-1" />
-            <span className="font-bold text-white">{property.features.baths} Baths</span>
-          </div>
-          <div className="flex flex-col items-center bg-slate-950/60 p-2 rounded-xl border border-slate-800/60">
-            <Square className="w-4 h-4 text-amber-400 mb-1" />
-            <span className="font-bold text-white">{property.features.sqft.toLocaleString()} sqft</span>
-          </div>
-        </div>
 
-        {/* Actions */}
-        <div className="flex items-center gap-2 pt-2">
+          {/* View Details Link */}
           <Link
             href={`/properties/${property.slug}`}
-            className="flex-1 py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-medium text-xs flex items-center justify-center gap-1.5 transition-colors border border-slate-700"
+            className="text-[#4c70ff] hover:text-blue-700 text-xs font-bold inline-flex items-center gap-1 transition-colors"
           >
-            <Eye className="w-3.5 h-3.5 text-amber-400" /> View Details
+            View Details
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg>
           </Link>
-
-          {onQuickInquire && (
-            <button
-              onClick={() => onQuickInquire(property)}
-              className="py-2.5 px-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs flex items-center gap-1.5 transition-colors shadow-md shadow-amber-500/10"
-            >
-              <Calendar className="w-3.5 h-3.5" /> Book Tour
-            </button>
-          )}
         </div>
       </div>
     </div>

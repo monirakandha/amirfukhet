@@ -29,8 +29,12 @@ export interface Property {
   slug: string;
   price: number;
   formattedPrice: string;
+  originalPriceFormatted?: string;
+  ownershipType?: 'Freehold' | 'Leasehold' | string;
+  areaSqM?: number;
+  locationName?: string;
   status: 'for-sale' | 'for-rent' | 'pending' | 'sold';
-  propertyType: 'Villa' | 'Apartment' | 'Penthouse' | 'Townhouse' | 'Commercial' | 'Single Family';
+  propertyType: 'Villa' | 'Apartment' | 'Penthouse' | 'Townhouse' | 'Commercial' | 'Single Family' | 'Condo' | string;
   location: Location;
   features: PropertyFeatures;
   images: string[];
@@ -57,7 +61,7 @@ export interface BlogArticle {
   id: string;
   title: string;
   slug: string;
-  category: 'Market Trends' | 'Home Buying' | 'Investment' | 'Seller Tips' | 'Interior Design';
+  category: string;
   summary: string;
   content: string;
   coverImage: string;
@@ -74,18 +78,21 @@ export interface BlogArticle {
 
 export interface SuccessStory {
   id: string;
-  clientName: string;
-  clientRole: 'Home Buyer' | 'Home Seller' | 'Real Estate Investor';
-  propertyTitle: string;
-  originalPrice?: number;
-  soldPrice: number;
-  daysOnMarket: number;
-  story: string;
-  testimonial: string;
-  image: string;
+  title: string;
+  slug: string;
+  subtitle: string;
   location: string;
-  dateClosed: string;
-  highlights: string[];
+  propertyType: string;
+  metricHighlight: string;
+  image: string;
+  clientName?: string;
+  clientRole?: string;
+  soldPrice?: number;
+  daysOnMarket?: number;
+  story?: string;
+  testimonial?: string;
+  dateClosed?: string;
+  highlights?: string[];
 }
 
 export interface InquiryPayload {
