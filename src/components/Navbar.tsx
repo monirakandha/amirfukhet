@@ -58,20 +58,23 @@ export default function Navbar({ onOpenValuationModal }: NavbarProps) {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-9 h-9 flex items-center justify-center shrink-0">
-              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-9 h-9 drop-shadow-xs">
+            <div className="w-10 h-10 flex items-center justify-center shrink-0">
+              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 drop-shadow-sm group-hover:scale-105 transition-transform">
                 <defs>
                   <linearGradient id="figmaBlueGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#3B82F6" />
-                    <stop offset="100%" stopColor="#4C70FF" />
+                    <stop offset="0%" stopColor="#2563EB" />
+                    <stop offset="50%" stopColor="#3B82F6" />
+                    <stop offset="100%" stopColor="#5870F7" />
                   </linearGradient>
                 </defs>
+                {/* Outer swoosh and right leg of stylized A */}
                 <path
-                  d="M 12 90 C 8 60, 22 24, 84 8 C 62 28, 64 56, 76 90 C 65 90, 52 90, 42 90 C 52 68, 59 48, 64 26 C 44 42, 28 66, 12 90 Z"
+                  d="M 5 95 C 10 65, 30 25, 76 2 L 88 95 L 72 95 L 62 38 C 45 55, 28 72, 22 95 Z"
                   fill="url(#figmaBlueGrad)"
                 />
+                {/* Horizontal crossbar connecting across */}
                 <path
-                  d="M 24 70 Q 48 64 68 76 Q 52 82 28 80 Z"
+                  d="M 18 75 L 65 75 L 68 87 L 15 87 Z"
                   fill="url(#figmaBlueGrad)"
                 />
               </svg>
@@ -98,13 +101,13 @@ export default function Navbar({ onOpenValuationModal }: NavbarProps) {
                   <Link
                     key={idx}
                     href={link.path}
-                    className={`text-sm font-medium transition-colors flex items-center gap-1.5 ${
+                    className={`font-desc-mona text-[16px] font-medium leading-none tracking-normal transition-colors flex items-center gap-1.5 ${
                       isActive
-                        ? 'text-[#4c70ff] font-semibold'
-                        : 'text-gray-800 hover:text-[#4c70ff]'
+                        ? 'text-[#5870F7] font-semibold'
+                        : 'text-[#020202] hover:text-[#5870F7]'
                     }`}
                   >
-                    {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#4c70ff]" />}
+                    {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#5870F7]" />}
                     {link.name}
                   </Link>
                 );
@@ -114,9 +117,9 @@ export default function Navbar({ onOpenValuationModal }: NavbarProps) {
                 <Link
                   key={idx}
                   href={link.path}
-                  className={`text-sm font-medium transition-colors ${
+                  className={`font-desc-mona text-[16px] font-medium leading-none tracking-normal transition-colors text-center ${
                     isActive
-                      ? 'text-white font-semibold border-b-2 border-[#4c70ff] pb-0.5'
+                      ? 'text-white font-semibold border-b-2 border-white pb-1'
                       : 'text-white/90 hover:text-white'
                   }`}
                 >
@@ -126,17 +129,17 @@ export default function Navbar({ onOpenValuationModal }: NavbarProps) {
             })}
           </nav>
 
-          {/* Social Circle Buttons */}
+          {/* Social Circle Buttons matching exact squircle glass buttons from screenshot */}
           <div className="hidden md:flex items-center space-x-3">
             {/* WhatsApp */}
             <a
               href="https://wa.me/8801875189361"
               target="_blank"
               rel="noopener noreferrer"
-              className={`w-9 h-9 rounded-full flex items-center justify-center transition-all ${
+              className={`w-10 h-10 rounded-[16px] flex items-center justify-center transition-all shadow-xs ${
                 isLightNav
-                  ? 'border border-blue-100 text-[#4c70ff] hover:bg-blue-50'
-                  : 'border border-white/70 hover:border-white hover:bg-white/10 text-white'
+                  ? 'border border-[#5870F7]/30 bg-[#5870F7]/10 text-[#5870F7] hover:bg-[#5870F7]/20'
+                  : 'border border-white/40 bg-white/15 hover:bg-white/25 text-white backdrop-blur-md'
               }`}
               aria-label="WhatsApp"
             >
@@ -150,10 +153,10 @@ export default function Navbar({ onOpenValuationModal }: NavbarProps) {
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className={`w-9 h-9 rounded-full flex items-center justify-center transition-all ${
+              className={`w-10 h-10 rounded-[16px] flex items-center justify-center transition-all shadow-xs ${
                 isLightNav
-                  ? 'border border-blue-100 text-[#4c70ff] hover:bg-blue-50'
-                  : 'border border-white/70 hover:border-white hover:bg-white/10 text-white'
+                  ? 'border border-[#5870F7]/30 bg-[#5870F7]/10 text-[#5870F7] hover:bg-[#5870F7]/20'
+                  : 'border border-white/40 bg-white/15 hover:bg-white/25 text-white backdrop-blur-md'
               }`}
               aria-label="LinkedIn"
             >

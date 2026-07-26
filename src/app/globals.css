@@ -34,3 +34,66 @@ body {
 .font-desc-mona {
   font-family: var(--font-mona), 'Mona Sans', sans-serif;
 }
+
+/* Global Reusable Section & Metric Typography */
+.section-pill {
+  font-family: var(--font-mona), 'Mona Sans', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 100%;
+  color: #5870F7;
+}
+
+.section-heading {
+  font-family: var(--font-bricolage), 'Bricolage Grotesque', sans-serif;
+  font-weight: 600;
+  font-size: 44px;
+  line-height: 100%;
+  letter-spacing: -0.01em;
+  color: #020202;
+}
+
+.section-subheading {
+  font-family: var(--font-mona), 'Mona Sans', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+  color: #6B7280;
+  text-align: center;
+}
+
+.stat-metric-value {
+  font-family: var(--font-bricolage), 'Bricolage Grotesque', sans-serif;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 100%;
+  letter-spacing: -0.01em;
+  color: #5870F7;
+}
+
+.stat-metric-label {
+  font-family: var(--font-mona), 'Mona Sans', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+  text-align: center;
+  color: #6B7280;
+}
+
+/* Category Topic Box Headings and Descriptions */
+.box-heading {
+  font-family: var(--font-bricolage), 'Bricolage Grotesque', sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: -0.01em;
+  color: #020202;
+}
+
+.box-description {
+  font-family: var(--font-mona), 'Mona Sans', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 140%;
+  color: #6B7280;
+}

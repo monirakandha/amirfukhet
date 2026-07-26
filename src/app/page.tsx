@@ -9,7 +9,7 @@ import HomeValuationModal from '@/components/HomeValuationModal';
 import ScheduleViewingModal from '@/components/ScheduleViewingModal';
 import { Property, BlogArticle, SuccessStory } from '@/types';
 import { fetchProperties, fetchBlogs, fetchSuccessStories } from '@/services/api';
-import { TrendingUp, BookOpen, MapPin, Scale, Building2, Newspaper } from 'lucide-react';
+import { TrendingUp, BookOpen, Timer, MapPin, Scale, Building2, Newspaper } from 'lucide-react';
 
 export default function HomePage() {
   const [properties, setProperties] = useState<Property[]>([]);
@@ -56,40 +56,52 @@ export default function HomePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             {/* Stat 1 */}
             <div className="space-y-1.5">
-              <div className="text-4xl sm:text-5xl font-normal text-[#4c70ff] tracking-tight">
+              <div
+                className="font-heading-bricolage text-[44px] font-light text-[#5870F7] leading-none tracking-[-0.01em]"
+                style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+              >
                 32+
               </div>
-              <p className="text-sm text-gray-500 font-normal">
+              <p className="font-desc-mona text-[18px] font-normal text-[#6B7280] leading-none">
                 In-depth investor articles
               </p>
             </div>
 
             {/* Stat 2 */}
             <div className="space-y-1.5">
-              <div className="text-4xl sm:text-5xl font-normal text-[#4c70ff] tracking-tight">
+              <div
+                className="font-heading-bricolage text-[44px] font-light text-[#5870F7] leading-none tracking-[-0.01em]"
+                style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+              >
                 07+
               </div>
-              <p className="text-sm text-gray-500 font-normal">
+              <p className="font-desc-mona text-[18px] font-normal text-[#6B7280] leading-none">
                 Phuket areas covered in depth
               </p>
             </div>
 
             {/* Stat 3 */}
             <div className="space-y-1.5">
-              <div className="text-4xl sm:text-5xl font-normal text-[#4c70ff] tracking-tight">
+              <div
+                className="font-heading-bricolage text-[44px] font-light text-[#5870F7] leading-none tracking-[-0.01em]"
+                style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+              >
                 A–Z
               </div>
-              <p className="text-sm text-gray-500 font-normal">
+              <p className="font-desc-mona text-[18px] font-normal text-[#6B7280] leading-none">
                 Buying process, fully explained
               </p>
             </div>
 
             {/* Stat 4 */}
             <div className="space-y-1.5">
-              <div className="text-4xl sm:text-5xl font-normal text-[#4c70ff] tracking-tight">
+              <div
+                className="font-heading-bricolage text-[44px] font-light text-[#5870F7] leading-none tracking-[-0.01em]"
+                style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+              >
                 24h
               </div>
-              <p className="text-sm text-gray-500 font-normal">
+              <p className="font-desc-mona text-[18px] font-normal text-[#6B7280] leading-none">
                 Replies within 24h
               </p>
             </div>
@@ -98,24 +110,27 @@ export default function HomePage() {
       </section>
 
       {/* Advisor Intro Section matching Figma mockup */}
-      <section className="w-full bg-[#f4f6fa] pt-16 pb-12 lg:pt-20 lg:pb-0 relative overflow-hidden border-b border-gray-200/50">
+      <section className="w-full bg-[#f4f6fa] pt-12 lg:pt-16 pb-0 relative overflow-hidden border-b border-gray-200/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
             {/* Left Content */}
-            <div className="lg:col-span-7 space-y-6 pb-8 lg:pb-20">
+            <div className="lg:col-span-7 space-y-6 py-8 lg:py-16">
               {/* Pill Badge */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-blue-100 text-[#4c70ff] text-xs font-semibold shadow-xs">
-                <span className="w-2 h-2 rounded-full bg-[#4c70ff]" />
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#E5E9F2] section-pill font-desc-mona text-[16px] font-medium text-[#5870F7] leading-none shadow-2xs">
+                <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
                 Property Investment Advisor · Phuket
               </div>
 
-              {/* Headline */}
-              <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-bold text-gray-900 leading-[1.18] tracking-tight">
-                Invest in Phuket Property with Trusted Advisors, Guided by Expertise.
+              {/* Headline matching exact 3-line breaks from image */}
+              <h2
+                className="font-heading-bricolage text-[40px] sm:text-[48px] lg:text-[56px] font-semibold text-[#020202] leading-[1.14] sm:leading-[64px] tracking-[-0.02em]"
+                style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+              >
+                Invest in Phuket Property<br className="hidden sm:inline" /> with Trusted Advisors,<br className="hidden sm:inline" /> Guided by Expertise.
               </h2>
 
               {/* Sub-description */}
-              <p className="text-sm sm:text-base text-gray-500 max-w-xl leading-relaxed">
+              <p className="font-desc-mona text-[16px] font-normal text-[#6B7280] max-w-[580px] leading-[1.5]">
                 Independent research, honest guidance, and the full picture from ownership structures to rental yields so international buyers invest in Thailand with confidence.
               </p>
 
@@ -125,26 +140,26 @@ export default function HomePage() {
                   href="https://wa.me/8801875189361"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3.5 bg-[#4c70ff] hover:bg-blue-600 text-white font-semibold text-sm rounded-full transition-all shadow-md shadow-blue-500/20"
+                  className="inline-flex items-center justify-center px-6 py-3.5 rounded-full bg-[#5870F7] hover:bg-blue-600 font-desc-mona text-[16px] font-medium text-white leading-none transition-all shadow-[inset_0px_2px_4px_0px_rgba(255,255,255,0.25)]"
                 >
                   Talk to Amir on WhatsApp
                 </a>
 
                 <Link
                   href="/blog"
-                  className="px-6 py-3.5 bg-white hover:bg-gray-50 text-gray-800 font-semibold text-sm rounded-full border border-gray-200 transition-colors"
+                  className="inline-flex items-center justify-center px-6 py-3.5 rounded-full bg-[#F4F6F7] hover:bg-gray-200 font-desc-mona text-[16px] font-medium text-[#020202] leading-none border border-[#DFE3EB] transition-colors"
                 >
                   Read the free guide
                 </Link>
               </div>
             </div>
 
-            {/* Right Photo */}
+            {/* Right Photo without drop shadow matching clean cutout in image */}
             <div className="lg:col-span-5 flex justify-center lg:justify-end items-end self-end">
               <img
                 src="/images/amir.png"
                 alt="Amir - Property Investment Advisor"
-                className="w-auto max-h-[460px] lg:max-h-[520px] object-contain drop-shadow-xl"
+                className="w-auto max-h-[480px] lg:max-h-[580px] xl:max-h-[620px] object-contain object-bottom"
               />
             </div>
           </div>
@@ -167,33 +182,35 @@ export default function HomePage() {
         {/* Content Box */}
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           {/* Translucent Pill Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/40 text-xs text-white font-medium shadow-xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-white" />
+          <div className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/40 font-desc-mona text-[16px] font-medium text-white leading-none shadow-xs">
+            <span className="w-2 h-2 rounded-full bg-white" />
             Start here · The complete reference
           </div>
 
           {/* Heading */}
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight max-w-4xl mx-auto drop-shadow-sm">
+          <h2
+            className="font-heading-bricolage text-[44px] font-semibold text-white leading-none tracking-[-0.01em] text-center max-w-4xl mx-auto drop-shadow-sm"
+            style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+          >
             The Complete Guide to Buying Property in Phuket as a Foreigner
           </h2>
 
           {/* Description */}
-          <p className="text-sm sm:text-base text-white/95 max-w-3xl mx-auto leading-relaxed drop-shadow-xs">
+          <p className="font-desc-mona text-[16px] font-medium text-white leading-[1.4] text-center max-w-3xl mx-auto drop-shadow-xs">
             Ownership structures, the step-by-step buying process, taxes and transfer fees, financing, due diligence and the real risks – the single resource that answers almost every question before you ever send a message.
           </p>
-
           {/* CTA Buttons */}
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <Link
               href="/blog"
-              className="px-7 py-3.5 bg-[#4c70ff] hover:bg-blue-600 text-white font-semibold text-sm rounded-full transition-all shadow-lg shadow-blue-600/30"
+              className="font-desc-mona text-[16px] font-medium text-white leading-none px-7 py-3.5 bg-[#5870F7] hover:bg-blue-600 rounded-full transition-all shadow-[inset_0px_2px_4px_0px_rgba(255,255,255,0.25)] inline-flex items-center justify-center"
             >
               Read the guide
             </Link>
 
             <Link
               href="/blog"
-              className="px-7 py-3.5 bg-white hover:bg-gray-100 text-gray-900 font-semibold text-sm rounded-full transition-all shadow-lg"
+              className="font-desc-mona text-[16px] font-medium text-[#020202] leading-none px-7 py-3.5 bg-[#F4F6F7] hover:bg-gray-200 rounded-full border border-[#DFE3EB] transition-colors inline-flex items-center justify-center"
             >
               Explore market insights
             </Link>
@@ -206,145 +223,178 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="text-center space-y-3 mb-12 sm:mb-16">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-blue-100 text-[#4c70ff] text-xs font-semibold shadow-2xs">
-              <span className="w-2 h-2 rounded-full bg-[#4c70ff]" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-blue-100 section-pill font-desc-mona text-[16px] font-medium text-[#5870F7] leading-none shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
               Latest insights
             </div>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight">
+            <h2
+              className="section-heading font-heading-bricolage text-[44px] font-semibold text-[#020202] leading-[100%] tracking-[-0.01em]"
+              style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+            >
               Research the market before you commit
             </h2>
           </div>
 
           {/* 6 Category Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {/* Card 1: Market Insights */}
-            <Link
-              href="/blog"
-              className="group bg-white hover:bg-[#4c70ff] rounded-2xl p-7 transition-all duration-300 shadow-xs border border-gray-100/80 hover:border-transparent hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between"
-            >
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-[#f0f4ff] group-hover:bg-white flex items-center justify-center transition-colors mb-5">
-                  <TrendingUp className="w-6 h-6 text-[#4c70ff] transition-colors" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-start">
+            {/* Column 1: Short (Market Insights) on top, Tall (Ownership & Legal) on bottom */}
+            <div className="flex flex-col gap-6 sm:gap-8">
+              {/* Card 1: Market Insights (Horizontal) */}
+              <Link
+                href="/blog"
+                className="group bg-white hover:bg-[#5870F7] rounded-[24px] p-6 sm:p-7 transition-all duration-300 shadow-xs border border-gray-100/80 hover:border-transparent hover:shadow-xl hover:-translate-y-1 flex items-start gap-5"
+              >
+                <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-white flex items-center justify-center transition-colors shrink-0 shadow-2xs">
+                  <TrendingUp className="w-7 h-7 text-[#5870F7] transition-colors" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 group-hover:text-white transition-colors">
-                  Market Insights
-                </h3>
-                <p className="text-sm text-gray-500 group-hover:text-white/85 transition-colors mt-2 leading-relaxed">
-                  Prices, trends, area analysis, demand
-                </p>
-              </div>
-            </Link>
+                <div className="flex flex-col">
+                  <h3
+                    className="box-heading font-heading-bricolage text-[24px] font-medium text-[#020202] leading-tight tracking-[-0.01em] group-hover:text-white transition-colors"
+                    style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+                  >
+                    Market Insights
+                  </h3>
+                  <p className="box-description font-desc-mona text-[16px] sm:text-[18px] font-normal text-[#6B7280] leading-[1.4] mt-1.5 group-hover:text-white/85 transition-colors">
+                    Prices, trends, area analysis, demand
+                  </p>
+                </div>
+              </Link>
 
-            {/* Card 2: Buyer Guides (Demonstrates active hover state) */}
-            <Link
-              href="/blog"
-              className="group bg-white hover:bg-[#4c70ff] rounded-2xl p-7 transition-all duration-300 shadow-xs border border-gray-100/80 hover:border-transparent hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between"
-            >
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-[#f0f4ff] group-hover:bg-white flex items-center justify-center transition-colors mb-5">
-                  <BookOpen className="w-6 h-6 text-[#4c70ff] transition-colors" />
+              {/* Card 4: Ownership & Legal (Vertical) */}
+              <Link
+                href="/blog"
+                className="group bg-white hover:bg-[#5870F7] rounded-[24px] p-6 sm:p-8 transition-all duration-300 shadow-xs border border-gray-100/80 hover:border-transparent hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-white flex items-center justify-center transition-colors mb-6 shrink-0 shadow-2xs">
+                    <Scale className="w-7 h-7 text-[#5870F7] transition-colors" />
+                  </div>
+                  <h3
+                    className="box-heading font-heading-bricolage text-[24px] font-medium text-[#020202] leading-tight tracking-[-0.01em] group-hover:text-white transition-colors"
+                    style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+                  >
+                    Ownership & Legal
+                  </h3>
+                  <p className="box-description font-desc-mona text-[16px] sm:text-[18px] font-normal text-[#6B7280] leading-[1.4] mt-2 group-hover:text-white/85 transition-colors">
+                    Freehold, leasehold, company structures
+                  </p>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 group-hover:text-white transition-colors">
-                  Buyer Guides
-                </h3>
-                <p className="text-sm text-gray-500 group-hover:text-white/85 transition-colors mt-2 leading-relaxed">
-                  Process, taxes, financing, bank accounts
-                </p>
-              </div>
-            </Link>
+              </Link>
+            </div>
 
-            {/* Card 3: Area Guides */}
-            <Link
-              href="/blog"
-              className="group bg-white hover:bg-[#4c70ff] rounded-2xl p-7 transition-all duration-300 shadow-xs border border-gray-100/80 hover:border-transparent hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between"
-            >
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-[#f0f4ff] group-hover:bg-white flex items-center justify-center transition-colors mb-5">
-                  <MapPin className="w-6 h-6 text-[#4c70ff] transition-colors" />
+            {/* Column 2: Tall (Buyer Guides - Blue!) on top, Short (Rental & ROI) on bottom */}
+            <div className="flex flex-col gap-6 sm:gap-8">
+              {/* Card 2: Buyer Guides (Vertical - Active Blue State) */}
+              <Link
+                href="/blog"
+                className="group bg-[#5870F7] hover:bg-blue-600 rounded-[24px] p-6 sm:p-8 transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center mb-6 shrink-0 shadow-xs">
+                    <Timer className="w-7 h-7 text-[#5870F7]" />
+                  </div>
+                  <h3
+                    className="box-heading font-heading-bricolage text-[24px] font-medium text-white leading-tight tracking-[-0.01em]"
+                    style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+                  >
+                    Buyer Guides
+                  </h3>
+                  <p className="box-description font-desc-mona text-[16px] sm:text-[18px] font-normal text-white/90 leading-[1.4] mt-2">
+                    Process, taxes, financing, bank accounts
+                  </p>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 group-hover:text-white transition-colors">
-                  Area Guides
-                </h3>
-                <p className="text-sm text-gray-500 group-hover:text-white/85 transition-colors mt-2 leading-relaxed">
-                  Bang Tao, Kamala, Surin, Layan, Rawai
-                </p>
-              </div>
-            </Link>
+              </Link>
 
-            {/* Card 4: Ownership & Legal */}
-            <Link
-              href="/blog"
-              className="group bg-white hover:bg-[#4c70ff] rounded-2xl p-7 transition-all duration-300 shadow-xs border border-gray-100/80 hover:border-transparent hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between"
-            >
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-[#f0f4ff] group-hover:bg-white flex items-center justify-center transition-colors mb-5">
-                  <Scale className="w-6 h-6 text-[#4c70ff] transition-colors" />
+              {/* Card 5: Rental & ROI (Horizontal) */}
+              <Link
+                href="/blog"
+                className="group bg-white hover:bg-[#5870F7] rounded-[24px] p-6 sm:p-7 transition-all duration-300 shadow-xs border border-gray-100/80 hover:border-transparent hover:shadow-xl hover:-translate-y-1 flex items-start gap-5"
+              >
+                <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-white flex items-center justify-center transition-colors shrink-0 shadow-2xs">
+                  <Building2 className="w-7 h-7 text-[#5870F7] transition-colors" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 group-hover:text-white transition-colors">
-                  Ownership & Legal
-                </h3>
-                <p className="text-sm text-gray-500 group-hover:text-white/85 transition-colors mt-2 leading-relaxed">
-                  Freehold, leasehold, company structures
-                </p>
-              </div>
-            </Link>
+                <div className="flex flex-col">
+                  <h3
+                    className="box-heading font-heading-bricolage text-[24px] font-medium text-[#020202] leading-tight tracking-[-0.01em] group-hover:text-white transition-colors"
+                    style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+                  >
+                    Rental & ROI
+                  </h3>
+                  <p className="box-description font-desc-mona text-[16px] sm:text-[18px] font-normal text-[#6B7280] leading-[1.4] mt-1.5 group-hover:text-white/85 transition-colors">
+                    Yields, seasonality, rental strategy
+                  </p>
+                </div>
+              </Link>
+            </div>
 
-            {/* Card 5: Rental & ROI */}
-            <Link
-              href="/blog"
-              className="group bg-white hover:bg-[#4c70ff] rounded-2xl p-7 transition-all duration-300 shadow-xs border border-gray-100/80 hover:border-transparent hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between"
-            >
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-[#f0f4ff] group-hover:bg-white flex items-center justify-center transition-colors mb-5">
-                  <Building2 className="w-6 h-6 text-[#4c70ff] transition-colors" />
+            {/* Column 3: Short (Area Guides) on top, Tall (News & Updates) on bottom */}
+            <div className="flex flex-col gap-6 sm:gap-8">
+              {/* Card 3: Area Guides (Horizontal) */}
+              <Link
+                href="/blog"
+                className="group bg-white hover:bg-[#5870F7] rounded-[24px] p-6 sm:p-7 transition-all duration-300 shadow-xs border border-gray-100/80 hover:border-transparent hover:shadow-xl hover:-translate-y-1 flex items-start gap-5"
+              >
+                <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-white flex items-center justify-center transition-colors shrink-0 shadow-2xs">
+                  <MapPin className="w-7 h-7 text-[#5870F7] transition-colors" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 group-hover:text-white transition-colors">
-                  Rental & ROI
-                </h3>
-                <p className="text-sm text-gray-500 group-hover:text-white/85 transition-colors mt-2 leading-relaxed">
-                  Yields, seasonality, rental strategy
-                </p>
-              </div>
-            </Link>
+                <div className="flex flex-col">
+                  <h3
+                    className="box-heading font-heading-bricolage text-[24px] font-medium text-[#020202] leading-tight tracking-[-0.01em] group-hover:text-white transition-colors"
+                    style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+                  >
+                    Area Guides
+                  </h3>
+                  <p className="box-description font-desc-mona text-[16px] sm:text-[18px] font-normal text-[#6B7280] leading-[1.4] mt-1.5 group-hover:text-white/85 transition-colors">
+                    Bang Tao, Kamala, Surin, Layan, Rawai
+                  </p>
+                </div>
+              </Link>
 
-            {/* Card 6: News & Updates */}
-            <Link
-              href="/blog"
-              className="group bg-white hover:bg-[#4c70ff] rounded-2xl p-7 transition-all duration-300 shadow-xs border border-gray-100/80 hover:border-transparent hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between"
-            >
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-[#f0f4ff] group-hover:bg-white flex items-center justify-center transition-colors mb-5">
-                  <Newspaper className="w-6 h-6 text-[#4c70ff] transition-colors" />
+              {/* Card 6: News & Updates (Vertical) */}
+              <Link
+                href="/blog"
+                className="group bg-white hover:bg-[#5870F7] rounded-[24px] p-6 sm:p-8 transition-all duration-300 shadow-xs border border-gray-100/80 hover:border-transparent hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-white flex items-center justify-center transition-colors mb-6 shrink-0 shadow-2xs">
+                    <Newspaper className="w-7 h-7 text-[#5870F7] transition-colors" />
+                  </div>
+                  <h3
+                    className="box-heading font-heading-bricolage text-[24px] font-medium text-[#020202] leading-tight tracking-[-0.01em] group-hover:text-white transition-colors"
+                    style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+                  >
+                    News & Updates
+                  </h3>
+                  <p className="box-description font-desc-mona text-[16px] sm:text-[18px] font-normal text-[#6B7280] leading-[1.4] mt-2 group-hover:text-white/85 transition-colors">
+                    Launches, infrastructure, policy
+                  </p>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 group-hover:text-white transition-colors">
-                  News & Updates
-                </h3>
-                <p className="text-sm text-gray-500 group-hover:text-white/85 transition-colors mt-2 leading-relaxed">
-                  Launches, infrastructure, policy
-                </p>
-              </div>
-            </Link>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Research Depth Metrics Section matching Figma mockup */}
+      {/* Research Depth Metrics Section matching exact Figma specs */}
       <section className="w-full bg-white py-16 sm:py-24 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
-          <div className="text-center space-y-3 mb-12 sm:mb-14">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#f4f6fa] border border-blue-100 text-[#4c70ff] text-xs font-semibold">
-              <span className="w-2 h-2 rounded-full bg-[#4c70ff]" />
+          <div className="text-center space-y-3 mb-12 sm:mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#f4f6fa] border border-blue-100 section-pill font-desc-mona text-[16px] font-medium text-[#5870F7] leading-none shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
               Market Insights
             </div>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight max-w-3xl mx-auto leading-tight">
+            <h2
+              className="section-heading font-heading-bricolage text-[44px] font-semibold text-[#020202] leading-[100%] tracking-[-0.01em] max-w-3xl mx-auto"
+              style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+            >
               Depth of research you won't find on a portal
             </h2>
 
-            <p className="text-sm sm:text-base text-gray-500 max-w-2xl mx-auto leading-relaxed pt-1">
-              Price trends by area, rental demand and seasonality, ownership law, and how global events move the Phuket market – tracked and explained, not hyped.
+            <p className="section-subheading font-desc-mona text-[16px] font-normal text-[#6B7280] max-w-2xl mx-auto leading-[1.4] pt-1 text-center">
+              Price trends by area, rental demand and seasonality, ownership law, and how global events move the Phuket market — tracked and explained, not hyped.
             </p>
           </div>
 
@@ -352,40 +402,52 @@ export default function HomePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center mb-12">
             {/* Stat 1 */}
             <div className="bg-white border border-gray-200/80 rounded-2xl p-8 flex flex-col justify-center items-center shadow-2xs hover:shadow-md transition-shadow">
-              <div className="text-3xl sm:text-4xl font-normal text-[#4c70ff] tracking-tight mb-2">
+              <div
+                className="stat-metric-value font-heading-bricolage text-[32px] font-normal text-[#5870F7] leading-none tracking-[-0.01em] mb-2.5"
+                style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+              >
                 +7.4%
               </div>
-              <p className="text-xs sm:text-sm text-gray-500 leading-relaxed max-w-[210px]">
+              <p className="stat-metric-label font-desc-mona text-[16px] font-normal text-[#6B7280] leading-[1.4] text-center max-w-[210px]">
                 Avg. villa price growth, prime west coast (YoY)*
               </p>
             </div>
 
             {/* Stat 2 */}
             <div className="bg-white border border-gray-200/80 rounded-2xl p-8 flex flex-col justify-center items-center shadow-2xs hover:shadow-md transition-shadow">
-              <div className="text-3xl sm:text-4xl font-normal text-[#4c70ff] tracking-tight mb-2">
+              <div
+                className="stat-metric-value font-heading-bricolage text-[32px] font-normal text-[#5870F7] leading-none tracking-[-0.01em] mb-2.5"
+                style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+              >
                 6–8%
               </div>
-              <p className="text-xs sm:text-sm text-gray-500 leading-relaxed max-w-[210px]">
+              <p className="stat-metric-label font-desc-mona text-[16px] font-normal text-[#6B7280] leading-[1.4] text-center max-w-[210px]">
                 Typical gross rental yield range*
               </p>
             </div>
 
             {/* Stat 3 */}
             <div className="bg-white border border-gray-200/80 rounded-2xl p-8 flex flex-col justify-center items-center shadow-2xs hover:shadow-md transition-shadow">
-              <div className="text-3xl sm:text-4xl font-normal text-[#4c70ff] tracking-tight mb-2">
+              <div
+                className="stat-metric-value font-heading-bricolage text-[32px] font-normal text-[#5870F7] leading-none tracking-[-0.01em] mb-2.5"
+                style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+              >
                 Nov–Mar
               </div>
-              <p className="text-xs sm:text-sm text-gray-500 leading-relaxed max-w-[210px]">
+              <p className="stat-metric-label font-desc-mona text-[16px] font-normal text-[#6B7280] leading-[1.4] text-center max-w-[210px]">
                 Peak rental season, high-occupancy window*
               </p>
             </div>
 
             {/* Stat 4 */}
             <div className="bg-white border border-gray-200/80 rounded-2xl p-8 flex flex-col justify-center items-center shadow-2xs hover:shadow-md transition-shadow">
-              <div className="text-3xl sm:text-4xl font-normal text-[#4c70ff] tracking-tight mb-2">
+              <div
+                className="stat-metric-value font-heading-bricolage text-[32px] font-normal text-[#5870F7] leading-none tracking-[-0.01em] mb-2.5"
+                style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+              >
                 30yx3
               </div>
-              <p className="text-xs sm:text-sm text-gray-500 leading-relaxed max-w-[210px]">
+              <p className="stat-metric-label font-desc-mona text-[16px] font-normal text-[#6B7280] leading-[1.4] text-center max-w-[210px]">
                 Standard leasehold term & renewals
               </p>
             </div>
@@ -395,10 +457,10 @@ export default function HomePage() {
           <div className="text-center">
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#f4f6fa] hover:bg-gray-100 text-gray-900 text-sm font-semibold border border-gray-200/80 transition-colors shadow-2xs"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#f4f6fa] hover:bg-gray-100 font-desc-mona text-[16px] font-medium text-[#020202] border border-gray-200/80 transition-colors shadow-2xs leading-none"
             >
-              Explore market insights
-              <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <span>Explore market insights</span>
+              <svg className="w-4 h-4 text-[#020202]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
               </svg>
             </Link>
@@ -423,8 +485,8 @@ export default function HomePage() {
               Real deals, told in full
             </h2>
 
-            <p className="font-desc-mona text-[16px] font-normal text-[#6B7280] max-w-xl mx-auto leading-[1.4] pt-1 text-center">
-              Not one-line testimonials — the complete story of how each buyer went from cautious researcher to confident owner.
+            <p className="font-desc-mona text-[16px] font-normal text-[#6B7280] max-w-2xl mx-auto leading-[1.4] pt-1 text-center">
+              Not one-line testimonials — the complete story of how each buyer went<br className="hidden sm:inline" /> from cautious researcher to confident owner.
             </p>
           </div>
 
@@ -504,12 +566,15 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="text-center space-y-3 mb-12 sm:mb-16">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#f4f6fa] border border-blue-100 text-[#4c70ff] text-xs font-semibold">
-              <span className="w-2 h-2 rounded-full bg-[#4c70ff]" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#f4f6fa] border border-blue-100 section-pill font-desc-mona text-[16px] font-medium text-[#5870F7] leading-none shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
               Latest insights
             </div>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight">
+            <h2
+              className="section-heading font-heading-bricolage text-[44px] font-semibold text-[#020202] leading-[100%] tracking-[-0.01em]"
+              style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+            >
               Research the market before you commit
             </h2>
           </div>
@@ -532,7 +597,10 @@ export default function HomePage() {
                 </div>
 
                 {/* Article Title */}
-                <h3 className="text-base sm:text-lg font-bold text-gray-900 leading-snug group-hover:text-[#4c70ff] transition-colors pr-2">
+                <h3
+                  className="font-heading-bricolage text-[22px] font-medium text-[#020202] leading-[100%] tracking-[-0.01em] group-hover:text-[#5870F7] transition-colors pr-2"
+                  style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+                >
                   {blog.title}
                 </h3>
               </Link>
@@ -543,10 +611,10 @@ export default function HomePage() {
           <div className="text-center">
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#f4f6fa] hover:bg-gray-100 text-gray-900 text-sm font-semibold border border-gray-200/80 transition-colors shadow-2xs"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#f4f6fa] hover:bg-gray-100 font-desc-mona text-[16px] font-medium text-[#020202] border border-gray-200/80 transition-colors shadow-2xs leading-none"
             >
-              View all insights
-              <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <span>View all insights</span>
+              <svg className="w-4 h-4 text-[#020202]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
               </svg>
             </Link>
@@ -619,12 +687,15 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="text-center space-y-3 mb-12 sm:mb-16">
-            <div className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-[#f4f6fa] border border-blue-100 font-desc-mona text-[16px] font-normal text-[#020202] leading-none">
-              <span className="w-2 h-2 rounded-full bg-[#4c70ff]" />
+            <div className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-[#f4f6fa] border border-blue-100 section-pill font-desc-mona text-[16px] font-medium text-[#5870F7] leading-none shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
               A few selected properties
             </div>
 
-            <h2 className="font-heading-bricolage text-[44px] font-semibold text-[#020202] leading-none tracking-[-0.01em]">
+            <h2
+              className="section-heading font-heading-bricolage text-[44px] font-semibold text-[#020202] leading-[100%] tracking-[-0.01em]"
+              style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+            >
               Hand-picked, not a portal
             </h2>
           </div>
