@@ -97,3 +97,24 @@ body {
   line-height: 140%;
   color: #6B7280;
 }
+
+/* Global Hover CSS for buttons and link buttons with white backgrounds */
+button[class*="bg-white"]:hover,
+a[class*="bg-white"][class*="rounded-full"]:hover,
+a[class*="bg-white"][class*="rounded-xl"]:hover,
+a[class*="bg-white"][class*="px-"]:hover,
+[role="button"][class*="bg-white"]:hover {
+  background-color: #5870F7 !important;
+  color: #FFFFFF !important;
+  border-color: #5870F7 !important;
+}
+
+button[class*="bg-white"]:hover *,
+a[class*="bg-white"][class*="rounded-full"]:hover *,
+a[class*="bg-white"][class*="rounded-xl"]:hover *,
+a[class*="bg-white"][class*="px-"]:hover *,
+[role="button"][class*="bg-white"]:hover * {
+  color: #FFFFFF !important;
+  fill: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+}

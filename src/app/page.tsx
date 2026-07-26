@@ -550,10 +550,10 @@ export default function HomePage() {
           <div className="text-center">
             <Link
               href="/success-stories"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white hover:bg-gray-50 font-desc-mona text-[16px] font-medium text-[#020202] border border-gray-200 transition-colors shadow-2xs leading-none"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white hover:bg-[#5870F7] hover:text-white hover:border-[#5870F7] font-desc-mona text-[16px] font-medium text-[#020202] border border-gray-200 transition-colors shadow-2xs leading-none group"
             >
               <span>Read all success stories</span>
-              <svg className="w-4 h-4 text-[#020202]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 text-[#020202] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
               </svg>
             </Link>
@@ -715,10 +715,10 @@ export default function HomePage() {
           <div className="text-center">
             <Link
               href="/properties"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white hover:bg-gray-50 font-desc-mona text-[16px] font-normal text-[#020202] border border-gray-200 transition-colors shadow-2xs leading-none"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white hover:bg-[#5870F7] hover:text-white hover:border-[#5870F7] font-desc-mona text-[16px] font-normal text-[#020202] border border-gray-200 transition-colors shadow-2xs leading-none group"
             >
               View listings
-              <svg className="w-4 h-4 text-[#020202]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 text-[#020202] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
               </svg>
             </Link>
