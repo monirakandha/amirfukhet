@@ -490,63 +490,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Meet Your Advisor Section matching Figma mockup */}
-      <section className="w-full bg-white py-16 sm:py-24 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Left Photo Container */}
-            <div className="lg:col-span-5 flex justify-center">
-              <div className="bg-[#f4f6fa] rounded-3xl p-4 sm:p-5 w-full max-w-md border border-gray-100 shadow-2xs">
-                <img
-                  src="/images/amir-seated.png"
-                  alt="Amir Ahmed Faisal - Property Investment Advisor"
-                  className="w-full h-auto object-cover rounded-2xl shadow-xs"
-                />
-              </div>
-            </div>
-
-            {/* Right Content */}
-            <div className="lg:col-span-7 space-y-6">
-              {/* Pill Badge */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#f4f6fa] border border-blue-100 text-[#4c70ff] text-xs font-semibold shadow-2xs">
-                <span className="w-2 h-2 rounded-full bg-[#4c70ff]" />
-                Meet your advisor
-              </div>
-
-              {/* Headline */}
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.18] tracking-tight">
-                I help foreigners buy in Phuket the right way — eyes open.
-              </h2>
-
-              {/* Description */}
-              <p className="text-sm sm:text-base text-gray-500 leading-relaxed max-w-2xl">
-                I'm Amir Ahmed Faisal, a property investment advisor based in Phuket. I'm not an agent chasing a commission – I'm the person who explains the structures, flags the risks, and stays in your corner from first question to handover. My job is to make sure your money goes into the right property, in the right area, under the right ownership.
-              </p>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-wrap items-center gap-4 pt-2">
-                <Link
-                  href="/about"
-                  className="px-7 py-3.5 bg-[#4c70ff] hover:bg-blue-600 text-white font-semibold text-sm rounded-full transition-all shadow-md shadow-blue-500/20"
-                >
-                  My story & approach
-                </Link>
-
-                <Link
-                  href="/blog"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#f4f6fa] hover:bg-gray-100 text-gray-900 font-semibold text-sm rounded-full border border-gray-200/80 transition-colors shadow-2xs"
-                >
-                  Explore market insights
-                  <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
-                  </svg>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Blog / Market Insights Section matching Figma mockup */}
       <section className="w-full bg-white py-16 sm:py-24 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -598,6 +541,66 @@ export default function HomePage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
               </svg>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Meet Your Advisor Section matching exact Figma specs */}
+      <section className="w-full bg-[#f4f6fa] py-16 sm:py-24 border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            {/* Left Photo Container */}
+            <div className="lg:col-span-5 flex justify-center">
+              <div className="bg-white rounded-3xl p-4 sm:p-5 w-full max-w-md border border-gray-100 shadow-2xs">
+                <img
+                  src="/images/amir-seated.png"
+                  alt="Amir Ahmed Faisal - Property Investment Advisor"
+                  className="w-full h-auto object-cover rounded-2xl shadow-xs"
+                />
+              </div>
+            </div>
+
+            {/* Right Content */}
+            <div className="lg:col-span-7 space-y-6">
+              {/* Pill Badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-blue-100 font-desc-mona text-[16px] font-medium text-[#020202] leading-none shadow-2xs">
+                <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
+                Meet your advisor
+              </div>
+
+              {/* Headline */}
+              <h2
+                className="font-heading-bricolage text-[44px] font-semibold text-[#020202] leading-[100%] tracking-[-0.01em]"
+                style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+              >
+                I help foreigners buy in Phuket the right way — eyes open.
+              </h2>
+
+              {/* Description */}
+              <p className="font-desc-mona text-[20px] font-normal text-[#6B7280] leading-[1.4] max-w-2xl">
+                I'm Amir Ahmed Faisal, a property investment advisor based in Phuket. I'm not an agent chasing a commission — I'm the person who explains the structures, flags the risks, and stays in your corner from first question to handover. My job is to make sure your money goes into the right property, in the right area, under the right ownership.
+              </p>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-wrap items-center gap-4 pt-2">
+                <Link
+                  href="/about"
+                  className="font-desc-mona text-[16px] font-medium text-white leading-none px-7 py-3.5 bg-[#5870F7] hover:bg-blue-600 rounded-full transition-all shadow-md shadow-blue-500/20 inline-flex items-center justify-center"
+                >
+                  My story & approach
+                </Link>
+
+                <Link
+                  href="/blog"
+                  className="group font-desc-mona text-[16px] font-medium text-[#020202] hover:text-white leading-none px-7 py-3.5 bg-[#DFE3EB] hover:bg-[#5870F7] rounded-full transition-all border border-transparent shadow-2xs inline-flex items-center justify-center gap-2"
+                >
+                  <span>Explore market insights</span>
+                  <svg className="w-4 h-4 text-[#020202] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
