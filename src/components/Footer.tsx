@@ -24,7 +24,7 @@ export default function Footer() {
                 href="https://x.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full border border-gray-600/70 hover:border-white hover:bg-white/10 flex items-center justify-center text-white/90 transition-all"
+                className="w-10 h-10 rounded-[16px] border border-white/40 bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all shadow-xs"
                 aria-label="X (Twitter)"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -37,7 +37,7 @@ export default function Footer() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full border border-gray-600/70 hover:border-white hover:bg-white/10 flex items-center justify-center text-white/90 transition-all text-xs font-bold"
+                className="w-10 h-10 rounded-[16px] border border-white/40 bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all shadow-xs text-xs font-bold"
                 aria-label="LinkedIn"
               >
                 in
@@ -48,7 +48,7 @@ export default function Footer() {
                 href="https://wa.me/8801875189361"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full border border-gray-600/70 hover:border-white hover:bg-white/10 flex items-center justify-center text-white/90 transition-all"
+                className="w-10 h-10 rounded-[16px] border border-white/40 bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all shadow-xs"
                 aria-label="WhatsApp"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">

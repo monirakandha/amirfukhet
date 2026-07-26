@@ -67,14 +67,9 @@ export default function Navbar({ onOpenValuationModal }: NavbarProps) {
                     <stop offset="100%" stopColor="#5870F7" />
                   </linearGradient>
                 </defs>
-                {/* Outer swoosh and right leg of stylized A */}
+                {/* Unified stylized A architectural emblem */}
                 <path
-                  d="M 5 95 C 10 65, 30 25, 76 2 L 88 95 L 72 95 L 62 38 C 45 55, 28 72, 22 95 Z"
-                  fill="url(#figmaBlueGrad)"
-                />
-                {/* Horizontal crossbar connecting across */}
-                <path
-                  d="M 18 75 L 65 75 L 68 87 L 15 87 Z"
+                  d="M 12 92 C 16 60, 34 22, 82 4 L 90 92 L 74 92 L 66 42 C 54 54, 40 68, 32 92 Z M 26 72 L 66 72 L 68 84 L 22 84 Z"
                   fill="url(#figmaBlueGrad)"
                 />
               </svg>
