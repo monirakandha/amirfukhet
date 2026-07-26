@@ -14,7 +14,7 @@ export default function Footer() {
             <h3 className="font-heading-bricolage text-white tracking-tight text-[24px] font-semibold leading-none">
               Amir Knows Phuket
             </h3>
-            <p className="font-desc-mona text-[#B3B3B3] leading-[1.55] pr-4 text-[16px] font-medium">
+            <p className="font-desc-mona text-[#B3B3B3] leading-[1.55] pr-4 text-[16px] font-normal">
               Independent property investment advice for foreigners buying in Phuket and Thailand.
             </p>
             {/* Social icons: X, LinkedIn, WhatsApp */}
@@ -63,7 +63,7 @@ export default function Footer() {
             <h4 className="font-heading-bricolage text-white text-[24px] font-semibold leading-none mb-6">
               Insights
             </h4>
-            <ul className="space-y-4 font-desc-mona text-[16px] font-medium text-[#B3B3B3]">
+            <ul className="space-y-4 font-desc-mona text-[16px] font-normal text-[#B3B3B3]">
               <li><Link href="/blog" className="hover:text-white transition-colors">Market Insights</Link></li>
               <li><Link href="/blog" className="hover:text-white transition-colors">Buyer Guides</Link></li>
               <li><Link href="/blog" className="hover:text-white transition-colors">Area Guides</Link></li>
@@ -76,7 +76,7 @@ export default function Footer() {
             <h4 className="font-heading-bricolage text-white text-[24px] font-semibold leading-none mb-6">
               Site
             </h4>
-            <ul className="space-y-4 font-desc-mona text-[16px] font-medium text-[#B3B3B3]">
+            <ul className="space-y-4 font-desc-mona text-[16px] font-normal text-[#B3B3B3]">
               <li><Link href="/guide" className="hover:text-white transition-colors">The Guide</Link></li>
               <li><Link href="/success-stories" className="hover:text-white transition-colors">Success Stories</Link></li>
               <li><Link href="/properties" className="hover:text-white transition-colors">Listings</Link></li>
@@ -90,7 +90,7 @@ export default function Footer() {
             <h4 className="font-heading-bricolage text-white text-[24px] font-semibold leading-none mb-6">
               Contact
             </h4>
-            <ul className="space-y-4 font-desc-mona text-[16px] font-medium text-[#B3B3B3]">
+            <ul className="space-y-4 font-desc-mona text-[16px] font-normal text-[#B3B3B3]">
               <li><a href="tel:+8801875189361" className="hover:text-white transition-colors">+880 1875 189 361</a></li>
               <li><a href="https://wa.me/8801875189361" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">WhatsApp</a></li>
               <li><a href="mailto:amir@amirknowsphuket.com" className="hover:text-white transition-colors">amir@amirknowsphuket.com</a></li>
