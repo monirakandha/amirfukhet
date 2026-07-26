@@ -130,7 +130,7 @@ export default function HomePage() {
               </h2>
 
               {/* Sub-description */}
-              <p className="font-desc-mona text-[16px] font-normal text-[#6B7280] max-w-[580px] leading-[1.5]">
+              <p className="font-desc-mona text-[16px] font-normal text-[#6B7280] max-w-[660px] leading-[1.5]">
                 Independent research, honest guidance, and the full picture from ownership structures to rental yields so international buyers invest in Thailand with confidence.
               </p>
 
