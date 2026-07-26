@@ -218,6 +218,67 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Blog / Market Insights Section matching Figma mockup */}
+      <section className="w-full bg-white py-16 sm:py-24 border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header */}
+          <div className="text-center space-y-3 mb-12 sm:mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#f4f6fa] border border-blue-100 section-pill font-desc-mona text-[16px] font-medium text-[#5870F7] leading-none shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
+              Latest insights
+            </div>
+
+            <h2
+              className="section-heading font-heading-bricolage text-[44px] font-semibold text-[#020202] leading-[100%] tracking-[-0.01em]"
+              style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+            >
+              Research the market before you commit
+            </h2>
+          </div>
+
+          {/* 3-Card Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            {blogs.slice(0, 3).map((blog) => (
+              <Link
+                key={blog.id}
+                href={`/blog/${blog.slug}`}
+                className="group flex flex-col space-y-4"
+              >
+                {/* Image */}
+                <div className="relative h-80 sm:h-96 w-full rounded-2xl overflow-hidden bg-gray-100 shadow-xs">
+                  <img
+                    src={blog.coverImage}
+                    alt={blog.title}
+                    className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300"
+                  />
+                </div>
+
+                {/* Article Title */}
+                <h3
+                  className="font-heading-bricolage text-[22px] font-medium text-[#020202] leading-[100%] tracking-[-0.01em] group-hover:text-[#5870F7] transition-colors pr-2"
+                  style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+                >
+                  {blog.title}
+                </h3>
+              </Link>
+            ))}
+          </div>
+
+          {/* View All Button */}
+          <div className="text-center">
+            <Link
+              href="/blog"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#f4f6fa] hover:bg-gray-100 font-desc-mona text-[16px] font-medium text-[#020202] border border-gray-200/80 transition-colors shadow-2xs leading-none"
+            >
+              <span>View all insights</span>
+              <svg className="w-4 h-4 text-[#020202]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Category Topics Grid Section matching Figma mockup */}
       <section className="w-full bg-[#f4f6fa] py-16 sm:py-24 border-b border-gray-200/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -561,69 +622,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Blog / Market Insights Section matching Figma mockup */}
-      <section className="w-full bg-white py-16 sm:py-24 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Header */}
-          <div className="text-center space-y-3 mb-12 sm:mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#f4f6fa] border border-blue-100 section-pill font-desc-mona text-[16px] font-medium text-[#5870F7] leading-none shadow-2xs">
-              <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
-              Latest insights
-            </div>
-
-            <h2
-              className="section-heading font-heading-bricolage text-[44px] font-semibold text-[#020202] leading-[100%] tracking-[-0.01em]"
-              style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
-            >
-              Research the market before you commit
-            </h2>
-          </div>
-
-          {/* 3-Card Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            {blogs.slice(0, 3).map((blog) => (
-              <Link
-                key={blog.id}
-                href={`/blog/${blog.slug}`}
-                className="group flex flex-col space-y-4"
-              >
-                {/* Image */}
-                <div className="relative h-80 sm:h-96 w-full rounded-2xl overflow-hidden bg-gray-100 shadow-xs">
-                  <img
-                    src={blog.coverImage}
-                    alt={blog.title}
-                    className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300"
-                  />
-                </div>
-
-                {/* Article Title */}
-                <h3
-                  className="font-heading-bricolage text-[22px] font-medium text-[#020202] leading-[100%] tracking-[-0.01em] group-hover:text-[#5870F7] transition-colors pr-2"
-                  style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
-                >
-                  {blog.title}
-                </h3>
-              </Link>
-            ))}
-          </div>
-
-          {/* View All Button */}
-          <div className="text-center">
-            <Link
-              href="/blog"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#f4f6fa] hover:bg-gray-100 font-desc-mona text-[16px] font-medium text-[#020202] border border-gray-200/80 transition-colors shadow-2xs leading-none"
-            >
-              <span>View all insights</span>
-              <svg className="w-4 h-4 text-[#020202]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
-              </svg>
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* Meet Your Advisor Section matching exact Figma specs */}
-      <section className="w-full bg-[#f4f6fa] py-16 sm:py-24 border-b border-gray-100">
+      <section className="w-full bg-white py-16 sm:py-24 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Photo Container */}
