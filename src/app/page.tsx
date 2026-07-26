@@ -691,13 +691,13 @@ export default function HomePage() {
                 </svg>
               </a>
 
-              {/* Insights Button - Centered text */}
+              {/* Insights Button - Blue hover effect */}
               <Link
                 href="/blog"
-                className="font-desc-mona text-[16px] font-medium text-[#020202] leading-none w-full inline-flex items-center justify-center gap-3 px-6 py-3.5 bg-[#f8fafc] hover:bg-white rounded-full transition-all shadow-md whitespace-nowrap"
+                className="group font-desc-mona text-[16px] font-medium text-[#020202] hover:text-white leading-none w-full inline-flex items-center justify-center gap-3 px-6 py-3.5 bg-white hover:bg-[#5870F7] rounded-full transition-all shadow-md whitespace-nowrap"
               >
                 <span className="whitespace-nowrap">Explore market insights</span>
-                <svg className="w-4 h-4 text-[#020202] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 text-[#020202] group-hover:text-white transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
                 </svg>
               </Link>
