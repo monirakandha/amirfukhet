@@ -719,7 +719,10 @@ export default function HomePage() {
                 </div>
 
                 {/* Headline */}
-                <h2 className="font-heading-bricolage text-[44px] font-semibold text-white leading-none tracking-[-0.01em] max-w-[480px]">
+                <h2 
+                  className="font-heading-bricolage text-[44px] font-semibold text-white leading-none tracking-[-0.01em] max-w-[480px]"
+                  style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif", fontSize: "44px", fontWeight: 600, lineHeight: "100%", letterSpacing: "-0.01em" }}
+                >
                   Get the Phuket investor's guide — free
                 </h2>
 
