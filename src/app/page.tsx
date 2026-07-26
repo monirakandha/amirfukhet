@@ -196,7 +196,7 @@ export default function HomePage() {
           </h2>
 
           {/* Description */}
-          <p className="font-desc-mona text-[16px] font-medium text-white leading-[1.4] text-center max-w-3xl mx-auto drop-shadow-xs">
+          <p className="font-desc-mona text-[16px] font-normal text-white leading-[1.5] text-center max-w-[680px] mx-auto drop-shadow-xs">
             Ownership structures, the step-by-step buying process, taxes and transfer fees, financing, due diligence and the real risks – the single resource that answers almost every question before you ever send a message.
           </p>
           {/* CTA Buttons */}
