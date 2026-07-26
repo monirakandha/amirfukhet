@@ -8,10 +8,10 @@ const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
 });
 
-const monaSans = Mona_Sans({
+const mona = Mona_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
-  variable: "--font-mona-sans",
+  variable: "--font-mona",
 });
 
 export const metadata: Metadata = {
@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`h-full antialiased ${bricolage.variable} ${monaSans.variable}`}>
+    <html lang="en" className={`h-full antialiased ${bricolage.variable} ${mona.variable}`}>
       <body className="min-h-full flex flex-col font-sans bg-white text-gray-900">{children}</body>
     </html>
   );
