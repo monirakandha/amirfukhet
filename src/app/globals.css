@@ -88,6 +88,7 @@ body {
   line-height: 100%;
   letter-spacing: -0.01em;
   color: #020202;
+  transition: color 0.3s ease;
 }
 
 .box-description {
@@ -96,6 +97,17 @@ body {
   font-size: 18px;
   line-height: 140%;
   color: #6B7280;
+  transition: color 0.3s ease;
+}
+
+.group:hover .box-heading,
+a:hover .box-heading {
+  color: #FFFFFF !important;
+}
+
+.group:hover .box-description,
+a:hover .box-description {
+  color: rgba(255, 255, 255, 0.9) !important;
 }
 
 /* Global Hover CSS for buttons and link buttons with white backgrounds */
