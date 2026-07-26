@@ -603,7 +603,7 @@ export default function HomePage() {
       </section>
 
       {/* Featured Properties Section matching Figma mockup & user specs */}
-      <section className="w-full bg-white py-16 sm:py-24 border-b border-gray-100">
+      <section className="w-full bg-[#F9FAFC] py-16 sm:py-24 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="text-center space-y-3 mb-12 sm:mb-16">
