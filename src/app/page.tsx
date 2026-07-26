@@ -719,7 +719,7 @@ export default function HomePage() {
                 </div>
 
                 {/* Headline */}
-                <h2 className="font-heading-bricolage text-[36px] sm:text-[44px] font-semibold text-white leading-[1.08] tracking-[-0.01em] max-w-[480px]">
+                <h2 className="font-heading-bricolage text-[44px] font-semibold text-white leading-none tracking-[-0.01em] max-w-[480px]">
                   Get the Phuket investor's guide — free
                 </h2>
 
