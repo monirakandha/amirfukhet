@@ -155,11 +155,11 @@ export default function HomePage() {
             </div>
 
             {/* Right Photo without drop shadow matching clean cutout in image */}
-            <div className="lg:col-span-5 flex justify-center lg:justify-end items-end self-end">
+            <div className="lg:col-span-5 flex justify-center lg:justify-end items-end self-end w-full">
               <img
                 src="/images/amir.png"
                 alt="Amir - Property Investment Advisor"
-                className="w-auto max-h-[480px] lg:max-h-[580px] xl:max-h-[620px] object-contain object-bottom"
+                className="w-full h-auto max-w-[460px] sm:max-w-[520px] lg:max-w-[600px] xl:max-w-[660px] object-contain object-bottom scale-110 lg:scale-125 origin-bottom"
               />
             </div>
           </div>
