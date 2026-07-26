@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#181a1d] text-gray-400 pt-16 pb-8 border-t border-white/10 font-sans">
+    <footer className="w-full bg-[#222629] text-gray-400 pt-16 pb-8 border-t border-white/10 font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top 4-Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-16">
@@ -107,8 +107,6 @@ export default function Footer() {
           </p>
         </div>
       </div>
-      {/* Bottom Blue Line Accent matching Figma Image 3 */}
-      <div className="w-full h-1 bg-[#4c70ff] mt-6" />
     </footer>
   );
 }
