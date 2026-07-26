@@ -448,14 +448,14 @@ export default function HomePage() {
             </div>
 
             <h2
-              className="section-heading font-heading-bricolage text-[44px] font-semibold text-[#020202] leading-[100%] tracking-[-0.01em] max-w-3xl mx-auto"
+              className="section-heading font-heading-bricolage text-[36px] sm:text-[44px] font-semibold text-[#020202] leading-[1.1] tracking-[-0.01em] max-w-4xl mx-auto"
               style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
             >
-              Depth of research you won't find on a portal
+              Depth of research<br className="hidden sm:inline" /> you won't find on a portal
             </h2>
 
-            <p className="section-subheading font-desc-mona text-[16px] font-normal text-[#6B7280] max-w-2xl mx-auto leading-[1.4] pt-1 text-center">
-              Price trends by area, rental demand and seasonality, ownership law, and how global events move the Phuket market — tracked and explained, not hyped.
+            <p className="section-subheading font-desc-mona text-[16px] font-normal text-[#6B7280] max-w-[700px] mx-auto leading-[1.5] pt-2 text-center">
+              Price trends by area, rental demand and seasonality, ownership law, and how global<br className="hidden md:inline" /> events move the Phuket market — tracked and explained, not hyped.
             </p>
           </div>
 
