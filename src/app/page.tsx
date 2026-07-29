@@ -738,12 +738,10 @@ export default function HomePage() {
         {/* Resort Coastline Background Image */}
         <div className="absolute inset-0 z-0">
           <img
-            src={readyBannerBg}
+            src={settings.homepageImages?.readyBannerBg || '/images/cta-bg.png'}
             alt="Phuket Oceanfront Resort Coastline View"
             className="w-full h-full object-cover object-center"
           />
-          {/* Teal Gradient Overlay matching Figma */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#5EB39F]/95 via-[#5EB39F]/70 to-transparent pointer-events-none" />
         </div>
 
         {/* Content Box Positioned on Left */}
