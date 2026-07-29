@@ -4,6 +4,23 @@ import { mockProperties, mockBlogs, mockSuccessStories } from '@/data/mockData';
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || '';
 
 /**
+ * Helper to get live data from Admin Store (if saved in localStorage)
+ */
+function getLocalAdminStore(): any {
+  if (typeof window !== 'undefined') {
+    try {
+      const saved = localStorage.getItem('amir_phuket_admin_store_v1');
+      if (saved) {
+        return JSON.parse(saved);
+      }
+    } catch (e) {
+      // ignore
+    }
+  }
+  return null;
+}
+
+/**
  * Service Layer for Node.js REST API integration.
  * Will automatically attempt to fetch from Node.js backend if NEXT_PUBLIC_API_URL is configured.
  * Gracefully falls back to rich mock data when offline or during frontend development.
@@ -24,8 +41,9 @@ export async function fetchProperties(params?: PropertyFilterParams): Promise<Pr
     }
   }
 
-  // Local filtering logic on mock data
-  let result = [...mockProperties];
+  // Local filtering logic on mock / admin data
+  const store = getLocalAdminStore();
+  let result = store?.properties ? [...store.properties] : [...mockProperties];
 
   if (params) {
     if (params.status && params.status !== 'all') {
@@ -78,7 +96,9 @@ export async function fetchPropertyBySlugOrId(identifier: string): Promise<Prope
     }
   }
 
-  const found = mockProperties.find((p) => p.id === identifier || p.slug === identifier);
+  const store = getLocalAdminStore();
+  const list: Property[] = store?.properties || mockProperties;
+  const found = list.find((p) => p.id === identifier || p.slug === identifier);
   return found || null;
 }
 
@@ -97,11 +117,14 @@ export async function fetchBlogs(category?: string): Promise<BlogArticle[]> {
     }
   }
 
+  const store = getLocalAdminStore();
+  const list: BlogArticle[] = store?.blogs || mockBlogs;
+
   if (category && category !== 'All') {
-    return mockBlogs.filter((b) => b.category.toLowerCase() === category.toLowerCase());
+    return list.filter((b) => b.category.toLowerCase() === category.toLowerCase());
   }
 
-  return mockBlogs;
+  return list;
 }
 
 export async function fetchBlogBySlug(slug: string): Promise<BlogArticle | null> {
@@ -116,7 +139,9 @@ export async function fetchBlogBySlug(slug: string): Promise<BlogArticle | null>
     }
   }
 
-  return mockBlogs.find((b) => b.slug === slug || b.id === slug) || null;
+  const store = getLocalAdminStore();
+  const list: BlogArticle[] = store?.blogs || mockBlogs;
+  return list.find((b) => b.slug === slug || b.id === slug) || null;
 }
 
 export async function fetchSuccessStories(): Promise<SuccessStory[]> {
@@ -131,7 +156,8 @@ export async function fetchSuccessStories(): Promise<SuccessStory[]> {
     }
   }
 
-  return mockSuccessStories;
+  const store = getLocalAdminStore();
+  return store?.successStories || mockSuccessStories;
 }
 
 export async function submitInquiry(data: InquiryPayload): Promise<{ success: boolean; message: string }> {
@@ -150,11 +176,37 @@ export async function submitInquiry(data: InquiryPayload): Promise<{ success: bo
     }
   }
 
+  // Save directly to admin store in localStorage so Admin Portal sees it immediately!
+  try {
+    if (typeof window !== 'undefined') {
+      const STORE_KEY = 'amir_phuket_admin_store_v1';
+      const saved = localStorage.getItem(STORE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        const newSub = {
+          id: `sub-${Date.now()}`,
+          name: data.name,
+          email: data.email,
+          phone: data.phone || '',
+          type: data.type || 'schedule-tour',
+          propertyTitle: data.propertyTitle || '',
+          message: data.message || `Preferred Date: ${data.preferredDate || 'Flexible'}`,
+          submittedAt: new Date().toISOString().replace('T', ' ').substring(0, 16),
+          status: 'new',
+        };
+        parsed.contactSubmissions = [newSub, ...(parsed.contactSubmissions || [])];
+        localStorage.setItem(STORE_KEY, JSON.stringify(parsed));
+      }
+    }
+  } catch (e) {
+    console.error('Could not save inquiry to admin store:', e);
+  }
+
   // Simulated server delay response
-  await new Promise((resolve) => setTimeout(resolve, 800));
+  await new Promise((resolve) => setTimeout(resolve, 600));
   return {
     success: true,
-    message: 'Thank you! Your inquiry has been received. Our realtor team will contact you shortly.',
+    message: 'Thank you! Your inquiry has been received and logged in our admin portal. Our team will contact you shortly.',
   };
 }
 
@@ -174,9 +226,65 @@ export async function submitHomeValuation(data: HomeValuationPayload): Promise<{
     }
   }
 
-  await new Promise((resolve) => setTimeout(resolve, 800));
+  // Save directly to admin store in localStorage
+  try {
+    if (typeof window !== 'undefined') {
+      const STORE_KEY = 'amir_phuket_admin_store_v1';
+      const saved = localStorage.getItem(STORE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        const newSub = {
+          id: `sub-${Date.now()}`,
+          name: data.ownerName || 'Valuation Client',
+          email: data.ownerEmail || '',
+          phone: data.ownerPhone || '',
+          type: 'home-valuation',
+          propertyTitle: `${data.propertyType} (${data.bedrooms} Bed, ${data.bathrooms} Bath)`,
+          message: `Address: ${data.address}. Condition: ${data.condition}. Notes: ${data.notes || 'No additional notes provided.'}`,
+          submittedAt: new Date().toISOString().replace('T', ' ').substring(0, 16),
+          status: 'new',
+        };
+        parsed.contactSubmissions = [newSub, ...(parsed.contactSubmissions || [])];
+        localStorage.setItem(STORE_KEY, JSON.stringify(parsed));
+      }
+    }
+  } catch (e) {
+    console.error('Could not save valuation to admin store:', e);
+  }
+
+  await new Promise((resolve) => setTimeout(resolve, 600));
   return {
     success: true,
-    message: 'Home valuation request submitted! A customized comparative market report will be sent to your email.',
+    message: 'Home valuation request submitted! A customized comparative market report has been logged.',
   };
 }
+
+export async function submitNewsletter(emailOrPhone: string, source: string): Promise<{ success: boolean; message: string }> {
+  try {
+    if (typeof window !== 'undefined') {
+      const STORE_KEY = 'amir_phuket_admin_store_v1';
+      const saved = localStorage.getItem(STORE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        const newNl = {
+          id: `nl-${Date.now()}`,
+          emailOrPhone,
+          source,
+          subscribedAt: new Date().toISOString().replace('T', ' ').substring(0, 16),
+          status: 'active',
+        };
+        parsed.newsletterSubmissions = [newNl, ...(parsed.newsletterSubmissions || [])];
+        localStorage.setItem(STORE_KEY, JSON.stringify(parsed));
+      }
+    }
+  } catch (e) {
+    console.error('Could not save newsletter to admin store:', e);
+  }
+
+  await new Promise((resolve) => setTimeout(resolve, 400));
+  return {
+    success: true,
+    message: 'Thank you for subscribing! Your request has been recorded.',
+  };
+}
+

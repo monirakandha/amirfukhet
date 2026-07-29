@@ -7,7 +7,7 @@ import Footer from '@/components/Footer';
 import HomeValuationModal from '@/components/HomeValuationModal';
 import { BlogArticle } from '@/types';
 import { fetchBlogs } from '@/services/api';
-import { Search, FileText, ArrowRight, Tag } from 'lucide-react';
+import { Search } from 'lucide-react';
 
 export default function BlogPage() {
   const [blogs, setBlogs] = useState<BlogArticle[]>([]);
@@ -30,20 +30,24 @@ export default function BlogPage() {
   );
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
+    <div className="min-h-screen bg-[#f8fafc] text-gray-900 flex flex-col font-sans">
       <Navbar onOpenValuationModal={() => setIsValuationOpen(true)} />
 
       {/* Header */}
-      <section className="pt-32 pb-12 bg-slate-900 border-b border-slate-800">
+      <section className="pt-32 pb-12 bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <span className="text-xs uppercase tracking-widest text-amber-400 font-bold block mb-1">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#f4f6fa] border border-blue-100 font-desc-mona text-[16px] font-medium text-[#5870F7] leading-none shadow-2xs mb-4">
+            <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
             Market Intelligence
-          </span>
-          <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
-            Real Estate Blog & Insights
+          </div>
+          <h1
+            className="font-heading-bricolage text-[36px] sm:text-[48px] font-semibold text-[#020202] leading-[1.1] tracking-[-0.01em]"
+            style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+          >
+            Real Estate Blog &amp; Insights
           </h1>
-          <p className="text-slate-400 text-sm mt-2 max-w-2xl">
-            Expert analysis on luxury real estate trends, mortgage strategies, home staging tips, and wealth preservation.
+          <p className="font-desc-mona text-[16px] font-normal text-[#6B7280] mt-3 max-w-2xl leading-[1.5]">
+            Expert analysis on Phuket real estate trends, ownership structures, rental yields, and area guides.
           </p>
         </div>
       </section>
@@ -52,17 +56,17 @@ export default function BlogPage() {
       <section className="py-12 flex-grow">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           {/* Controls Bar */}
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-gray-200/80 shadow-xs">
             {/* Categories */}
             <div className="flex flex-wrap items-center gap-2">
               {categories.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setCategory(cat)}
-                  className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+                  className={`px-4 py-2 rounded-xl text-[13px] font-semibold transition-all ${
                     category === cat
-                      ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
-                      : 'bg-slate-950 text-slate-400 hover:text-white border border-slate-800'
+                      ? 'bg-[#5870F7] text-white shadow-md shadow-blue-500/20'
+                      : 'bg-[#f4f6fa] text-[#6B7280] hover:text-[#020202] border border-gray-200/80'
                   }`}
                 >
                   {cat}
@@ -72,13 +76,13 @@ export default function BlogPage() {
 
             {/* Search */}
             <div className="relative w-full md:w-72">
-              <Search className="w-4 h-4 text-slate-500 absolute left-3 top-3" />
+              <Search className="w-4 h-4 text-gray-400 absolute left-3 top-2.5" />
               <input
                 type="text"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search articles..."
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl py-2 pl-9 pr-3 text-white text-xs focus:border-amber-500 focus:outline-none"
+                className="w-full bg-[#f4f6fa] border border-gray-200 rounded-xl py-2 pl-9 pr-3 text-[#020202] text-[13px] focus:border-[#5870F7] focus:outline-none placeholder-gray-400 transition-colors"
               />
             </div>
           </div>
@@ -89,41 +93,57 @@ export default function BlogPage() {
               <Link
                 key={blog.id}
                 href={`/blog/${blog.slug}`}
-                className="group bg-slate-900 rounded-3xl overflow-hidden border border-slate-800 hover:border-amber-500/50 transition-all flex flex-col justify-between"
+                className="group bg-white rounded-[24px] overflow-hidden border border-gray-200/80 shadow-xs hover:shadow-2xl hover:-translate-y-1.5 hover:border-[#5870F7]/30 transition-all duration-300 ease-out flex flex-col"
               >
-                <div>
-                  <div className="relative h-52 w-full overflow-hidden bg-slate-950">
-                    <img
-                      src={blog.coverImage}
-                      alt={blog.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <span className="absolute top-3 left-3 px-3 py-1 bg-slate-950/80 backdrop-blur-md text-amber-400 text-xs font-bold rounded-full border border-amber-500/30">
-                      {blog.category}
-                    </span>
-                  </div>
-
-                  <div className="p-6">
-                    <div className="text-xs text-slate-500 mb-2">
-                      {blog.publishedAt} • {blog.readTimeMinutes} min read
-                    </div>
-                    <h3 className="text-lg font-bold text-white group-hover:text-amber-400 transition-colors line-clamp-2">
-                      {blog.title}
-                    </h3>
-                    <p className="text-xs text-slate-400 line-clamp-3 mt-3 leading-relaxed">
-                      {blog.summary}
-                    </p>
-                  </div>
+                {/* Cover Image */}
+                <div className="relative h-56 w-full overflow-hidden bg-gray-100 rounded-t-[24px]">
+                  <img
+                    src={blog.coverImage}
+                    alt={blog.title}
+                    className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500 ease-out"
+                  />
+                  {/* Category pill — top-left overlay */}
+                  <span className="absolute top-3 left-3 px-3 py-1.5 bg-white text-[#E53935] text-[11px] font-semibold rounded-xl border border-red-100 shadow-xs leading-none">
+                    {blog.category}
+                  </span>
                 </div>
 
-                <div className="p-6 pt-0 border-t border-slate-800/80 mt-4 flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-xs text-slate-400">
-                    <img src={blog.author.avatar} alt={blog.author.name} className="w-6 h-6 rounded-full" />
-                    <span>{blog.author.name}</span>
+                {/* Card Body */}
+                <div className="flex flex-col flex-1 p-6 gap-3">
+                  {/* Title */}
+                  <h3 className="font-heading-bricolage text-[20px] font-semibold text-[#020202] leading-[1.25] tracking-[-0.01em] line-clamp-2 group-hover:text-[#5870F7] transition-colors duration-200"
+                    style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+                  >
+                    {blog.title}
+                  </h3>
+
+                  {/* Summary */}
+                  <p className="font-desc-mona text-[14px] font-normal text-[#6B7280] leading-[1.5] line-clamp-3 flex-1">
+                    {blog.summary}
+                  </p>
+
+                  {/* Divider */}
+                  <div className="border-t border-gray-100 pt-4 mt-1 flex items-center justify-between gap-2">
+                    {/* Updated date */}
+                    <div className="flex items-center gap-1.5 text-[13px] text-[#6B7280] font-medium">
+                      <svg className="w-4 h-4 text-gray-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                        <line x1="16" y1="2" x2="16" y2="6" strokeWidth="1.8" strokeLinecap="round"/>
+                        <line x1="8" y1="2" x2="8" y2="6" strokeWidth="1.8" strokeLinecap="round"/>
+                        <line x1="3" y1="10" x2="21" y2="10" strokeWidth="1.8" strokeLinecap="round"/>
+                      </svg>
+                      <span>Updated {blog.publishedAt}</span>
+                    </div>
+
+                    {/* Read time */}
+                    <div className="flex items-center gap-1.5 text-[13px] text-[#6B7280] font-medium">
+                      <svg className="w-4 h-4 text-gray-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="9" strokeWidth="1.8"/>
+                        <circle cx="12" cy="12" r="3" strokeWidth="1.8"/>
+                      </svg>
+                      <span>{blog.readTimeMinutes} min read</span>
+                    </div>
                   </div>
-                  <span className="text-amber-400 text-xs font-bold flex items-center gap-1">
-                    Read Article <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                  </span>
                 </div>
               </Link>
             ))}

@@ -2,8 +2,11 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { useAdmin } from '@/context/AdminContext';
 
 export default function Footer() {
+  const { settings } = useAdmin();
+
   return (
     <footer className="w-full bg-[#222629] text-gray-400 pt-20 pb-16 border-t border-white/10 font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -12,16 +15,16 @@ export default function Footer() {
           {/* Column 1: Brand Info & Socials (4 Cols) */}
           <div className="md:col-span-4 lg:col-span-4 space-y-6">
             <h3 className="font-heading-bricolage text-white tracking-tight text-[24px] font-semibold leading-none">
-              Amir Knows Phuket
+              {settings?.siteTitle || 'Amir Knows Phuket'}
             </h3>
             <p className="font-desc-mona text-[#B3B3B3] leading-[1.55] pr-4 text-[16px] font-normal">
-              Independent property investment advice for foreigners buying in Phuket and Thailand.
+              {settings?.footerDescription || 'Independent property investment advice for foreigners buying in Phuket and Thailand.'}
             </p>
             {/* Social icons: X, LinkedIn, WhatsApp */}
             <div className="flex items-center space-x-3 pt-2">
               {/* X / Twitter */}
               <a
-                href="https://x.com"
+                href={settings?.socialLinks?.twitter || 'https://x.com'}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-[16px] border border-white/40 bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all shadow-xs"
@@ -34,7 +37,7 @@ export default function Footer() {
 
               {/* LinkedIn */}
               <a
-                href="https://linkedin.com"
+                href={settings?.socialLinks?.linkedin || 'https://linkedin.com'}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-[16px] border border-white/40 bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all shadow-xs"
@@ -47,7 +50,7 @@ export default function Footer() {
 
               {/* WhatsApp */}
               <a
-                href="https://wa.me/8801875189361"
+                href={settings?.buttonLinks?.whatsappUrl || 'https://wa.me/8801875189361'}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-[16px] border border-white/40 bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all shadow-xs"
@@ -93,10 +96,10 @@ export default function Footer() {
               Contact
             </h4>
             <ul className="space-y-4 font-desc-mona text-[16px] font-normal text-[#B3B3B3]">
-              <li><a href="tel:+8801875189361" className="hover:text-white transition-colors">+880 1875 189 361</a></li>
-              <li><a href="https://wa.me/8801875189361" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">WhatsApp</a></li>
-              <li><a href="mailto:amir@amirknowsphuket.com" className="hover:text-white transition-colors">amir@amirknowsphuket.com</a></li>
-              <li className="pt-1"><span>Address: Enter Your Address</span></li>
+              <li><a href={`tel:${settings?.contactPhone || '+8801875189361'}`} className="hover:text-white transition-colors">{settings?.contactPhone || '+880 1875 189 361'}</a></li>
+              <li><a href={settings?.buttonLinks?.whatsappUrl || 'https://wa.me/8801875189361'} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">WhatsApp</a></li>
+              <li><a href={`mailto:${settings?.contactEmail || 'amir@amirknowsphuket.com'}`} className="hover:text-white transition-colors">{settings?.contactEmail || 'amir@amirknowsphuket.com'}</a></li>
+              <li className="pt-1"><span>Address: {settings?.officeAddress || 'Laguna Phuket, Cherngtalay, Thailand'}</span></li>
             </ul>
           </div>
         </div>
@@ -113,7 +116,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-6 border-t border-white/10 text-center font-desc-mona text-[16px] text-[#B3B3B3] font-normal leading-none">
           <p>
-            © {new Date().getFullYear()} <strong className="text-white font-medium">Amir Ahmed Faisal</strong> · Phuket Real Estate Investment Insights &nbsp;|&nbsp; <Link href="#" className="hover:text-white transition-colors font-medium">Privacy</Link> · <Link href="#" className="hover:text-white transition-colors font-medium">Terms</Link>
+            {settings?.copyrightText || `© ${new Date().getFullYear()} Amir Ahmed Faisal · Phuket Real Estate Investment Insights`} &nbsp;|&nbsp; <Link href="#" className="hover:text-white transition-colors font-medium">Privacy</Link> · <Link href="#" className="hover:text-white transition-colors font-medium">Terms</Link> · <Link href="/admin" className="hover:text-[#5870F7] transition-colors font-semibold text-white">Admin Portal</Link>
           </p>
         </div>
       </div>

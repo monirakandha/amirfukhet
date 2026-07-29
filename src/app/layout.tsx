@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Mona_Sans } from "next/font/google";
 import "./globals.css";
+import { AdminProvider } from "@/context/AdminContext";
 
 const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -25,8 +26,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`h-full antialiased ${bricolage.variable} ${mona.variable}`}>
-      <body className="min-h-full flex flex-col font-sans bg-white text-gray-900">{children}</body>
+    <html lang="en" className={`h-full antialiased ${bricolage.variable} ${mona.variable}`} suppressHydrationWarning>
+      <body className="min-h-full flex flex-col font-sans bg-white text-gray-900" suppressHydrationWarning>
+        <AdminProvider>{children}</AdminProvider>
+      </body>
     </html>
   );
 }
