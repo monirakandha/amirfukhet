@@ -10,6 +10,9 @@ interface NavbarProps {
 }
 
 export default function Navbar({ onOpenValuationModal }: NavbarProps) {
+  // Disable Navbar for now as requested
+  return null;
+  
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
