@@ -122,20 +122,20 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-end justify-between gap-8 lg:gap-4">
             {/* Left Content */}
-            <div className="w-full lg:w-1/2 space-y-6 pt-4 lg:pt-6 pb-8 lg:pb-20 relative z-10">
+            <div className="w-full lg:w-[55%] space-y-6 pt-4 lg:pt-6 pb-8 lg:pb-20 relative z-10">
               {/* Pill Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 border border-[#E5E9F2] section-pill font-desc-mona text-[14px] sm:text-[16px] font-medium text-[#5870F7] leading-none shadow-2xs">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#5870F7]" />
                 Property Investment Advisor - Phuket
               </div>
 
-              {/* Headline matching exact 2-line breaks from image */}
+              {/* Headline */}
               <h2
                 className="font-heading-bricolage text-[40px] sm:text-[48px] lg:text-[54px] font-semibold text-[#020202] leading-[1.1] sm:leading-[1.15] tracking-[-0.02em] max-w-[800px]"
                 style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
               >
-                Invest in Phuket Property with Trusted Advisors,<br />
-                Guided by Expertise.
+                Invest in Phuket Property<br />
+                with Trusted Advisors, Guided by Expertise.
               </h2>
 
               {/* Sub-description */}
@@ -165,7 +165,7 @@ export default function HomePage() {
             </div>
 
             {/* Right Photo */}
-            <div className="w-full lg:w-1/2 flex justify-center lg:justify-end items-end relative z-0">
+            <div className="w-full lg:w-[45%] flex justify-center lg:justify-end items-end relative z-0">
               <img
                 src={advisorImage}
                 alt="Amir - Property Investment Advisor"
