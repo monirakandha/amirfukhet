@@ -118,9 +118,10 @@ export default function BlogPage() {
                   </h3>
 
                   {/* Summary */}
-                  <p className="font-desc-mona text-[14px] font-normal text-[#6B7280] leading-[1.5] line-clamp-3 flex-1">
-                    {blog.summary}
-                  </p>
+                  <div
+                    className="font-desc-mona text-[15px] font-normal text-slate-400 leading-[1.6] line-clamp-3 mb-6 [&>p]:inline"
+                    dangerouslySetInnerHTML={{ __html: blog.summary }}
+                  />
 
                   {/* Divider */}
                   <div className="border-t border-gray-100 pt-4 mt-1 flex items-center justify-between gap-2">

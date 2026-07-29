@@ -3,8 +3,9 @@
 import React, { useState } from 'react';
 import { useAdmin } from '@/context/AdminContext';
 import { BlogArticle } from '@/types';
-import { Plus, Search, Edit, Trash2, Check, X, Star, FileText, Calendar, Clock } from 'lucide-react';
+import { Plus, Search, Edit, Trash2, Check, X, Star, FileText, Calendar, Clock, ArrowLeft } from 'lucide-react';
 import { MediaPickerButton } from '@/components/admin/MediaManager';
+import { RichTextEditor } from './RichTextEditor';
 
 export const BlogManager: React.FC = () => {
   const { blogs, addBlog, updateBlog, deleteBlog, categories } = useAdmin();
@@ -99,6 +100,128 @@ export const BlogManager: React.FC = () => {
     const matchesCat = selectedCat === 'all' || b.category.toLowerCase() === selectedCat.toLowerCase();
     return matchesSearch && matchesCat;
   });
+
+  if (isModalOpen) {
+    return (
+      <div className="p-6 sm:p-8 space-y-6 relative max-w-5xl mx-auto">
+        <div className="flex items-center justify-between pb-4 border-b border-slate-200 mb-2">
+          <div className="flex items-center gap-4">
+            <button
+              type="button"
+              onClick={() => setIsModalOpen(false)}
+              className="p-2 -ml-2 rounded-xl hover:bg-slate-200 bg-slate-100 text-slate-600 hover:text-gray-900 transition-colors"
+            >
+              <ArrowLeft className="w-5 h-5" />
+            </button>
+            <h2 className="text-2xl font-bold text-gray-900 font-heading-bricolage">
+              {editingBlog ? 'Edit Blog Article' : 'Publish New Article'}
+            </h2>
+          </div>
+        </div>
+
+        <form onSubmit={handleSubmit} className="space-y-8 bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Article Title</label>
+              <input
+                type="text"
+                required
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder="e.g. Why Phuket Luxury Villas Are Outperforming"
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20"
+              />
+            </div>
+
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Category</label>
+              <select
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20 font-medium"
+              >
+                <option value="Market Analysis">Market Analysis</option>
+                <option value="Legal & Ownership">Legal & Ownership</option>
+                <option value="Investment Guides">Investment Guides</option>
+                <option value="Luxury Living">Luxury Living</option>
+                {blogCategories.map((c) => (
+                  <option key={c.id} value={c.name}>{c.name}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <MediaPickerButton
+              label="Cover Image"
+              required
+              value={coverImage}
+              onChange={setCoverImage}
+            />
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Estimated Read Time (Minutes)</label>
+              <input
+                type="number"
+                required
+                value={readTime}
+                onChange={(e) => setReadTime(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20"
+              />
+            </div>
+          </div>
+
+          <div className="space-y-1.5">
+            <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Summary Excerpt</label>
+            <RichTextEditor
+              value={summary}
+              onChange={setSummary}
+              placeholder="Short summary displayed on cards..."
+              className="border border-slate-300 rounded-xl overflow-hidden"
+            />
+          </div>
+
+          <div className="space-y-1.5">
+            <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Full Article Content (Markdown / Text)</label>
+            <RichTextEditor
+              value={content}
+              onChange={setContent}
+              placeholder="Write full deep-dive content here..."
+              className="border border-slate-300 rounded-xl overflow-hidden [&_.ql-container]:min-h-[400px] [&_.ql-editor]:min-h-[400px]"
+            />
+          </div>
+
+          <div className="flex items-center gap-3 pt-2">
+            <input
+              type="checkbox"
+              id="featuredBlog"
+              checked={featured}
+              onChange={(e) => setFeatured(e.target.checked)}
+              className="w-5 h-5 rounded text-[#5870F7] bg-white border-slate-300 focus:ring-[#5870F7]"
+            />
+            <label htmlFor="featuredBlog" className="text-sm text-gray-800 font-medium cursor-pointer">
+              Feature this article as the hero topic
+            </label>
+          </div>
+
+          <div className="flex items-center justify-end gap-4 pt-6 border-t border-slate-200">
+            <button
+              type="button"
+              onClick={() => setIsModalOpen(false)}
+              className="px-6 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-sm transition-colors"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="px-8 py-3 rounded-xl bg-[#5870F7] hover:bg-blue-600 text-white font-semibold text-sm shadow-md shadow-[#5870F7]/20 transition-all"
+            >
+              {editingBlog ? 'Save Changes' : 'Publish Article'}
+            </button>
+          </div>
+        </form>
+      </div>
+    );
+  }
 
   return (
     <div className="p-6 sm:p-8 space-y-6 relative">
@@ -244,129 +367,6 @@ export const BlogManager: React.FC = () => {
         </div>
       </div>
 
-      {/* Modal */}
-      {isModalOpen && (
-        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-white border border-slate-200 rounded-3xl w-full max-w-3xl p-6 sm:p-8 shadow-2xl my-8 max-h-[90vh] overflow-y-auto">
-            <div className="flex items-center justify-between pb-4 border-b border-slate-200 mb-6">
-              <h2 className="text-xl font-bold text-gray-900 font-heading-bricolage">
-                {editingBlog ? 'Edit Blog Article' : 'Publish New Article'}
-              </h2>
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="p-2 rounded-full hover:bg-slate-100 text-slate-500 hover:text-gray-900 transition-colors"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Article Title</label>
-                  <input
-                    type="text"
-                    required
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    placeholder="e.g. Why Phuket Luxury Villas Are Outperforming"
-                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20"
-                  />
-                </div>
-
-                <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Category</label>
-                  <select
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20 font-medium"
-                  >
-                    <option value="Market Analysis">Market Analysis</option>
-                    <option value="Legal & Ownership">Legal & Ownership</option>
-                    <option value="Investment Guides">Investment Guides</option>
-                    <option value="Luxury Living">Luxury Living</option>
-                    {blogCategories.map((c) => (
-                      <option key={c.id} value={c.name}>{c.name}</option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <MediaPickerButton
-                  label="Cover Image"
-                  required
-                  value={coverImage}
-                  onChange={setCoverImage}
-                />
-                <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Estimated Read Time (Minutes)</label>
-                  <input
-                    type="number"
-                    required
-                    value={readTime}
-                    onChange={(e) => setReadTime(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20"
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-1.5">
-                <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Summary Excerpt</label>
-                <textarea
-                  rows={2}
-                  required
-                  value={summary}
-                  onChange={(e) => setSummary(e.target.value)}
-                  placeholder="Short summary displayed on cards..."
-                  className="w-full bg-slate-50 border border-slate-300 rounded-xl p-4 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20"
-                />
-              </div>
-
-              <div className="space-y-1.5">
-                <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Full Article Content (Markdown / Text)</label>
-                <textarea
-                  rows={8}
-                  required
-                  value={content}
-                  onChange={(e) => setContent(e.target.value)}
-                  placeholder="Write full deep-dive content here..."
-                  className="w-full bg-slate-50 border border-slate-300 rounded-xl p-4 text-gray-900 text-sm font-mono focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20"
-                />
-              </div>
-
-              <div className="flex items-center gap-3 pt-2">
-                <input
-                  type="checkbox"
-                  id="featuredBlog"
-                  checked={featured}
-                  onChange={(e) => setFeatured(e.target.checked)}
-                  className="w-4 h-4 rounded text-[#5870F7] bg-white border-slate-300 focus:ring-[#5870F7]"
-                />
-                <label htmlFor="featuredBlog" className="text-sm text-gray-800 font-medium cursor-pointer">
-                  Feature this article as the hero topic
-                </label>
-              </div>
-
-              <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-200">
-                <button
-                  type="button"
-                  onClick={() => setIsModalOpen(false)}
-                  className="px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-sm transition-colors"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="px-6 py-2.5 rounded-xl bg-[#5870F7] hover:bg-blue-600 text-white font-semibold text-sm shadow-md shadow-[#5870F7]/20 transition-all"
-                >
-                  {editingBlog ? 'Save Changes' : 'Publish Article'}
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
