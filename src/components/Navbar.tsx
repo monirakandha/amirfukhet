@@ -30,7 +30,7 @@ export default function Navbar({ onOpenValuationModal }: NavbarProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
+  const navLinks: { name: string; path: string }[] = [
     // Disabled page links for now
     // { name: 'Insights', path: '/blog' },
     // { name: 'The Guide', path: '/guide' },
