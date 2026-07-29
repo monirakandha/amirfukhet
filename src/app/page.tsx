@@ -167,11 +167,11 @@ export default function HomePage() {
       </section>
 
       {/* Foreigner Property Guide Banner Section matching Figma mockup */}
-      <section className="relative w-full overflow-hidden text-center text-white bg-[#7cb5ec] flex items-center justify-center" style={{ height: '656px' }}>
+      <section className="relative w-full overflow-hidden text-center text-white bg-[#7cb5ec] flex items-center justify-center" style={{ height: '723px' }}>
         {/* Skyline Background Image */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/skyline-bg.png"
+            src="/images/hero-bg.jpg"
             alt="Phuket Skyline City View"
             className="w-full h-full object-cover object-bottom"
           />
