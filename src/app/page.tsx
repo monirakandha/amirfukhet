@@ -248,70 +248,31 @@ export default function HomePage() {
 
           {/* 3-Card Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-12">
-            {blogs.slice(0, 3).map((blog) => {
-              const cleanSummary = (blog.summary || '')
-                .replace(/<[^>]*>/g, '')
-                .replace(/&nbsp;/g, ' ')
-                .replace(/&amp;/g, '&')
-                .replace(/&lt;/g, '<')
-                .replace(/&gt;/g, '>')
-                .replace(/&quot;/g, '"')
-                .replace(/&#39;/g, "'")
-                .trim();
+            {blogs.slice(0, 3).map((blog) => (
+              <Link
+                key={blog.id}
+                href={`/blog/${blog.slug}`}
+                className="group flex flex-col"
+              >
+                {/* Cover Image */}
+                <div className="relative w-full aspect-[4/5] rounded-[24px] overflow-hidden bg-gray-100 mb-4 sm:mb-5">
+                  <img
+                    src={blog.coverImage}
+                    alt={blog.title}
+                    className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500 ease-out"
+                  />
+                </div>
 
-              return (
-                <Link
-                  key={blog.id}
-                  href={`/blog/${blog.slug}`}
-                  className="group bg-white rounded-[24px] p-4 sm:p-5 border border-gray-200/70 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+                {/* Title */}
+                <h3
+                  className="font-heading-bricolage text-[20px] sm:text-[22px] font-medium text-[#020202] leading-[1.25] tracking-[-0.01em] group-hover:text-[#5870F7] transition-colors duration-200 pr-4"
+                  style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
                 >
-                  <div>
-                    {/* Cover Image Container */}
-                    <div className="relative w-full aspect-[16/10] rounded-[16px] overflow-hidden bg-gray-100 mb-4">
-                      <img
-                        src={blog.coverImage}
-                        alt={blog.title}
-                        className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500 ease-out"
-                      />
-                      {/* Category Badge */}
-                      <div className="absolute top-3.5 left-3.5 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-xs font-desc-mona text-[13px] font-medium text-[#E05A4E] leading-none shadow-2xs">
-                        {blog.category}
-                      </div>
-                    </div>
-
-                    {/* Title */}
-                    <h3
-                      className="font-heading-bricolage text-[20px] sm:text-[21px] font-semibold text-[#020202] leading-[1.25] tracking-[-0.01em] group-hover:text-[#5870F7] transition-colors duration-200"
-                      style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
-                    >
-                      {blog.title}
-                    </h3>
-
-                    {/* Description (Cleaned of HTML tags) */}
-                    <p className="font-desc-mona text-[14px] font-normal text-[#6B7280] leading-[1.5] mt-2.5 line-clamp-2">
-                      {cleanSummary}
-                    </p>
-                  </div>
-
-                  {/* Footer: Date & Read Time */}
-                  <div className="flex items-center justify-between mt-5 pt-3.5 border-t border-gray-100 font-desc-mona text-[13px] font-normal text-[#9CA3AF] leading-none">
-                    <div className="flex items-center gap-1.5">
-                      <svg className="w-4 h-4 text-[#9CA3AF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
-                      <span>Updated {new Date(blog.publishedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <svg className="w-4 h-4 text-[#9CA3AF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                      </svg>
-                      <span>{blog.readTimeMinutes} min read</span>
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
+                  {blog.title}
+                </h3>
+              </Link>
+            ))}
+          </div>
           </div>
 
           {/* View All Button */}
