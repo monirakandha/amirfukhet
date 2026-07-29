@@ -362,19 +362,19 @@ export default function HomePage() {
               {/* Card 2: Buyer Guides (Vertical) */}
               <Link
                 href="/blog"
-                className="group bg-[#5870F7] rounded-[24px] p-6 sm:p-8 transition-all duration-300 shadow-xl flex flex-col justify-between hover:-translate-y-1"
+                className="group bg-white hover:bg-[#5870F7] rounded-[24px] p-6 sm:p-8 transition-all duration-300 shadow-xs border border-gray-100/80 hover:border-transparent hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between"
               >
                 <div>
-                  <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center mb-6 shrink-0 shadow-2xs">
-                    <Timer className="w-7 h-7 text-[#5870F7]" />
+                  <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-white flex items-center justify-center transition-colors mb-6 shrink-0 shadow-2xs">
+                    <Timer className="w-7 h-7 text-[#5870F7] transition-colors" />
                   </div>
                   <h3
-                    className="box-heading font-heading-bricolage text-[24px] font-medium text-white leading-tight tracking-[-0.01em]"
+                    className="box-heading font-heading-bricolage text-[24px] font-medium text-[#020202] leading-tight tracking-[-0.01em] group-hover:text-white transition-colors"
                     style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
                   >
                     Buyer Guides
                   </h3>
-                  <p className="box-description font-desc-mona text-[16px] sm:text-[18px] font-normal text-white/90 leading-[1.4] mt-2">
+                  <p className="box-description font-desc-mona text-[16px] sm:text-[18px] font-normal text-[#6B7280] leading-[1.4] mt-2 group-hover:text-white/85 transition-colors">
                     Process, taxes, financing, bank accounts
                   </p>
                 </div>
