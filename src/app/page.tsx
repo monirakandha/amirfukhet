@@ -289,7 +289,7 @@ export default function HomePage() {
                   <div className="absolute -inset-2 bg-white rounded-[24px] p-4 border border-gray-200/80 shadow-2xl opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300 ease-out z-30 flex flex-col justify-between">
                     <div>
                       {/* Image Container with Category Badge */}
-                      <div className="relative w-full aspect-[16/11] rounded-[16px] overflow-hidden bg-gray-100 mb-4">
+                      <div className="relative w-full aspect-[16/10] rounded-[16px] overflow-hidden bg-gray-100 mb-3.5 sm:mb-4">
                         <img
                           src={blog.coverImage}
                           alt={blog.title}
@@ -310,7 +310,7 @@ export default function HomePage() {
                       </h3>
 
                       {/* Description */}
-                      <p className="font-desc-mona text-[13.5px] font-normal text-[#6B7280] leading-[1.5] mt-2 line-clamp-3">
+                      <p className="font-desc-mona text-[14px] font-normal text-[#6B7280] leading-[1.55] mt-2.5 line-clamp-4">
                         {cleanSummary}
                       </p>
                     </div>
