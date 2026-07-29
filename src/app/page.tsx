@@ -252,47 +252,53 @@ export default function HomePage() {
               <Link
                 key={blog.id}
                 href={`/blog/${blog.slug}`}
-                className="group bg-white rounded-[24px] p-3 sm:p-4 border-2 border-white shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
+                className="group relative rounded-[24px] overflow-hidden transition-all duration-500 ease-out hover:shadow-xl"
+                style={{ aspectRatio: '3/4' }}
               >
-                {/* Cover Image with Category Badge */}
-                <div className="relative w-full aspect-[4/3] rounded-[16px] overflow-hidden bg-gray-100 mb-4">
-                  <img
-                    src={blog.coverImage}
-                    alt={blog.title}
-                    className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500 ease-out"
-                  />
-                  {/* Category Badge */}
-                  <div className="absolute top-4 left-4 px-4 py-2 rounded-full bg-white/90 backdrop-blur-sm font-desc-mona text-[14px] font-medium text-[#E05A4E] leading-none shadow-sm">
-                    {blog.category}
-                  </div>
+                {/* Default: Full image */}
+                <img
+                  src={blog.coverImage}
+                  alt={blog.title}
+                  className="absolute inset-0 w-full h-full object-cover transition-all duration-500 ease-out group-hover:rounded-[16px] group-hover:inset-3 group-hover:h-[55%] group-hover:w-[calc(100%-24px)]"
+                />
+
+                {/* Category Badge - always visible */}
+                <div className="absolute top-4 left-4 group-hover:top-6 group-hover:left-6 px-4 py-2 rounded-full bg-white/90 backdrop-blur-sm font-desc-mona text-[14px] font-medium text-[#E05A4E] leading-none shadow-sm transition-all duration-500 ease-out z-10">
+                  {blog.category}
                 </div>
 
-                {/* Title */}
-                <h3
-                  className="font-heading-bricolage text-[20px] sm:text-[22px] font-semibold text-[#020202] leading-[1.25] tracking-[-0.01em] group-hover:text-[#5870F7] transition-colors duration-200 px-1"
-                  style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
-                >
-                  {blog.title}
-                </h3>
+                {/* White card background that appears on hover */}
+                <div className="absolute inset-0 bg-white rounded-[24px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out -z-10" />
 
-                {/* Description */}
-                <p className="font-desc-mona text-[15px] font-normal text-[#6B7280] leading-[1.5] mt-2 px-1 line-clamp-2">
-                  {blog.summary}
-                </p>
+                {/* Details that slide in on hover */}
+                <div className="absolute bottom-0 left-0 right-0 px-5 pb-5 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out delay-100">
+                  {/* Title */}
+                  <h3
+                    className="font-heading-bricolage text-[20px] sm:text-[22px] font-semibold text-[#020202] leading-[1.25] tracking-[-0.01em]"
+                    style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+                  >
+                    {blog.title}
+                  </h3>
 
-                {/* Footer: Date & Read Time */}
-                <div className="flex items-center gap-5 mt-auto pt-4 px-1 font-desc-mona text-[14px] font-normal text-[#6B7280] leading-none">
-                  <div className="flex items-center gap-1.5">
-                    <svg className="w-4 h-4 text-[#9CA3AF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                    <span>Updated {new Date(blog.publishedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <svg className="w-4 h-4 text-[#9CA3AF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span>{blog.readTimeMinutes} min read</span>
+                  {/* Description */}
+                  <p className="font-desc-mona text-[15px] font-normal text-[#6B7280] leading-[1.5] mt-2 line-clamp-2">
+                    {blog.summary}
+                  </p>
+
+                  {/* Footer: Date & Read Time */}
+                  <div className="flex items-center gap-5 mt-3 font-desc-mona text-[14px] font-normal text-[#6B7280] leading-none">
+                    <div className="flex items-center gap-1.5">
+                      <svg className="w-4 h-4 text-[#9CA3AF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      <span>Updated {new Date(blog.publishedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <svg className="w-4 h-4 text-[#9CA3AF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <span>{blog.readTimeMinutes} min read</span>
+                    </div>
                   </div>
                 </div>
               </Link>
