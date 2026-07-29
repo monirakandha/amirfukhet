@@ -304,9 +304,10 @@ export const SuccessStoryManager: React.FC = () => {
                       </span>
                     </td>
                     <td className="py-4 px-6">
-                      <p className="text-xs text-slate-600 line-clamp-2 max-w-xs italic font-medium">
-                        "{s.testimonial || s.story || s.subtitle}"
-                      </p>
+                      <div 
+                        className="text-xs text-slate-600 line-clamp-2 max-w-xs italic font-medium [&_p]:inline [&_br]:hidden"
+                        dangerouslySetInnerHTML={{ __html: `"${s.testimonial || s.story || s.subtitle}"` }}
+                      />
                     </td>
                     <td className="py-4 px-6 text-right">
                       <div className="flex items-center justify-end gap-2">

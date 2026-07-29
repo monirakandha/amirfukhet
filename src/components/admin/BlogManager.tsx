@@ -338,12 +338,15 @@ export const BlogManager: React.FC = () => {
                               </span>
                             )}
                           </div>
-                          <div className="text-xs text-slate-500 line-clamp-1 mt-0.5 font-medium">{b.summary}</div>
+                          <div 
+                            className="text-xs text-slate-500 line-clamp-1 mt-0.5 font-medium [&_p]:inline [&_br]:hidden"
+                            dangerouslySetInnerHTML={{ __html: b.summary }} 
+                          />
                         </div>
                       </div>
                     </td>
                     <td className="py-4 px-6">
-                      <span className="px-3 py-1 rounded-full bg-purple-50 text-purple-700 border border-purple-200 text-xs font-bold">
+                      <span className="px-3 py-1 rounded-full bg-purple-50 text-purple-700 border border-purple-200 text-xs font-bold whitespace-nowrap inline-block">
                         {b.category}
                       </span>
                     </td>
