@@ -129,13 +129,12 @@ export default function HomePage() {
                 Property Investment Advisor - Phuket
               </div>
 
-              {/* Headline matching exact 3-line breaks from image */}
+              {/* Headline matching exact 2-line breaks from image */}
               <h2
                 className="font-heading-bricolage text-[40px] sm:text-[48px] lg:text-[54px] font-semibold text-[#020202] leading-[1.1] sm:leading-[1.15] tracking-[-0.02em] max-w-[800px]"
                 style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
               >
-                Invest in Phuket Property<br />
-                with Trusted Advisors,<br />
+                Invest in Phuket Property with Trusted Advisors,<br />
                 Guided by Expertise.
               </h2>
 
