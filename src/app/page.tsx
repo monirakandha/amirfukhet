@@ -273,7 +273,6 @@ export default function HomePage() {
               </Link>
             ))}
           </div>
-          </div>
 
           {/* View All Button */}
           <div className="text-center">
