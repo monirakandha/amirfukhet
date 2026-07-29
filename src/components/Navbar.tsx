@@ -10,9 +10,6 @@ interface NavbarProps {
 }
 
 export default function Navbar({ onOpenValuationModal }: NavbarProps) {
-  // Disable Navbar for now as requested
-  return null;
-  
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
@@ -34,12 +31,13 @@ export default function Navbar({ onOpenValuationModal }: NavbarProps) {
   }, []);
 
   const navLinks = [
-    { name: 'Insights', path: '/blog' },
-    { name: 'The Guide', path: '/guide' },
-    { name: 'Success Stories', path: '/success-stories' },
-    { name: 'Listings', path: '/properties' },
-    { name: 'About', path: '/about' },
-    { name: 'Work With Me', path: '/contact' },
+    // Disabled page links for now
+    // { name: 'Insights', path: '/blog' },
+    // { name: 'The Guide', path: '/guide' },
+    // { name: 'Success Stories', path: '/success-stories' },
+    // { name: 'Listings', path: '/properties' },
+    // { name: 'About', path: '/about' },
+    // { name: 'Work With Me', path: '/contact' },
   ];
 
   // Colors based on home vs inner page & scroll state
