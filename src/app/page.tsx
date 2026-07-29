@@ -644,12 +644,14 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Photo Container */}
             <div className="lg:col-span-5 flex justify-center">
-              <div className="w-full max-w-md relative overflow-hidden rounded-[32px] shadow-sm" style={{ height: '480px' }}>
-                <img
-                  src={meetAdvisorImage}
-                  alt="Amir Ahmed Faisal - Property Investment Advisor"
-                  className="w-full h-full object-cover object-center"
-                />
+              <div className="w-full max-w-md p-3 bg-white rounded-[24px] shadow-lg border border-gray-100">
+                <div className="w-full overflow-hidden rounded-[16px]">
+                  <img
+                    src={meetAdvisorImage}
+                    alt="Amir Ahmed Faisal - Property Investment Advisor"
+                    className="w-full h-auto object-cover object-center"
+                  />
+                </div>
               </div>
             </div>
 
