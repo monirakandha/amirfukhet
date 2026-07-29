@@ -125,7 +125,7 @@ export default function HomePage() {
               {/* Pill Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 border border-[#E5E9F2] section-pill font-desc-mona text-[14px] sm:text-[16px] font-medium text-[#5870F7] leading-none shadow-2xs">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#5870F7]" />
-                Property Investment Advisor · Phuket
+                Property Investment Advisor - Phuket
               </div>
 
               {/* Headline matching exact 3-line breaks from image */}
@@ -166,7 +166,7 @@ export default function HomePage() {
               <img
                 src={advisorImage}
                 alt="Amir - Property Investment Advisor"
-                className="w-full max-w-[450px] sm:max-w-[520px] lg:max-w-[680px] object-contain object-bottom lg:translate-x-4"
+                className="w-full max-w-[500px] sm:max-w-[600px] lg:max-w-[800px] object-contain object-bottom transform lg:scale-[1.4] lg:origin-bottom-right lg:translate-x-16"
               />
             </div>
           </div>
