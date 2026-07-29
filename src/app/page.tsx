@@ -140,7 +140,8 @@ export default function HomePage() {
 
               {/* Sub-description */}
               <p className="font-desc-mona text-[16px] font-normal text-[#6B7280] max-w-[560px] leading-[1.6]">
-                Independent research, honest guidance, and the full picture from ownership structures to rental yields so international buyers invest in Thailand with confidence.
+                Independent research, honest guidance, and the full picture from ownership<br />
+                structures to rental yields so international buyers invest in Thailand with confidence.
               </p>
 
               {/* CTA Buttons */}
