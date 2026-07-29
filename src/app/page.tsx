@@ -646,7 +646,7 @@ export default function HomePage() {
             <div className="lg:col-span-5 flex justify-center">
               <div className="bg-[#E5E7EB] rounded-[32px] pt-8 px-6 sm:px-8 w-full max-w-md shadow-inner relative overflow-hidden flex justify-center items-end" style={{ height: '480px' }}>
                 <img
-                  src={advisorImage}
+                  src="/images/amir-seated.png"
                   alt="Amir Ahmed Faisal - Property Investment Advisor"
                   className="w-full h-auto max-w-[90%] object-contain object-bottom"
                 />
