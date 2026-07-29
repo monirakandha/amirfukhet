@@ -117,11 +117,11 @@ export default function HomePage() {
       </section>
 
       {/* Advisor Intro Section matching Figma mockup */}
-      <section className="w-full bg-[#f4f6fa] pt-16 lg:pt-24 pb-0 relative overflow-hidden border-b border-gray-200/50">
+      <section className="w-full bg-[#f4f6fa] pt-8 lg:pt-10 pb-0 relative overflow-hidden border-b border-gray-200/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-end justify-between gap-8 lg:gap-4">
             {/* Left Content */}
-            <div className="w-full lg:w-1/2 space-y-6 py-8 lg:py-20 relative z-10">
+            <div className="w-full lg:w-1/2 space-y-6 pt-4 lg:pt-6 pb-8 lg:pb-20 relative z-10">
               {/* Pill Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 border border-[#E5E9F2] section-pill font-desc-mona text-[14px] sm:text-[16px] font-medium text-[#5870F7] leading-none shadow-2xs">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#5870F7]" />
