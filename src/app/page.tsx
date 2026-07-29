@@ -252,61 +252,62 @@ export default function HomePage() {
               <Link
                 key={blog.id}
                 href={`/blog/${blog.slug}`}
-                className="group flex flex-col"
+                className="group bg-white rounded-[28px] p-4 sm:p-5 border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"
               >
-                {/* Image Container with Hover Overlay */}
-                <div className="relative w-full aspect-[4/5] rounded-[24px] overflow-hidden bg-gray-100 mb-4 sm:mb-5">
-                  <img
-                    src={blog.coverImage}
-                    alt={blog.title}
-                    className="w-full h-full object-cover"
-                  />
-
-                  {/* Category Badge - always visible */}
-                  <div className="absolute top-4 left-4 px-4 py-2 rounded-full bg-white/90 backdrop-blur-sm font-desc-mona text-[14px] font-medium text-[#E05A4E] leading-none shadow-sm z-10">
-                    {blog.category}
-                  </div>
-
-                  {/* White Overlay on Hover */}
-                  <div className="absolute inset-0 bg-white/95 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-400 ease-out flex flex-col justify-center px-6 sm:px-8">
-                    {/* Title */}
-                    <h3
-                      className="font-heading-bricolage text-[22px] sm:text-[26px] font-semibold text-[#020202] leading-[1.2] tracking-[-0.01em]"
-                      style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
-                    >
-                      {blog.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p className="font-desc-mona text-[15px] font-normal text-[#6B7280] leading-[1.5] mt-3 line-clamp-3">
-                      {blog.summary}
-                    </p>
-
-                    {/* Footer: Date & Read Time */}
-                    <div className="flex items-center gap-5 mt-5 font-desc-mona text-[14px] font-normal text-[#6B7280] leading-none">
-                      <div className="flex items-center gap-1.5">
-                        <svg className="w-4 h-4 text-[#9CA3AF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                        <span>Updated {new Date(blog.publishedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
-                      </div>
-                      <div className="flex items-center gap-1.5">
-                        <svg className="w-4 h-4 text-[#9CA3AF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span>{blog.readTimeMinutes} min read</span>
-                      </div>
+                <div>
+                  {/* Image Container with Badge */}
+                  <div className="relative w-full aspect-[4/3] rounded-[20px] overflow-hidden bg-gray-100 mb-5">
+                    <img
+                      src={blog.coverImage}
+                      alt={blog.title}
+                      className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500 ease-out"
+                    />
+                    
+                    {/* Category Badge */}
+                    <div className="absolute top-4 left-4 px-4 py-2 rounded-full bg-white/95 backdrop-blur-md font-desc-mona text-[14px] font-medium text-[#E05A4E] leading-none shadow-xs z-10">
+                      {blog.category}
                     </div>
+
+                    {/* Gradient Overlay at bottom of image */}
+                    <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/20 via-black/5 to-transparent pointer-events-none" />
                   </div>
+
+                  {/* Title */}
+                  <h3
+                    className="font-heading-bricolage text-[20px] sm:text-[22px] font-semibold text-[#020202] leading-[1.3] tracking-[-0.01em] group-hover:text-[#5870F7] transition-colors duration-200"
+                    style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+                  >
+                    {blog.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="font-desc-mona text-[15px] font-normal text-[#6B7280] leading-[1.5] mt-2.5 line-clamp-2">
+                    {blog.summary}
+                  </p>
                 </div>
 
-                {/* Title - always visible below image */}
-                <h3
-                  className="font-heading-bricolage text-[20px] sm:text-[22px] font-medium text-[#020202] leading-[1.25] tracking-[-0.01em] group-hover:text-[#5870F7] transition-colors duration-200 pr-4"
-                  style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
-                >
-                  {blog.title}
-                </h3>
+                {/* Footer: Date & Read Time */}
+                <div className="flex items-center justify-between pt-6 mt-4 border-t border-gray-50 font-desc-mona text-[14px] font-normal text-[#6B7280] leading-none">
+                  <div className="flex items-center gap-2">
+                    <svg className="w-4 h-4 text-[#9CA3AF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" strokeWidth="1.5" />
+                      <line x1="16" y1="2" x2="16" y2="6" strokeWidth="1.5" />
+                      <line x1="8" y1="2" x2="8" y2="6" strokeWidth="1.5" />
+                      <line x1="3" y1="10" x2="21" y2="10" strokeWidth="1.5" />
+                      <circle cx="12" cy="15" r="1" fill="currentColor" />
+                    </svg>
+                    <span>Updated {new Date(blog.publishedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <svg className="w-4 h-4 text-[#9CA3AF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="9" strokeWidth="1.5" />
+                      <circle cx="12" cy="12" r="4" strokeWidth="1.5" />
+                      <circle cx="12" cy="12" r="1" fill="currentColor" />
+                    </svg>
+                    <span>{blog.readTimeMinutes} min read</span>
+                  </div>
+                </div>
               </Link>
             ))}
           </div>
