@@ -242,24 +242,56 @@ export default function HomePage() {
               <Link
                 key={blog.id}
                 href={`/blog/${blog.slug}`}
-                className="group flex flex-col space-y-4"
+                className="group bg-white rounded-[24px] overflow-hidden border border-gray-200/80 shadow-xs hover:shadow-2xl hover:-translate-y-1.5 hover:border-[#5870F7]/30 transition-all duration-300 ease-out flex flex-col"
               >
-                {/* Image */}
-                <div className="relative h-80 sm:h-96 w-full rounded-2xl overflow-hidden bg-gray-100 shadow-xs">
+                {/* Cover Image */}
+                <div className="relative h-56 w-full overflow-hidden bg-gray-100 rounded-t-[24px]">
                   <img
                     src={blog.coverImage}
                     alt={blog.title}
-                    className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500 ease-out"
                   />
+                  {/* Category pill */}
+                  <span className="absolute top-3 left-3 px-3 py-1.5 bg-white text-[#E53935] text-[11px] font-semibold rounded-xl border border-red-100 shadow-xs leading-none">
+                    {blog.category}
+                  </span>
                 </div>
 
-                {/* Article Title */}
-                <h3
-                  className="font-heading-bricolage text-[22px] font-medium text-[#020202] leading-[100%] tracking-[-0.01em] group-hover:text-[#5870F7] transition-colors pr-2"
-                  style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
-                >
-                  {blog.title}
-                </h3>
+                {/* Card Body */}
+                <div className="flex flex-col flex-1 p-6 gap-3">
+                  {/* Title */}
+                  <h3
+                    className="font-heading-bricolage text-[20px] font-semibold text-[#020202] leading-[1.25] tracking-[-0.01em] line-clamp-2 group-hover:text-[#5870F7] transition-colors duration-200"
+                    style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+                  >
+                    {blog.title}
+                  </h3>
+
+                  {/* Summary */}
+                  <p className="font-desc-mona text-[14px] font-normal text-[#6B7280] leading-[1.5] line-clamp-3 flex-1">
+                    {blog.summary}
+                  </p>
+
+                  {/* Bottom meta row */}
+                  <div className="border-t border-gray-100 pt-4 mt-1 flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-1.5 text-[13px] text-[#6B7280] font-medium">
+                      <svg className="w-4 h-4 text-gray-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                        <line x1="16" y1="2" x2="16" y2="6" strokeWidth="1.8" strokeLinecap="round"/>
+                        <line x1="8" y1="2" x2="8" y2="6" strokeWidth="1.8" strokeLinecap="round"/>
+                        <line x1="3" y1="10" x2="21" y2="10" strokeWidth="1.8" strokeLinecap="round"/>
+                      </svg>
+                      <span>Updated {blog.publishedAt}</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 text-[13px] text-[#6B7280] font-medium">
+                      <svg className="w-4 h-4 text-gray-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="9" strokeWidth="1.8"/>
+                        <circle cx="12" cy="12" r="3" strokeWidth="1.8"/>
+                      </svg>
+                      <span>{blog.readTimeMinutes} min read</span>
+                    </div>
+                  </div>
+                </div>
               </Link>
             ))}
           </div>
