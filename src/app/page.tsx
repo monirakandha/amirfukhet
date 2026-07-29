@@ -287,7 +287,10 @@ export default function HomePage() {
       </section>
 
       {/* Category Topics Grid Section matching Figma mockup */}
-      <section className="w-full bg-[#f4f6fa] py-16 sm:py-24 border-b border-gray-200/50">
+      <section 
+        className="w-full bg-[#f4f6fa] py-16 sm:py-24 border-b border-gray-200/50 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/images/research-bg.png')" }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="text-center space-y-3 mb-12 sm:mb-16">
