@@ -25,12 +25,20 @@ export const BlogManager: React.FC = () => {
   const [featured, setFeatured] = useState(false);
   const [toast, setToast] = useState('');
 
+  const [customCategories, setCustomCategories] = useState<string[]>([]);
+  const blogCategories = categories.filter((c) => c.type === 'blog');
+  
+  const categoryOptions = React.useMemo(() => {
+    const defaults = ['Market Analysis', 'Legal & Ownership', 'Investment Guides', 'Luxury Living'];
+    const fromCategories = blogCategories.map(c => c.name);
+    const fromBlogs = blogs.map(b => b.category);
+    return Array.from(new Set([...defaults, ...fromCategories, ...fromBlogs, ...customCategories])).filter(Boolean);
+  }, [blogCategories, blogs, customCategories]);
+
   const showToast = (msg: string) => {
     setToast(msg);
     setTimeout(() => setToast(''), 3000);
   };
-
-  const blogCategories = categories.filter((c) => c.type === 'blog');
 
   const openAddModal = () => {
     setEditingBlog(null);
@@ -137,16 +145,26 @@ export const BlogManager: React.FC = () => {
               <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Category</label>
               <select
                 value={category}
-                onChange={(e) => setCategory(e.target.value)}
+                onChange={(e) => {
+                  if (e.target.value === '__add_new__') {
+                    const newCat = window.prompt('Enter new category:');
+                    if (newCat && newCat.trim()) {
+                      const trimmed = newCat.trim();
+                      setCustomCategories((prev) => [...prev, trimmed]);
+                      setCategory(trimmed);
+                    } else {
+                      setCategory(category || categoryOptions[0]);
+                    }
+                  } else {
+                    setCategory(e.target.value);
+                  }
+                }}
                 className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20 font-medium"
               >
-                <option value="Market Analysis">Market Analysis</option>
-                <option value="Legal & Ownership">Legal & Ownership</option>
-                <option value="Investment Guides">Investment Guides</option>
-                <option value="Luxury Living">Luxury Living</option>
-                {blogCategories.map((c) => (
-                  <option key={c.id} value={c.name}>{c.name}</option>
+                {categoryOptions.map((opt) => (
+                  <option key={opt} value={opt}>{opt}</option>
                 ))}
+                <option value="__add_new__" className="font-bold text-blue-600 bg-blue-50">+ Add New Category...</option>
               </select>
             </div>
           </div>
