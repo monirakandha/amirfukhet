@@ -288,8 +288,11 @@ export default function HomePage() {
 
       {/* Category Topics Grid Section matching Figma mockup */}
       <section 
-        className="w-full bg-[#f4f6fa] py-16 sm:py-24 border-b border-gray-200/50 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/research-bg.png')" }}
+        className="w-full bg-[#f4f6fa] py-16 sm:py-24 border-b border-gray-200/50"
+        style={{
+          backgroundImage: "linear-gradient(to right, rgba(0,0,0,0.015) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.015) 1px, transparent 1px)",
+          backgroundSize: "40px 40px"
+        }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
@@ -300,10 +303,10 @@ export default function HomePage() {
             </div>
 
             <h2
-              className="sr-only section-heading font-heading-bricolage text-[44px] font-semibold text-[#020202] leading-[100%] tracking-[-0.01em]"
+              className="section-heading font-heading-bricolage text-[44px] font-semibold text-[#020202] leading-[1.1] tracking-[-0.01em]"
               style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
             >
-              Research the market before you commit
+              Research the<br /> market before you commit
             </h2>
           </div>
 
@@ -359,19 +362,19 @@ export default function HomePage() {
               {/* Card 2: Buyer Guides (Vertical) */}
               <Link
                 href="/blog"
-                className="group bg-white hover:bg-[#5870F7] rounded-[24px] p-6 sm:p-8 transition-all duration-300 shadow-xs border border-gray-100/80 hover:border-transparent hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between"
+                className="group bg-[#5870F7] rounded-[24px] p-6 sm:p-8 transition-all duration-300 shadow-xl flex flex-col justify-between hover:-translate-y-1"
               >
                 <div>
-                  <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-white flex items-center justify-center transition-colors mb-6 shrink-0 shadow-2xs">
-                    <Timer className="w-7 h-7 text-[#5870F7] transition-colors" />
+                  <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center mb-6 shrink-0 shadow-2xs">
+                    <Timer className="w-7 h-7 text-[#5870F7]" />
                   </div>
                   <h3
-                    className="box-heading font-heading-bricolage text-[24px] font-medium text-[#020202] leading-tight tracking-[-0.01em] group-hover:text-white transition-colors"
+                    className="box-heading font-heading-bricolage text-[24px] font-medium text-white leading-tight tracking-[-0.01em]"
                     style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
                   >
                     Buyer Guides
                   </h3>
-                  <p className="box-description font-desc-mona text-[16px] sm:text-[18px] font-normal text-[#6B7280] leading-[1.4] mt-2 group-hover:text-white/85 transition-colors">
+                  <p className="box-description font-desc-mona text-[16px] sm:text-[18px] font-normal text-white/90 leading-[1.4] mt-2">
                     Process, taxes, financing, bank accounts
                   </p>
                 </div>
