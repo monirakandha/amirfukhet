@@ -130,7 +130,7 @@ export default function HomePage() {
 
               {/* Headline matching exact 3-line breaks from image */}
               <h2
-                className="font-heading-bricolage text-[40px] sm:text-[48px] lg:text-[54px] font-semibold text-[#020202] leading-[1.1] sm:leading-[1.15] tracking-[-0.02em] max-w-[600px]"
+                className="font-heading-bricolage text-[40px] sm:text-[48px] lg:text-[54px] font-semibold text-[#020202] leading-[1.1] sm:leading-[1.15] tracking-[-0.02em] max-w-[800px]"
                 style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
               >
                 Invest in Phuket Property<br />
@@ -139,7 +139,7 @@ export default function HomePage() {
               </h2>
 
               {/* Sub-description */}
-              <p className="font-desc-mona text-[16px] font-normal text-[#6B7280] max-w-[560px] leading-[1.6]">
+              <p className="font-desc-mona text-[16px] font-normal text-[#6B7280] max-w-[700px] leading-[1.6]">
                 Independent research, honest guidance, and the full picture from ownership<br />
                 structures to rental yields so international buyers invest in Thailand with confidence.
               </p>
@@ -169,7 +169,7 @@ export default function HomePage() {
               <img
                 src={advisorImage}
                 alt="Amir - Property Investment Advisor"
-                className="w-full max-w-[500px] sm:max-w-[600px] lg:max-w-[800px] object-contain object-bottom transform lg:scale-[1.4] lg:origin-bottom-right lg:translate-x-16"
+                className="w-full max-w-[450px] sm:max-w-[520px] lg:w-[120%] lg:max-w-none object-contain object-bottom lg:-mr-12"
               />
             </div>
           </div>
