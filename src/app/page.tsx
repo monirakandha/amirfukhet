@@ -268,7 +268,7 @@ export default function HomePage() {
                   {/* DEFAULT STATE (Figma Layout: Tall Image + Title below) */}
                   <div className="flex flex-col w-full">
                     {/* Cover Image */}
-                    <div className="relative w-full aspect-[4/5] rounded-[24px] overflow-hidden bg-gray-100 mb-4 sm:mb-5">
+                    <div className="relative w-full aspect-[4/5] rounded-[24px] overflow-hidden bg-gray-100 border-2 border-white shadow-xs mb-4 sm:mb-5">
                       <img
                         src={blog.coverImage}
                         alt={blog.title}
@@ -288,15 +288,15 @@ export default function HomePage() {
                   {/* HOVER OVERLAY CARD (Revealed on hover, matching example screenshot) */}
                   <div className="absolute -inset-2 bg-white rounded-[24px] p-4 border border-gray-200/80 shadow-2xl opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300 ease-out z-30 flex flex-col justify-between">
                     <div>
-                      {/* Image Container with Category Badge */}
-                      <div className="relative w-full aspect-[16/10] rounded-[16px] overflow-hidden bg-gray-100 mb-3.5 sm:mb-4">
+                      {/* Image Container with 2px solid white border & Category Badge */}
+                      <div className="relative w-full aspect-[4/3] rounded-[16px] overflow-hidden bg-gray-100 border-2 border-white shadow-xs mb-3">
                         <img
                           src={blog.coverImage}
                           alt={blog.title}
                           className="w-full h-full object-cover"
                         />
                         {/* Category Badge */}
-                        <div className="absolute top-3.5 left-3.5 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-xs font-desc-mona text-[13px] font-medium text-[#E05A4E] leading-none shadow-2xs">
+                        <div className="absolute top-3 left-3 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-xs font-desc-mona text-[13px] font-medium text-[#E05A4E] leading-none shadow-2xs">
                           {blog.category}
                         </div>
                       </div>
@@ -310,13 +310,13 @@ export default function HomePage() {
                       </h3>
 
                       {/* Description */}
-                      <p className="font-desc-mona text-[14px] font-normal text-[#6B7280] leading-[1.55] mt-2.5 line-clamp-4">
+                      <p className="font-desc-mona text-[14px] font-normal text-[#6B7280] leading-[1.6] mt-2 line-clamp-4">
                         {cleanSummary}
                       </p>
                     </div>
 
                     {/* Footer: Date & Read Time */}
-                    <div className="flex items-center justify-between mt-4 pt-3 border-t border-gray-100 font-desc-mona text-[12.5px] font-normal text-[#9CA3AF] leading-none">
+                    <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-100 font-desc-mona text-[12.5px] font-normal text-[#9CA3AF] leading-none">
                       <div className="flex items-center gap-1.5">
                         <svg className="w-4 h-4 text-[#9CA3AF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
