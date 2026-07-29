@@ -300,7 +300,7 @@ export default function HomePage() {
             </div>
 
             <h2
-              className="section-heading font-heading-bricolage text-[44px] font-semibold text-[#020202] leading-[100%] tracking-[-0.01em]"
+              className="sr-only section-heading font-heading-bricolage text-[44px] font-semibold text-[#020202] leading-[100%] tracking-[-0.01em]"
               style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
             >
               Research the market before you commit
