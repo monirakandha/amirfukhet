@@ -21,7 +21,7 @@ export default function HomePage() {
 
   const { settings } = useAdmin();
   const heroBg = settings.homepageImages?.heroBg || '/images/hero-bg.jpg';
-  const guideBannerBg = settings.homepageImages?.guideBannerBg || '/images/hero-bg.jpg';
+  const guideBannerBg = settings.homepageImages?.guideBannerBg || '/images/skyline-bg.png';
   const advisorImage = settings.homepageImages?.advisorImage || '/images/amir-seated.png';
   const readyBannerBg = settings.homepageImages?.readyBannerBg || '/images/resort-cta-bg.png';
 

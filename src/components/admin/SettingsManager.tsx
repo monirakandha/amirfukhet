@@ -45,7 +45,7 @@ export const SettingsManager: React.FC = () => {
 
   // Homepage Images
   const [heroBg, setHeroBg] = useState(settings.homepageImages?.heroBg || '/images/hero-bg.jpg');
-  const [guideBannerBg, setGuideBannerBg] = useState(settings.homepageImages?.guideBannerBg || '/images/hero-bg.jpg');
+  const [guideBannerBg, setGuideBannerBg] = useState(settings.homepageImages?.guideBannerBg || '/images/skyline-bg.png');
   const [advisorImage, setAdvisorImage] = useState(settings.homepageImages?.advisorImage || '/images/amir-seated.png');
   const [readyBannerBg, setReadyBannerBg] = useState(settings.homepageImages?.readyBannerBg || '/images/resort-cta-bg.png');
 
