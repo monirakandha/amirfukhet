@@ -119,54 +119,54 @@ export default function HomePage() {
       {/* Advisor Intro Section matching Figma mockup */}
       <section className="w-full bg-[#f4f6fa] pt-16 lg:pt-24 pb-0 relative overflow-hidden border-b border-gray-200/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+          <div className="flex flex-col lg:flex-row items-end justify-between gap-8 lg:gap-4">
             {/* Left Content */}
-            <div className="lg:col-span-7 space-y-6 py-8 lg:py-20 relative z-10">
+            <div className="w-full lg:w-1/2 space-y-6 py-8 lg:py-20 relative z-10">
               {/* Pill Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#E5E9F2] section-pill font-desc-mona text-[16px] font-medium text-[#5870F7] leading-none shadow-2xs">
-                <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 border border-[#E5E9F2] section-pill font-desc-mona text-[14px] sm:text-[16px] font-medium text-[#5870F7] leading-none shadow-2xs">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#5870F7]" />
                 Property Investment Advisor · Phuket
               </div>
 
               {/* Headline matching exact 3-line breaks from image */}
               <h2
-                className="font-heading-bricolage text-[40px] sm:text-[48px] lg:text-[56px] font-semibold text-[#020202] leading-[1.14] sm:leading-[64px] tracking-[-0.02em]"
+                className="font-heading-bricolage text-[40px] sm:text-[48px] lg:text-[54px] font-semibold text-[#020202] leading-[1.1] sm:leading-[1.15] tracking-[-0.02em] max-w-[600px]"
                 style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
               >
                 Invest in Phuket Property<br className="hidden sm:inline" /> with Trusted Advisors,<br className="hidden sm:inline" /> Guided by Expertise.
               </h2>
 
               {/* Sub-description */}
-              <p className="font-desc-mona text-[16px] font-normal text-[#6B7280] max-w-[660px] leading-[1.5]">
+              <p className="font-desc-mona text-[16px] font-normal text-[#6B7280] max-w-[560px] leading-[1.6]">
                 Independent research, honest guidance, and the full picture from ownership structures to rental yields so international buyers invest in Thailand with confidence.
               </p>
 
               {/* CTA Buttons */}
-              <div className="flex flex-wrap items-center gap-4 pt-2">
+              <div className="flex flex-wrap items-center gap-4 pt-4">
                 <a
                   href="https://wa.me/8801875189361"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-6 py-3.5 rounded-full bg-[#5870F7] hover:bg-blue-600 font-desc-mona text-[16px] font-medium text-white leading-none transition-all shadow-[inset_0px_2px_4px_0px_rgba(255,255,255,0.25)]"
+                  className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-[#5870F7] hover:bg-blue-600 font-desc-mona text-[16px] font-medium text-white leading-none transition-all shadow-[inset_0px_2px_4px_0px_rgba(255,255,255,0.25)]"
                 >
                   Talk to Amir on WhatsApp
                 </a>
 
                 <Link
                   href="/blog"
-                  className="group inline-flex items-center justify-center px-6 py-3.5 rounded-full bg-[#F4F6F7] hover:bg-[#5870F7] font-desc-mona text-[16px] font-medium text-[#020202] hover:text-white leading-none border border-[#DFE3EB] hover:border-[#5870F7] transition-all shadow-2xs"
+                  className="group inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-transparent hover:bg-[#F4F6F7] font-desc-mona text-[16px] font-medium text-[#020202] leading-none border border-[#DFE3EB] transition-all"
                 >
                   Read the free guide
                 </Link>
               </div>
             </div>
 
-            {/* Right Photo without drop shadow matching clean cutout in image */}
-            <div className="lg:col-span-5 flex justify-center lg:justify-end items-end self-end w-full relative z-0">
+            {/* Right Photo */}
+            <div className="w-full lg:w-1/2 flex justify-center lg:justify-end items-end relative z-0">
               <img
                 src={advisorImage}
                 alt="Amir - Property Investment Advisor"
-                className="w-full h-auto max-w-[540px] sm:max-w-[640px] lg:max-w-[740px] xl:max-w-[840px] object-contain object-bottom scale-125 lg:scale-[1.4] xl:scale-[1.5] origin-bottom"
+                className="w-full max-w-[400px] sm:max-w-[480px] lg:max-w-[580px] object-contain object-bottom"
               />
             </div>
           </div>
