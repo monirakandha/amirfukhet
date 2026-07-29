@@ -31,13 +31,12 @@ export default function Navbar({ onOpenValuationModal }: NavbarProps) {
   }, []);
 
   const navLinks: { name: string; path: string }[] = [
-    // Disabled page links for now
-    // { name: 'Insights', path: '/blog' },
-    // { name: 'The Guide', path: '/guide' },
-    // { name: 'Success Stories', path: '/success-stories' },
-    // { name: 'Listings', path: '/properties' },
-    // { name: 'About', path: '/about' },
-    // { name: 'Work With Me', path: '/contact' },
+    { name: 'Insights', path: '/blog' },
+    { name: 'The Guide', path: '/guide' },
+    { name: 'Success Stories', path: '/success-stories' },
+    { name: 'Listings', path: '/properties' },
+    { name: 'About', path: '/about' },
+    { name: 'Work With Me', path: '/contact' },
   ];
 
   // Colors based on home vs inner page & scroll state
@@ -94,10 +93,9 @@ export default function Navbar({ onOpenValuationModal }: NavbarProps) {
 
               if (isLightNav) {
                 return (
-                  <Link
+                  <span
                     key={idx}
-                    href={link.path}
-                    className={`font-desc-mona text-[16px] font-normal leading-none tracking-normal transition-colors flex items-center gap-1.5 ${
+                    className={`font-desc-mona text-[16px] font-normal leading-none tracking-normal transition-colors flex items-center gap-1.5 cursor-default ${
                       isActive
                         ? 'text-[#5870F7]'
                         : 'text-[#020202] hover:text-[#5870F7]'
@@ -105,22 +103,21 @@ export default function Navbar({ onOpenValuationModal }: NavbarProps) {
                   >
                     {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#5870F7]" />}
                     {link.name}
-                  </Link>
+                  </span>
                 );
               }
 
               return (
-                <Link
+                <span
                   key={idx}
-                  href={link.path}
-                  className={`font-desc-mona text-[16px] font-normal leading-none tracking-normal transition-colors text-center ${
+                  className={`font-desc-mona text-[16px] font-normal leading-none tracking-normal transition-colors text-center cursor-default ${
                     isActive
                       ? 'text-white border-b-2 border-white pb-1'
                       : 'text-white/90 hover:text-white'
                   }`}
                 >
                   {link.name}
-                </Link>
+                </span>
               );
             })}
           </nav>
@@ -183,14 +180,12 @@ export default function Navbar({ onOpenValuationModal }: NavbarProps) {
           }`}
         >
           {navLinks.map((link, idx) => (
-            <Link
+            <span
               key={idx}
-              href={link.path}
-              onClick={() => setMobileMenuOpen(false)}
-              className="block font-desc-mona text-[16px] font-normal leading-none py-2"
+              className="block font-desc-mona text-[16px] font-normal leading-none py-2 cursor-default"
             >
               {link.name}
-            </Link>
+            </span>
           ))}
         </div>
       )}
