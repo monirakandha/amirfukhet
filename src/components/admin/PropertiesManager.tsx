@@ -18,9 +18,11 @@ import {
   Bed, 
   Bath, 
   Maximize, 
-  Image as ImageIcon 
+  Image as ImageIcon,
+  ArrowLeft 
 } from 'lucide-react';
 import { MediaPickerButton } from '@/components/admin/MediaManager';
+import { RichTextEditor } from './RichTextEditor';
 
 export const PropertiesManager: React.FC = () => {
   const { properties, addProperty, updateProperty, deleteProperty } = useAdmin();
@@ -165,6 +167,252 @@ export const PropertiesManager: React.FC = () => {
     const matchesType = filterType === 'all' || p.propertyType.toLowerCase() === filterType.toLowerCase();
     return matchesSearch && matchesType;
   });
+
+  if (isModalOpen) {
+    return (
+      <div className="p-6 sm:p-8 space-y-6 relative max-w-5xl mx-auto">
+        <div className="flex items-center justify-between pb-4 border-b border-slate-200 mb-2">
+          <div className="flex items-center gap-4">
+            <button
+              type="button"
+              onClick={() => setIsModalOpen(false)}
+              className="p-2 -ml-2 rounded-xl hover:bg-slate-200 bg-slate-100 text-slate-600 hover:text-gray-900 transition-colors"
+            >
+              <ArrowLeft className="w-5 h-5" />
+            </button>
+            <h2 className="text-2xl font-bold text-gray-900 font-heading-bricolage">
+              {editingProp ? 'Edit Property Details' : 'Add New Luxury Property'}
+            </h2>
+          </div>
+        </div>
+
+        <form onSubmit={handleSubmit} className="space-y-8 bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Property Title</label>
+              <input
+                type="text"
+                required
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder="e.g. Oceanfront Sunset Villa"
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20"
+              />
+            </div>
+
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Slug (URL Path)</label>
+              <input
+                type="text"
+                value={slug}
+                onChange={(e) => setSlug(e.target.value)}
+                placeholder="oceanfront-sunset-villa"
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20"
+              />
+            </div>
+
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Price (USD number)</label>
+              <input
+                type="number"
+                required
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+                placeholder="2500000"
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20"
+              />
+            </div>
+
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Formatted Display Price</label>
+              <input
+                type="text"
+                required
+                value={formattedPrice}
+                onChange={(e) => setFormattedPrice(e.target.value)}
+                placeholder="$2,500,000"
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20"
+              />
+            </div>
+
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Property Type</label>
+              <select
+                value={propertyType}
+                onChange={(e) => setPropertyType(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20 font-medium"
+              >
+                <option value="Villa">Villa</option>
+                <option value="Penthouse">Penthouse</option>
+                <option value="Apartment">Apartment</option>
+                <option value="Condo">Condo</option>
+                <option value="Commercial">Commercial</option>
+              </select>
+            </div>
+
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Ownership Structure</label>
+              <select
+                value={ownershipType}
+                onChange={(e) => setOwnershipType(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20 font-medium"
+              >
+                <option value="Freehold">Freehold</option>
+                <option value="Leasehold">Leasehold</option>
+                <option value="Foreign Quota Freehold">Foreign Quota Freehold</option>
+                <option value="Thai Company Ownership">Thai Company Ownership</option>
+              </select>
+            </div>
+
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Status</label>
+              <select
+                value={status}
+                onChange={(e) => setStatus(e.target.value as any)}
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20 font-medium"
+              >
+                <option value="for-sale">For Sale</option>
+                <option value="for-rent">For Rent</option>
+                <option value="pending">Under Offer / Pending</option>
+                <option value="sold">Sold / Closed</option>
+              </select>
+            </div>
+
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">City / District</label>
+              <input
+                type="text"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                placeholder="Phuket / Kamala"
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20"
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Bedrooms</label>
+              <input
+                type="number"
+                value={beds}
+                onChange={(e) => setBeds(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7]"
+              />
+            </div>
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Bathrooms</label>
+              <input
+                type="number"
+                value={baths}
+                onChange={(e) => setBaths(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7]"
+              />
+            </div>
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Area (m²)</label>
+              <input
+                type="number"
+                value={areaSqM}
+                onChange={(e) => setAreaSqM(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7]"
+              />
+            </div>
+          </div>
+
+          <div className="space-y-1.5">
+            <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Street Address / Location</label>
+            <input
+              type="text"
+              required
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              placeholder="e.g. Millionaires Mile, Kamala Beach"
+              className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20"
+            />
+          </div>
+
+          {/* Multi-Image Picker */}
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Property Images</label>
+              <button
+                type="button"
+                onClick={() => setImageList((prev) => [...prev, ''])}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 text-[#5870F7] text-xs font-semibold hover:bg-blue-100 transition-colors border border-blue-200"
+              >
+                <ImageIcon className="w-3.5 h-3.5" />
+                Add Image
+              </button>
+            </div>
+            <div className="space-y-3">
+              {imageList.map((img, idx) => (
+                <div key={idx} className="relative">
+                  <MediaPickerButton
+                    label={idx === 0 ? 'Hero / Cover Image' : `Additional Image ${idx + 1}`}
+                    required={idx === 0}
+                    value={img}
+                    onChange={(url) => {
+                      const next = [...imageList];
+                      next[idx] = url;
+                      setImageList(next);
+                    }}
+                  />
+                  {idx > 0 && (
+                    <button
+                      type="button"
+                      onClick={() => setImageList((prev) => prev.filter((_, i) => i !== idx))}
+                      className="absolute top-0 right-0 text-[11px] text-red-500 hover:text-red-700 font-semibold transition-colors"
+                    >
+                      Remove
+                    </button>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="space-y-1.5">
+            <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Description</label>
+            <RichTextEditor
+              value={description}
+              onChange={setDescription}
+              className="border border-slate-300 rounded-xl overflow-hidden [&_.ql-container]:min-h-[250px] [&_.ql-editor]:min-h-[250px]"
+            />
+          </div>
+
+          <div className="flex items-center gap-3 pt-2">
+            <input
+              type="checkbox"
+              id="featured"
+              checked={featured}
+              onChange={(e) => setFeatured(e.target.checked)}
+              className="w-5 h-5 rounded text-[#5870F7] bg-white border-slate-300 focus:ring-[#5870F7]"
+            />
+            <label htmlFor="featured" className="text-sm text-gray-800 font-medium cursor-pointer">
+              Feature this property on the homepage showcase
+            </label>
+          </div>
+
+          <div className="flex items-center justify-end gap-4 pt-6 border-t border-slate-200">
+            <button
+              type="button"
+              onClick={() => setIsModalOpen(false)}
+              className="px-6 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-sm transition-colors"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="px-8 py-3 rounded-xl bg-[#5870F7] hover:bg-blue-600 text-white font-semibold text-sm shadow-md shadow-[#5870F7]/20 transition-all"
+            >
+              {editingProp ? 'Save Changes' : 'Create Property'}
+            </button>
+          </div>
+        </form>
+      </div>
+    );
+  }
 
   return (
     <div className="p-6 sm:p-8 space-y-6 relative">
@@ -319,251 +567,6 @@ export const PropertiesManager: React.FC = () => {
         </div>
       </div>
 
-      {/* Add / Edit Modal */}
-      {isModalOpen && (
-        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-white border border-slate-200 rounded-3xl w-full max-w-3xl p-6 sm:p-8 shadow-2xl my-8 max-h-[90vh] overflow-y-auto">
-            <div className="flex items-center justify-between pb-4 border-b border-slate-200 mb-6">
-              <h2 className="text-xl font-bold text-gray-900 font-heading-bricolage">
-                {editingProp ? 'Edit Property Details' : 'Add New Luxury Property'}
-              </h2>
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="p-2 rounded-full hover:bg-slate-100 text-slate-500 hover:text-gray-900 transition-colors"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Property Title</label>
-                  <input
-                    type="text"
-                    required
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    placeholder="e.g. Oceanfront Sunset Villa"
-                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20"
-                  />
-                </div>
-
-                <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Slug (URL Path)</label>
-                  <input
-                    type="text"
-                    value={slug}
-                    onChange={(e) => setSlug(e.target.value)}
-                    placeholder="oceanfront-sunset-villa"
-                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20"
-                  />
-                </div>
-
-                <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Price (USD number)</label>
-                  <input
-                    type="number"
-                    required
-                    value={price}
-                    onChange={(e) => setPrice(e.target.value)}
-                    placeholder="2500000"
-                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20"
-                  />
-                </div>
-
-                <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Formatted Display Price</label>
-                  <input
-                    type="text"
-                    required
-                    value={formattedPrice}
-                    onChange={(e) => setFormattedPrice(e.target.value)}
-                    placeholder="$2,500,000"
-                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20"
-                  />
-                </div>
-
-                <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Property Type</label>
-                  <select
-                    value={propertyType}
-                    onChange={(e) => setPropertyType(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20 font-medium"
-                  >
-                    <option value="Villa">Villa</option>
-                    <option value="Penthouse">Penthouse</option>
-                    <option value="Apartment">Apartment</option>
-                    <option value="Condo">Condo</option>
-                    <option value="Commercial">Commercial</option>
-                  </select>
-                </div>
-
-                <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Ownership Structure</label>
-                  <select
-                    value={ownershipType}
-                    onChange={(e) => setOwnershipType(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20 font-medium"
-                  >
-                    <option value="Freehold">Freehold</option>
-                    <option value="Leasehold">Leasehold</option>
-                    <option value="Foreign Quota Freehold">Foreign Quota Freehold</option>
-                    <option value="Thai Company Ownership">Thai Company Ownership</option>
-                  </select>
-                </div>
-
-                <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Status</label>
-                  <select
-                    value={status}
-                    onChange={(e) => setStatus(e.target.value as any)}
-                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20 font-medium"
-                  >
-                    <option value="for-sale">For Sale</option>
-                    <option value="for-rent">For Rent</option>
-                    <option value="pending">Under Offer / Pending</option>
-                    <option value="sold">Sold / Closed</option>
-                  </select>
-                </div>
-
-                <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">City / District</label>
-                  <input
-                    type="text"
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)}
-                    placeholder="Phuket / Kamala"
-                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-3 gap-4">
-                <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Bedrooms</label>
-                  <input
-                    type="number"
-                    value={beds}
-                    onChange={(e) => setBeds(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7]"
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Bathrooms</label>
-                  <input
-                    type="number"
-                    value={baths}
-                    onChange={(e) => setBaths(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7]"
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Area (m²)</label>
-                  <input
-                    type="number"
-                    value={areaSqM}
-                    onChange={(e) => setAreaSqM(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7]"
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-1.5">
-                <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Street Address / Location</label>
-                <input
-                  type="text"
-                  required
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
-                  placeholder="e.g. Millionaires Mile, Kamala Beach"
-                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20"
-                />
-              </div>
-
-              {/* Multi-Image Picker */}
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Property Images</label>
-                  <button
-                    type="button"
-                    onClick={() => setImageList((prev) => [...prev, ''])}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 text-[#5870F7] text-xs font-semibold hover:bg-blue-100 transition-colors border border-blue-200"
-                  >
-                    <ImageIcon className="w-3.5 h-3.5" />
-                    Add Image
-                  </button>
-                </div>
-                <div className="space-y-3">
-                  {imageList.map((img, idx) => (
-                    <div key={idx} className="relative">
-                      <MediaPickerButton
-                        label={idx === 0 ? 'Hero / Cover Image' : `Additional Image ${idx + 1}`}
-                        required={idx === 0}
-                        value={img}
-                        onChange={(url) => {
-                          const next = [...imageList];
-                          next[idx] = url;
-                          setImageList(next);
-                        }}
-                      />
-                      {idx > 0 && (
-                        <button
-                          type="button"
-                          onClick={() => setImageList((prev) => prev.filter((_, i) => i !== idx))}
-                          className="absolute top-0 right-0 text-[11px] text-red-500 hover:text-red-700 font-semibold transition-colors"
-                        >
-                          Remove
-                        </button>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="space-y-1.5">
-                <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Description</label>
-                <textarea
-                  rows={4}
-                  required
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-300 rounded-xl p-4 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20"
-                />
-              </div>
-
-              <div className="flex items-center gap-3 pt-2">
-                <input
-                  type="checkbox"
-                  id="featured"
-                  checked={featured}
-                  onChange={(e) => setFeatured(e.target.checked)}
-                  className="w-4 h-4 rounded text-[#5870F7] bg-white border-slate-300 focus:ring-[#5870F7]"
-                />
-                <label htmlFor="featured" className="text-sm text-gray-800 font-medium cursor-pointer">
-                  Feature this property on the homepage showcase
-                </label>
-              </div>
-
-              <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-200">
-                <button
-                  type="button"
-                  onClick={() => setIsModalOpen(false)}
-                  className="px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-sm transition-colors"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="px-6 py-2.5 rounded-xl bg-[#5870F7] hover:bg-blue-600 text-white font-semibold text-sm shadow-md shadow-[#5870F7]/20 transition-all"
-                >
-                  {editingProp ? 'Save Changes' : 'Create Property'}
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

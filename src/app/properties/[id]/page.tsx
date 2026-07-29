@@ -216,9 +216,10 @@ export default function PropertyDetailPage() {
               {/* Description */}
               <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-4">
                 <h3 className="text-xl font-bold text-white">Property Description</h3>
-                <p className="text-slate-300 text-sm leading-relaxed whitespace-pre-line">
-                  {property.description}
-                </p>
+                <div
+                  className="text-slate-300 text-sm leading-relaxed whitespace-pre-line [&>p]:inline"
+                  dangerouslySetInnerHTML={{ __html: property.description }}
+                />
               </div>
 
               {/* Amenities */}

@@ -87,14 +87,16 @@ export default function SuccessStoriesPage() {
                 <h2 className="text-2xl font-bold text-white">{story.title}</h2>
 
                 {story.testimonial && (
-                  <p className="text-slate-300 text-sm leading-relaxed italic">
-                    "{story.testimonial}"
-                  </p>
+                  <div
+                    className="text-slate-300 text-sm leading-relaxed italic [&>p]:inline"
+                    dangerouslySetInnerHTML={{ __html: story.testimonial }}
+                  />
                 )}
 
-                <p className="text-slate-400 text-xs leading-relaxed">
-                  {story.subtitle || story.story}
-                </p>
+                <div
+                  className="text-slate-400 text-xs leading-relaxed [&>p]:inline"
+                  dangerouslySetInnerHTML={{ __html: story.subtitle || story.story || '' }}
+                />
 
                 {/* Highlights */}
                 {story.highlights && story.highlights.length > 0 && (
