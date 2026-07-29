@@ -166,7 +166,7 @@ export default function HomePage() {
               <img
                 src={advisorImage}
                 alt="Amir - Property Investment Advisor"
-                className="w-full max-w-[400px] sm:max-w-[480px] lg:max-w-[580px] object-contain object-bottom"
+                className="w-full max-w-[450px] sm:max-w-[520px] lg:max-w-[680px] object-contain object-bottom lg:translate-x-4"
               />
             </div>
           </div>
@@ -641,11 +641,11 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Photo Container */}
             <div className="lg:col-span-5 flex justify-center">
-              <div className="bg-white rounded-3xl p-4 sm:p-5 w-full max-w-md border border-gray-100 shadow-2xs">
+              <div className="bg-[#E5E7EB] rounded-[32px] pt-8 px-6 sm:px-8 w-full max-w-md shadow-inner relative overflow-hidden flex justify-center items-end" style={{ height: '480px' }}>
                 <img
-                  src="/images/amir-seated.png"
+                  src={advisorImage}
                   alt="Amir Ahmed Faisal - Property Investment Advisor"
-                  className="w-full h-auto object-cover rounded-2xl shadow-xs"
+                  className="w-full h-auto max-w-[90%] object-contain object-bottom"
                 />
               </div>
             </div>
