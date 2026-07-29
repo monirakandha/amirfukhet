@@ -320,7 +320,7 @@ export default function HomePage() {
               {/* Card 1: Market Insights (Horizontal) */}
               <Link
                 href="/blog"
-                className="group bg-white hover:bg-[#5870F7] rounded-[24px] p-6 sm:p-7 transition-all duration-300 shadow-xs border border-gray-100/80 hover:border-transparent hover:shadow-xl hover:-translate-y-1 flex items-start gap-5"
+                className="group bg-white hover:bg-[#5870F7] rounded-[24px] p-6 sm:p-7 transition-all duration-300 shadow-xs border-2 border-white hover:border-transparent hover:shadow-xl hover:-translate-y-1 flex items-start gap-5"
               >
                 <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-white flex items-center justify-center transition-colors shrink-0 shadow-2xs">
                   <TrendingUp className="w-7 h-7 text-[#5870F7] transition-colors" />
@@ -341,7 +341,7 @@ export default function HomePage() {
               {/* Card 4: Ownership & Legal (Vertical) */}
               <Link
                 href="/blog"
-                className="group bg-white hover:bg-[#5870F7] rounded-[24px] p-6 sm:p-8 transition-all duration-300 shadow-xs border border-gray-100/80 hover:border-transparent hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between"
+                className="group bg-white hover:bg-[#5870F7] rounded-[24px] p-6 sm:p-8 transition-all duration-300 shadow-xs border-2 border-white hover:border-transparent hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between"
               >
                 <div>
                   <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-white flex items-center justify-center transition-colors mb-6 shrink-0 shadow-2xs">
@@ -365,7 +365,7 @@ export default function HomePage() {
               {/* Card 2: Buyer Guides (Vertical) */}
               <Link
                 href="/blog"
-                className="group bg-white hover:bg-[#5870F7] rounded-[24px] p-6 sm:p-8 transition-all duration-300 shadow-xs border border-gray-100/80 hover:border-transparent hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between"
+                className="group bg-white hover:bg-[#5870F7] rounded-[24px] p-6 sm:p-8 transition-all duration-300 shadow-xs border-2 border-white hover:border-transparent hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between"
               >
                 <div>
                   <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-white flex items-center justify-center transition-colors mb-6 shrink-0 shadow-2xs">
@@ -386,7 +386,7 @@ export default function HomePage() {
               {/* Card 5: Rental & ROI (Horizontal) */}
               <Link
                 href="/blog"
-                className="group bg-white hover:bg-[#5870F7] rounded-[24px] p-6 sm:p-7 transition-all duration-300 shadow-xs border border-gray-100/80 hover:border-transparent hover:shadow-xl hover:-translate-y-1 flex items-start gap-5"
+                className="group bg-white hover:bg-[#5870F7] rounded-[24px] p-6 sm:p-7 transition-all duration-300 shadow-xs border-2 border-white hover:border-transparent hover:shadow-xl hover:-translate-y-1 flex items-start gap-5"
               >
                 <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-white flex items-center justify-center transition-colors shrink-0 shadow-2xs">
                   <Building2 className="w-7 h-7 text-[#5870F7] transition-colors" />
@@ -410,7 +410,7 @@ export default function HomePage() {
               {/* Card 3: Area Guides (Horizontal) */}
               <Link
                 href="/blog"
-                className="group bg-white hover:bg-[#5870F7] rounded-[24px] p-6 sm:p-7 transition-all duration-300 shadow-xs border border-gray-100/80 hover:border-transparent hover:shadow-xl hover:-translate-y-1 flex items-start gap-5"
+                className="group bg-white hover:bg-[#5870F7] rounded-[24px] p-6 sm:p-7 transition-all duration-300 shadow-xs border-2 border-white hover:border-transparent hover:shadow-xl hover:-translate-y-1 flex items-start gap-5"
               >
                 <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-white flex items-center justify-center transition-colors shrink-0 shadow-2xs">
                   <MapPin className="w-7 h-7 text-[#5870F7] transition-colors" />
@@ -431,7 +431,7 @@ export default function HomePage() {
               {/* Card 6: News & Updates (Vertical) */}
               <Link
                 href="/blog"
-                className="group bg-white hover:bg-[#5870F7] rounded-[24px] p-6 sm:p-8 transition-all duration-300 shadow-xs border border-gray-100/80 hover:border-transparent hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between"
+                className="group bg-white hover:bg-[#5870F7] rounded-[24px] p-6 sm:p-8 transition-all duration-300 shadow-xs border-2 border-white hover:border-transparent hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between"
               >
                 <div>
                   <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-white flex items-center justify-center transition-colors mb-6 shrink-0 shadow-2xs">
