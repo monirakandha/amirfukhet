@@ -118,10 +118,17 @@ export default function BlogPage() {
                   </h3>
 
                   {/* Summary */}
-                  <div
-                    className="font-desc-mona text-[15px] font-normal text-slate-400 leading-[1.6] line-clamp-3 mb-6 [&>p]:inline"
-                    dangerouslySetInnerHTML={{ __html: blog.summary }}
-                  />
+                  <p className="font-desc-mona text-[15px] font-normal text-[#6B7280] leading-[1.6] line-clamp-3 mb-6">
+                    {(blog.summary || '')
+                      .replace(/<[^>]*>/g, '')
+                      .replace(/&nbsp;/g, ' ')
+                      .replace(/&amp;/g, '&')
+                      .replace(/&lt;/g, '<')
+                      .replace(/&gt;/g, '>')
+                      .replace(/&quot;/g, '"')
+                      .replace(/&#39;/g, "'")
+                      .trim()}
+                  </p>
 
                   {/* Divider */}
                   <div className="border-t border-gray-100 pt-4 mt-1 flex items-center justify-between gap-2">
