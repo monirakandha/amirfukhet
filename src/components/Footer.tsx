@@ -69,10 +69,12 @@ export default function Footer() {
               Insights
             </h4>
             <ul className="space-y-4 font-desc-mona text-[16px] font-normal text-[#B3B3B3]">
+              {/* Disabled page links for now
               <li><Link href="/blog" className="hover:text-white transition-colors">Market Insights</Link></li>
               <li><Link href="/blog" className="hover:text-white transition-colors">Buyer Guides</Link></li>
               <li><Link href="/blog" className="hover:text-white transition-colors">Area Guides</Link></li>
               <li><Link href="/blog" className="hover:text-white transition-colors">Ownership & Legal</Link></li>
+              */}
             </ul>
           </div>
 
@@ -82,11 +84,13 @@ export default function Footer() {
               Site
             </h4>
             <ul className="space-y-4 font-desc-mona text-[16px] font-normal text-[#B3B3B3]">
+              {/* Disabled page links for now
               <li><Link href="/guide" className="hover:text-white transition-colors">The Guide</Link></li>
               <li><Link href="/success-stories" className="hover:text-white transition-colors">Success Stories</Link></li>
               <li><Link href="/properties" className="hover:text-white transition-colors">Listings</Link></li>
               <li><Link href="/about" className="hover:text-white transition-colors">About</Link></li>
               <li><Link href="/work-with-me" className="hover:text-white transition-colors">Work With Me</Link></li>
+              */}
             </ul>
           </div>
 
