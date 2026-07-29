@@ -133,7 +133,9 @@ export default function HomePage() {
                 className="font-heading-bricolage text-[40px] sm:text-[48px] lg:text-[54px] font-semibold text-[#020202] leading-[1.1] sm:leading-[1.15] tracking-[-0.02em] max-w-[600px]"
                 style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
               >
-                Invest in Phuket Property<br className="hidden sm:inline" /> with Trusted Advisors,<br className="hidden sm:inline" /> Guided by Expertise.
+                Invest in Phuket Property<br />
+                with Trusted Advisors,<br />
+                Guided by Expertise.
               </h2>
 
               {/* Sub-description */}
