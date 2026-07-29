@@ -20,6 +20,7 @@ import {
   Maximize, 
   Image as ImageIcon 
 } from 'lucide-react';
+import { MediaPickerButton } from '@/components/admin/MediaManager';
 
 export const PropertiesManager: React.FC = () => {
   const { properties, addProperty, updateProperty, deleteProperty } = useAdmin();
@@ -44,6 +45,7 @@ export const PropertiesManager: React.FC = () => {
   const [city, setCity] = useState('Phuket');
   const [description, setDescription] = useState('An exceptional luxury villa with panoramic ocean views.');
   const [images, setImages] = useState('/images/villa-hero.png, /images/villa-hero.png');
+  const [imageList, setImageList] = useState<string[]>(['/images/villa-hero.png']);
   const [featured, setFeatured] = useState(false);
 
   const [toast, setToast] = useState('');
@@ -70,6 +72,7 @@ export const PropertiesManager: React.FC = () => {
     setCity('Phuket');
     setDescription('Stunning contemporary villa designed for luxury living.');
     setImages('/images/villa-hero.png');
+    setImageList(['/images/villa-hero.png']);
     setFeatured(true);
     setIsModalOpen(true);
   };
@@ -91,13 +94,16 @@ export const PropertiesManager: React.FC = () => {
     setCity(prop.location.city);
     setDescription(prop.description);
     setImages(prop.images.join(', '));
+    setImageList(prop.images.length > 0 ? prop.images : ['/images/villa-hero.png']);
     setFeatured(prop.featured || false);
     setIsModalOpen(true);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const parsedImages = images.split(',').map((s) => s.trim()).filter(Boolean);
+    const parsedImages = imageList.filter(Boolean).length > 0
+      ? imageList.filter(Boolean)
+      : images.split(',').map((s) => s.trim()).filter(Boolean);
     const numPrice = parseFloat(price) || 0;
 
     const payload = {
@@ -475,16 +481,44 @@ export const PropertiesManager: React.FC = () => {
                 />
               </div>
 
-              <div className="space-y-1.5">
-                <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Image URLs (comma separated)</label>
-                <input
-                  type="text"
-                  required
-                  value={images}
-                  onChange={(e) => setImages(e.target.value)}
-                  placeholder="/images/villa-hero.png, /images/skyline-bg.png"
-                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20"
-                />
+              {/* Multi-Image Picker */}
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Property Images</label>
+                  <button
+                    type="button"
+                    onClick={() => setImageList((prev) => [...prev, ''])}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 text-[#5870F7] text-xs font-semibold hover:bg-blue-100 transition-colors border border-blue-200"
+                  >
+                    <ImageIcon className="w-3.5 h-3.5" />
+                    Add Image
+                  </button>
+                </div>
+                <div className="space-y-3">
+                  {imageList.map((img, idx) => (
+                    <div key={idx} className="relative">
+                      <MediaPickerButton
+                        label={idx === 0 ? 'Hero / Cover Image' : `Additional Image ${idx + 1}`}
+                        required={idx === 0}
+                        value={img}
+                        onChange={(url) => {
+                          const next = [...imageList];
+                          next[idx] = url;
+                          setImageList(next);
+                        }}
+                      />
+                      {idx > 0 && (
+                        <button
+                          type="button"
+                          onClick={() => setImageList((prev) => prev.filter((_, i) => i !== idx))}
+                          className="absolute top-0 right-0 text-[11px] text-red-500 hover:text-red-700 font-semibold transition-colors"
+                        >
+                          Remove
+                        </button>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
 
               <div className="space-y-1.5">

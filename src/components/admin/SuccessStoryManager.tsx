@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useAdmin } from '@/context/AdminContext';
 import { SuccessStory } from '@/types';
 import { Plus, Edit, Trash2, Check, X, Award, MapPin, TrendingUp } from 'lucide-react';
+import { MediaPickerButton } from '@/components/admin/MediaManager';
 
 export const SuccessStoryManager: React.FC = () => {
   const { successStories, addStory, updateStory, deleteStory } = useAdmin();
@@ -295,16 +296,12 @@ export const SuccessStoryManager: React.FC = () => {
                 </div>
               </div>
 
-              <div className="space-y-1.5">
-                <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Image URL</label>
-                <input
-                  type="text"
-                  required
-                  value={image}
-                  onChange={(e) => setImage(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7]"
-                />
-              </div>
+              <MediaPickerButton
+                label="Story Image"
+                required
+                value={image}
+                onChange={setImage}
+              />
 
               <div className="space-y-1.5">
                 <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Testimonial Quote / Story</label>

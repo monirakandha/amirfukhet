@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useAdmin } from '@/context/AdminContext';
 import { BlogArticle } from '@/types';
 import { Plus, Search, Edit, Trash2, Check, X, Star, FileText, Calendar, Clock } from 'lucide-react';
+import { MediaPickerButton } from '@/components/admin/MediaManager';
 
 export const BlogManager: React.FC = () => {
   const { blogs, addBlog, updateBlog, deleteBlog, categories } = useAdmin();
@@ -292,17 +293,12 @@ export const BlogManager: React.FC = () => {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Cover Image URL</label>
-                  <input
-                    type="text"
-                    required
-                    value={coverImage}
-                    onChange={(e) => setCoverImage(e.target.value)}
-                    placeholder="/images/blog-luxury-villas.png"
-                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20"
-                  />
-                </div>
+                <MediaPickerButton
+                  label="Cover Image"
+                  required
+                  value={coverImage}
+                  onChange={setCoverImage}
+                />
                 <div className="space-y-1.5">
                   <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Estimated Read Time (Minutes)</label>
                   <input

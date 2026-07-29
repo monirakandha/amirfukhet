@@ -1,0 +1,4 @@
+# This directory is used by the Media Library to store uploaded images.
+# Uploaded images are served as static assets at /uploads/filename.jpg
+# On self-hosted servers, files persist here permanently.
+# On Vercel (serverless), use MEDIA_UPLOAD_URL in .env to point to an external host.

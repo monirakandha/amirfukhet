@@ -13,6 +13,7 @@ import { CategoryManager } from '@/components/admin/CategoryManager';
 import { SettingsManager } from '@/components/admin/SettingsManager';
 import { InquiriesManager } from '@/components/admin/InquiriesManager';
 import { NewsletterManager } from '@/components/admin/NewsletterManager';
+import { MediaManager } from '@/components/admin/MediaManager';
 import { Menu, X, ShieldCheck } from 'lucide-react';
 
 export default function AdminDashboardPage() {
@@ -44,6 +45,8 @@ export default function AdminDashboardPage() {
         return <InquiriesManager />;
       case 'newsletters':
         return <NewsletterManager />;
+      case 'media':
+        return <div className="p-6 sm:p-8"><MediaManager /></div>;
       default:
         return <DashboardOverview setActiveTab={setActiveTab} />;
     }
