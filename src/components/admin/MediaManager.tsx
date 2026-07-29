@@ -101,14 +101,14 @@ export const MediaManager: React.FC<MediaManagerProps> = ({ onSelect, pickerMode
     if (file) uploadFile(file);
   };
 
-  const handleDelete = async (filename: string) => {
-    if (!window.confirm(`Delete "${filename}"? This cannot be undone.`)) return;
-    setDeleting(filename);
+  const handleDelete = async (file: MediaFile) => {
+    if (!window.confirm(`Delete "${file.filename}"? This cannot be undone.`)) return;
+    setDeleting(file.filename);
     try {
-      const res = await fetch(`/api/upload?file=${encodeURIComponent(filename)}`, { method: 'DELETE' });
+      const res = await fetch(`/api/upload?url=${encodeURIComponent(file.url)}`, { method: 'DELETE' });
       if (!res.ok) throw new Error('Delete failed');
       showToast('File deleted.');
-      if (selectedFile === filename) setSelectedFile(null);
+      if (selectedFile === file.url) setSelectedFile(null);
       await loadFiles();
     } catch {
       showToast('Could not delete file', 'error');
@@ -344,7 +344,10 @@ export const MediaManager: React.FC<MediaManagerProps> = ({ onSelect, pickerMode
                     </a>
                     {/* Delete */}
                     <button
-                      onClick={(e) => { e.stopPropagation(); handleDelete(file.filename); }}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleDelete(file);
+                      }}
                       className="p-1.5 rounded-lg bg-red-500/70 hover:bg-red-600 text-white transition-colors backdrop-blur-sm"
                       title="Delete"
                     >

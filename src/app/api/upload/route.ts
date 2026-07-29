@@ -1,38 +1,23 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { writeFile, unlink, readdir, stat } from 'fs/promises';
-import path from 'path';
+import { put, del, list } from '@vercel/blob';
 
-const UPLOAD_DIR = path.join(process.cwd(), 'public', 'uploads');
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
 const ALLOWED_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/gif'];
-
-// Ensure uploads dir exists
-async function ensureUploadDir() {
-  const { mkdir } = await import('fs/promises');
-  await mkdir(UPLOAD_DIR, { recursive: true });
-}
 
 // GET — list all uploaded files
 export async function GET() {
   try {
-    await ensureUploadDir();
-    const files = await readdir(UPLOAD_DIR);
-    const imageFiles = files.filter((f) =>
-      /\.(jpg|jpeg|png|webp|gif)$/i.test(f)
-    );
-
-    const fileDetails = await Promise.all(
-      imageFiles.map(async (filename) => {
-        const filePath = path.join(UPLOAD_DIR, filename);
-        const stats = await stat(filePath);
-        return {
-          filename,
-          url: `/uploads/${filename}`,
-          size: stats.size,
-          uploadedAt: stats.mtime.toISOString(),
-        };
-      })
-    );
+    const { blobs } = await list();
+    
+    const fileDetails = blobs.map((blob) => {
+      // Vercel blob returns url, pathname, size, uploadedAt
+      return {
+        filename: blob.pathname,
+        url: blob.url,
+        size: blob.size,
+        uploadedAt: blob.uploadedAt.toISOString(),
+      };
+    });
 
     // Sort newest first
     fileDetails.sort(
@@ -49,8 +34,6 @@ export async function GET() {
 // POST — upload a file
 export async function POST(req: NextRequest) {
   try {
-    await ensureUploadDir();
-
     const formData = await req.formData();
     const file = formData.get('file') as File | null;
 
@@ -69,24 +52,16 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Generate unique filename: timestamp-originalname
-    const ext = file.name.split('.').pop()?.toLowerCase() || 'jpg';
-    const safeName = file.name
-      .replace(/\.[^.]+$/, '')
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/(^-|-$)/g, '')
-      .substring(0, 40);
-    const filename = `${Date.now()}-${safeName}.${ext}`;
-    const filePath = path.join(UPLOAD_DIR, filename);
-
-    const buffer = Buffer.from(await file.arrayBuffer());
-    await writeFile(filePath, buffer);
+    // Upload to Vercel Blob
+    const blob = await put(file.name, file, {
+      access: 'public',
+      addRandomSuffix: true,
+    });
 
     return NextResponse.json({
       success: true,
-      filename,
-      url: `/uploads/${filename}`,
+      filename: blob.pathname,
+      url: blob.url,
       size: file.size,
     });
   } catch (error) {
@@ -99,14 +74,14 @@ export async function POST(req: NextRequest) {
 export async function DELETE(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
-    const filename = searchParams.get('file');
+    const urlToDelete = searchParams.get('url');
 
-    if (!filename || filename.includes('..') || filename.includes('/')) {
-      return NextResponse.json({ error: 'Invalid filename' }, { status: 400 });
+    if (!urlToDelete) {
+      return NextResponse.json({ error: 'No URL provided' }, { status: 400 });
     }
 
-    const filePath = path.join(UPLOAD_DIR, filename);
-    await unlink(filePath);
+    // Delete from Vercel Blob using the blob URL
+    await del(urlToDelete);
 
     return NextResponse.json({ success: true });
   } catch (error) {
