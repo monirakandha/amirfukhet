@@ -50,6 +50,21 @@ export const PropertiesManager: React.FC = () => {
   const [imageList, setImageList] = useState<string[]>(['/images/villa-hero.png']);
   const [featured, setFeatured] = useState(false);
 
+  const [customPropertyTypes, setCustomPropertyTypes] = useState<string[]>([]);
+  const [customOwnershipTypes, setCustomOwnershipTypes] = useState<string[]>([]);
+
+  const propertyTypeOptions = React.useMemo(() => {
+    const defaults = ['Villa', 'Penthouse', 'Apartment', 'Condo', 'Commercial'];
+    const fromProps = properties.map(p => p.propertyType);
+    return Array.from(new Set([...defaults, ...fromProps, ...customPropertyTypes])).filter(Boolean);
+  }, [properties, customPropertyTypes]);
+
+  const ownershipTypeOptions = React.useMemo(() => {
+    const defaults = ['Freehold', 'Leasehold', 'Foreign Quota Freehold', 'Thai Company Ownership'];
+    const fromProps = properties.map(p => p.ownershipType || '');
+    return Array.from(new Set([...defaults, ...fromProps, ...customOwnershipTypes])).filter(Boolean);
+  }, [properties, customOwnershipTypes]);
+
   const [toast, setToast] = useState('');
 
   const showToast = (msg: string) => {
@@ -239,14 +254,26 @@ export const PropertiesManager: React.FC = () => {
               <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Property Type</label>
               <select
                 value={propertyType}
-                onChange={(e) => setPropertyType(e.target.value)}
+                onChange={(e) => {
+                  if (e.target.value === '__add_new__') {
+                    const newType = window.prompt('Enter new property type:');
+                    if (newType && newType.trim()) {
+                      const trimmed = newType.trim();
+                      setCustomPropertyTypes((prev) => [...prev, trimmed]);
+                      setPropertyType(trimmed);
+                    } else {
+                      setPropertyType(propertyType || propertyTypeOptions[0]);
+                    }
+                  } else {
+                    setPropertyType(e.target.value);
+                  }
+                }}
                 className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20 font-medium"
               >
-                <option value="Villa">Villa</option>
-                <option value="Penthouse">Penthouse</option>
-                <option value="Apartment">Apartment</option>
-                <option value="Condo">Condo</option>
-                <option value="Commercial">Commercial</option>
+                {propertyTypeOptions.map((opt) => (
+                  <option key={opt} value={opt}>{opt}</option>
+                ))}
+                <option value="__add_new__" className="font-bold text-blue-600 bg-blue-50">+ Add New Type...</option>
               </select>
             </div>
 
@@ -254,13 +281,26 @@ export const PropertiesManager: React.FC = () => {
               <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Ownership Structure</label>
               <select
                 value={ownershipType}
-                onChange={(e) => setOwnershipType(e.target.value)}
+                onChange={(e) => {
+                  if (e.target.value === '__add_new__') {
+                    const newType = window.prompt('Enter new ownership structure:');
+                    if (newType && newType.trim()) {
+                      const trimmed = newType.trim();
+                      setCustomOwnershipTypes((prev) => [...prev, trimmed]);
+                      setOwnershipType(trimmed);
+                    } else {
+                      setOwnershipType(ownershipType || ownershipTypeOptions[0]);
+                    }
+                  } else {
+                    setOwnershipType(e.target.value);
+                  }
+                }}
                 className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20 font-medium"
               >
-                <option value="Freehold">Freehold</option>
-                <option value="Leasehold">Leasehold</option>
-                <option value="Foreign Quota Freehold">Foreign Quota Freehold</option>
-                <option value="Thai Company Ownership">Thai Company Ownership</option>
+                {ownershipTypeOptions.map((opt) => (
+                  <option key={opt} value={opt}>{opt}</option>
+                ))}
+                <option value="__add_new__" className="font-bold text-blue-600 bg-blue-50">+ Add New Structure...</option>
               </select>
             </div>
 
