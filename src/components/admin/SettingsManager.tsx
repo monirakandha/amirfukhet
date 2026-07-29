@@ -13,8 +13,10 @@ import {
   Phone, 
   MapPin, 
   MessageSquare, 
-  Share2 
+  Share2,
+  LayoutTemplate
 } from 'lucide-react';
+import { MediaPickerButton } from '@/components/admin/MediaManager';
 
 export const SettingsManager: React.FC = () => {
   const { settings, updateSiteSettings, uploadLogo, uploadFavicon } = useAdmin();
@@ -40,6 +42,12 @@ export const SettingsManager: React.FC = () => {
   const [youtube, setYoutube] = useState(settings.socialLinks.youtube);
   const [facebook, setFacebook] = useState(settings.socialLinks.facebook || '');
   const [twitter, setTwitter] = useState(settings.socialLinks.twitter || '');
+
+  // Homepage Images
+  const [heroBg, setHeroBg] = useState(settings.homepageImages?.heroBg || '/images/hero-bg.jpg');
+  const [guideBannerBg, setGuideBannerBg] = useState(settings.homepageImages?.guideBannerBg || '/images/hero-bg.jpg');
+  const [advisorImage, setAdvisorImage] = useState(settings.homepageImages?.advisorImage || '/images/amir-seated.png');
+  const [readyBannerBg, setReadyBannerBg] = useState(settings.homepageImages?.readyBannerBg || '/images/resort-cta-bg.png');
 
   const [toast, setToast] = useState('');
 
@@ -94,6 +102,12 @@ export const SettingsManager: React.FC = () => {
         youtube,
         facebook,
         twitter,
+      },
+      homepageImages: {
+        heroBg,
+        guideBannerBg,
+        advisorImage,
+        readyBannerBg,
       },
     });
     showToast('All site settings, branding, and button links saved successfully!');
@@ -203,7 +217,38 @@ export const SettingsManager: React.FC = () => {
           </div>
         </div>
 
-        {/* Section 2: Action Button Links */}
+        {/* Section 2: Homepage Images */}
+        <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
+          <div className="flex items-center gap-2 pb-3 border-b border-slate-200">
+            <LayoutTemplate className="w-5 h-5 text-[#5870F7]" />
+            <h2 className="text-lg font-bold text-gray-900 font-heading-bricolage">Homepage Images</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <MediaPickerButton
+              label="Hero Area Background"
+              value={heroBg}
+              onChange={setHeroBg}
+            />
+            <MediaPickerButton
+              label="Guide Banner Background"
+              value={guideBannerBg}
+              onChange={setGuideBannerBg}
+            />
+            <MediaPickerButton
+              label="Meet Your Advisor Image"
+              value={advisorImage}
+              onChange={setAdvisorImage}
+            />
+            <MediaPickerButton
+              label="Ready When You Are Background"
+              value={readyBannerBg}
+              onChange={setReadyBannerBg}
+            />
+          </div>
+        </div>
+
+        {/* Section 3: Header & Footer Text */}
         <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
           <div className="flex items-center gap-2 pb-3 border-b border-slate-200">
             <LinkIcon className="w-5 h-5 text-emerald-600" />

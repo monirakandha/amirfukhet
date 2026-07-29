@@ -46,6 +46,12 @@ export interface SiteSettings {
     facebook: string;
     twitter?: string;
   };
+  homepageImages?: {
+    heroBg: string;
+    guideBannerBg: string;
+    advisorImage: string;
+    readyBannerBg: string;
+  };
 }
 
 export interface ContactSubmission {

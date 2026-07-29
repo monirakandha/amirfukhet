@@ -10,6 +10,7 @@ import ScheduleViewingModal from '@/components/ScheduleViewingModal';
 import { Property, BlogArticle, SuccessStory } from '@/types';
 import { fetchProperties, fetchBlogs, fetchSuccessStories, submitNewsletter } from '@/services/api';
 import { TrendingUp, BookOpen, Timer, MapPin, Scale, Building2, Newspaper } from 'lucide-react';
+import { useAdmin } from '@/context/AdminContext';
 
 export default function HomePage() {
   const [properties, setProperties] = useState<Property[]>([]);
@@ -17,6 +18,12 @@ export default function HomePage() {
   const [stories, setStories] = useState<SuccessStory[]>([]);
   const [isValuationOpen, setIsValuationOpen] = useState(false);
   const [selectedViewingProperty, setSelectedViewingProperty] = useState<Property | null>(null);
+
+  const { settings } = useAdmin();
+  const heroBg = settings.homepageImages?.heroBg || '/images/hero-bg.jpg';
+  const guideBannerBg = settings.homepageImages?.guideBannerBg || '/images/hero-bg.jpg';
+  const advisorImage = settings.homepageImages?.advisorImage || '/images/amir-seated.png';
+  const readyBannerBg = settings.homepageImages?.readyBannerBg || '/images/resort-cta-bg.png';
 
   useEffect(() => {
     async function loadData() {
@@ -41,7 +48,7 @@ export default function HomePage() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/hero-bg.jpg"
+            src={heroBg}
             alt="Luxury Phuket Villa Pool View"
             className="w-full h-full object-cover object-center"
           />
@@ -157,7 +164,7 @@ export default function HomePage() {
             {/* Right Photo without drop shadow matching clean cutout in image */}
             <div className="lg:col-span-5 flex justify-center lg:justify-end items-end self-end w-full relative z-0">
               <img
-                src="/images/amir.png"
+                src={advisorImage}
                 alt="Amir - Property Investment Advisor"
                 className="w-full h-auto max-w-[540px] sm:max-w-[640px] lg:max-w-[740px] xl:max-w-[840px] object-contain object-bottom scale-125 lg:scale-[1.4] xl:scale-[1.5] origin-bottom"
               />
@@ -171,7 +178,7 @@ export default function HomePage() {
         {/* Skyline Background Image */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/hero-bg.jpg"
+            src={guideBannerBg}
             alt="Phuket Skyline City View"
             className="w-full h-full object-cover object-bottom"
           />
@@ -763,7 +770,7 @@ export default function HomePage() {
         {/* Resort Coastline Background Image */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/resort-cta-bg.png"
+            src={readyBannerBg}
             alt="Phuket Oceanfront Resort Coastline View"
             className="w-full h-full object-cover object-center"
           />

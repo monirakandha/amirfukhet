@@ -38,6 +38,12 @@ const defaultSettings: SiteSettings = {
     facebook: 'https://facebook.com',
     twitter: 'https://x.com',
   },
+  homepageImages: {
+    heroBg: '/images/hero-bg.jpg',
+    guideBannerBg: '/images/hero-bg.jpg',
+    advisorImage: '/images/amir-seated.png',
+    readyBannerBg: '/images/resort-cta-bg.png',
+  },
 };
 
 const defaultFaqs: FAQItem[] = [
