@@ -802,9 +802,9 @@ export default function HomePage() {
         <section className="py-20 md:py-24 bg-[#1C2026] border-t border-gray-800/80 font-sans">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div 
-              className="rounded-[32px] p-8 md:p-14 lg:p-16 border border-gray-700/60 relative overflow-hidden shadow-2xl"
+              className="rounded-[32px] p-8 md:p-14 lg:p-16 border border-gray-700/60 relative overflow-hidden shadow-2xl bg-cover bg-center bg-no-repeat"
               style={{
-                background: "radial-gradient(103.54% 284.18% at 0% 0%, #151A21 0%, #101419 100%)",
+                backgroundImage: "url('/images/lead-magnet-bg.png')",
                 boxShadow: "0px 24px 64px -12px rgba(0, 0, 0, 0.55), inset 0px 1px 1px 0px rgba(255, 255, 255, 0.12)"
               }}
             >
