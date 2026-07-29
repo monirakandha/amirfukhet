@@ -23,6 +23,7 @@ export default function HomePage() {
   const heroBg = settings.homepageImages?.heroBg || '/images/hero-bg.jpg';
   const guideBannerBg = settings.homepageImages?.guideBannerBg || '/images/skyline-bg.png';
   const advisorImage = settings.homepageImages?.advisorImage || '/images/amir-seated.png';
+  const meetAdvisorImage = settings.homepageImages?.meetAdvisorImage || '/images/amir-seated.png';
   const readyBannerBg = settings.homepageImages?.readyBannerBg || '/images/resort-cta-bg.png';
 
   useEffect(() => {
@@ -646,7 +647,7 @@ export default function HomePage() {
             <div className="lg:col-span-5 flex justify-center">
               <div className="bg-[#E5E7EB] rounded-[32px] pt-8 px-6 sm:px-8 w-full max-w-md shadow-inner relative overflow-hidden flex justify-center items-end" style={{ height: '480px' }}>
                 <img
-                  src="/images/amir-seated.png"
+                  src={meetAdvisorImage}
                   alt="Amir Ahmed Faisal - Property Investment Advisor"
                   className="w-full h-auto max-w-[90%] object-contain object-bottom"
                 />

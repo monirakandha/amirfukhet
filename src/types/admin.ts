@@ -50,6 +50,7 @@ export interface SiteSettings {
     heroBg: string;
     guideBannerBg: string;
     advisorImage: string;
+    meetAdvisorImage?: string;
     readyBannerBg: string;
   };
 }

@@ -42,6 +42,7 @@ const defaultSettings: SiteSettings = {
     heroBg: '/images/hero-bg.jpg',
     guideBannerBg: '/images/hero-bg.jpg',
     advisorImage: '/images/amir-seated.png',
+    meetAdvisorImage: '/images/amir-seated.png',
     readyBannerBg: '/images/resort-cta-bg.png',
   },
 };

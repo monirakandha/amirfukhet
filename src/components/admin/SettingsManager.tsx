@@ -47,6 +47,7 @@ export const SettingsManager: React.FC = () => {
   const [heroBg, setHeroBg] = useState(settings.homepageImages?.heroBg || '/images/hero-bg.jpg');
   const [guideBannerBg, setGuideBannerBg] = useState(settings.homepageImages?.guideBannerBg || '/images/skyline-bg.png');
   const [advisorImage, setAdvisorImage] = useState(settings.homepageImages?.advisorImage || '/images/amir-seated.png');
+  const [meetAdvisorImage, setMeetAdvisorImage] = useState(settings.homepageImages?.meetAdvisorImage || '/images/amir-seated.png');
   const [readyBannerBg, setReadyBannerBg] = useState(settings.homepageImages?.readyBannerBg || '/images/resort-cta-bg.png');
 
   const [toast, setToast] = useState('');
@@ -107,6 +108,7 @@ export const SettingsManager: React.FC = () => {
         heroBg,
         guideBannerBg,
         advisorImage,
+        meetAdvisorImage,
         readyBannerBg,
       },
     });
@@ -236,9 +238,14 @@ export const SettingsManager: React.FC = () => {
               onChange={setGuideBannerBg}
             />
             <MediaPickerButton
-              label="Meet Your Advisor Image"
+              label="Advisor Intro Image (Top)"
               value={advisorImage}
               onChange={setAdvisorImage}
+            />
+            <MediaPickerButton
+              label="Meet Your Advisor Image (Bottom)"
+              value={meetAdvisorImage}
+              onChange={setMeetAdvisorImage}
             />
             <MediaPickerButton
               label="Ready When You Are Background"
