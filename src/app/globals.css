@@ -25,6 +25,11 @@ body {
   font-family: var(--font-mona), 'Mona Sans', Arial, sans-serif;
 }
 
+/* Global Heading Font Family */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-bricolage), 'Bricolage Grotesque', sans-serif !important;
+}
+
 /* Heading Bricolage Grotesque font utility */
 .font-heading-bricolage {
   font-family: var(--font-bricolage), 'Bricolage Grotesque', sans-serif;
@@ -60,6 +65,38 @@ body {
   line-height: 140%;
   color: #6B7280;
   text-align: center;
+}
+
+/* Exact Hero Typography Specs */
+.hero-heading {
+  font-family: var(--font-bricolage), 'Bricolage Grotesque', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 44px !important;
+  line-height: 100% !important;
+  letter-spacing: -0.01em !important;
+  text-align: center !important;
+  color: #020202 !important;
+}
+
+.hero-description {
+  font-family: var(--font-mona), 'Mona Sans', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 16px !important;
+  line-height: 100% !important;
+  letter-spacing: 0em !important;
+  text-align: center !important;
+  color: #6B7280 !important;
+}
+
+.hero-button {
+  font-family: var(--font-mona), 'Mona Sans', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 16px !important;
+  line-height: 100% !important;
+  letter-spacing: 0em !important;
+  text-align: center !important;
+  background-color: #5870F7 !important;
+  color: #FFFFFF !important;
 }
 
 .stat-metric-value {
@@ -100,15 +137,6 @@ body {
   transition: color 0.3s ease;
 }
 
-.group:hover .box-heading,
-a:hover .box-heading {
-  color: #FFFFFF !important;
-}
-
-.group:hover .box-description,
-a:hover .box-description {
-  color: rgba(255, 255, 255, 0.9) !important;
-}
 
 /* Global Hover CSS for buttons and link buttons with white or light grey backgrounds */
 button[class*="bg-white"]:hover,

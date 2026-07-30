@@ -25,15 +25,22 @@ export default function SuccessStoriesPage() {
       <Navbar onOpenValuationModal={() => setIsValuationOpen(true)} />
 
       {/* Header */}
-      <section className="pt-32 pb-12 bg-slate-900 border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <span className="text-xs uppercase tracking-widest text-amber-400 font-bold block mb-1">
+      <section className="relative w-full pt-32 pb-12 overflow-hidden bg-slate-900 border-b border-slate-800">
+        {/* Geometric grid background pattern */}
+        <div
+          className="absolute inset-0 opacity-20 pointer-events-none bg-cover bg-center"
+          style={{
+            backgroundImage: `url('/images/hero-grid-bg.png')`,
+          }}
+        />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <span className="text-xs uppercase tracking-widest text-amber-400 font-bold block mb-1 text-center">
             Proven Results & Trust
           </span>
-          <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
+          <h1 className="hero-heading !text-white text-center">
             Client Success Stories & Sold Case Studies
           </h1>
-          <p className="text-slate-400 text-sm mt-2 max-w-2xl">
+          <p className="hero-description !text-slate-400 text-center max-w-2xl mx-auto mt-2">
             Real stories from buyers, sellers, and luxury investors who achieved record outcomes with our team.
           </p>
         </div>

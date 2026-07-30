@@ -104,12 +104,11 @@ function PropertyListContent() {
 
       {/* Hero Area matching Figma mockup */}
       <section className="relative w-full pt-36 pb-20 sm:pt-40 sm:pb-24 overflow-hidden bg-[#f8fafc] border-b border-gray-200/60">
-        {/* Subtle geometric grid background pattern matching Figma mockup */}
+        {/* Geometric grid background pattern */}
         <div
-          className="absolute inset-0 opacity-40 pointer-events-none"
+          className="absolute inset-0 opacity-30 pointer-events-none bg-cover bg-center"
           style={{
-            backgroundImage: `radial-gradient(#CBD5E1 1px, transparent 1px)`,
-            backgroundSize: '24px 24px',
+            backgroundImage: `url('/images/hero-grid-bg.png')`,
           }}
         />
 
@@ -120,12 +119,12 @@ function PropertyListContent() {
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-[1.15] tracking-tight max-w-4xl mx-auto">
+          <h1 className="hero-heading max-w-4xl mx-auto">
             A few hand-picked properties
           </h1>
 
           {/* Subtitle / Description */}
-          <p className="text-sm sm:text-base text-gray-500 max-w-2xl mx-auto leading-relaxed pt-1">
+          <p className="hero-description max-w-2xl mx-auto pt-1">
             Not a portal – a small, curated selection. Every property here is one Amir would be comfortable recommending.
           </p>
         </div>

@@ -383,19 +383,19 @@ export default function HomePage() {
               {/* Card 1: Market Insights (Horizontal) */}
               <Link
                 href="/blog"
-                className="group bg-white hover:bg-[#5870F7] rounded-[24px] p-6 sm:p-7 transition-all duration-300 border-2 border-white shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:border-transparent hover:shadow-xl hover:-translate-y-1 flex items-start gap-5"
+                className="group bg-white rounded-[24px] p-6 sm:p-7 transition-all duration-300 border border-gray-200/70 shadow-xs hover:shadow-xl hover:-translate-y-1 flex items-start gap-5"
               >
-                <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-white flex items-center justify-center transition-colors shrink-0 shadow-2xs">
+                <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-[#E5ECFF] flex items-center justify-center transition-colors shrink-0 shadow-2xs">
                   <TrendingUp className="w-7 h-7 text-[#5870F7] transition-colors" />
                 </div>
                 <div className="flex flex-col">
                   <h3
-                    className="box-heading font-heading-bricolage text-[24px] font-medium text-[#020202] leading-tight tracking-[-0.01em] group-hover:text-white transition-colors"
+                    className="box-heading font-heading-bricolage text-[22px] sm:text-[24px] font-medium text-[#020202] leading-tight tracking-[-0.01em] group-hover:text-[#5870F7] transition-colors"
                     style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
                   >
                     Market Insights
                   </h3>
-                  <p className="box-description font-desc-mona text-[16px] sm:text-[18px] font-normal text-[#6B7280] leading-[1.4] mt-1.5 group-hover:text-white/85 transition-colors">
+                  <p className="box-description font-desc-mona text-[15px] sm:text-[16px] font-normal text-[#6B7280] leading-[1.4] mt-1.5 transition-colors">
                     Prices, trends, area analysis, demand
                   </p>
                 </div>
@@ -404,43 +404,43 @@ export default function HomePage() {
               {/* Card 4: Ownership & Legal (Vertical) */}
               <Link
                 href="/blog"
-                className="group bg-white hover:bg-[#5870F7] rounded-[24px] p-6 sm:p-8 transition-all duration-300 border-2 border-white shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:border-transparent hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between"
+                className="group bg-white rounded-[24px] p-6 sm:p-8 transition-all duration-300 border border-gray-200/70 shadow-xs hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between"
               >
                 <div>
-                  <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-white flex items-center justify-center transition-colors mb-6 shrink-0 shadow-2xs">
+                  <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-[#E5ECFF] flex items-center justify-center transition-colors mb-6 shrink-0 shadow-2xs">
                     <Scale className="w-7 h-7 text-[#5870F7] transition-colors" />
                   </div>
                   <h3
-                    className="box-heading font-heading-bricolage text-[24px] font-medium text-[#020202] leading-tight tracking-[-0.01em] group-hover:text-white transition-colors"
+                    className="box-heading font-heading-bricolage text-[22px] sm:text-[24px] font-medium text-[#020202] leading-tight tracking-[-0.01em] group-hover:text-[#5870F7] transition-colors"
                     style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
                   >
                     Ownership & Legal
                   </h3>
-                  <p className="box-description font-desc-mona text-[16px] sm:text-[18px] font-normal text-[#6B7280] leading-[1.4] mt-2 group-hover:text-white/85 transition-colors">
+                  <p className="box-description font-desc-mona text-[15px] sm:text-[16px] font-normal text-[#6B7280] leading-[1.4] mt-2 transition-colors">
                     Freehold, leasehold, company structures
                   </p>
                 </div>
               </Link>
             </div>
 
-            {/* Column 2: Tall (Buyer Guides - Blue!) on top, Short (Rental & ROI) on bottom */}
+            {/* Column 2: Tall (Buyer Guides) on top, Short (Rental & ROI) on bottom */}
             <div className="flex flex-col gap-6 sm:gap-8">
               {/* Card 2: Buyer Guides (Vertical) */}
               <Link
                 href="/blog"
-                className="group bg-white hover:bg-[#5870F7] rounded-[24px] p-6 sm:p-8 transition-all duration-300 border-2 border-white shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:border-transparent hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between"
+                className="group bg-white rounded-[24px] p-6 sm:p-8 transition-all duration-300 border border-gray-200/70 shadow-xs hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between"
               >
                 <div>
-                  <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-white flex items-center justify-center transition-colors mb-6 shrink-0 shadow-2xs">
+                  <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-[#E5ECFF] flex items-center justify-center transition-colors mb-6 shrink-0 shadow-2xs">
                     <Timer className="w-7 h-7 text-[#5870F7] transition-colors" />
                   </div>
                   <h3
-                    className="box-heading font-heading-bricolage text-[24px] font-medium text-[#020202] leading-tight tracking-[-0.01em] group-hover:text-white transition-colors"
+                    className="box-heading font-heading-bricolage text-[22px] sm:text-[24px] font-medium text-[#020202] leading-tight tracking-[-0.01em] group-hover:text-[#5870F7] transition-colors"
                     style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
                   >
                     Buyer Guides
                   </h3>
-                  <p className="box-description font-desc-mona text-[16px] sm:text-[18px] font-normal text-[#6B7280] leading-[1.4] mt-2 group-hover:text-white/85 transition-colors">
+                  <p className="box-description font-desc-mona text-[15px] sm:text-[16px] font-normal text-[#6B7280] leading-[1.4] mt-2 transition-colors">
                     Process, taxes, financing, bank accounts
                   </p>
                 </div>
@@ -449,19 +449,19 @@ export default function HomePage() {
               {/* Card 5: Rental & ROI (Horizontal) */}
               <Link
                 href="/blog"
-                className="group bg-white hover:bg-[#5870F7] rounded-[24px] p-6 sm:p-7 transition-all duration-300 border-2 border-white shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:border-transparent hover:shadow-xl hover:-translate-y-1 flex items-start gap-5"
+                className="group bg-white rounded-[24px] p-6 sm:p-7 transition-all duration-300 border border-gray-200/70 shadow-xs hover:shadow-xl hover:-translate-y-1 flex items-start gap-5"
               >
-                <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-white flex items-center justify-center transition-colors shrink-0 shadow-2xs">
+                <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-[#E5ECFF] flex items-center justify-center transition-colors shrink-0 shadow-2xs">
                   <Building2 className="w-7 h-7 text-[#5870F7] transition-colors" />
                 </div>
                 <div className="flex flex-col">
                   <h3
-                    className="box-heading font-heading-bricolage text-[24px] font-medium text-[#020202] leading-tight tracking-[-0.01em] group-hover:text-white transition-colors"
+                    className="box-heading font-heading-bricolage text-[22px] sm:text-[24px] font-medium text-[#020202] leading-tight tracking-[-0.01em] group-hover:text-[#5870F7] transition-colors"
                     style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
                   >
                     Rental & ROI
                   </h3>
-                  <p className="box-description font-desc-mona text-[16px] sm:text-[18px] font-normal text-[#6B7280] leading-[1.4] mt-1.5 group-hover:text-white/85 transition-colors">
+                  <p className="box-description font-desc-mona text-[15px] sm:text-[16px] font-normal text-[#6B7280] leading-[1.4] mt-1.5 transition-colors">
                     Yields, seasonality, rental strategy
                   </p>
                 </div>
@@ -473,19 +473,19 @@ export default function HomePage() {
               {/* Card 3: Area Guides (Horizontal) */}
               <Link
                 href="/blog"
-                className="group bg-white hover:bg-[#5870F7] rounded-[24px] p-6 sm:p-7 transition-all duration-300 border-2 border-white shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:border-transparent hover:shadow-xl hover:-translate-y-1 flex items-start gap-5"
+                className="group bg-white rounded-[24px] p-6 sm:p-7 transition-all duration-300 border border-gray-200/70 shadow-xs hover:shadow-xl hover:-translate-y-1 flex items-start gap-5"
               >
-                <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-white flex items-center justify-center transition-colors shrink-0 shadow-2xs">
+                <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-[#E5ECFF] flex items-center justify-center transition-colors shrink-0 shadow-2xs">
                   <MapPin className="w-7 h-7 text-[#5870F7] transition-colors" />
                 </div>
                 <div className="flex flex-col">
                   <h3
-                    className="box-heading font-heading-bricolage text-[24px] font-medium text-[#020202] leading-tight tracking-[-0.01em] group-hover:text-white transition-colors"
+                    className="box-heading font-heading-bricolage text-[22px] sm:text-[24px] font-medium text-[#020202] leading-tight tracking-[-0.01em] group-hover:text-[#5870F7] transition-colors"
                     style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
                   >
                     Area Guides
                   </h3>
-                  <p className="box-description font-desc-mona text-[16px] sm:text-[18px] font-normal text-[#6B7280] leading-[1.4] mt-1.5 group-hover:text-white/85 transition-colors">
+                  <p className="box-description font-desc-mona text-[15px] sm:text-[16px] font-normal text-[#6B7280] leading-[1.4] mt-1.5 transition-colors">
                     Bang Tao, Kamala, Surin, Layan, Rawai
                   </p>
                 </div>
@@ -494,19 +494,19 @@ export default function HomePage() {
               {/* Card 6: News & Updates (Vertical) */}
               <Link
                 href="/blog"
-                className="group bg-white hover:bg-[#5870F7] rounded-[24px] p-6 sm:p-8 transition-all duration-300 border-2 border-white shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:border-transparent hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between"
+                className="group bg-white rounded-[24px] p-6 sm:p-8 transition-all duration-300 border border-gray-200/70 shadow-xs hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between"
               >
                 <div>
-                  <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-white flex items-center justify-center transition-colors mb-6 shrink-0 shadow-2xs">
+                  <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-[#E5ECFF] flex items-center justify-center transition-colors mb-6 shrink-0 shadow-2xs">
                     <Newspaper className="w-7 h-7 text-[#5870F7] transition-colors" />
                   </div>
                   <h3
-                    className="box-heading font-heading-bricolage text-[24px] font-medium text-[#020202] leading-tight tracking-[-0.01em] group-hover:text-white transition-colors"
+                    className="box-heading font-heading-bricolage text-[22px] sm:text-[24px] font-medium text-[#020202] leading-tight tracking-[-0.01em] group-hover:text-[#5870F7] transition-colors"
                     style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
                   >
                     News & Updates
                   </h3>
-                  <p className="box-description font-desc-mona text-[16px] sm:text-[18px] font-normal text-[#6B7280] leading-[1.4] mt-2 group-hover:text-white/85 transition-colors">
+                  <p className="box-description font-desc-mona text-[15px] sm:text-[16px] font-normal text-[#6B7280] leading-[1.4] mt-2 transition-colors">
                     Launches, infrastructure, policy
                   </p>
                 </div>

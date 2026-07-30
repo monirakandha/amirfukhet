@@ -15,12 +15,11 @@ export default function AboutPage() {
 
       {/* About Hero Area matching Figma mockup */}
       <section className="relative w-full pt-36 pb-12 sm:pt-40 sm:pb-16 overflow-hidden bg-[#f8fafc] border-b border-gray-200/60">
-        {/* Subtle geometric grid background pattern matching Figma mockup */}
+        {/* Geometric grid background pattern */}
         <div
-          className="absolute inset-0 opacity-40 pointer-events-none"
+          className="absolute inset-0 opacity-30 pointer-events-none bg-cover bg-center"
           style={{
-            backgroundImage: `radial-gradient(#CBD5E1 1px, transparent 1px)`,
-            backgroundSize: '24px 24px',
+            backgroundImage: `url('/images/hero-grid-bg.png')`,
           }}
         />
 
@@ -34,12 +33,12 @@ export default function AboutPage() {
               </div>
 
               {/* Main Headline */}
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-[1.15] tracking-tight">
+              <h1 className="hero-heading lg:text-left">
                 The advisor foreigners trust to buy in Phuket
               </h1>
 
               {/* Description Paragraph */}
-              <p className="text-sm sm:text-base text-gray-500 leading-relaxed max-w-xl">
+              <p className="hero-description lg:text-left max-w-xl">
                 I'm Amir Ahmed Faisal. I help international buyers understand the Phuket market and invest in it safely – explaining the structures, flagging the risks, and staying in their corner from first message to handover.
               </p>
 

@@ -44,12 +44,11 @@ export default function ContactPage() {
 
       {/* Work With Me Hero Area matching Figma mockup */}
       <section className="relative w-full pt-36 pb-20 sm:pt-40 sm:pb-24 overflow-hidden bg-[#f8fafc] border-b border-gray-200/60">
-        {/* Subtle geometric grid background pattern matching Figma mockup */}
+        {/* Geometric grid background pattern */}
         <div
-          className="absolute inset-0 opacity-40 pointer-events-none"
+          className="absolute inset-0 opacity-30 pointer-events-none bg-cover bg-center"
           style={{
-            backgroundImage: `radial-gradient(#CBD5E1 1px, transparent 1px)`,
-            backgroundSize: '24px 24px',
+            backgroundImage: `url('/images/hero-grid-bg.png')`,
           }}
         />
 
@@ -60,12 +59,12 @@ export default function ContactPage() {
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-[1.15] tracking-tight max-w-4xl mx-auto">
+          <h1 className="hero-heading max-w-4xl mx-auto">
             An advisor in your corner — from first question to keys in hand
           </h1>
 
           {/* Subtitle / Paragraph */}
-          <p className="text-sm sm:text-base text-gray-500 max-w-2xl mx-auto leading-relaxed pt-1">
+          <p className="hero-description max-w-2xl mx-auto pt-1">
             No commission-chasing. No pressure. Just clear, independent guidance so you buy the right property under the right structure.
           </p>
 
@@ -73,7 +72,7 @@ export default function ContactPage() {
           <div className="pt-2">
             <a
               href="#contact-form"
-              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#4c70ff] hover:bg-blue-600 text-white font-semibold text-sm rounded-full transition-all shadow-lg shadow-blue-600/25"
+              className="hero-button inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full transition-all shadow-lg shadow-blue-600/25"
             >
               Book a free consultation
               <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
