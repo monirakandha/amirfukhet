@@ -325,7 +325,7 @@ export default function ContactPage() {
       <section className="py-20 bg-[#f8fafc] border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-[#1c2024] rounded-[28px] sm:rounded-[32px] p-3 sm:p-4 shadow-2xl w-full">
-            <div className="bg-[#FFFFFF0D] border border-[#FFFFFF33] rounded-[20px] p-6 sm:p-8 text-center text-white space-y-6 max-w-[796px] mx-auto">
+            <div className="bg-[#FFFFFF0D] border border-[#FFFFFF33] rounded-[20px] py-12 sm:py-16 px-6 sm:px-12 text-center text-white space-y-6 sm:space-y-8 w-full">
               <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">
                 Let's talk about your purchase
               </h3>
