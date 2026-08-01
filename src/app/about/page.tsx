@@ -87,7 +87,7 @@ export default function AboutPage() {
               <img
                 src="/images/amir-hero.png"
                 alt="Amir Ahmed Faisal - Property Investment Advisor"
-                className="max-h-[360px] sm:max-h-[400px] lg:max-h-[420px] object-contain object-bottom block"
+                className="max-h-[460px] sm:max-h-[500px] lg:max-h-[530px] object-contain object-bottom block"
               />
             </div>
           </div>

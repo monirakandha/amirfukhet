@@ -254,15 +254,27 @@ function PropertyListContent() {
                       </span>
                     </div>
 
-                    <Link
-                      href={`/properties/${prop.id}`}
-                      className="text-[#4c70ff] font-semibold text-xs flex items-center gap-1 hover:underline"
+                    <button
+                      type="button"
+                      onClick={() => setSelectedViewingProperty({
+                        id: prop.id,
+                        title: prop.title,
+                        slug: prop.id,
+                        price: 0,
+                        formattedPrice: prop.price,
+                        location: { city: prop.location.split(',')[1]?.trim() || 'Phuket', address: prop.location },
+                        features: { beds: prop.beds, baths: prop.baths, sqft: prop.sqm },
+                        images: [prop.image],
+                        type: 'Villa',
+                        status: 'active'
+                      })}
+                      className="text-[#4c70ff] font-semibold text-xs flex items-center gap-1 hover:underline cursor-pointer"
                     >
-                      View Details
+                      Inquire
                       <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
                       </svg>
-                    </Link>
+                    </button>
                   </div>
                 </div>
               </div>

@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 import { Property } from '@/types';
 
 interface PropertyCardProps {
@@ -9,13 +8,22 @@ interface PropertyCardProps {
   onQuickInquire?: (property: Property) => void;
 }
 
-export default function PropertyCard({ property }: PropertyCardProps) {
+export default function PropertyCard({ property, onQuickInquire }: PropertyCardProps) {
   const locationLabel = property.locationName || `Thailand ,${property.location.city}`;
   const areaLabel = property.areaSqM ? `${property.areaSqM} m²` : `${property.features.sqft} sqft`;
   const ownershipLabel = property.ownershipType || 'Freehold';
 
+  const handleClick = () => {
+    if (onQuickInquire) {
+      onQuickInquire(property);
+    }
+  };
+
   return (
-    <div className="group bg-white rounded-2xl border border-gray-200/80 shadow-xs flex flex-col justify-between hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+    <div
+      onClick={handleClick}
+      className="group bg-white rounded-2xl border border-gray-200/80 shadow-xs flex flex-col justify-between hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden cursor-pointer"
+    >
       {/* Top Image */}
       <div className="relative h-60 sm:h-64 w-full bg-gray-100 overflow-hidden rounded-t-2xl">
         <img
@@ -37,11 +45,9 @@ export default function PropertyCard({ property }: PropertyCardProps) {
           </div>
 
           {/* Title */}
-          <Link href={`/properties/${property.slug}`}>
-            <h3 className="font-heading-bricolage text-[22px] font-medium text-[#020202] leading-none tracking-[-0.01em] hover:text-[#5870F7] transition-colors mt-2 px-6 line-clamp-1">
-              {property.title}
-            </h3>
-          </Link>
+          <h3 className="font-heading-bricolage text-[22px] font-medium text-[#020202] leading-none tracking-[-0.01em] group-hover:text-[#5870F7] transition-colors mt-2 px-6 line-clamp-1">
+            {property.title}
+          </h3>
 
           {/* 4 Feature Columns Row */}
           <div className="border-y border-gray-100 py-3.5 my-4 mx-6 grid grid-cols-4 gap-1 text-center items-center">
@@ -79,7 +85,7 @@ export default function PropertyCard({ property }: PropertyCardProps) {
           </div>
         </div>
 
-        {/* Bottom Price & View Details Bar */}
+        {/* Bottom Price & Inquire Action Bar */}
         <div className="flex items-center justify-between px-6 pb-5">
           {/* Price */}
           <div className="flex items-baseline gap-2">
@@ -93,16 +99,20 @@ export default function PropertyCard({ property }: PropertyCardProps) {
             </span>
           </div>
 
-          {/* View Details Link */}
-          <Link
-            href={`/properties/${property.slug}`}
+          {/* Inquire Action Button */}
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleClick();
+            }}
             className="font-heading-bricolage text-[18px] font-medium text-[#5870F7] hover:text-blue-700 leading-none inline-flex items-center gap-1 transition-colors"
           >
-            View Details
+            Inquire
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
             </svg>
-          </Link>
+          </button>
         </div>
       </div>
     </div>
