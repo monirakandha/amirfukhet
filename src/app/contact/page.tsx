@@ -323,30 +323,32 @@ export default function ContactPage() {
       {/* Let's talk about your purchase CTA Section matching Figma mockup */}
       <section className="py-20 bg-[#f8fafc] border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-[#1c2024] rounded-3xl p-8 sm:p-12 text-center text-white shadow-2xl border border-gray-800 space-y-6 max-w-4xl mx-auto">
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">
-              Let's talk about your purchase
-            </h3>
-            <p className="text-xs sm:text-sm text-gray-400 max-w-md mx-auto leading-relaxed">
-              The first conversation is free, and there's no pressure to go further.
-            </p>
+          <div className="bg-[#1c2024] rounded-[28px] sm:rounded-[32px] p-3 sm:p-4 shadow-2xl max-w-4xl mx-auto">
+            <div className="border border-gray-700/60 rounded-[20px] sm:rounded-[24px] p-8 sm:p-12 text-center text-white space-y-6">
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">
+                Let's talk about your purchase
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-400 max-w-md mx-auto leading-relaxed">
+                The first conversation is free, and there's no pressure to go further.
+              </p>
 
-            <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-              <a
-                href="https://wa.me/8801875189361"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-3 bg-[#4c70ff] hover:bg-blue-600 text-white font-semibold text-xs sm:text-sm rounded-full transition-all shadow-md shadow-blue-500/20"
-              >
-                WhatsApp Amir
-              </a>
+              <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+                <a
+                  href="https://wa.me/8801875189361"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 bg-[#4c70ff] hover:bg-blue-600 text-white font-semibold text-xs sm:text-sm rounded-full transition-all shadow-md shadow-blue-500/20"
+                >
+                  WhatsApp Amir
+                </a>
 
-              <a
-                href="#contact-form"
-                className="group px-6 py-3 bg-white hover:bg-[#5870F7] text-[#020202] hover:text-white font-semibold text-xs sm:text-sm rounded-full transition-all shadow-md"
-              >
-                Book a consultation
-              </a>
+                <a
+                  href="#contact-form"
+                  className="group px-6 py-3 bg-white hover:bg-[#5870F7] text-[#020202] hover:text-white font-semibold text-xs sm:text-sm rounded-full transition-all shadow-md"
+                >
+                  Book a consultation
+                </a>
+              </div>
             </div>
           </div>
         </div>

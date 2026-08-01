@@ -180,30 +180,32 @@ export default function AboutPage() {
           </div>
 
           {/* Bottom Dark CTA Card matching Figma mockup */}
-          <div className="bg-[#1c2024] rounded-3xl p-8 sm:p-12 text-center text-white shadow-2xl border border-gray-800 space-y-6">
-            <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-              Ready to talk through your purchase?
-            </h3>
-            <p className="text-sm text-gray-400 max-w-md mx-auto leading-relaxed">
-              Message Amir directly. Honest, advisory, no pressure.
-            </p>
+          <div className="bg-[#1c2024] rounded-[28px] sm:rounded-[32px] p-3 sm:p-4 shadow-2xl">
+            <div className="border border-gray-700/60 rounded-[20px] sm:rounded-[24px] p-8 sm:p-12 text-center text-white space-y-6">
+              <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+                Ready to talk through your purchase?
+              </h3>
+              <p className="text-sm text-gray-400 max-w-md mx-auto leading-relaxed">
+                Message Amir directly. Honest, advisory, no pressure.
+              </p>
 
-            <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-              <a
-                href="https://wa.me/8801875189361"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-3 bg-[#4c70ff] hover:bg-blue-600 text-white font-semibold text-sm rounded-full transition-all shadow-md shadow-blue-500/20"
-              >
-                Contact Amir on WhatsApp
-              </a>
+              <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+                <a
+                  href="https://wa.me/8801875189361"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 bg-[#4c70ff] hover:bg-blue-600 text-white font-semibold text-sm rounded-full transition-all shadow-md shadow-blue-500/20"
+                >
+                  Contact Amir on WhatsApp
+                </a>
 
-              <Link
-                href="/guide"
-                className="group px-6 py-3 bg-white hover:bg-[#5870F7] text-[#020202] hover:text-white font-semibold text-sm rounded-full transition-all shadow-md"
-              >
-                See how I work
-              </Link>
+                <Link
+                  href="/guide"
+                  className="group px-6 py-3 bg-white hover:bg-[#5870F7] text-[#020202] hover:text-white font-semibold text-sm rounded-full transition-all shadow-md"
+                >
+                  See how I work
+                </Link>
+              </div>
             </div>
           </div>
         </div>
