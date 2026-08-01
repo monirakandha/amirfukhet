@@ -83,11 +83,11 @@ export default function AboutPage() {
             </div>
 
             {/* Right Portrait Image */}
-            <div className="lg:col-span-5 flex justify-center lg:justify-end items-end h-full">
+            <div className="lg:col-span-5 flex justify-center lg:justify-end items-end">
               <img
                 src="/images/amir-hero.png"
                 alt="Amir Ahmed Faisal - Property Investment Advisor"
-                className="max-h-[460px] sm:max-h-[500px] lg:max-h-[530px] object-contain object-bottom block"
+                className="h-[420px] sm:h-[480px] lg:h-[540px] w-auto object-contain object-bottom block shrink-0"
               />
             </div>
           </div>
