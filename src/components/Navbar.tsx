@@ -96,9 +96,9 @@ export default function Navbar({ onOpenValuationModal }: NavbarProps) {
                   <Link
                     key={idx}
                     href={link.path}
-                    className={`font-desc-mona text-[16px] font-normal leading-none tracking-normal transition-colors flex items-center gap-1.5 cursor-pointer ${
+                    className={`font-desc-mona text-[16px] font-medium leading-none tracking-normal text-center transition-colors flex items-center gap-1.5 cursor-pointer ${
                       isActive
-                        ? 'text-[#5870F7] font-medium'
+                        ? 'text-[#5870F7]'
                         : 'text-[#020202] hover:text-[#5870F7]'
                     }`}
                   >
@@ -186,7 +186,7 @@ export default function Navbar({ onOpenValuationModal }: NavbarProps) {
               key={idx}
               href={link.path}
               onClick={() => setMobileMenuOpen(false)}
-              className="block font-desc-mona text-[16px] font-normal leading-none py-2 hover:text-[#5870F7] transition-colors"
+              className="block font-desc-mona text-[16px] font-medium leading-none tracking-normal py-2 hover:text-[#5870F7] transition-colors"
             >
               {link.name}
             </Link>
