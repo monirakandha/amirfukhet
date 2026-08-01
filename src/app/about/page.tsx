@@ -87,11 +87,15 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Absolute Bottom-Anchored Portrait Image for Desktop */}
-        <img
-          src="/images/amir-hero.png"
-          alt="Amir Ahmed Faisal - Property Investment Advisor"
-          className="hidden lg:block absolute -bottom-10 xl:-bottom-14 right-0 lg:right-4 xl:right-12 2xl:right-[10%] h-[700px] xl:h-[800px] w-auto max-w-none object-contain object-bottom pointer-events-none z-10"
+        {/* Absolute Bottom-Anchored Portrait Image for Desktop (Using Background Image) */}
+        <div 
+          className="hidden lg:block absolute bottom-0 right-[2%] lg:right-[5%] xl:right-[8%] w-[600px] xl:w-[700px] h-[700px] xl:h-[800px] pointer-events-none z-10"
+          style={{
+            backgroundImage: "url('/images/amir-hero.png')",
+            backgroundSize: "contain",
+            backgroundPosition: "bottom center",
+            backgroundRepeat: "no-repeat"
+          }}
         />
 
         {/* Mobile Portrait Image */}
