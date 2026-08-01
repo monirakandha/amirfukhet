@@ -16,7 +16,7 @@ export default function AboutPage() {
       <Navbar onOpenValuationModal={() => setIsValuationOpen(true)} />
 
       {/* About Hero Area matching Figma mockup */}
-      <section className="relative w-full pt-32 pb-12 sm:pt-40 sm:pb-16 lg:h-[720px] overflow-hidden bg-white border-b border-gray-200/60 flex items-center">
+      <section className="relative w-full pt-24 sm:pt-32 lg:pt-36 pb-12 sm:pb-16 lg:h-[720px] overflow-hidden bg-white border-b border-gray-200/60 block">
         {/* Geometric grid background pattern */}
         <div className="absolute inset-0 pointer-events-none hero-grid-overlay" />
 
