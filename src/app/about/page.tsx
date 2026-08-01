@@ -16,11 +16,11 @@ export default function AboutPage() {
       <Navbar onOpenValuationModal={() => setIsValuationOpen(true)} />
 
       {/* About Hero Area matching Figma mockup */}
-      <section className="relative w-full pt-32 pb-12 sm:pt-40 sm:pb-16 overflow-hidden bg-white border-b border-gray-200/60">
+      <section className="relative w-full min-h-[500px] lg:min-h-[600px] pt-32 pb-12 sm:pt-40 sm:pb-16 overflow-hidden bg-white border-b border-gray-200/60 flex items-center">
         {/* Geometric grid background pattern */}
         <div className="absolute inset-0 pointer-events-none hero-grid-overlay" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left Content Area */}
             <div className="lg:col-span-7 space-y-6">
@@ -91,7 +91,7 @@ export default function AboutPage() {
         <img
           src="/images/amir-hero.png"
           alt="Amir Ahmed Faisal - Property Investment Advisor"
-          className="hidden lg:block absolute bottom-0 right-[5%] xl:right-[10%] 2xl:right-[15%] h-[90%] max-h-[500px] object-contain object-bottom pointer-events-none z-10"
+          className="hidden lg:block absolute bottom-0 right-[5%] xl:right-[10%] 2xl:right-[15%] h-[95%] max-h-[600px] object-contain object-bottom pointer-events-none z-10"
         />
 
         {/* Mobile Portrait Image */}
