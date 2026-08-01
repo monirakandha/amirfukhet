@@ -91,7 +91,7 @@ export default function AboutPage() {
         <img
           src="/images/amir-hero.png"
           alt="Amir Ahmed Faisal - Property Investment Advisor"
-          className="hidden lg:block absolute bottom-0 right-[5%] xl:right-[10%] 2xl:right-[15%] h-[600px] xl:h-[650px] w-auto max-w-none object-contain object-bottom pointer-events-none z-10"
+          className="hidden lg:block absolute -bottom-10 xl:-bottom-14 right-0 lg:right-4 xl:right-12 2xl:right-[10%] h-[700px] xl:h-[800px] w-auto max-w-none object-contain object-bottom pointer-events-none z-10"
         />
 
         {/* Mobile Portrait Image */}
