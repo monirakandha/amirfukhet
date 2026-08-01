@@ -49,7 +49,8 @@ export default function ContactPage() {
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
           {/* Work with Amir Pill Badge */}
-          <div className="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-white border border-blue-100 text-xs font-semibold text-[#4c70ff] shadow-2xs">
+          <div className="section-pill shadow-2xs mx-auto">
+            <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
             Work with Amir
           </div>
 
@@ -148,8 +149,8 @@ export default function ContactPage() {
             {/* Left Column Content */}
             <div className="lg:col-span-6 space-y-6">
               {/* What you get Pill Badge */}
-              <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-blue-100 text-xs font-semibold text-[#4c70ff] shadow-2xs">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#4c70ff]" />
+              <div className="section-pill shadow-2xs">
+                <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
                 What you get
               </div>
 
@@ -246,8 +247,8 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           {/* Section Header */}
           <div className="text-center space-y-3">
-            <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#f8fafc] border border-blue-100 text-xs font-semibold text-[#4c70ff] shadow-2xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#4c70ff]" />
+            <div className="section-pill shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
               How to get started
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
