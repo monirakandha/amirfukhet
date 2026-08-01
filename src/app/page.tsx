@@ -12,6 +12,8 @@ import { fetchProperties, fetchBlogs, fetchSuccessStories, submitNewsletter } fr
 import { TrendingUp, BookOpen, Timer, MapPin, Scale, Building2, Newspaper } from 'lucide-react';
 import { useAdmin } from '@/context/AdminContext';
 
+import AnimatedCounter from '@/components/AnimatedCounter';
+
 export default function HomePage() {
   const [properties, setProperties] = useState<Property[]>([]);
   const [blogs, setBlogs] = useState<BlogArticle[]>([]);
@@ -68,7 +70,7 @@ export default function HomePage() {
                 className="font-heading-bricolage text-[44px] font-light text-[#5870F7] leading-none tracking-[-0.01em]"
                 style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
               >
-                32+
+                <AnimatedCounter value="32+" />
               </div>
               <p className="font-desc-mona text-[18px] font-normal text-[#6B7280] leading-none">
                 In-depth investor articles
@@ -81,7 +83,7 @@ export default function HomePage() {
                 className="font-heading-bricolage text-[44px] font-light text-[#5870F7] leading-none tracking-[-0.01em]"
                 style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
               >
-                07+
+                <AnimatedCounter value="07+" />
               </div>
               <p className="font-desc-mona text-[18px] font-normal text-[#6B7280] leading-none">
                 Phuket areas covered in depth
@@ -107,7 +109,7 @@ export default function HomePage() {
                 className="font-heading-bricolage text-[44px] font-light text-[#5870F7] leading-none tracking-[-0.01em]"
                 style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
               >
-                24h
+                <AnimatedCounter value="24h" />
               </div>
               <p className="font-desc-mona text-[18px] font-normal text-[#6B7280] leading-none">
                 Replies within 24h

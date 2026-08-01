@@ -6,6 +6,8 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import HomeValuationModal from '@/components/HomeValuationModal';
 
+import AnimatedCounter from '@/components/AnimatedCounter';
+
 export default function AboutPage() {
   const [isValuationOpen, setIsValuationOpen] = useState(false);
 
@@ -120,7 +122,7 @@ export default function AboutPage() {
               {/* Stat 1 */}
               <div className="pt-4 sm:pt-0 sm:px-4 space-y-1">
                 <div className="text-3xl sm:text-4xl font-bold text-[#4c70ff]">
-                  7+ yrs
+                  <AnimatedCounter value="7+ yrs" />
                 </div>
                 <div className="text-xs sm:text-sm text-gray-600 font-medium">
                   In the Phuket market
@@ -130,7 +132,7 @@ export default function AboutPage() {
               {/* Stat 2 */}
               <div className="pt-4 sm:pt-0 sm:px-4 space-y-1">
                 <div className="text-3xl sm:text-4xl font-bold text-[#4c70ff]">
-                  50+
+                  <AnimatedCounter value="50+" />
                 </div>
                 <div className="text-xs sm:text-sm text-gray-600 font-medium">
                   Foreign buyers guided
@@ -140,7 +142,7 @@ export default function AboutPage() {
               {/* Stat 3 */}
               <div className="pt-4 sm:pt-0 sm:px-4 space-y-1">
                 <div className="text-3xl sm:text-4xl font-bold text-[#4c70ff]">
-                  12
+                  <AnimatedCounter value="12" />
                 </div>
                 <div className="text-xs sm:text-sm text-gray-600 font-medium">
                   Nationalities served
