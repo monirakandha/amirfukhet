@@ -1,130 +1,74 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import HomeValuationModal from '@/components/HomeValuationModal';
-import { SuccessStory } from '@/types';
-import { fetchSuccessStories } from '@/services/api';
-import { Star, Award, TrendingUp, CheckCircle2, Quote, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 export default function SuccessStoriesPage() {
-  const [stories, setStories] = useState<SuccessStory[]>([]);
   const [isValuationOpen, setIsValuationOpen] = useState(false);
 
-  useEffect(() => {
-    async function load() {
-      const data = await fetchSuccessStories();
-      setStories(data);
-    }
-    load();
-  }, []);
-
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
+    <div className="min-h-screen bg-white text-gray-900 flex flex-col font-sans">
       <Navbar onOpenValuationModal={() => setIsValuationOpen(true)} />
 
-      {/* Header */}
-      <section className="relative w-full pt-32 pb-12 overflow-hidden bg-slate-900 border-b border-slate-800">
+      {/* Hero Header matching design system */}
+      <section className="relative w-full pt-36 pb-16 sm:pt-40 sm:pb-20 overflow-hidden bg-white border-b border-gray-200/60">
         {/* Geometric grid background pattern */}
         <div className="absolute inset-0 pointer-events-none hero-grid-overlay" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <span className="text-xs uppercase tracking-widest text-amber-400 font-bold block mb-1 text-center">
-            Proven Results & Trust
-          </span>
-          <h1 className="hero-heading !text-white text-center">
-            Client Success Stories & Sold Case Studies
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+          {/* Pill Badge */}
+          <div className="section-pill mx-auto shadow-2xs">
+            <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
+            Success Stories
+          </div>
+
+          {/* Main Headline */}
+          <h1 className="font-heading-bricolage text-[36px] sm:text-[44px] lg:text-[50px] font-semibold text-[#020202] leading-[1.15] tracking-[-0.01em] max-w-3xl mx-auto">
+            Client Success Stories & Investment Case Studies
           </h1>
-          <p className="hero-description !text-slate-400 text-center max-w-2xl mx-auto mt-2">
-            Real stories from buyers, sellers, and luxury investors who achieved record outcomes with our team.
+
+          {/* Description */}
+          <p className="font-desc-mona text-[16px] font-normal text-[#6B7280] leading-[1.5] max-w-xl mx-auto">
+            Real experiences from foreign buyers and investors who navigated the Phuket property market safely with Amir's independent advisory.
           </p>
         </div>
       </section>
 
-      {/* Statistics Banner */}
-      <section className="py-12 bg-slate-950 border-b border-slate-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            <div className="p-6 bg-slate-900 rounded-3xl border border-slate-800">
-              <div className="text-3xl sm:text-4xl font-black text-amber-400">$185M+</div>
-              <div className="text-xs text-slate-400 uppercase tracking-wider font-bold mt-1">Total Sold Volume</div>
-            </div>
-            <div className="p-6 bg-slate-900 rounded-3xl border border-slate-800">
-              <div className="text-3xl sm:text-4xl font-black text-amber-400">99.4%</div>
-              <div className="text-xs text-slate-400 uppercase tracking-wider font-bold mt-1">List Price Ratio</div>
-            </div>
-            <div className="p-6 bg-slate-900 rounded-3xl border border-slate-800">
-              <div className="text-3xl sm:text-4xl font-black text-amber-400">14 Days</div>
-              <div className="text-xs text-slate-400 uppercase tracking-wider font-bold mt-1">Avg Days On Market</div>
-            </div>
-            <div className="p-6 bg-slate-900 rounded-3xl border border-slate-800">
-              <div className="text-3xl sm:text-4xl font-black text-amber-400">100%</div>
-              <div className="text-xs text-slate-400 uppercase tracking-wider font-bold mt-1">Client Satisfaction</div>
+      {/* Main Content Area */}
+      <section className="py-20 bg-white flex-grow">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+          {/* Bottom Dark CTA Card matching Figma mockup */}
+          <div className="bg-[#1c2024] rounded-[28px] sm:rounded-[32px] p-3 sm:p-4 shadow-2xl w-full">
+            <div className="bg-[#FFFFFF0D] border border-[#FFFFFF33] rounded-[20px] py-12 sm:py-16 px-6 sm:px-12 text-center text-white space-y-6 sm:space-y-8 w-full">
+              <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+                Ready to talk through your purchase?
+              </h3>
+              <p className="text-sm text-gray-400 max-w-md mx-auto leading-relaxed">
+                Message Amir directly. Honest, advisory, no pressure.
+              </p>
+
+              <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+                <a
+                  href="https://wa.me/8801875189361"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 bg-[#4c70ff] hover:bg-blue-600 text-white font-semibold text-sm rounded-full transition-all shadow-md shadow-blue-500/20"
+                >
+                  Contact Amir on WhatsApp
+                </a>
+
+                <Link
+                  href="/guide"
+                  className="group px-6 py-3 bg-white hover:bg-[#5870F7] text-[#020202] hover:text-white font-semibold text-sm rounded-full transition-all shadow-md"
+                >
+                  See how I work
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Stories Grid */}
-      <section className="py-16 flex-grow">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          {stories.map((story) => (
-            <div
-              key={story.id}
-              className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
-            >
-              <div className="lg:col-span-5 relative h-72 lg:h-96 rounded-2xl overflow-hidden border border-slate-800">
-                <img src={story.image} alt={story.title} className="w-full h-full object-cover" />
-                <div className="absolute top-3 left-3 px-3 py-1 bg-slate-950/80 text-amber-400 text-xs font-bold rounded-full border border-amber-500/30">
-                  {story.location} · {story.propertyType}
-                </div>
-              </div>
-
-              <div className="lg:col-span-7 space-y-5">
-                <div className="flex items-center gap-2 text-amber-400">
-                  <Quote className="w-6 h-6" />
-                  <span className="text-xs font-bold uppercase tracking-wider">{story.clientRole || 'Client'} Case Study</span>
-                </div>
-
-                <h2 className="text-2xl font-bold text-white">{story.title}</h2>
-
-                {story.testimonial && (
-                  <div
-                    className="text-slate-300 text-sm leading-relaxed italic [&>p]:inline"
-                    dangerouslySetInnerHTML={{ __html: story.testimonial }}
-                  />
-                )}
-
-                <div
-                  className="text-slate-400 text-xs leading-relaxed [&>p]:inline"
-                  dangerouslySetInnerHTML={{ __html: story.subtitle || story.story || '' }}
-                />
-
-                {/* Highlights */}
-                {story.highlights && story.highlights.length > 0 && (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                    {story.highlights.map((item, idx) => (
-                      <div key={idx} className="flex items-center gap-2 text-xs text-slate-200 bg-slate-950 p-2.5 rounded-xl border border-slate-800">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                        <span>{item}</span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                <div className="pt-4 border-t border-slate-800 flex items-center justify-between">
-                  <div>
-                    <h4 className="font-bold text-white text-sm">{story.clientName || 'Anonymous Buyer'}</h4>
-                    {story.dateClosed && <p className="text-xs text-slate-500">Closed in {story.dateClosed}</p>}
-                  </div>
-                  <div className="text-right">
-                    <span className="text-xs text-slate-500 block">Metric Outcome</span>
-                    <span className="text-lg font-bold text-amber-400">{story.metricHighlight}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
         </div>
       </section>
 
