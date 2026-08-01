@@ -116,6 +116,16 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
   color: #6B7280;
 }
+.hero-grid-overlay {
+  /* Geometric mosaic grid pattern matching Figma design */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cpath d='M40 0v240M80 0v240M120 0v240M160 0v240M200 0v240M0 40h240M0 80h240M0 120h240M0 160h240M0 200h240' stroke='%23000000' stroke-opacity='0.03' stroke-width='1' /%3E%3Crect x='0' y='40' width='40' height='40' fill='%23000000' fill-opacity='0.02' /%3E%3Crect x='80' y='0' width='40' height='40' fill='%23000000' fill-opacity='0.02' /%3E%3Crect x='160' y='80' width='40' height='40' fill='%23000000' fill-opacity='0.02' /%3E%3Crect x='200' y='160' width='40' height='40' fill='%23000000' fill-opacity='0.02' /%3E%3Crect x='40' y='200' width='40' height='40' fill='%23000000' fill-opacity='0.02' /%3E%3Crect x='120' y='120' width='40' height='40' fill='%23000000' fill-opacity='0.02' /%3E%3C/svg%3E");
+  background-size: 240px 240px;
+  background-position: center top;
+  pointer-events: none;
+  /* Fade out the grid at the edges */
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%);
+  mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%);
+}
 
 /* Category Topic Box Headings and Descriptions */
 .box-heading {

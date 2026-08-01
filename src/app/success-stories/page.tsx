@@ -27,12 +27,7 @@ export default function SuccessStoriesPage() {
       {/* Header */}
       <section className="relative w-full pt-32 pb-12 overflow-hidden bg-slate-900 border-b border-slate-800">
         {/* Geometric grid background pattern */}
-        <div
-          className="absolute inset-0 opacity-20 pointer-events-none bg-cover bg-center"
-          style={{
-            backgroundImage: `url('/images/hero-grid-bg.png')`,
-          }}
-        />
+        <div className="absolute inset-0 pointer-events-none hero-grid-overlay" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <span className="text-xs uppercase tracking-widest text-amber-400 font-bold block mb-1 text-center">
             Proven Results & Trust

@@ -16,12 +16,7 @@ export default function AboutPage() {
       {/* About Hero Area matching Figma mockup */}
       <section className="relative w-full pt-36 pb-12 sm:pt-40 sm:pb-16 overflow-hidden bg-[#f8fafc] border-b border-gray-200/60">
         {/* Geometric grid background pattern */}
-        <div
-          className="absolute inset-0 opacity-30 pointer-events-none bg-cover bg-center"
-          style={{
-            backgroundImage: `url('/images/hero-grid-bg.png')`,
-          }}
-        />
+        <div className="absolute inset-0 pointer-events-none hero-grid-overlay" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">

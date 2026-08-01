@@ -27,14 +27,9 @@ export default function GuidePage() {
       <Navbar onOpenValuationModal={() => setIsValuationOpen(true)} />
 
       {/* Guide Hero Area matching Figma mockup */}
-      <section className="relative w-full pt-36 pb-20 sm:pt-40 sm:pb-24 overflow-hidden bg-[#f8fafc] border-b border-gray-200/60">
+      <section className="relative w-full pt-36 pb-20 sm:pt-40 sm:pb-24 overflow-hidden bg-white border-b border-gray-200/60">
         {/* Geometric grid background pattern */}
-        <div
-          className="absolute inset-0 opacity-30 pointer-events-none bg-cover bg-center"
-          style={{
-            backgroundImage: `url('/images/hero-grid-bg.png')`,
-          }}
-        />
+        <div className="absolute inset-0 pointer-events-none hero-grid-overlay" />
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
           {/* Flagship Guide Badge */}
