@@ -89,7 +89,8 @@ export default function Navbar({ onOpenValuationModal }: NavbarProps) {
             {navLinks.map((link, idx) => {
               const isActive =
                 pathname === link.path ||
-                (link.path === '/guide' && (pathname === '/guide' || pathname === '/the-guide'));
+                (link.path === '/guide' && (pathname === '/guide' || pathname === '/the-guide')) ||
+                (link.path === '/contact' && (pathname === '/contact' || pathname === '/work-with-me' || pathname === '/contact-us'));
 
               if (isLightNav) {
                 return (
