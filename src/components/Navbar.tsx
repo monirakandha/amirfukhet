@@ -93,31 +93,33 @@ export default function Navbar({ onOpenValuationModal }: NavbarProps) {
 
               if (isLightNav) {
                 return (
-                  <span
+                  <Link
                     key={idx}
-                    className={`font-desc-mona text-[16px] font-normal leading-none tracking-normal transition-colors flex items-center gap-1.5 cursor-default ${
+                    href={link.path}
+                    className={`font-desc-mona text-[16px] font-normal leading-none tracking-normal transition-colors flex items-center gap-1.5 cursor-pointer ${
                       isActive
-                        ? 'text-[#5870F7]'
+                        ? 'text-[#5870F7] font-medium'
                         : 'text-[#020202] hover:text-[#5870F7]'
                     }`}
                   >
                     {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#5870F7]" />}
                     {link.name}
-                  </span>
+                  </Link>
                 );
               }
 
               return (
-                <span
+                <Link
                   key={idx}
-                  className={`font-desc-mona text-[16px] font-normal leading-none tracking-normal transition-colors text-center cursor-default ${
+                  href={link.path}
+                  className={`font-desc-mona text-[16px] font-normal leading-none tracking-normal transition-colors text-center cursor-pointer ${
                     isActive
-                      ? 'text-white border-b-2 border-white pb-1'
+                      ? 'text-white border-b-2 border-white pb-1 font-medium'
                       : 'text-white/90 hover:text-white'
                   }`}
                 >
                   {link.name}
-                </span>
+                </Link>
               );
             })}
           </nav>
@@ -180,12 +182,14 @@ export default function Navbar({ onOpenValuationModal }: NavbarProps) {
           }`}
         >
           {navLinks.map((link, idx) => (
-            <span
+            <Link
               key={idx}
-              className="block font-desc-mona text-[16px] font-normal leading-none py-2 cursor-default"
+              href={link.path}
+              onClick={() => setMobileMenuOpen(false)}
+              className="block font-desc-mona text-[16px] font-normal leading-none py-2 hover:text-[#5870F7] transition-colors"
             >
               {link.name}
-            </span>
+            </Link>
           ))}
         </div>
       )}
