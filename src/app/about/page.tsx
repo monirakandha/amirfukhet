@@ -16,14 +16,14 @@ export default function AboutPage() {
       <Navbar onOpenValuationModal={() => setIsValuationOpen(true)} />
 
       {/* About Hero Area matching Figma mockup */}
-      <section className="relative w-full pt-36 pb-12 sm:pt-40 sm:pb-16 overflow-hidden bg-white border-b border-gray-200/60">
+      <section className="relative w-full pt-32 pb-0 sm:pt-36 sm:pb-0 overflow-hidden bg-white border-b border-gray-200/60">
         {/* Geometric grid background pattern */}
         <div className="absolute inset-0 pointer-events-none hero-grid-overlay" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end">
             {/* Left Content Area */}
-            <div className="lg:col-span-7 space-y-6">
+            <div className="lg:col-span-7 space-y-6 pb-12 sm:pb-16 pt-4">
               {/* About Amir Pill Badge */}
               <div className="section-pill shadow-2xs">
                 <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
@@ -82,11 +82,11 @@ export default function AboutPage() {
             </div>
 
             {/* Right Portrait Image */}
-            <div className="lg:col-span-5 flex justify-center lg:justify-end items-end">
+            <div className="lg:col-span-5 flex justify-center lg:justify-end items-end h-full">
               <img
-                src="/images/amir.png"
+                src="/images/amir-hero.png"
                 alt="Amir Ahmed Faisal - Property Investment Advisor"
-                className="max-h-[460px] sm:max-h-[500px] object-contain object-bottom drop-shadow-md"
+                className="max-h-[480px] sm:max-h-[520px] lg:max-h-[540px] object-contain object-bottom block"
               />
             </div>
           </div>
