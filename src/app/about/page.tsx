@@ -16,14 +16,14 @@ export default function AboutPage() {
       <Navbar onOpenValuationModal={() => setIsValuationOpen(true)} />
 
       {/* About Hero Area matching Figma mockup */}
-      <section className="relative w-full pt-32 pb-0 sm:pt-36 sm:pb-0 overflow-hidden bg-white border-b border-gray-200/60">
+      <section className="relative w-full pt-32 pb-12 sm:pt-40 sm:pb-16 overflow-hidden bg-white border-b border-gray-200/60">
         {/* Geometric grid background pattern */}
         <div className="absolute inset-0 pointer-events-none hero-grid-overlay" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left Content Area */}
-            <div className="lg:col-span-7 space-y-6 pb-12 sm:pb-16 pt-4">
+            <div className="lg:col-span-7 space-y-6">
               {/* About Amir Pill Badge */}
               <div className="section-pill shadow-2xs">
                 <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
@@ -82,15 +82,25 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Right Portrait Image */}
-            <div className="lg:col-span-5 flex justify-center lg:justify-end items-end">
-              <img
-                src="/images/amir-hero.png"
-                alt="Amir Ahmed Faisal - Property Investment Advisor"
-                className="h-[420px] sm:h-[480px] lg:h-[540px] w-auto object-contain object-bottom block shrink-0"
-              />
-            </div>
+            {/* Right Column Spacer for Desktop */}
+            <div className="hidden lg:block lg:col-span-5" />
           </div>
+        </div>
+
+        {/* Absolute Bottom-Anchored Portrait Image for Desktop */}
+        <img
+          src="/images/amir-hero.png"
+          alt="Amir Ahmed Faisal - Property Investment Advisor"
+          className="hidden lg:block absolute bottom-0 right-[5%] xl:right-[10%] 2xl:right-[15%] h-[90%] max-h-[500px] object-contain object-bottom pointer-events-none z-10"
+        />
+
+        {/* Mobile Portrait Image */}
+        <div className="lg:hidden flex justify-center items-end pt-8">
+          <img
+            src="/images/amir-hero.png"
+            alt="Amir Ahmed Faisal - Property Investment Advisor"
+            className="h-[320px] object-contain object-bottom block"
+          />
         </div>
       </section>
 
