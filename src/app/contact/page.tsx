@@ -258,60 +258,60 @@ export default function ContactPage() {
           {/* 4 Step Cards Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Step 01 */}
-            <div className="bg-[#f8fafc] border border-gray-200/80 rounded-3xl p-6 sm:p-8 space-y-4 shadow-2xs hover:shadow-lg transition-all flex flex-col justify-between">
-              <div className="w-10 h-10 rounded-full bg-white border border-gray-200 text-gray-900 font-bold text-sm flex items-center justify-center shadow-2xs">
+            <div className="group bg-[#f8fafc] hover:bg-[#4c70ff] border border-gray-200/80 hover:border-[#4c70ff] rounded-3xl p-6 sm:p-8 space-y-4 shadow-2xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer">
+              <div className="w-10 h-10 rounded-full bg-white border border-gray-200 group-hover:border-white text-gray-900 group-hover:text-[#4c70ff] font-bold text-sm flex items-center justify-center shadow-2xs transition-colors">
                 01
               </div>
               <div className="space-y-2">
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-white transition-colors">
                   Reach out
                 </h3>
-                <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
+                <p className="text-xs sm:text-sm text-gray-500 group-hover:text-white/90 leading-relaxed transition-colors">
                   A message on WhatsApp or the form. Tell me what you're considering.
                 </p>
               </div>
             </div>
 
-            {/* Step 02 (Active Blue Highlight Card) */}
-            <div className="bg-[#4c70ff] rounded-3xl p-6 sm:p-8 space-y-4 shadow-xl text-white transform hover:-translate-y-1 transition-all flex flex-col justify-between">
-              <div className="w-10 h-10 rounded-full bg-white text-[#4c70ff] font-bold text-sm flex items-center justify-center shadow-sm">
+            {/* Step 02 */}
+            <div className="group bg-[#f8fafc] hover:bg-[#4c70ff] border border-gray-200/80 hover:border-[#4c70ff] rounded-3xl p-6 sm:p-8 space-y-4 shadow-2xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer">
+              <div className="w-10 h-10 rounded-full bg-white border border-gray-200 group-hover:border-white text-gray-900 group-hover:text-[#4c70ff] font-bold text-sm flex items-center justify-center shadow-2xs transition-colors">
                 02
               </div>
               <div className="space-y-2">
-                <h3 className="text-lg sm:text-xl font-bold text-white">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-white transition-colors">
                   Free consultation
                 </h3>
-                <p className="text-xs sm:text-sm text-white/90 leading-relaxed">
+                <p className="text-xs sm:text-sm text-gray-500 group-hover:text-white/90 leading-relaxed transition-colors">
                   We talk through goals, budget and areas. No obligation.
                 </p>
               </div>
             </div>
 
             {/* Step 03 */}
-            <div className="bg-[#f8fafc] border border-gray-200/80 rounded-3xl p-6 sm:p-8 space-y-4 shadow-2xs hover:shadow-lg transition-all flex flex-col justify-between">
-              <div className="w-10 h-10 rounded-full bg-white border border-gray-200 text-gray-900 font-bold text-sm flex items-center justify-center shadow-2xs">
+            <div className="group bg-[#f8fafc] hover:bg-[#4c70ff] border border-gray-200/80 hover:border-[#4c70ff] rounded-3xl p-6 sm:p-8 space-y-4 shadow-2xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer">
+              <div className="w-10 h-10 rounded-full bg-white border border-gray-200 group-hover:border-white text-gray-900 group-hover:text-[#4c70ff] font-bold text-sm flex items-center justify-center shadow-2xs transition-colors">
                 03
               </div>
               <div className="space-y-2">
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-white transition-colors">
                   Research & shortlist
                 </h3>
-                <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
+                <p className="text-xs sm:text-sm text-gray-500 group-hover:text-white/90 leading-relaxed transition-colors">
                   I do the legwork and bring you properties that actually fit.
                 </p>
               </div>
             </div>
 
             {/* Step 04 */}
-            <div className="bg-[#f8fafc] border border-gray-200/80 rounded-3xl p-6 sm:p-8 space-y-4 shadow-2xs hover:shadow-lg transition-all flex flex-col justify-between">
-              <div className="w-10 h-10 rounded-full bg-white border border-gray-200 text-gray-900 font-bold text-sm flex items-center justify-center shadow-2xs">
+            <div className="group bg-[#f8fafc] hover:bg-[#4c70ff] border border-gray-200/80 hover:border-[#4c70ff] rounded-3xl p-6 sm:p-8 space-y-4 shadow-2xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer">
+              <div className="w-10 h-10 rounded-full bg-white border border-gray-200 group-hover:border-white text-gray-900 group-hover:text-[#4c70ff] font-bold text-sm flex items-center justify-center shadow-2xs transition-colors">
                 04
               </div>
               <div className="space-y-2">
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-white transition-colors">
                   Buy with confidence
                 </h3>
-                <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
+                <p className="text-xs sm:text-sm text-gray-500 group-hover:text-white/90 leading-relaxed transition-colors">
                   Due diligence, negotiation and transfer – I'm with you throughout.
                 </p>
               </div>
