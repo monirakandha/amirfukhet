@@ -93,7 +93,7 @@ export default function AboutPage() {
 
       {/* About Main Body Section matching Figma mockup */}
       <section className="py-16 bg-white flex-grow">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           {/* Section 1: My story */}
           <div className="space-y-4">
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-snug">
