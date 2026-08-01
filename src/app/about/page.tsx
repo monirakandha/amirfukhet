@@ -14,7 +14,7 @@ export default function AboutPage() {
       <Navbar onOpenValuationModal={() => setIsValuationOpen(true)} />
 
       {/* About Hero Area matching Figma mockup */}
-      <section className="relative w-full pt-36 pb-12 sm:pt-40 sm:pb-16 overflow-hidden bg-[#f8fafc] border-b border-gray-200/60">
+      <section className="relative w-full pt-36 pb-12 sm:pt-40 sm:pb-16 overflow-hidden bg-white border-b border-gray-200/60">
         {/* Geometric grid background pattern */}
         <div className="absolute inset-0 pointer-events-none hero-grid-overlay" />
 
@@ -23,17 +23,18 @@ export default function AboutPage() {
             {/* Left Content Area */}
             <div className="lg:col-span-7 space-y-6">
               {/* About Amir Pill Badge */}
-              <div className="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-white border border-blue-100 text-xs font-semibold text-[#4c70ff] shadow-2xs">
+              <div className="section-pill shadow-2xs">
+                <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
                 About Amir
               </div>
 
               {/* Main Headline */}
-              <h1 className="hero-heading lg:text-left">
+              <h1 className="font-heading-bricolage text-[36px] sm:text-[44px] lg:text-[50px] font-semibold text-[#020202] leading-[1.15] tracking-[-0.01em] text-left">
                 The advisor foreigners trust to buy in Phuket
               </h1>
 
               {/* Description Paragraph */}
-              <p className="hero-description lg:text-left max-w-xl">
+              <p className="font-desc-mona text-[16px] font-normal text-[#6B7280] leading-[1.5] max-w-xl text-left">
                 I'm Amir Ahmed Faisal. I help international buyers understand the Phuket market and invest in it safely – explaining the structures, flagging the risks, and staying in their corner from first message to handover.
               </p>
 
@@ -79,11 +80,11 @@ export default function AboutPage() {
             </div>
 
             {/* Right Portrait Image */}
-            <div className="lg:col-span-5 flex justify-center lg:justify-end">
+            <div className="lg:col-span-5 flex justify-center lg:justify-end items-end">
               <img
                 src="/images/amir.png"
                 alt="Amir Ahmed Faisal - Property Investment Advisor"
-                className="max-h-[480px] object-contain drop-shadow-xl"
+                className="max-h-[460px] sm:max-h-[500px] object-contain object-bottom drop-shadow-md"
               />
             </div>
           </div>
