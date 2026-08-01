@@ -182,7 +182,7 @@ export default function AboutPage() {
 
           {/* Bottom Dark CTA Card matching Figma mockup */}
           <div className="bg-[#1c2024] rounded-[28px] sm:rounded-[32px] p-3 sm:p-4 shadow-2xl">
-            <div className="border border-gray-700/60 rounded-[20px] sm:rounded-[24px] p-8 sm:p-12 text-center text-white space-y-6">
+            <div className="bg-[#FFFFFF0D] border border-[#FFFFFF33] rounded-[20px] p-6 sm:p-8 text-center text-white space-y-6 max-w-[796px] mx-auto">
               <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
                 Ready to talk through your purchase?
               </h3>
