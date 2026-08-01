@@ -3,14 +3,17 @@
 import React from 'react';
 import Link from 'next/link';
 import { useAdmin } from '@/context/AdminContext';
+import GlobalCTA from './GlobalCTA';
 
 export default function Footer() {
   const { settings } = useAdmin();
 
   return (
-    <footer className="w-full bg-[#222629] text-gray-400 pt-20 pb-16 border-t border-white/10 font-sans">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Top 4-Column Grid matching Figma pixel-for-pixel */}
+    <>
+      <GlobalCTA />
+      <footer className="w-full bg-[#222629] text-gray-400 pt-20 pb-16 border-t border-white/10 font-sans">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Top 4-Column Grid matching Figma pixel-for-pixel */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-14 pb-20">
           {/* Column 1: Brand Info & Socials (4 Cols) */}
           <div className="md:col-span-4 lg:col-span-4 space-y-6">
@@ -121,5 +124,6 @@ export default function Footer() {
         </div>
       </div>
     </footer>
+    </>
   );
 }

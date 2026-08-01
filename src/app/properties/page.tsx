@@ -262,11 +262,15 @@ function PropertyListContent() {
                         slug: prop.id,
                         price: 0,
                         formattedPrice: prop.price,
-                        location: { city: prop.location.split(',')[1]?.trim() || 'Phuket', address: prop.location },
-                        features: { beds: prop.beds, baths: prop.baths, sqft: prop.sqm },
+                        location: { city: prop.location.split(',')[1]?.trim() || 'Phuket', address: prop.location, state: '', zip: '' },
+                        features: { beds: prop.beds, baths: prop.baths, sqft: prop.sqm, garage: 0, yearBuilt: 0 },
                         images: [prop.image],
-                        type: 'Villa',
-                        status: 'active'
+                        propertyType: 'Villa',
+                        status: 'for-sale',
+                        description: '',
+                        amenities: [],
+                        agent: { name: 'Amir Ahmed Faisal', title: 'Property Investment Advisor', phone: '', email: '', avatar: '' },
+                        createdAt: new Date().toISOString()
                       })}
                       className="text-[#4c70ff] font-semibold text-xs flex items-center gap-1 hover:underline cursor-pointer"
                     >
