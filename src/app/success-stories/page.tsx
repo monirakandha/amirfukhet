@@ -7,11 +7,12 @@ import HomeValuationModal from '@/components/HomeValuationModal';
 import Link from 'next/link';
 import { SuccessStory } from '@/types';
 import { fetchSuccessStories } from '@/services/api';
-import SuccessStoriesSection from '@/components/SuccessStoriesSection';
+import CaseStudyBlock from '@/components/CaseStudyBlock';
 
 export default function SuccessStoriesPage() {
   const [isValuationOpen, setIsValuationOpen] = useState(false);
   const [stories, setStories] = useState<SuccessStory[]>([]);
+  const [visibleCount, setVisibleCount] = useState(3);
 
   useEffect(() => {
     async function loadData() {
@@ -49,16 +50,25 @@ export default function SuccessStoriesPage() {
         </div>
       </section>
 
-      {/* Main Content Area - Grid of Success Stories */}
-      <div className="flex-grow bg-white">
-        <SuccessStoriesSection 
-          stories={stories} 
-          showHeading={false} 
-          showViewAllButton={false} 
-          bgColor="bg-white" 
-          enableLoadMore={true}
-          loadMoreStep={6}
-        />
+      {/* Main Content Area - Stack of Case Studies */}
+      <div className="flex-grow bg-white flex flex-col">
+        {stories.slice(0, visibleCount).map((story) => (
+          <CaseStudyBlock key={story.id} story={story} isFeaturedLabel={story.isFeatured} />
+        ))}
+
+        {visibleCount < stories.length && (
+          <div className="text-center py-16 bg-[#fcfcfd]">
+            <button
+              onClick={() => setVisibleCount((prev) => prev + 3)}
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white hover:bg-[#5870F7] hover:text-white hover:border-[#5870F7] font-desc-mona text-[16px] font-medium text-[#020202] border border-gray-200 transition-colors shadow-2xs leading-none group"
+            >
+              <span>Load more case studies</span>
+              <svg className="w-4 h-4 text-[#020202] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+          </div>
+        )}
       </div>
 
       <Footer />
