@@ -178,9 +178,37 @@ export const AdminProvider: React.FC<{ children: ReactNode }> = ({ children }) =
       const saved = localStorage.getItem(STORE_KEY);
       if (saved) {
         const parsed = JSON.parse(saved);
+        
+        // Merge mockSuccessStories properties into parsed success stories if they match by id/slug
+        const savedStories = parsed.successStories || [];
+        const updatedStories = savedStories.map((savedStory: SuccessStory) => {
+          const mockStory = mockSuccessStories.find(m => m.id === savedStory.id || m.slug === savedStory.slug);
+          if (mockStory) {
+            return {
+              ...mockStory,
+              ...savedStory,
+              stepBudget: savedStory.stepBudget || mockStory.stepBudget,
+              stepChallenge: savedStory.stepChallenge || mockStory.stepChallenge,
+              stepApproach: savedStory.stepApproach || mockStory.stepApproach,
+              stepResearch: savedStory.stepResearch || mockStory.stepResearch,
+              stepOutcome: savedStory.stepOutcome || mockStory.stepOutcome,
+              stepKeyTakeaways: savedStory.stepKeyTakeaways || mockStory.stepKeyTakeaways,
+              metrics: savedStory.metrics && savedStory.metrics.length > 0 ? savedStory.metrics : mockStory.metrics,
+            };
+          }
+          return savedStory;
+        });
+        
+        const missingStories = mockSuccessStories.filter(
+          mockStory => !savedStories.some((s: SuccessStory) => s.id === mockStory.id || s.slug === mockStory.slug)
+        );
+        
+        const mergedStories = [...updatedStories, ...missingStories];
+
         setState((prev) => ({
           ...prev,
           ...parsed,
+          successStories: mergedStories,
           // Make sure auth stays active if token is present
           isAuthenticated: parsed.isAuthenticated || false,
         }));

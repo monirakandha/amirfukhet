@@ -144,6 +144,32 @@ export async function fetchBlogBySlug(slug: string): Promise<BlogArticle | null>
   return list.find((b) => b.slug === slug || b.id === slug) || null;
 }
 
+export function mergeSuccessStories(savedStories: SuccessStory[], mockStories: SuccessStory[]): SuccessStory[] {
+  const updatedStories = (savedStories || []).map((savedStory) => {
+    const mockStory = mockStories.find(m => m.id === savedStory.id || m.slug === savedStory.slug);
+    if (mockStory) {
+      return {
+        ...mockStory,
+        ...savedStory,
+        stepBudget: savedStory.stepBudget || mockStory.stepBudget,
+        stepChallenge: savedStory.stepChallenge || mockStory.stepChallenge,
+        stepApproach: savedStory.stepApproach || mockStory.stepApproach,
+        stepResearch: savedStory.stepResearch || mockStory.stepResearch,
+        stepOutcome: savedStory.stepOutcome || mockStory.stepOutcome,
+        stepKeyTakeaways: savedStory.stepKeyTakeaways || mockStory.stepKeyTakeaways,
+        metrics: savedStory.metrics && savedStory.metrics.length > 0 ? savedStory.metrics : mockStory.metrics,
+      };
+    }
+    return savedStory;
+  });
+
+  const missingStories = mockStories.filter(
+    mockStory => !(savedStories || []).some((s) => s.id === mockStory.id || s.slug === mockStory.slug)
+  );
+
+  return [...updatedStories, ...missingStories];
+}
+
 export async function fetchSuccessStories(): Promise<SuccessStory[]> {
   if (API_BASE_URL) {
     try {
@@ -157,8 +183,29 @@ export async function fetchSuccessStories(): Promise<SuccessStory[]> {
   }
 
   const store = getLocalAdminStore();
-  return store?.successStories || mockSuccessStories;
+  const rawList = store?.successStories || mockSuccessStories;
+  return mergeSuccessStories(rawList, mockSuccessStories);
 }
+
+export async function fetchSuccessStoryBySlug(slug: string): Promise<SuccessStory | null> {
+  if (API_BASE_URL) {
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/success-stories/${slug}`, { cache: 'no-store' });
+      if (res.ok) {
+        return await res.json();
+      }
+    } catch (error) {
+      console.warn('Backend API error, using mock data:', error);
+    }
+  }
+
+  const store = getLocalAdminStore();
+  const rawList = store?.successStories || mockSuccessStories;
+  const mergedList = mergeSuccessStories(rawList, mockSuccessStories);
+  return mergedList.find((s) => s.slug === slug || s.id === slug) || null;
+}
+
+
 
 export async function submitInquiry(data: InquiryPayload): Promise<{ success: boolean; message: string }> {
   if (API_BASE_URL) {
