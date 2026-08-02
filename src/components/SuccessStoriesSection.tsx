@@ -63,7 +63,7 @@ export default function SuccessStoriesSection({
           {displayStories.map((story) => (
             <Link
               key={story.id}
-              href={`/success-stories/${story.slug}`}
+              href={`/success-stories?story=${story.slug}`}
               className="group bg-white rounded-2xl overflow-hidden border border-gray-200/60 shadow-xs flex flex-col justify-between hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
             >
               {/* Image */}
