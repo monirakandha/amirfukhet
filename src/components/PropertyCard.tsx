@@ -14,9 +14,8 @@ export default function PropertyCard({ property, onQuickInquire }: PropertyCardP
   const ownershipLabel = property.ownershipType || 'Freehold';
 
   const handleClick = () => {
-    if (onQuickInquire) {
-      onQuickInquire(property);
-    }
+    const text = encodeURIComponent(`Hi Amir, I'm interested in the property "${property.title}"`);
+    window.open(`https://wa.me/8801875189361?text=${text}`, '_blank');
   };
 
   return (

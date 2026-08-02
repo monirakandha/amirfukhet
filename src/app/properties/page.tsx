@@ -197,7 +197,11 @@ function PropertyListContent() {
             {filteredProperties.map((prop) => (
               <div
                 key={prop.id}
-                className="bg-white rounded-3xl border border-gray-200/80 hover:border-gray-300 shadow-xs hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group"
+                onClick={() => {
+                  const text = encodeURIComponent(`Hi Amir, I'm interested in the property "${prop.title}"`);
+                  window.open(`https://wa.me/8801875189361?text=${text}`, '_blank');
+                }}
+                className="bg-white rounded-3xl border border-gray-200/80 hover:border-gray-300 shadow-xs hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group cursor-pointer"
               >
                 {/* Image Container */}
                 <div className="relative h-60 w-full overflow-hidden bg-gray-100">
@@ -256,22 +260,11 @@ function PropertyListContent() {
 
                     <button
                       type="button"
-                      onClick={() => setSelectedViewingProperty({
-                        id: prop.id,
-                        title: prop.title,
-                        slug: prop.id,
-                        price: 0,
-                        formattedPrice: prop.price,
-                        location: { city: prop.location.split(',')[1]?.trim() || 'Phuket', address: prop.location, state: '', zip: '' },
-                        features: { beds: prop.beds, baths: prop.baths, sqft: prop.sqm, garage: 0, yearBuilt: 0 },
-                        images: [prop.image],
-                        propertyType: 'Villa',
-                        status: 'for-sale',
-                        description: '',
-                        amenities: [],
-                        agent: { name: 'Amir Ahmed Faisal', title: 'Property Investment Advisor', phone: '', email: '', avatar: '' },
-                        createdAt: new Date().toISOString()
-                      })}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        const text = encodeURIComponent(`Hi Amir, I'm interested in the property "${prop.title}"`);
+                        window.open(`https://wa.me/8801875189361?text=${text}`, '_blank');
+                      }}
                       className="text-[#4c70ff] font-semibold text-xs flex items-center gap-1 hover:underline cursor-pointer"
                     >
                       Inquire
