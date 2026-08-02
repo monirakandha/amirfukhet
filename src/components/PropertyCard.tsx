@@ -13,15 +13,15 @@ export default function PropertyCard({ property, onQuickInquire }: PropertyCardP
   const areaLabel = property.areaSqM ? `${property.areaSqM} m²` : `${property.features.sqft} sqft`;
   const ownershipLabel = property.ownershipType || 'Freehold';
 
-  const handleClick = () => {
-    const text = encodeURIComponent(`Hi Amir, I'm interested in the property "${property.title}"`);
-    window.open(`https://wa.me/8801875189361?text=${text}`, '_blank');
-  };
+  const text = encodeURIComponent(`Hi Amir, I'm interested in the property "${property.title}"`);
+  const whatsappUrl = `https://wa.me/8801875189361?text=${text}`;
 
   return (
-    <div
-      onClick={handleClick}
-      className="group bg-white rounded-2xl border border-gray-200/80 shadow-xs flex flex-col justify-between hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden cursor-pointer"
+    <a
+      href={whatsappUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group bg-white rounded-2xl border border-gray-200/80 shadow-xs flex flex-col justify-between hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden cursor-pointer block"
     >
       {/* Top Image */}
       <div className="relative h-60 sm:h-64 w-full bg-gray-100 overflow-hidden rounded-t-2xl">
@@ -99,21 +99,14 @@ export default function PropertyCard({ property, onQuickInquire }: PropertyCardP
           </div>
 
           {/* Inquire Action Button */}
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              handleClick();
-            }}
-            className="font-heading-bricolage text-[18px] font-medium text-[#5870F7] hover:text-blue-700 leading-none inline-flex items-center gap-1 transition-colors"
-          >
+          <div className="font-heading-bricolage text-[18px] font-medium text-[#5870F7] group-hover:text-blue-700 leading-none inline-flex items-center gap-1 transition-colors">
             Inquire
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
             </svg>
-          </button>
+          </div>
         </div>
       </div>
-    </div>
+    </a>
   );
 }
