@@ -1,13 +1,25 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import HomeValuationModal from '@/components/HomeValuationModal';
 import Link from 'next/link';
+import { SuccessStory } from '@/types';
+import { fetchSuccessStories } from '@/services/api';
+import SuccessStoriesSection from '@/components/SuccessStoriesSection';
 
 export default function SuccessStoriesPage() {
   const [isValuationOpen, setIsValuationOpen] = useState(false);
+  const [stories, setStories] = useState<SuccessStory[]>([]);
+
+  useEffect(() => {
+    async function loadData() {
+      const data = await fetchSuccessStories();
+      setStories(data);
+    }
+    loadData();
+  }, []);
 
   return (
     <div className="min-h-screen bg-white text-gray-900 flex flex-col font-sans">
@@ -37,12 +49,17 @@ export default function SuccessStoriesPage() {
         </div>
       </section>
 
-      {/* Main Content Area */}
-      <section className="py-20 bg-white flex-grow">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-          {/* Content goes here */}
-        </div>
-      </section>
+      {/* Main Content Area - Grid of Success Stories */}
+      <div className="flex-grow bg-white">
+        <SuccessStoriesSection 
+          stories={stories} 
+          showHeading={false} 
+          showViewAllButton={false} 
+          bgColor="bg-white" 
+          enableLoadMore={true}
+          loadMoreStep={6}
+        />
+      </div>
 
       <Footer />
       <HomeValuationModal isOpen={isValuationOpen} onClose={() => setIsValuationOpen(false)} />
