@@ -257,7 +257,7 @@ export const SuccessStoryManager: React.FC = () => {
             <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-4 font-heading-bricolage">📋 Case Study Steps (for featured homepage display)</p>
 
             {[
-              { label: '01 — Budget, Area & Goal', value: stepBudget, setter: setStepBudget, placeholder: 'Describe the client's initial goal and budget...' },
+              { label: '01 — Budget, Area & Goal', value: stepBudget, setter: setStepBudget, placeholder: "Describe the client's initial goal and budget..." },
               { label: '02 — The Challenge', value: stepChallenge, setter: setStepChallenge, placeholder: 'What problems or fears did the client face?' },
               { label: '03 — Amir\'s Approach', value: stepApproach, setter: setStepApproach, placeholder: 'How did Amir approach the situation?' },
               { label: '04 — Research & Guidance', value: stepResearch, setter: setStepResearch, placeholder: 'What due diligence was done?' },
