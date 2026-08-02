@@ -22,6 +22,19 @@ export const SuccessStoryManager: React.FC = () => {
   const [clientName, setClientName] = useState('Dr. Marcus Vance');
   const [clientRole, setClientRole] = useState('International Investor from Singapore');
   const [testimonial, setTestimonial] = useState('');
+  const [stepBudget, setStepBudget] = useState('');
+  const [stepChallenge, setStepChallenge] = useState('');
+  const [stepApproach, setStepApproach] = useState('');
+  const [stepResearch, setStepResearch] = useState('');
+  const [stepOutcome, setStepOutcome] = useState('');
+  const [stepKeyTakeaways, setStepKeyTakeaways] = useState('');
+  const [metric1Value, setMetric1Value] = useState('');
+  const [metric1Label, setMetric1Label] = useState('');
+  const [metric2Value, setMetric2Value] = useState('');
+  const [metric2Label, setMetric2Label] = useState('');
+  const [metric3Value, setMetric3Value] = useState('');
+  const [metric3Label, setMetric3Label] = useState('');
+  const [isFeatured, setIsFeatured] = useState(false);
   const [toast, setToast] = useState('');
 
   const showToast = (msg: string) => {
@@ -31,15 +44,25 @@ export const SuccessStoryManager: React.FC = () => {
 
   const openAddModal = () => {
     setEditingStory(null);
-    setTitle('Kamala Cliff Villa Acquisition & Turnaround');
-    setSubtitle('How we secured an off-market cliff villa at 15% below valuation.');
-    setLocation('Kamala, Phuket');
-    setPropertyType('Sea-View Villa');
-    setMetricHighlight('12.4% Net Yield');
+    setTitle('');
+    setSubtitle('');
+    setLocation('Phuket');
+    setPropertyType('Villa');
+    setMetricHighlight('');
     setImage('/images/villa-hero.png');
-    setClientName('Dr. Alexander Sterling');
-    setClientRole('Private Equity Partner, UK');
-    setTestimonial('Amir navigated the complex offshore structure seamlessly. His local due diligence saved us months of legal friction and delivered a yield outperforming all our expectations.');
+    setClientName('');
+    setClientRole('');
+    setTestimonial('');
+    setStepBudget('');
+    setStepChallenge('');
+    setStepApproach('');
+    setStepResearch('');
+    setStepOutcome('');
+    setStepKeyTakeaways('');
+    setMetric1Value(''); setMetric1Label('');
+    setMetric2Value(''); setMetric2Label('');
+    setMetric3Value(''); setMetric3Label('');
+    setIsFeatured(false);
     setIsModalOpen(true);
   };
 
@@ -51,14 +74,31 @@ export const SuccessStoryManager: React.FC = () => {
     setPropertyType(s.propertyType);
     setMetricHighlight(s.metricHighlight);
     setImage(s.image || '/images/villa-hero.png');
-    setClientName(s.clientName || 'Valued Client');
-    setClientRole(s.clientRole || 'International Buyer');
+    setClientName(s.clientName || '');
+    setClientRole(s.clientRole || '');
     setTestimonial(s.testimonial || s.story || '');
+    setStepBudget(s.stepBudget || '');
+    setStepChallenge(s.stepChallenge || '');
+    setStepApproach(s.stepApproach || '');
+    setStepResearch(s.stepResearch || '');
+    setStepOutcome(s.stepOutcome || '');
+    setStepKeyTakeaways(s.stepKeyTakeaways || '');
+    const m = s.metrics || [];
+    setMetric1Value(m[0]?.value || ''); setMetric1Label(m[0]?.label || '');
+    setMetric2Value(m[1]?.value || ''); setMetric2Label(m[1]?.label || '');
+    setMetric3Value(m[2]?.value || ''); setMetric3Label(m[2]?.label || '');
+    setIsFeatured(s.isFeatured || false);
     setIsModalOpen(true);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const metrics = [
+      { value: metric1Value, label: metric1Label },
+      { value: metric2Value, label: metric2Label },
+      { value: metric3Value, label: metric3Label },
+    ].filter(m => m.value && m.label);
+
     const payload = {
       title,
       slug: title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
@@ -72,7 +112,15 @@ export const SuccessStoryManager: React.FC = () => {
       testimonial,
       story: testimonial,
       dateClosed: 'Q2 2026',
-      highlights: ['Off-market acquisition', 'Flawless due diligence', 'High annual yield'],
+      highlights: [],
+      stepBudget,
+      stepChallenge,
+      stepApproach,
+      stepResearch,
+      stepOutcome,
+      stepKeyTakeaways,
+      metrics,
+      isFeatured,
     };
 
     if (editingStory) {
@@ -200,8 +248,79 @@ export const SuccessStoryManager: React.FC = () => {
             <RichTextEditor
               value={testimonial}
               onChange={setTestimonial}
-              className="border border-slate-300 rounded-xl overflow-hidden [&_.ql-container]:min-h-[200px] [&_.ql-editor]:min-h-[200px]"
+              className="border border-slate-300 rounded-xl overflow-hidden [&_.ql-container]:min-h-[120px] [&_.ql-editor]:min-h-[120px]"
             />
+          </div>
+
+          {/* Divider */}
+          <div className="border-t border-slate-200 pt-4">
+            <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-4 font-heading-bricolage">📋 Case Study Steps (for featured homepage display)</p>
+
+            {[
+              { label: '01 — Budget, Area & Goal', value: stepBudget, setter: setStepBudget, placeholder: 'Describe the client's initial goal and budget...' },
+              { label: '02 — The Challenge', value: stepChallenge, setter: setStepChallenge, placeholder: 'What problems or fears did the client face?' },
+              { label: '03 — Amir\'s Approach', value: stepApproach, setter: setStepApproach, placeholder: 'How did Amir approach the situation?' },
+              { label: '04 — Research & Guidance', value: stepResearch, setter: setStepResearch, placeholder: 'What due diligence was done?' },
+              { label: '05 — The Outcome', value: stepOutcome, setter: setStepOutcome, placeholder: 'What was the final result?' },
+              { label: '07 — Key Takeaways', value: stepKeyTakeaways, setter: setStepKeyTakeaways, placeholder: 'What should readers take away from this case?' },
+            ].map(({ label, value, setter, placeholder }) => (
+              <div key={label} className="space-y-1.5 mb-4">
+                <label className="text-xs font-bold text-slate-700 font-heading-bricolage">{label}</label>
+                <textarea
+                  value={value}
+                  onChange={(e) => setter(e.target.value)}
+                  placeholder={placeholder}
+                  rows={2}
+                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] resize-none"
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Metrics Bar */}
+          <div className="border-t border-slate-200 pt-4">
+            <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-4 font-heading-bricolage">📊 Metrics Bar (3 stats shown in the case study)</p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {[
+                { valState: metric1Value, valSet: setMetric1Value, lblState: metric1Label, lblSet: setMetric1Label, n: '1' },
+                { valState: metric2Value, valSet: setMetric2Value, lblState: metric2Label, lblSet: setMetric2Label, n: '2' },
+                { valState: metric3Value, valSet: setMetric3Value, lblState: metric3Label, lblSet: setMetric3Label, n: '3' },
+              ].map(({ valState, valSet, lblState, lblSet, n }) => (
+                <div key={n} className="space-y-2 bg-slate-50 border border-slate-200 rounded-xl p-3">
+                  <p className="text-[11px] font-bold text-slate-500 uppercase">Metric {n}</p>
+                  <input
+                    type="text"
+                    value={valState}
+                    onChange={(e) => valSet(e.target.value)}
+                    placeholder="e.g. 6.9%"
+                    className="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-gray-900 text-sm font-mono focus:outline-none focus:border-[#5870F7]"
+                  />
+                  <input
+                    type="text"
+                    value={lblState}
+                    onChange={(e) => lblSet(e.target.value)}
+                    placeholder="e.g. Gross rental yield"
+                    className="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7]"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Featured Toggle */}
+          <div className="border-t border-slate-200 pt-4">
+            <label className="flex items-center gap-3 cursor-pointer">
+              <div
+                onClick={() => setIsFeatured(!isFeatured)}
+                className={`w-11 h-6 rounded-full transition-colors relative ${isFeatured ? 'bg-[#5870F7]' : 'bg-slate-300'}`}
+              >
+                <div className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform ${isFeatured ? 'translate-x-5' : 'translate-x-0'}`} />
+              </div>
+              <span className="font-heading-bricolage text-sm font-bold text-slate-700">
+                Feature this story on the homepage
+              </span>
+            </label>
+            <p className="text-xs text-slate-500 mt-1 ml-14">Only one story can be featured at a time. The first featured story found will be displayed.</p>
           </div>
 
           <div className="flex items-center justify-end gap-4 pt-6 border-t border-slate-200">

@@ -720,147 +720,144 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ===== FEATURED CASE STUDY SECTION ===== */}
-      <section className="w-full bg-[#f8fafc] py-16 sm:py-24 border-b border-gray-200/50">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ===== FEATURED CASE STUDY SECTION (dynamic) ===== */}
+      {(() => {
+        const featuredStory = stories.find(s => s.isFeatured) || stories[0];
+        if (!featuredStory) return null;
 
-          {/* Pill badge */}
-          <div className="mb-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-blue-100 font-desc-mona text-[14px] font-medium text-[#5870F7] leading-none shadow-2xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#5870F7]" />
-              Featured case study
-            </div>
-          </div>
+        const steps = [
+          { num: '01', title: 'Define budget, area and goal (lifestyle vs yield)', body: featuredStory.stepBudget },
+          { num: '02', title: 'The challenge', body: featuredStory.stepChallenge },
+          { num: '03', title: "Amir's approach", body: featuredStory.stepApproach },
+          { num: '04', title: 'Research & guidance', body: featuredStory.stepResearch },
+          { num: '05', title: 'The outcome', body: featuredStory.stepOutcome },
+        ].filter(s => s.body);
 
-          {/* Title */}
-          <h2
-            className="font-heading-bricolage text-[32px] sm:text-[40px] font-semibold text-[#020202] leading-[1.1] tracking-[-0.01em] mb-8"
-            style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
-          >
-            A Canadian couple's first Phuket villa
-          </h2>
+        const metrics = featuredStory.metrics && featuredStory.metrics.length > 0
+          ? featuredStory.metrics
+          : [];
 
-          {/* Hero Image */}
-          <div className="w-full rounded-2xl overflow-hidden mb-10 border border-gray-200/60 shadow-sm">
-            <img
-              src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=1200"
-              alt="A Canadian couple's first Phuket villa"
-              className="w-full h-72 sm:h-96 object-cover"
-            />
-          </div>
+        if (steps.length === 0 && metrics.length === 0) return null;
 
-          {/* Steps */}
-          <div className="space-y-8 mb-10">
-            {[
-              {
-                num: '01',
-                title: 'Define budget, area and goal (lifestyle vs yield)',
-                body: 'A retired couple from Vancouver, first-time foreign buyers, looking for a holiday home that could also generate rental income when they weren't using it.',
-              },
-              {
-                num: '02',
-                title: 'The challenge',
-                body: 'They were nervous about buying in a country they'd visited only twice, and confused by conflicting advice on leasehold versus company ownership.',
-              },
-              {
-                num: '03',
-                title: 'Amir\'s approach',
-                body: 'I started with a plain-English session on ownership structures, then narrowed the search to Bang Tao for its rental demand and resale liquidity.',
-              },
-              {
-                num: '04',
-                title: 'Research & guidance',
-                body: 'Title verification, developer track-record checks, and a lease reviewed line-by-line with a vetted lawyer before any deposit changed hands.',
-              },
-              {
-                num: '05',
-                title: 'The outcome',
-                body: 'A two-bedroom pool villa on a secure leasehold, bought below the original asking price, with a rental management plan in place from day one.',
-              },
-            ].map((step) => (
-              <div key={step.num} className="flex gap-5">
-                {/* Numbered circle */}
-                <div className="shrink-0 w-9 h-9 rounded-full bg-[#EEF1FF] border border-blue-100 flex items-center justify-center font-desc-mona text-[13px] font-semibold text-[#5870F7] leading-none mt-0.5">
-                  {step.num}
-                </div>
-                <div className="space-y-1.5">
-                  <h3
-                    className="font-heading-bricolage text-[18px] font-semibold text-[#020202] leading-tight tracking-[-0.01em]"
-                    style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
-                  >
-                    {step.title}
-                  </h3>
-                  <p className="font-desc-mona text-[15px] font-normal text-[#6B7280] leading-[1.6]">
-                    {step.body}
-                  </p>
+        return (
+          <section className="w-full bg-[#f8fafc] py-16 sm:py-24 border-b border-gray-200/50">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+
+              {/* Pill badge */}
+              <div className="mb-4">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-blue-100 font-desc-mona text-[14px] font-medium text-[#5870F7] leading-none shadow-2xs">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#5870F7]" />
+                  Featured case study
                 </div>
               </div>
-            ))}
-          </div>
 
-          {/* Metrics Bar */}
-          <div className="rounded-2xl border border-blue-100 bg-white shadow-xs p-6 grid grid-cols-3 divide-x divide-gray-100 mb-10">
-            {[
-              { value: '6.9%', label: 'Gross rental yield' },
-              { value: '฿8%', label: 'Below asking price' },
-              { value: '100%', label: 'Managed, hands-off' },
-            ].map((m) => (
-              <div key={m.label} className="flex flex-col items-center justify-center text-center px-4">
-                <div
-                  className="font-heading-bricolage text-[28px] sm:text-[32px] font-semibold text-[#5870F7] leading-none tracking-[-0.01em] mb-1.5"
-                  style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
-                >
-                  {m.value}
-                </div>
-                <p className="font-desc-mona text-[13px] font-normal text-[#6B7280] leading-tight">{m.label}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* Key takeaways */}
-          <div className="flex gap-5 mb-10">
-            <div className="shrink-0 w-9 h-9 rounded-full bg-[#EEF1FF] border border-blue-100 flex items-center justify-center font-desc-mona text-[13px] font-semibold text-[#5870F7] leading-none mt-0.5">
-              07
-            </div>
-            <div className="space-y-1.5">
-              <h3
-                className="font-heading-bricolage text-[18px] font-semibold text-[#020202] leading-tight tracking-[-0.01em]"
+              {/* Title */}
+              <h2
+                className="font-heading-bricolage text-[32px] sm:text-[40px] font-semibold text-[#020202] leading-[1.1] tracking-[-0.01em] mb-8"
                 style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
               >
-                Key takeaways
-              </h3>
-              <p className="font-desc-mona text-[15px] font-normal text-[#6B7280] leading-[1.6]">
-                The right area and a properly reviewed lease matter more than chasing the lowest price. Independent due diligence paid for itself many times over.
-              </p>
+                {featuredStory.title}
+              </h2>
+
+              {/* Hero Image */}
+              {featuredStory.image && (
+                <div className="w-full rounded-2xl overflow-hidden mb-10 border border-gray-200/60 shadow-sm">
+                  <img
+                    src={featuredStory.image}
+                    alt={featuredStory.title}
+                    className="w-full h-72 sm:h-96 object-cover"
+                  />
+                </div>
+              )}
+
+              {/* Steps */}
+              {steps.length > 0 && (
+                <div className="space-y-8 mb-10">
+                  {steps.map((step) => (
+                    <div key={step.num} className="flex gap-5">
+                      <div className="shrink-0 w-9 h-9 rounded-full bg-[#EEF1FF] border border-blue-100 flex items-center justify-center font-desc-mona text-[13px] font-semibold text-[#5870F7] leading-none mt-0.5">
+                        {step.num}
+                      </div>
+                      <div className="space-y-1.5">
+                        <h3
+                          className="font-heading-bricolage text-[18px] font-semibold text-[#020202] leading-tight tracking-[-0.01em]"
+                          style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+                        >
+                          {step.title}
+                        </h3>
+                        <p className="font-desc-mona text-[15px] font-normal text-[#6B7280] leading-[1.6]">{step.body}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Metrics Bar */}
+              {metrics.length > 0 && (
+                <div className={`rounded-2xl border border-blue-100 bg-white shadow-xs p-6 grid grid-cols-${metrics.length} divide-x divide-gray-100 mb-10`}>
+                  {metrics.map((m) => (
+                    <div key={m.label} className="flex flex-col items-center justify-center text-center px-4">
+                      <div
+                        className="font-heading-bricolage text-[28px] sm:text-[32px] font-semibold text-[#5870F7] leading-none tracking-[-0.01em] mb-1.5"
+                        style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+                      >
+                        {m.value}
+                      </div>
+                      <p className="font-desc-mona text-[13px] font-normal text-[#6B7280] leading-tight">{m.label}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Key Takeaways */}
+              {featuredStory.stepKeyTakeaways && (
+                <div className="flex gap-5 mb-10">
+                  <div className="shrink-0 w-9 h-9 rounded-full bg-[#EEF1FF] border border-blue-100 flex items-center justify-center font-desc-mona text-[13px] font-semibold text-[#5870F7] leading-none mt-0.5">
+                    07
+                  </div>
+                  <div className="space-y-1.5">
+                    <h3
+                      className="font-heading-bricolage text-[18px] font-semibold text-[#020202] leading-tight tracking-[-0.01em]"
+                      style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+                    >
+                      Key takeaways
+                    </h3>
+                    <p className="font-desc-mona text-[15px] font-normal text-[#6B7280] leading-[1.6]">
+                      {featuredStory.stepKeyTakeaways}
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* CTA Block */}
+              <div className="rounded-2xl bg-[#1C2026] p-8 sm:p-10 text-center space-y-4">
+                <h3
+                  className="font-heading-bricolage text-[24px] sm:text-[28px] font-semibold text-white leading-tight tracking-[-0.01em]"
+                  style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+                >
+                  Thinking about your own purchase?
+                </h3>
+                <p className="font-desc-mona text-[15px] font-normal text-[#B3B3B3] leading-[1.5]">
+                  Message Amir to talk through your situation — honestly, no pressure.
+                </p>
+                <a
+                  href="https://wa.me/8801875189361"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#5870F7] hover:bg-blue-600 font-desc-mona text-[16px] font-medium text-white leading-none transition-all shadow-[inset_0px_2px_4px_0px_rgba(255,255,255,0.25)] mt-2"
+                >
+                  Contact Amir on WhatsApp
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </a>
+              </div>
+
             </div>
-          </div>
+          </section>
+        );
+      })()}
 
-          {/* CTA Block */}
-          <div className="rounded-2xl bg-[#1C2026] p-8 sm:p-10 text-center space-y-4">
-            <h3
-              className="font-heading-bricolage text-[24px] sm:text-[28px] font-semibold text-white leading-tight tracking-[-0.01em]"
-              style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
-            >
-              Thinking about your own purchase?
-            </h3>
-            <p className="font-desc-mona text-[15px] font-normal text-[#B3B3B3] leading-[1.5]">
-              Message Amir to talk through your situation — honestly, no pressure.
-            </p>
-            <a
-              href="https://wa.me/8801875189361"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#5870F7] hover:bg-blue-600 font-desc-mona text-[16px] font-medium text-white leading-none transition-all shadow-[inset_0px_2px_4px_0px_rgba(255,255,255,0.25)] mt-2"
-            >
-              Contact Amir on WhatsApp
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
-              </svg>
-            </a>
-          </div>
-
-        </div>
-      </section>
 
 
       {/* WhatsApp Contact CTA Banner Section */}

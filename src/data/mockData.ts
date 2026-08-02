@@ -300,6 +300,18 @@ export const mockSuccessStories: SuccessStory[] = [
     clientRole: 'Home Buyer',
     story: 'Navigated land department registration and established clean leasehold terms with 30+30+30 extension clauses.',
     testimonial: 'Amir explained every risk clearly and saved us from a poorly drafted contract.',
+    isFeatured: true,
+    stepBudget: "A retired couple from Vancouver, first-time foreign buyers, looking for a holiday home that could also generate rental income when they weren't using it.",
+    stepChallenge: "They were nervous about buying in a country they'd visited only twice, and confused by conflicting advice on leasehold versus company ownership.",
+    stepApproach: "I started with a plain-English session on ownership structures, then narrowed the search to Bang Tao for its rental demand and resale liquidity.",
+    stepResearch: "Title verification, developer track-record checks, and a lease reviewed line-by-line with a vetted lawyer before any deposit changed hands.",
+    stepOutcome: "A two-bedroom pool villa on a secure leasehold, bought below the original asking price, with a rental management plan in place from day one.",
+    stepKeyTakeaways: "The right area and a properly reviewed lease matter more than chasing the lowest price. Independent due diligence paid for itself many times over.",
+    metrics: [
+      { value: '6.9%', label: 'Gross rental yield' },
+      { value: '฿8%', label: 'Below asking price' },
+      { value: '100%', label: 'Managed, hands-off' },
+    ],
   },
   {
     id: 'story-2',

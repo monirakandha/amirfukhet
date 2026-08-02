@@ -76,6 +76,11 @@ export interface BlogArticle {
   featured?: boolean;
 }
 
+export interface CaseStudyMetric {
+  value: string;
+  label: string;
+}
+
 export interface SuccessStory {
   id: string;
   title: string;
@@ -93,6 +98,17 @@ export interface SuccessStory {
   testimonial?: string;
   dateClosed?: string;
   highlights?: string[];
+  // Case study step fields
+  stepBudget?: string;
+  stepChallenge?: string;
+  stepApproach?: string;
+  stepResearch?: string;
+  stepOutcome?: string;
+  stepKeyTakeaways?: string;
+  // 3 metrics for the metrics bar
+  metrics?: CaseStudyMetric[];
+  // Mark this as the featured story shown on the homepage
+  isFeatured?: boolean;
 }
 
 export interface InquiryPayload {
