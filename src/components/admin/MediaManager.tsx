@@ -63,42 +63,49 @@ export const MediaManager: React.FC<MediaManagerProps> = ({ onSelect, pickerMode
     loadFiles();
   }, [loadFiles]);
 
-  const uploadFile = async (file: File) => {
-    if (!file) return;
+  const uploadFiles = async (filesToUpload: File[]) => {
+    if (!filesToUpload.length) return;
     setUploading(true);
-    setUploadProgress(10);
+    
+    let successCount = 0;
+    
+    for (let i = 0; i < filesToUpload.length; i++) {
+      const file = filesToUpload[i];
+      setUploadProgress(Math.round(((i) / filesToUpload.length) * 100));
 
-    const formData = new FormData();
-    formData.append('file', file);
+      const formData = new FormData();
+      formData.append('file', file);
 
-    try {
-      setUploadProgress(40);
-      const res = await fetch('/api/upload', { method: 'POST', body: formData });
-      setUploadProgress(80);
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Upload failed');
-      setUploadProgress(100);
-      showToast(`"${file.name}" uploaded successfully!`);
-      await loadFiles();
-    } catch (err: any) {
-      showToast(err.message || 'Upload failed', 'error');
-    } finally {
-      setUploading(false);
-      setUploadProgress(0);
+      try {
+        const res = await fetch('/api/upload', { method: 'POST', body: formData });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Upload failed');
+        successCount++;
+      } catch (err: any) {
+        showToast(`Failed: ${file.name} - ${err.message || 'Error'}`, 'error');
+      }
     }
+
+    setUploadProgress(100);
+    if (successCount > 0) {
+      showToast(`Successfully uploaded ${successCount} file(s)!`);
+      await loadFiles();
+    }
+    setUploading(false);
+    setUploadProgress(0);
   };
 
   const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) uploadFile(file);
+    const files = Array.from(e.target.files || []);
+    if (files.length > 0) uploadFiles(files);
     e.target.value = '';
   };
 
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
     setDragging(false);
-    const file = e.dataTransfer.files?.[0];
-    if (file) uploadFile(file);
+    const files = Array.from(e.dataTransfer.files || []);
+    if (files.length > 0) uploadFiles(files);
   };
 
   const handleDelete = async (file: MediaFile) => {
@@ -155,6 +162,7 @@ export const MediaManager: React.FC<MediaManagerProps> = ({ onSelect, pickerMode
       <input
         ref={fileInputRef}
         type="file"
+        multiple
         accept="image/jpeg,image/png,image/webp,image/gif"
         className="hidden"
         onChange={handleFileInput}
