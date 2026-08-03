@@ -106,6 +106,41 @@ export default function AboutPage() {
       {/* About Main Body Section matching Figma mockup */}
       <section className="py-16 bg-white flex-grow">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+          {/* 3-Stat Highlights Card Container */}
+          <div className="bg-[#F8FAFC] border border-gray-100 rounded-[28px] p-6 sm:p-10 shadow-sm">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center divide-y sm:divide-y-0 sm:divide-x divide-blue-100">
+              {/* Stat 1 */}
+              <div className="pt-4 sm:pt-0 sm:px-4 space-y-1">
+                <div className="text-3xl sm:text-[40px] font-bold text-[#5870F7]">
+                  <AnimatedCounter value="7+ yrs" />
+                </div>
+                <div className="text-xs sm:text-sm text-gray-600 font-medium">
+                  In the Phuket market
+                </div>
+              </div>
+
+              {/* Stat 2 */}
+              <div className="pt-4 sm:pt-0 sm:px-4 space-y-1">
+                <div className="text-3xl sm:text-[40px] font-bold text-[#5870F7]">
+                  <AnimatedCounter value="50+" />
+                </div>
+                <div className="text-xs sm:text-sm text-gray-600 font-medium">
+                  Foreign buyers guided
+                </div>
+              </div>
+
+              {/* Stat 3 */}
+              <div className="pt-4 sm:pt-0 sm:px-4 space-y-1">
+                <div className="text-3xl sm:text-[40px] font-bold text-[#5870F7]">
+                  <AnimatedCounter value="12" />
+                </div>
+                <div className="text-xs sm:text-sm text-gray-600 font-medium">
+                  Nationalities served
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Section 1: My story */}
           <div className="space-y-4">
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-snug">
@@ -126,54 +161,19 @@ export default function AboutPage() {
             </p>
           </div>
 
-          {/* 3-Stat Highlights Card Container matching Figma mockup */}
-          <div className="bg-blue-50/60 border border-blue-200/80 rounded-2xl p-6 sm:p-8">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center divide-y sm:divide-y-0 sm:divide-x divide-blue-200/60">
-              {/* Stat 1 */}
-              <div className="pt-4 sm:pt-0 sm:px-4 space-y-1">
-                <div className="text-3xl sm:text-4xl font-bold text-[#4c70ff]">
-                  <AnimatedCounter value="7+ yrs" />
-                </div>
-                <div className="text-xs sm:text-sm text-gray-600 font-medium">
-                  In the Phuket market
-                </div>
-              </div>
-
-              {/* Stat 2 */}
-              <div className="pt-4 sm:pt-0 sm:px-4 space-y-1">
-                <div className="text-3xl sm:text-4xl font-bold text-[#4c70ff]">
-                  <AnimatedCounter value="50+" />
-                </div>
-                <div className="text-xs sm:text-sm text-gray-600 font-medium">
-                  Foreign buyers guided
-                </div>
-              </div>
-
-              {/* Stat 3 */}
-              <div className="pt-4 sm:pt-0 sm:px-4 space-y-1">
-                <div className="text-3xl sm:text-4xl font-bold text-[#4c70ff]">
-                  <AnimatedCounter value="12" />
-                </div>
-                <div className="text-xs sm:text-sm text-gray-600 font-medium">
-                  Nationalities served
-                </div>
-              </div>
-            </div>
-          </div>
-
           {/* Callout Box: Want to work together? */}
-          <div className="bg-[#f4f6fa] border border-gray-200/80 rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <div className="flex items-center gap-3.5">
+          <div className="bg-[#F8FAFC] border border-gray-100 rounded-[28px] p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-sm">
+            <div className="flex items-center gap-5">
               <img
                 src="/images/amir.png"
                 alt="Amir Ahmed Faisal"
-                className="w-11 h-11 rounded-full object-cover border border-blue-200 shrink-0 bg-white"
+                className="w-16 h-16 rounded-full object-cover shrink-0"
               />
               <div>
-                <h4 className="font-bold text-gray-900 text-sm sm:text-base leading-snug">
+                <h4 className="font-semibold text-gray-900 text-xl sm:text-2xl leading-snug tracking-tight">
                   Want to work together?
                 </h4>
-                <p className="text-xs text-gray-500 mt-0.5">
+                <p className="text-[15px] text-gray-500 mt-1 font-medium">
                   Start with a free, no-pressure conversation.
                 </p>
               </div>
@@ -183,11 +183,11 @@ export default function AboutPage() {
               href="https://wa.me/8801875189361"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 bg-[#4c70ff] hover:bg-blue-600 text-white font-semibold text-xs sm:text-sm px-5 py-2.5 rounded-full transition-all shadow-sm shrink-0"
+              className="inline-flex items-center gap-2 bg-[#5870F7] hover:bg-blue-600 text-white font-medium text-[15px] px-7 py-3 rounded-full transition-colors shadow-sm shrink-0"
             >
               Ask Amir
-              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M7 17L17 7M17 7H7M17 7V17" />
               </svg>
             </a>
           </div>

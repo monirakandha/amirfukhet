@@ -6,29 +6,50 @@ import Link from 'next/link';
 export default function GlobalCTA() {
   return (
     <section className="w-full bg-white px-4 sm:px-6 lg:px-8 pb-16 pt-8 font-sans">
-      <div className="max-w-3xl mx-auto">
-        <div className="rounded-[32px] bg-[#1C2026] p-4 sm:p-5 shadow-2xl w-full border border-gray-100/5">
-          <div className="rounded-[24px] border border-white/10 bg-[#2B2D33] p-10 sm:p-14 text-center flex flex-col items-center space-y-6">
-            <h2
-              className="font-heading-bricolage text-[28px] sm:text-[32px] font-semibold text-white leading-tight tracking-[-0.01em]"
-              style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
-            >
-              Thinking about your own purchase?
-            </h2>
-            <p className="font-desc-mona text-[15px] sm:text-[16px] font-normal text-[#9CA3AF] leading-[1.6] max-w-[420px] mx-auto">
-              Message Amir to talk through your situation — honestly, no pressure.
-            </p>
-            <a
-              href="https://wa.me/8801875189361"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#5870F7] hover:bg-blue-600 font-desc-mona text-[15px] font-medium text-white leading-none transition-all shadow-[inset_0px_2px_4px_0px_rgba(255,255,255,0.25)]"
-            >
-              <span>Contact Amir on WhatsApp</span>
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
-              </svg>
-            </a>
+      <div className="max-w-7xl mx-auto">
+        <div className="rounded-[32px] bg-[#1C2026] p-4 sm:p-6 shadow-2xl w-full">
+          <div className="rounded-[24px] bg-[#2B2D33] p-10 sm:p-14 w-full flex flex-col items-center">
+            
+            <div className="text-center space-y-3 mb-10">
+              <h2
+                className="font-heading-bricolage text-[26px] sm:text-[32px] font-semibold text-white leading-tight tracking-[-0.01em]"
+                style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+              >
+                Ready to talk through your purchase?
+              </h2>
+              <p className="font-desc-mona text-[14px] sm:text-[15px] font-medium text-[#9CA3AF] leading-[1.6]">
+                Message Amir directly. Honest, advisory, no pressure.
+              </p>
+            </div>
+
+            <div className="w-full relative flex justify-center items-center mb-8">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-dashed border-[#5870F7]"></div>
+              </div>
+              <div className="relative bg-[#2B2D33] px-3 text-[#5870F7]">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
+              <a
+                href="https://wa.me/8801875189361"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-[#5870F7] hover:bg-blue-600 font-medium text-[15px] text-white transition-all shadow-sm w-full sm:w-auto"
+              >
+                Contact Amir on WhatsApp
+              </a>
+              <Link
+                href="/about"
+                className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-white hover:bg-gray-50 font-medium text-[15px] text-gray-900 transition-all shadow-sm w-full sm:w-auto"
+              >
+                See how I work
+              </Link>
+            </div>
+
           </div>
         </div>
       </div>
