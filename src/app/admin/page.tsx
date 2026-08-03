@@ -59,7 +59,7 @@ export default function AdminDashboardPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col lg:flex-row bg-slate-50 text-gray-900">
+    <div className="h-screen overflow-hidden flex flex-col lg:flex-row bg-slate-50 text-gray-900">
       {/* Mobile Header Bar */}
       <div className="lg:hidden bg-white border-b border-slate-200 p-4 flex items-center justify-between sticky top-0 z-40 shadow-xs">
         <div className="flex items-center gap-3">
@@ -111,7 +111,7 @@ export default function AdminDashboardPage() {
       </div>
 
       {/* Main Content Area */}
-      <main className="flex-1 min-w-0 overflow-y-auto max-h-screen focus:outline-none">
+      <main className="flex-1 min-w-0 overflow-y-auto focus:outline-none">
         {/* Desktop top bar */}
         <div className="hidden lg:flex items-center justify-between px-8 py-3 bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
           <div className="flex items-center gap-2 text-sm text-slate-500">

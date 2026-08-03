@@ -54,7 +54,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ activeTab, setActive
   };
 
   return (
-    <aside className="w-full lg:w-72 bg-white border-r border-slate-200 flex flex-col shrink-0 min-h-screen shadow-sm">
+    <aside className="w-full lg:w-72 bg-white border-r border-slate-200 flex flex-col shrink-0 h-full shadow-sm">
       {/* Brand Header */}
       <div className="p-6 border-b border-slate-200 flex items-center justify-between">
         <div className="flex items-center gap-3">
