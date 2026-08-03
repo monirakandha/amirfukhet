@@ -6,10 +6,13 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import HomeValuationModal from '@/components/HomeValuationModal';
 import { Clock, Calendar, PenTool, Download } from 'lucide-react';
+import { useAdmin } from '@/context/AdminContext';
 
 export default function GuidePage() {
   const [isValuationOpen, setIsValuationOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('can-foreigners-own-property');
+  const { faqs } = useAdmin();
+  const [openFaq, setOpenFaq] = useState<string | null>('faq-1');
 
   const tocItems = [
     { id: 'can-foreigners-own-property', title: 'Can foreigners own property?' },
@@ -334,34 +337,30 @@ export default function GuidePage() {
 
                 {/* FAQ Accordion List */}
                 <div className="space-y-4 pt-2">
-                  {/* FAQ 1 (Expanded in Figma) */}
-                  <div className="bg-[#f4f6fa] rounded-2xl p-5 sm:p-6 border border-gray-200/60 space-y-3">
-                    <div className="flex items-center justify-between font-bold text-gray-900 text-sm sm:text-base">
-                      <span>Can a foreigner own land in Thailand?</span>
-                      <span className="text-gray-500 text-lg font-bold">–</span>
-                    </div>
-                    <p className="text-xs sm:text-sm text-gray-600 leading-relaxed pt-1">
-                      Not freehold in their own name. Foreigners commonly secure villas and land through long leaseholds or properly structured arrangements – which is exactly where advice protects you.
-                    </p>
-                  </div>
-
-                  {/* FAQ 2 */}
-                  <div className="bg-white rounded-2xl p-5 sm:p-6 border border-gray-200/70 hover:border-gray-300 transition-colors flex items-center justify-between font-bold text-gray-900 text-sm sm:text-base cursor-pointer">
-                    <span>What is the foreign quota on condos?</span>
-                    <span className="text-[#4c70ff] text-lg font-bold">+</span>
-                  </div>
-
-                  {/* FAQ 3 */}
-                  <div className="bg-white rounded-2xl p-5 sm:p-6 border border-gray-200/70 hover:border-gray-300 transition-colors flex items-center justify-between font-bold text-gray-900 text-sm sm:text-base cursor-pointer">
-                    <span>What taxes and fees apply when buying?</span>
-                    <span className="text-[#4c70ff] text-lg font-bold">+</span>
-                  </div>
-
-                  {/* FAQ 4 */}
-                  <div className="bg-white rounded-2xl p-5 sm:p-6 border border-gray-200/70 hover:border-gray-300 transition-colors flex items-center justify-between font-bold text-gray-900 text-sm sm:text-base cursor-pointer">
-                    <span>Can foreigners get a mortgage in Thailand?</span>
-                    <span className="text-[#4c70ff] text-lg font-bold">+</span>
-                  </div>
+                  {faqs.map((faq) => {
+                    const isOpen = openFaq === faq.id;
+                    return (
+                      <div 
+                        key={faq.id}
+                        onClick={() => setOpenFaq(isOpen ? null : faq.id)}
+                        className={`rounded-2xl p-5 sm:p-6 transition-colors cursor-pointer border ${
+                          isOpen ? 'bg-[#f4f6fa] border-gray-200/60' : 'bg-white border-gray-200/70 hover:border-gray-300'
+                        }`}
+                      >
+                        <div className="flex items-center justify-between font-bold text-gray-900 text-sm sm:text-base">
+                          <span>{faq.question}</span>
+                          <span className={`text-lg font-bold ${isOpen ? 'text-gray-500' : 'text-[#4c70ff]'}`}>
+                            {isOpen ? '–' : '+'}
+                          </span>
+                        </div>
+                        {isOpen && (
+                          <p className="text-xs sm:text-sm text-gray-600 leading-relaxed pt-3">
+                            {faq.answer}
+                          </p>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
               </section>
 
