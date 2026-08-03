@@ -2,14 +2,14 @@ import { Metadata } from 'next';
 import React from 'react';
 
 export const metadata: Metadata = {
-  title: 'Work With Amir | Book a Consultation | AMIR KNOWS PHUKET',
+  title: 'Work With Amir | Phuket Property Advisor | AMIR KNOWS PHUKET',
   description:
-    'Ready to buy property in Phuket? Book a free consultation with Amir — independent advice on areas, ownership structures, and due diligence. No sales pitch.',
+    'Send Amir a message about buying property in Phuket. Honest answers on ownership structures, areas, due diligence, and investment strategy. Replies within 24 hours.',
   keywords:
-    'consult property advisor Phuket, book Phuket property consultation, work with real estate advisor Thailand, independent buyer agent Phuket',
+    'contact property advisor Phuket, message Amir property, Phuket real estate inquiry, WhatsApp property advisor Thailand',
   openGraph: {
     title: 'Work With Amir | AMIR KNOWS PHUKET',
-    description: 'Get independent advice before buying property in Phuket. Book a free consultation with Amir.',
+    description: 'Get in touch with Amir for independent property advice in Phuket. Replies within 24 hours.',
     type: 'website',
   },
 };
