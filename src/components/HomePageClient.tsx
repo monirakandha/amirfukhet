@@ -778,7 +778,7 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
         </div>
       </section>
 
-      <Footer />
+      <Footer hideCTA={true} />
 
       <HomeValuationModal isOpen={isValuationOpen} onClose={() => setIsValuationOpen(false)} />
       <ScheduleViewingModal

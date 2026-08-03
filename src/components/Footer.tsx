@@ -5,12 +5,12 @@ import Link from 'next/link';
 import { useAdmin } from '@/context/AdminContext';
 import GlobalCTA from './GlobalCTA';
 
-export default function Footer() {
+export default function Footer({ hideCTA = false }: { hideCTA?: boolean }) {
   const { settings } = useAdmin();
 
   return (
     <>
-      <GlobalCTA />
+      {!hideCTA && <GlobalCTA />}
       <footer className="w-full bg-[#222629] text-gray-400 pt-20 pb-16 border-t border-white/10 font-sans">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Top 4-Column Grid matching Figma pixel-for-pixel */}
