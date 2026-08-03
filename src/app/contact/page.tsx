@@ -122,18 +122,19 @@ export default function ContactPage() {
             </div>
 
             {/* Right Column: Contact Form */}
-            <div className="bg-[#1c2024] rounded-[32px] p-8 sm:p-10 shadow-2xl relative">
-              {submitted ? (
-                <div className="text-center py-16 space-y-4">
-                  <CheckCircle2 className="w-16 h-16 text-emerald-500 mx-auto" />
-                  <h3 className="text-2xl font-bold text-white">Inquiry Sent!</h3>
-                  <p className="text-sm text-gray-400 max-w-md mx-auto">
-                    Thank you for reaching out. Amir will review your request and get back to you directly within 24 hours.
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <h3 className="text-2xl sm:text-[28px] font-bold text-white mb-8">Send an inquiry</h3>
+            <div className="bg-[#1c2024] rounded-[32px] p-2 shadow-2xl relative">
+              <div className="border border-gray-700/50 rounded-[28px] p-6 sm:p-8">
+                {submitted ? (
+                  <div className="text-center py-16 space-y-4">
+                    <CheckCircle2 className="w-16 h-16 text-emerald-500 mx-auto" />
+                    <h3 className="text-2xl font-bold text-white">Inquiry Sent!</h3>
+                    <p className="text-sm text-gray-400 max-w-md mx-auto">
+                      Thank you for reaching out. Amir will review your request and get back to you directly within 24 hours.
+                    </p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <h3 className="text-2xl sm:text-[28px] font-bold text-white mb-6">Send an inquiry</h3>
                   
                   <div className="space-y-5">
                     <div>
@@ -197,6 +198,7 @@ export default function ContactPage() {
                   </div>
                 </form>
               )}
+              </div>
             </div>
           </div>
         </div>
