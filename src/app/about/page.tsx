@@ -31,7 +31,8 @@ export default function AboutPage() {
 
               {/* Main Headline */}
               <h1 className="font-heading-bricolage text-[36px] sm:text-[44px] lg:text-[50px] font-semibold text-[#020202] leading-[1.15] tracking-[-0.01em] text-left">
-                The advisor foreigners trust to buy in Phuket
+                The advisor foreigners<br />
+                trust to buy in Phuket
               </h1>
 
               {/* Description Paragraph */}
