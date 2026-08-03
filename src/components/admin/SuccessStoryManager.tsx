@@ -22,12 +22,7 @@ export const SuccessStoryManager: React.FC = () => {
   const [clientName, setClientName] = useState('Dr. Marcus Vance');
   const [clientRole, setClientRole] = useState('International Investor from Singapore');
   const [testimonial, setTestimonial] = useState('');
-  const [stepBudget, setStepBudget] = useState('');
-  const [stepChallenge, setStepChallenge] = useState('');
-  const [stepApproach, setStepApproach] = useState('');
-  const [stepResearch, setStepResearch] = useState('');
-  const [stepOutcome, setStepOutcome] = useState('');
-  const [stepKeyTakeaways, setStepKeyTakeaways] = useState('');
+  const [steps, setSteps] = useState<{title: string; body: string}[]>([]);
   const [metric1Value, setMetric1Value] = useState('');
   const [metric1Label, setMetric1Label] = useState('');
   const [metric2Value, setMetric2Value] = useState('');
@@ -53,12 +48,7 @@ export const SuccessStoryManager: React.FC = () => {
     setClientName('');
     setClientRole('');
     setTestimonial('');
-    setStepBudget('');
-    setStepChallenge('');
-    setStepApproach('');
-    setStepResearch('');
-    setStepOutcome('');
-    setStepKeyTakeaways('');
+    setSteps([]);
     setMetric1Value(''); setMetric1Label('');
     setMetric2Value(''); setMetric2Label('');
     setMetric3Value(''); setMetric3Label('');
@@ -77,12 +67,7 @@ export const SuccessStoryManager: React.FC = () => {
     setClientName(s.clientName || '');
     setClientRole(s.clientRole || '');
     setTestimonial(s.testimonial || s.story || '');
-    setStepBudget(s.stepBudget || '');
-    setStepChallenge(s.stepChallenge || '');
-    setStepApproach(s.stepApproach || '');
-    setStepResearch(s.stepResearch || '');
-    setStepOutcome(s.stepOutcome || '');
-    setStepKeyTakeaways(s.stepKeyTakeaways || '');
+    setSteps(s.steps || []);
     const m = s.metrics || [];
     setMetric1Value(m[0]?.value || ''); setMetric1Label(m[0]?.label || '');
     setMetric2Value(m[1]?.value || ''); setMetric2Label(m[1]?.label || '');
@@ -113,12 +98,7 @@ export const SuccessStoryManager: React.FC = () => {
       story: testimonial,
       dateClosed: 'Q2 2026',
       highlights: [],
-      stepBudget,
-      stepChallenge,
-      stepApproach,
-      stepResearch,
-      stepOutcome,
-      stepKeyTakeaways,
+      steps,
       metrics,
       isFeatured,
     };
@@ -254,25 +234,83 @@ export const SuccessStoryManager: React.FC = () => {
 
           {/* Divider */}
           <div className="border-t border-slate-200 pt-4">
-            <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-4 font-heading-bricolage">📋 Case Study Steps (for featured homepage display)</p>
+            <div className="flex justify-between items-center mb-4">
+              <p className="text-xs font-bold text-slate-500 uppercase tracking-wider font-heading-bricolage">📋 Case Study Steps (for featured homepage display)</p>
+              <button
+                type="button"
+                onClick={() => setSteps([...steps, { stepNumber: (steps.length + 1).toString().padStart(2, '0'), title: '', body: '' }])}
+                className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-100 text-xs font-semibold transition-colors"
+              >
+                <Plus className="w-3.5 h-3.5" />
+                Add Step
+              </button>
+            </div>
 
-            {[
-              { label: '01 — Budget, Area & Goal', value: stepBudget, setter: setStepBudget, placeholder: "Describe the client's initial goal and budget..." },
-              { label: '02 — The Challenge', value: stepChallenge, setter: setStepChallenge, placeholder: 'What problems or fears did the client face?' },
-              { label: '03 — Amir\'s Approach', value: stepApproach, setter: setStepApproach, placeholder: 'How did Amir approach the situation?' },
-              { label: '04 — Research & Guidance', value: stepResearch, setter: setStepResearch, placeholder: 'What due diligence was done?' },
-              { label: '05 — The Outcome', value: stepOutcome, setter: setStepOutcome, placeholder: 'What was the final result?' },
-              { label: '07 — Key Takeaways', value: stepKeyTakeaways, setter: setStepKeyTakeaways, placeholder: 'What should readers take away from this case?' },
-            ].map(({ label, value, setter, placeholder }) => (
-              <div key={label} className="space-y-1.5 mb-4">
-                <label className="text-xs font-bold text-slate-700 font-heading-bricolage">{label}</label>
-                <textarea
-                  value={value}
-                  onChange={(e) => setter(e.target.value)}
-                  placeholder={placeholder}
-                  rows={2}
-                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] resize-none"
-                />
+            {steps.length === 0 && (
+              <div className="text-center py-6 bg-slate-50 rounded-xl border border-slate-200 border-dashed">
+                <p className="text-sm text-slate-500">No steps added yet.</p>
+              </div>
+            )}
+
+            {steps.map((step, idx) => (
+              <div key={idx} className="space-y-3 mb-6 p-4 bg-slate-50 border border-slate-200 rounded-xl relative">
+                <div className="absolute top-4 right-4">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const newSteps = [...steps];
+                      newSteps.splice(idx, 1);
+                      setSteps(newSteps);
+                    }}
+                    className="p-1.5 rounded-md hover:bg-red-100 text-slate-400 hover:text-red-600 transition-colors"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+                </div>
+                <div className="flex gap-4 pr-10">
+                  <div className="w-24 shrink-0 space-y-1.5">
+                    <label className="text-[11px] font-bold text-slate-500 uppercase">Number</label>
+                    <input
+                      type="text"
+                      value={step.stepNumber || (idx + 1).toString().padStart(2, '0')}
+                      onChange={(e) => {
+                        const newSteps = [...steps];
+                        newSteps[idx].stepNumber = e.target.value;
+                        setSteps(newSteps);
+                      }}
+                      placeholder="e.g. 01"
+                      className="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7]"
+                    />
+                  </div>
+                  <div className="space-y-1.5 flex-1">
+                    <label className="text-[11px] font-bold text-slate-500 uppercase">Step Title</label>
+                    <input
+                      type="text"
+                      value={step.title}
+                      onChange={(e) => {
+                        const newSteps = [...steps];
+                        newSteps[idx].title = e.target.value;
+                        setSteps(newSteps);
+                      }}
+                      placeholder="e.g. The Challenge"
+                      className="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7]"
+                    />
+                  </div>
+                </div>
+                <div className="space-y-1.5">
+                  <label className="text-[11px] font-bold text-slate-500 uppercase">Step {(idx + 1).toString().padStart(2, '0')} Description</label>
+                  <textarea
+                    value={step.body}
+                    onChange={(e) => {
+                      const newSteps = [...steps];
+                      newSteps[idx].body = e.target.value;
+                      setSteps(newSteps);
+                    }}
+                    placeholder="Describe what happened in this step..."
+                    rows={2}
+                    className="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] resize-none"
+                  />
+                </div>
               </div>
             ))}
           </div>

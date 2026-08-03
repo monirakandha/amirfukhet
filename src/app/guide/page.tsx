@@ -11,7 +11,7 @@ import { useAdmin } from '@/context/AdminContext';
 export default function GuidePage() {
   const [isValuationOpen, setIsValuationOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('can-foreigners-own-property');
-  const { faqs } = useAdmin();
+  const { faqs, guideContent } = useAdmin();
   const [openFaq, setOpenFaq] = useState<string | null>('faq-1');
 
   const tocItems = [
@@ -151,28 +151,28 @@ export default function GuidePage() {
             </aside>
 
             {/* Right Guide Content Area matching Figma mockup */}
-            <main className="lg:col-span-8 space-y-16">
+            <main className="lg:col-span-8 space-y-10">
               {/* Top Luxury Villa Header Image */}
               <div className="relative w-full h-80 sm:h-[420px] rounded-2xl overflow-hidden shadow-sm bg-gray-100">
                 <img
-                  src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=1200"
+                  src={guideContent.heroImage}
                   alt="Luxury Phuket Hillside Pool Villa"
                   className="w-full h-full object-cover"
                 />
               </div>
 
               {/* Section 1: Can foreigners actually own property in Thailand? */}
-              <section id="can-foreigners-own-property" className="scroll-mt-28 space-y-6 border-b border-gray-100 pb-12">
+              <section id="can-foreigners-own-property" className="scroll-mt-28 space-y-4 border-b border-gray-100 pb-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-snug">
-                  Can foreigners actually own property in Thailand?
+                  {guideContent.section1.heading}
                 </h2>
 
                 <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
-                  Yes – but how you own it matters more than anything else in this guide. Foreigners can freehold-own condominium units within the 49% foreign quota of a building, and can hold land and villas through long leaseholds or properly structured arrangements. Getting this right is the difference between a secure asset and an expensive lesson.
+                  {guideContent.section1.paragraph1}
                 </p>
 
                 <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
-                  The published guide walks through each path in plain language, with worked examples and the questions to ask before you commit to either route.
+                  {guideContent.section1.paragraph2}
                 </p>
 
                 {/* Callout Box: Not sure which structure fits your situation? */}
@@ -208,13 +208,13 @@ export default function GuidePage() {
               </section>
 
               {/* Section 2: Freehold vs leasehold */}
-              <section id="freehold-vs-leasehold" className="scroll-mt-28 space-y-6 border-b border-gray-100 pb-12">
+              <section id="freehold-vs-leasehold" className="scroll-mt-28 space-y-4 border-b border-gray-100 pb-8">
                 <div>
                   <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-snug">
-                    Freehold vs leasehold
+                    {guideContent.section2.heading}
                   </h2>
                   <p className="text-sm text-gray-500 mt-2">
-                    A comparison table, the protections that matter on a lease, and when each route makes sense.
+                    {guideContent.section2.description}
                   </p>
                 </div>
 
@@ -223,29 +223,29 @@ export default function GuidePage() {
                   {/* Card 1: Freehold */}
                   <div className="bg-[#f4f6fa] rounded-2xl p-6 border border-gray-200/60 space-y-2">
                     <h3 className="text-[#4c70ff] font-bold text-base">
-                      Freehold
+                      {guideContent.section2.freeholdCardTitle}
                     </h3>
                     <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
-                      Outright ownership of a condo unit within the foreign quota. Simplest, most liquid, fully in your name.
+                      {guideContent.section2.freeholdCardDesc}
                     </p>
                   </div>
 
                   {/* Card 2: Leasehold */}
                   <div className="bg-[#f4f6fa] rounded-2xl p-6 border border-gray-200/60 space-y-2">
                     <h3 className="text-[#4c70ff] font-bold text-base">
-                      Leasehold
+                      {guideContent.section2.leaseholdCardTitle}
                     </h3>
                     <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
-                      Typically 30 years + renewals for villas/land. Protection is in the lease terms – this is where guidance pays for itself.
+                      {guideContent.section2.leaseholdCardDesc}
                     </p>
                   </div>
                 </div>
               </section>
 
               {/* Section 3: The step-by-step buying process */}
-              <section id="step-by-step-process" className="scroll-mt-28 space-y-6 border-b border-gray-100 pb-12">
+              <section id="step-by-step-process" className="scroll-mt-28 space-y-4 border-b border-gray-100 pb-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-snug">
-                  The step-by-step buying process
+                  {guideContent.section3.heading}
                 </h2>
 
                 <div className="space-y-4 pt-2">
@@ -255,7 +255,7 @@ export default function GuidePage() {
                       01
                     </div>
                     <span className="text-sm font-medium text-gray-700">
-                      Define budget, area and goal (lifestyle vs yield)
+                      {guideContent.section3.step1}
                     </span>
                   </div>
 
@@ -265,7 +265,7 @@ export default function GuidePage() {
                       02
                     </div>
                     <span className="text-sm font-medium text-gray-700">
-                      Shortlist, view, and verify the developer / title
+                      {guideContent.section3.step2}
                     </span>
                   </div>
 
@@ -275,7 +275,7 @@ export default function GuidePage() {
                       03
                     </div>
                     <span className="text-sm font-medium text-gray-700">
-                      Legal due diligence & reservation agreement
+                      {guideContent.section3.step3}
                     </span>
                   </div>
 
@@ -285,60 +285,60 @@ export default function GuidePage() {
                       04
                     </div>
                     <span className="text-sm font-medium text-gray-700">
-                      Transfer of funds, contract & registration at Land Office
+                      {guideContent.section3.step4}
                     </span>
                   </div>
                 </div>
               </section>
 
               {/* Section 4: Taxes & transfer fees */}
-              <section id="taxes-and-transfer-fees" className="scroll-mt-28 space-y-4 border-b border-gray-100 pb-12">
+              <section id="taxes-and-transfer-fees" className="scroll-mt-28 space-y-4 border-b border-gray-100 pb-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
-                  Taxes & transfer fees
+                  {guideContent.section4.heading}
                 </h2>
-                <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
-                  Understanding Land Department registration fees (2%), withholding tax, specific business tax (3.3%), and stamp duty (0.5%), and how fees are split between buyer and seller in Phuket transactions.
+                <p className="text-gray-600 leading-relaxed text-sm sm:text-base whitespace-pre-line">
+                  {guideContent.section4.content}
                 </p>
               </section>
 
               {/* Section 5: Financing options */}
-              <section id="financing-options" className="scroll-mt-28 space-y-4 border-b border-gray-100 pb-12">
+              <section id="financing-options" className="scroll-mt-28 space-y-4 border-b border-gray-100 pb-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
-                  Financing options
+                  {guideContent.section5.heading}
                 </h2>
-                <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
-                  Financing solutions available for non-resident buyers in Thailand, developer payment plans during construction, and international offshore bank mortgage solutions.
+                <p className="text-gray-600 leading-relaxed text-sm sm:text-base whitespace-pre-line">
+                  {guideContent.section5.content}
                 </p>
               </section>
 
               {/* Section 6: Due diligence checklist */}
-              <section id="due-diligence-checklist" className="scroll-mt-28 space-y-4 border-b border-gray-100 pb-12">
+              <section id="due-diligence-checklist" className="scroll-mt-28 space-y-4 border-b border-gray-100 pb-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
-                  Due diligence checklist
+                  {guideContent.section6.heading}
                 </h2>
-                <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
-                  Title search verification at the Phuket Land Department, environmental impact assessment (EIA) verification, developer track record check, and building permit confirmation.
+                <p className="text-gray-600 leading-relaxed text-sm sm:text-base whitespace-pre-line">
+                  {guideContent.section6.content}
                 </p>
               </section>
 
               {/* Section 7: The real risks */}
-              <section id="the-real-risks" className="scroll-mt-28 space-y-4 border-b border-gray-100 pb-12">
+              <section id="the-real-risks" className="scroll-mt-28 space-y-4 border-b border-gray-100 pb-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
-                  The real risks
+                  {guideContent.section7.heading}
                 </h2>
-                <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
-                  Unpacking common legal traps, unverified developer promises, non-renewable lease clauses, and illegal Thai nominee company structures to avoid.
+                <p className="text-gray-600 leading-relaxed text-sm sm:text-base whitespace-pre-line">
+                  {guideContent.section7.content}
                 </p>
               </section>
 
               {/* Section 8: Frequently asked questions */}
-              <section id="faq" className="scroll-mt-28 space-y-6">
+              <section id="faq" className="scroll-mt-28 space-y-4">
                 <div>
                   <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-snug">
-                    Frequently asked questions
+                    {guideContent.sectionFaq.heading}
                   </h2>
                   <p className="text-sm text-gray-500 mt-1">
-                    Structured with FAQ schema – built to surface in Google snippets and AI search answers.
+                    {guideContent.sectionFaq.description}
                   </p>
                 </div>
 

@@ -1,4 +1,4 @@
-import { Property, BlogArticle, SuccessStory } from './index';
+import { Property, BlogArticle, SuccessStory, GuidePageContent } from './index';
 
 export interface AdminUser {
   email: string;
@@ -21,6 +21,18 @@ export interface CategoryItem {
   slug: string;
   type: 'blog' | 'property';
   count: number;
+}
+
+export interface HeroSlide {
+  id: string;
+  image: string;
+  subtitle: string;
+  title: string;
+  description: string;
+  primaryButtonText: string;
+  primaryButtonLink: string;
+  secondaryButtonText: string;
+  secondaryButtonLink: string;
 }
 
 export interface SiteSettings {
@@ -53,6 +65,7 @@ export interface SiteSettings {
     meetAdvisorImage?: string;
     readyBannerBg: string;
   };
+  heroSlides?: HeroSlide[];
 }
 
 export interface ContactSubmission {
@@ -86,4 +99,5 @@ export interface AdminStoreState {
   settings: SiteSettings;
   contactSubmissions: ContactSubmission[];
   newsletterSubmissions: NewsletterSubmission[];
+  guideContent: GuidePageContent;
 }

@@ -17,6 +17,8 @@ import {
   LayoutTemplate
 } from 'lucide-react';
 import { MediaPickerButton } from '@/components/admin/MediaManager';
+import { HeroSlide } from '@/types/admin';
+import { Plus, Trash2 } from 'lucide-react';
 
 export const SettingsManager: React.FC = () => {
   const { settings, updateSiteSettings, uploadLogo, uploadFavicon } = useAdmin();
@@ -43,8 +45,8 @@ export const SettingsManager: React.FC = () => {
   const [facebook, setFacebook] = useState(settings.socialLinks.facebook || '');
   const [twitter, setTwitter] = useState(settings.socialLinks.twitter || '');
 
-  // Homepage Images
-  const [heroBg, setHeroBg] = useState(settings.homepageImages?.heroBg || '/images/hero-bg.jpg');
+  // Homepage Images & Sliders
+  const [heroSlides, setHeroSlides] = useState<HeroSlide[]>(settings.heroSlides || []);
   const [guideBannerBg, setGuideBannerBg] = useState(settings.homepageImages?.guideBannerBg || '/images/skyline-bg.png');
   const [advisorImage, setAdvisorImage] = useState(settings.homepageImages?.advisorImage || '/images/amir-seated.png');
   const [meetAdvisorImage, setMeetAdvisorImage] = useState(settings.homepageImages?.meetAdvisorImage || '/images/amir-seated.png');
@@ -105,12 +107,13 @@ export const SettingsManager: React.FC = () => {
         twitter,
       },
       homepageImages: {
-        heroBg,
+        heroBg: heroSlides[0]?.image || '/images/hero-bg.jpg', // Fallback
         guideBannerBg,
         advisorImage,
         meetAdvisorImage,
         readyBannerBg,
       },
+      heroSlides,
     });
     showToast('All site settings, branding, and button links saved successfully!');
   };
@@ -228,11 +231,6 @@ export const SettingsManager: React.FC = () => {
           
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <MediaPickerButton
-              label="Hero Area Background"
-              value={heroBg}
-              onChange={setHeroBg}
-            />
-            <MediaPickerButton
               label="Guide Banner Background"
               value={guideBannerBg}
               onChange={setGuideBannerBg}
@@ -254,6 +252,7 @@ export const SettingsManager: React.FC = () => {
             />
           </div>
         </div>
+
 
         {/* Section 3: Header & Footer Text */}
         <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">

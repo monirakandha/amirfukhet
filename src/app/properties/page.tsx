@@ -26,7 +26,8 @@ export default function PropertiesPage() {
         <div className="absolute inset-0 pointer-events-none hero-grid-overlay" />
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
-          <div className="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-white border border-blue-100 text-xs font-semibold text-[#4c70ff] shadow-2xs">
+          <div className="section-pill shadow-2xs mx-auto">
+            <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
             Selected Listings
           </div>
 

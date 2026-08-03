@@ -223,11 +223,54 @@ export const mockBlogs: BlogArticle[] = [
     title: 'Freehold vs Leasehold in Phuket: which is right for you?',
     slug: 'freehold-vs-leasehold-in-phuket',
     category: 'Ownership & Legal',
+    template: 'centered',
     summary:
       'Understanding the legal differences, renewal terms, tax implications, and ownership security between freehold and leasehold properties in Thailand.',
+    quoteText: "Freehold gives you the title. Leasehold gives you the terms. Both can be the right answer — it depends entirely on the property and your goal.",
+    showSubscribeBox: true,
+    postFaqs: [
+      { question: "Can a foreigner own land in Thailand?", answer: "Not freehold in their own name. Foreigners commonly secure villas and land through long leaseholds or property structured arrangements – which is exactly where advice protects you." },
+      { question: "What is the foreign quota on condos?", answer: "Condominiums can be owned freehold by foreigners up to 49% of the building's total floor area." },
+      { question: "What taxes and fees apply when buying?", answer: "Taxes depend on whether you buy freehold or leasehold, and usually range from 1.1% to 6.3% of the property value." },
+      { question: "Can foreigners get a mortgage in Thailand?", answer: "It is very difficult for foreigners to get local mortgages. Most foreign buyers use cash or offshore financing." }
+    ],
     content: `
-      <p>When buying property in Phuket as a foreigner, choosing between Freehold and Leasehold is one of the most critical decisions you will make.</p>
+      <p>Yes &ndash; but how you own it matters more than anything else. In this guide. Foreigners can freehold-own condominium units within the 49% foreign quota of a building, and can hold land and villas through long leaseholds or property structured arrangements. Getting this right is the difference between a secure asset and an expensive lesson.</p>
+      
+      <p>Body copy is placeholder for layout. The published guide walks through each path in plain language, with worked examples and the questions to ask before you commit to either route.</p>
+
+      <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=1200" alt="Beautiful Phuket Villa Pool" class="w-full rounded-2xl my-8 object-cover shadow-sm aspect-[16/9]" />
+
+      <p>It's the first real decision every foreign buyer faces in Phuket &ndash; and the one most likely to be rushed. Here's how to choose with a clear head.</p>
+
+      <p>Body copy is lighter placeholder for this template demonstration. The published article uses proper H2/H3 structure, generous spacing, inline images with alt text, and pull quotes &ndash; all editable by Amir in the CMS.</p>
+
+      <p>[quote]</p>
+
+      <p>[subscribe]</p>
+
+      <p class="text-[15px] text-gray-600 mb-8 -mt-2">Structured with FAQ schema &mdash; built to surface in Google snippets and AI search answers.</p>
+
+      <p>[faq]</p>
     `,
+    contentSections: [
+      {
+        heading: "What freehold ownership really means",
+        content: "<p>Placeholder paragraph. Proper headings make the article scannable and feed Google's outline understanding.</p>"
+      },
+      {
+        heading: "When leasehold is the smarter choice",
+        content: "<p>Placeholder body paragraph to show long-form reading rhythm and comfortable line length.</p>"
+      },
+      {
+        heading: "Cost comparison",
+        content: "<p>A quick breakdown of transfer fees and taxes associated with freehold vs leasehold.</p>"
+      },
+      {
+        heading: "Protections on a lease",
+        content: "<p>How to structure your lease agreements for maximum security over a 30-year term.</p>"
+      }
+    ],
     coverImage:
       'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=1000',
     author: {
@@ -301,12 +344,14 @@ export const mockSuccessStories: SuccessStory[] = [
     story: 'Navigated land department registration and established clean leasehold terms with 30+30+30 extension clauses.',
     testimonial: 'Amir explained every risk clearly and saved us from a poorly drafted contract.',
     isFeatured: true,
-    stepBudget: "A retired couple from Vancouver, first-time foreign buyers, looking for a holiday home that could also generate rental income when they weren't using it.",
-    stepChallenge: "They were nervous about buying in a country they'd visited only twice, and confused by conflicting advice on leasehold versus company ownership.",
-    stepApproach: "I started with a plain-English session on ownership structures, then narrowed the search to Bang Tao for its rental demand and resale liquidity.",
-    stepResearch: "Title verification, developer track-record checks, and a lease reviewed line-by-line with a vetted lawyer before any deposit changed hands.",
-    stepOutcome: "A two-bedroom pool villa on a secure leasehold, bought below the original asking price, with a rental management plan in place from day one.",
-    stepKeyTakeaways: "The right area and a properly reviewed lease matter more than chasing the lowest price. Independent due diligence paid for itself many times over.",
+    steps: [
+      { stepNumber: '01', title: 'Define budget, area and goal', body: "A retired couple from Vancouver, first-time foreign buyers, looking for a holiday home that could also generate rental income when they weren't using it." },
+      { stepNumber: '02', title: 'The challenge', body: "They were nervous about buying in a country they'd visited only twice, and confused by conflicting advice on leasehold versus company ownership." },
+      { stepNumber: '03', title: "Amir's approach", body: "I started with a plain-English session on ownership structures, then narrowed the search to Bang Tao for its rental demand and resale liquidity." },
+      { stepNumber: '04', title: 'Research & guidance', body: "Title verification, developer track-record checks, and a lease reviewed line-by-line with a vetted lawyer before any deposit changed hands." },
+      { stepNumber: '05', title: 'The outcome', body: "A two-bedroom pool villa on a secure leasehold, bought below the original asking price, with a rental management plan in place from day one." },
+      { stepNumber: '07', title: 'Key takeaways', body: "The right area and a properly reviewed lease matter more than chasing the lowest price. Independent due diligence paid for itself many times over." },
+    ],
     metrics: [
       { value: '6.9%', label: 'Gross rental yield' },
       { value: '฿8%', label: 'Below asking price' },

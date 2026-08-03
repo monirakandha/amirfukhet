@@ -25,12 +25,15 @@ function getCategoryColor(cat: string) {
   return CATEGORY_COLORS[cat] || { text: '#5870F7', bg: 'rgba(88,112,247,0.08)' };
 }
 
+import { useAdmin } from '@/context/AdminContext';
+
 export default function BlogPageClient({ initialBlogs }: BlogPageClientProps) {
+  const { blogs } = useAdmin();
   const [category, setCategory] = useState('All');
   const [search, setSearch] = useState('');
 
   const filteredBlogs = useMemo(() => {
-    let list = initialBlogs;
+    let list = blogs && blogs.length > 0 ? blogs : initialBlogs;
     if (category !== 'All') {
       list = list.filter((b) => b.category.toLowerCase() === category.toLowerCase());
     }
@@ -41,7 +44,7 @@ export default function BlogPageClient({ initialBlogs }: BlogPageClientProps) {
       );
     }
     return list;
-  }, [initialBlogs, category, search]);
+  }, [blogs, initialBlogs, category, search]);
 
   return (
     <>

@@ -48,7 +48,8 @@ export default function ContactPage() {
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
           {/* Contact Pill Badge */}
-          <div className="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-white border border-blue-100 text-[14px] font-medium text-[#5870F7] shadow-xs mx-auto">
+          <div className="section-pill shadow-2xs mx-auto">
+            <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
             Contact Us
           </div>
 
@@ -67,7 +68,7 @@ export default function ContactPage() {
       {/* Contact Section */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             
             {/* Left Column: Fastest ways to reach me */}
             <div className="space-y-8">
@@ -75,33 +76,35 @@ export default function ContactPage() {
                 Fastest ways to reach me
               </h2>
 
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {/* WhatsApp Card */}
                 <a href="https://wa.me/8801875189361" target="_blank" rel="noopener noreferrer" className="block group">
-                  <div className="bg-[#f8fafc] border border-gray-100 rounded-3xl p-6 flex items-center gap-5 transition-all group-hover:border-blue-200 group-hover:shadow-md">
-                    <img src="/images/amir.png" alt="Amir" className="w-14 h-14 rounded-full object-cover border-2 border-white shadow-sm" />
+                  <div className="bg-white border border-[#E5E7EB] rounded-3xl p-5 flex items-center gap-5 transition-all group-hover:shadow-md">
+                    <div className="w-[68px] h-[68px] shrink-0 rounded-full bg-[#F3F4F6] overflow-hidden flex items-center justify-center">
+                      <img src="/images/amir.png" alt="Amir" className="w-full h-full object-cover object-top" />
+                    </div>
                     <div>
-                      <h3 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors">WhatsApp</h3>
-                      <p className="text-sm text-gray-500 mt-0.5">Message or call directly</p>
+                      <h3 className="text-[20px] font-semibold text-gray-900 group-hover:text-blue-600 transition-colors tracking-tight">WhatsApp</h3>
+                      <p className="text-[15px] text-gray-500 mt-0.5">Message or call directly</p>
                     </div>
                   </div>
                 </a>
 
                 {/* Email Card */}
                 <a href="mailto:amir@amirknowsphuket.com" className="block group">
-                  <div className="bg-[#f8fafc] border border-gray-100 rounded-3xl p-6 flex items-center gap-5 transition-all group-hover:border-blue-200 group-hover:shadow-md">
-                    <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-sm">
-                      <svg width="26" height="26" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M43.611 11.0022C43.5135 10.5186 43.149 10.0215 42.6617 9.64571L24 1V19.3879L43.611 11.0022Z" fill="#EA4335"/>
-                        <path d="M24 1L5.33831 9.64571C4.85098 10.0215 4.48654 10.5186 4.38902 11.0022L24 19.3879V1Z" fill="#C5221F"/>
-                        <path d="M43.611 11.0022V36.9978C43.611 38.656 42.267 40 40.6087 40H35V19.3879L43.611 11.0022Z" fill="#FABB05"/>
-                        <path d="M4.38902 11.0022V36.9978C4.38902 38.656 5.733 40 7.39129 40H13V19.3879L4.38902 11.0022Z" fill="#4285F4"/>
-                        <path d="M35 40H13V19.3879L24 24.3217L35 19.3879V40Z" fill="#34A853"/>
+                  <div className="bg-white border border-[#E5E7EB] rounded-3xl p-5 flex items-center gap-5 transition-all group-hover:shadow-md">
+                    <div className="w-[68px] h-[68px] shrink-0 rounded-full bg-white border border-[#E5E7EB] flex items-center justify-center">
+                      <svg width="34" height="34" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M41.6364 203.039H73.4545V125.766L28 91.6753V189.403C28 196.948 34.1136 203.039 41.6364 203.039Z" fill="#4285F4"/>
+                        <path d="M182.545 203.039H214.364C221.909 203.039 228 196.925 228 189.403V91.6753L182.545 125.766" fill="#34A853"/>
+                        <path d="M182.545 66.6751V125.766L228 91.6751V73.4932C228 56.6296 208.75 47.016 195.273 57.1296" fill="#FBBC04"/>
+                        <path d="M73.4545 125.766V66.6753L128 107.584L182.545 66.6753V125.766L128 166.675" fill="#EA4335"/>
+                        <path d="M28 73.4932V91.6751L73.4545 125.766V66.6751L60.7273 57.1296C47.2273 47.016 28 56.6296 28 73.4932Z" fill="#C5221F"/>
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors">amir@amirknowsphuket.com</h3>
-                      <p className="text-sm text-gray-500 mt-0.5">Email Amir directly</p>
+                      <h3 className="text-[20px] font-semibold text-gray-900 group-hover:text-blue-600 transition-colors tracking-tight">amir@amirknowsphuket.com</h3>
+                      <p className="text-[15px] text-gray-500 mt-0.5">Email Amir directly</p>
                     </div>
                   </div>
                 </a>
@@ -109,78 +112,78 @@ export default function ContactPage() {
 
               {/* Social Icons */}
               <div className="flex items-center gap-4 pt-4">
-                <a href="#" className="w-12 h-12 rounded-full border border-gray-100 flex items-center justify-center text-[#5870F7] hover:bg-[#5870F7] hover:text-white transition-colors shadow-xs">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                <a href="#" className="w-[56px] h-[56px] rounded-full border border-[#E5E7EB] bg-white flex items-center justify-center text-[#5870F7] hover:bg-gray-50 transition-colors shadow-xs">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
                 </a>
-                <a href="#" className="w-12 h-12 rounded-full border border-gray-100 flex items-center justify-center text-[#5870F7] hover:bg-[#5870F7] hover:text-white transition-colors shadow-xs">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                <a href="#" className="w-[56px] h-[56px] rounded-full border border-[#E5E7EB] bg-white flex items-center justify-center text-[#5870F7] hover:bg-gray-50 transition-colors shadow-xs">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg>
                 </a>
-                <a href="#" className="w-12 h-12 rounded-full border border-gray-100 flex items-center justify-center text-[#5870F7] hover:bg-[#5870F7] hover:text-white transition-colors shadow-xs">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+                <a href="#" className="w-[56px] h-[56px] rounded-full border border-[#E5E7EB] bg-white flex items-center justify-center text-[#5870F7] hover:bg-gray-50 transition-colors shadow-xs">
+                  <svg className="w-[22px] h-[22px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
                 </a>
               </div>
             </div>
 
             {/* Right Column: Contact Form */}
-            <div className="bg-[#1c2024] rounded-[32px] p-2 shadow-2xl relative">
-              <div className="border border-gray-700/50 rounded-[28px] p-6 sm:p-8">
-                {submitted ? (
-                  <div className="text-center py-16 space-y-4">
-                    <CheckCircle2 className="w-16 h-16 text-emerald-500 mx-auto" />
-                    <h3 className="text-2xl font-bold text-white">Inquiry Sent!</h3>
-                    <p className="text-sm text-gray-400 max-w-md mx-auto">
-                      Thank you for reaching out. Amir will review your request and get back to you directly within 24 hours.
-                    </p>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <h3 className="text-2xl sm:text-[28px] font-bold text-white mb-6">Send an inquiry</h3>
+            <div className="rounded-[32px] bg-[#1C2026] p-3 sm:p-4 shadow-2xl relative w-full">
+              <div className="rounded-[24px] bg-[#FFFFFF0D] border border-[#FFFFFF0D] p-6 sm:p-8 w-full flex flex-col relative">
+              {submitted ? (
+                <div className="text-center py-16 space-y-4">
+                  <CheckCircle2 className="w-16 h-16 text-emerald-500 mx-auto" />
+                  <h3 className="text-2xl font-bold text-white">Inquiry Sent!</h3>
+                  <p className="text-sm text-gray-400 max-w-md mx-auto">
+                    Thank you for reaching out. Amir will review your request and get back to you directly within 24 hours.
+                  </p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                    <h3 className="text-[28px] font-semibold text-white mb-6">Send an inquiry</h3>
                   
                   <div className="space-y-5">
                     <div>
-                      <label className="block text-[13px] font-semibold text-gray-300 mb-2">Name</label>
+                      <label className="block text-[15px] font-normal text-white mb-2">Name</label>
                       <input
                         type="text"
                         required
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Enter your name"
-                        className="w-full bg-[#272b30] border border-gray-700/50 rounded-2xl px-5 py-3.5 text-sm text-white placeholder-gray-500 focus:border-[#5870F7] focus:ring-1 focus:ring-[#5870F7] focus:outline-none transition-all"
+                        className="w-full bg-transparent border border-[#44464A] rounded-[14px] px-5 py-3.5 text-[15px] text-white placeholder-[#A1A3A7] focus:border-[#5870F7] focus:ring-1 focus:ring-[#5870F7] focus:outline-none transition-all"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-[13px] font-semibold text-gray-300 mb-2">Email</label>
+                      <label className="block text-[15px] font-normal text-white mb-2">Email</label>
                       <input
                         type="email"
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Enter your email"
-                        className="w-full bg-[#272b30] border border-gray-700/50 rounded-2xl px-5 py-3.5 text-sm text-white placeholder-gray-500 focus:border-[#5870F7] focus:ring-1 focus:ring-[#5870F7] focus:outline-none transition-all"
+                        className="w-full bg-transparent border border-[#44464A] rounded-[14px] px-5 py-3.5 text-[15px] text-white placeholder-[#A1A3A7] focus:border-[#5870F7] focus:ring-1 focus:ring-[#5870F7] focus:outline-none transition-all"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-[13px] font-semibold text-gray-300 mb-2">WhatsApp</label>
+                      <label className="block text-[15px] font-normal text-white mb-2">WhatsApp</label>
                       <input
                         type="tel"
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         placeholder="Enter your whatsapp number"
-                        className="w-full bg-[#272b30] border border-gray-700/50 rounded-2xl px-5 py-3.5 text-sm text-white placeholder-gray-500 focus:border-[#5870F7] focus:ring-1 focus:ring-[#5870F7] focus:outline-none transition-all"
+                        className="w-full bg-transparent border border-[#44464A] rounded-[14px] px-5 py-3.5 text-[15px] text-white placeholder-[#A1A3A7] focus:border-[#5870F7] focus:ring-1 focus:ring-[#5870F7] focus:outline-none transition-all"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-[13px] font-semibold text-gray-300 mb-2">Message</label>
+                      <label className="block text-[15px] font-normal text-white mb-2">Message</label>
                       <textarea
-                        rows={3}
+                        rows={4}
                         required
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         placeholder="What i can help you with?"
-                        className="w-full bg-[#272b30] border border-gray-700/50 rounded-2xl px-5 py-3.5 text-sm text-white placeholder-gray-500 focus:border-[#5870F7] focus:ring-1 focus:ring-[#5870F7] focus:outline-none transition-all resize-none"
+                        className="w-full bg-transparent border border-[#44464A] rounded-[14px] px-5 py-3.5 text-[15px] text-white placeholder-[#A1A3A7] focus:border-[#5870F7] focus:ring-1 focus:ring-[#5870F7] focus:outline-none transition-all resize-none"
                       />
                     </div>
                   </div>
@@ -189,12 +192,12 @@ export default function ContactPage() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full py-4 px-6 rounded-2xl bg-[#5870F7] hover:bg-blue-600 text-white font-semibold text-[15px] transition-all shadow-lg shadow-blue-900/20 flex items-center justify-center gap-2"
+                      className="w-full py-3.5 px-6 rounded-full bg-[#5870F7] hover:bg-blue-600 text-white font-medium text-[16px] transition-all flex items-center justify-center gap-2"
                     >
                       {isSubmitting ? 'Sending...' : 'Send inquiry'}
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" /></svg>
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" /></svg>
                     </button>
-                    <p className="text-[13px] text-gray-400 font-medium">Sends straight to Amir&apos;s inbox.</p>
+                    <p className="text-[14px] text-[#A1A3A7]">Sends straight to Amir&apos;s inbox.</p>
                   </div>
                 </form>
               )}

@@ -45,6 +45,19 @@ const defaultSettings: SiteSettings = {
     meetAdvisorImage: '/images/amir-seated.png',
     readyBannerBg: '/images/resort-cta-bg.png',
   },
+  heroSlides: [
+    {
+      id: 'slide-1',
+      image: '/images/hero-bg.jpg',
+      subtitle: 'Welcome Property Investment Advisor Phuket',
+      title: 'Invest in Phuket Property with Trusted Advisors, Not Salespeople.',
+      description: 'Everything from ownership structures and the legal process to taxes, financing, due diligence and the real risks — the single resource every foreign buyer should read before sending a message.',
+      primaryButtonText: 'Talk to Amir on WhatsApp',
+      primaryButtonLink: 'https://wa.me/8801875189361',
+      secondaryButtonText: 'Read the free guide',
+      secondaryButtonLink: '/guide',
+    }
+  ],
 };
 
 const defaultFaqs: FAQItem[] = [
@@ -118,6 +131,52 @@ const defaultNewsletterSubmissions: NewsletterSubmission[] = [
   { id: 'nl-3', emailOrPhone: '+6598765432', source: 'WhatsApp Direct Lead Magnet', subscribedAt: '2026-07-24 21:05', status: 'active' },
 ];
 
+import { GuidePageContent } from '@/types';
+
+const defaultGuideContent: GuidePageContent = {
+  heroImage: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=1200',
+  section1: {
+    heading: 'Can foreigners actually own property in Thailand?',
+    paragraph1: 'Yes – but how you own it matters more than anything else in this guide. Foreigners can freehold-own condominium units within the 49% foreign quota of a building, and can hold land and villas through long leaseholds or properly structured arrangements. Getting this right is the difference between a secure asset and an expensive lesson.',
+    paragraph2: 'The published guide walks through each path in plain language, with worked examples and the questions to ask before you commit to either route.',
+  },
+  section2: {
+    heading: 'Freehold vs leasehold',
+    description: 'A comparison table, the protections that matter on a lease, and when each route makes sense.',
+    freeholdCardTitle: 'Freehold',
+    freeholdCardDesc: 'Outright ownership of a condo unit within the foreign quota. Simplest, most liquid, fully in your name.',
+    leaseholdCardTitle: 'Leasehold',
+    leaseholdCardDesc: 'Typically 30 years + renewals for villas/land. Protection is in the lease terms – this is where guidance pays for itself.',
+  },
+  section3: {
+    heading: 'The step-by-step buying process',
+    step1: 'Define budget, area and goal (lifestyle vs yield)',
+    step2: 'Shortlist, view, and verify the developer / title',
+    step3: 'Legal due diligence & reservation agreement',
+    step4: 'Transfer of funds, contract & registration at Land Office',
+  },
+  section4: {
+    heading: 'Taxes & transfer fees',
+    content: 'Understanding Land Department registration fees (2%), withholding tax, specific business tax (3.3%), and stamp duty (0.5%), and how fees are split between buyer and seller in Phuket transactions.',
+  },
+  section5: {
+    heading: 'Financing options',
+    content: 'Financing solutions available for non-resident buyers in Thailand, developer payment plans during construction, and international offshore bank mortgage solutions.',
+  },
+  section6: {
+    heading: 'Due diligence checklist',
+    content: 'Title search verification at the Phuket Land Department, environmental impact assessment (EIA) verification, developer track record check, and building permit confirmation.',
+  },
+  section7: {
+    heading: 'The real risks',
+    content: 'Unpacking common legal traps, unverified developer promises, non-renewable lease clauses, and illegal Thai nominee company structures to avoid.',
+  },
+  sectionFaq: {
+    heading: 'Frequently asked questions',
+    description: 'Structured with FAQ schema – built to surface in Google snippets and AI search answers.',
+  }
+};
+
 interface AdminContextType extends AdminStoreState {
   login: (email: string, pass: string) => boolean;
   logout: () => void;
@@ -151,6 +210,8 @@ interface AdminContextType extends AdminStoreState {
   deleteContactSubmission: (id: string) => void;
   addNewsletterSubmission: (emailOrPhone: string, source: string) => void;
   deleteNewsletterSubmission: (id: string) => void;
+  // Guide Content
+  updateGuideContent: (updated: Partial<GuidePageContent>) => void;
   resetToDefaults: () => void;
 }
 
@@ -168,6 +229,7 @@ export const AdminProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     settings: defaultSettings,
     contactSubmissions: defaultContactSubmissions,
     newsletterSubmissions: defaultNewsletterSubmissions,
+    guideContent: defaultGuideContent,
   });
 
   const [isLoaded, setIsLoaded] = useState(false);
@@ -187,12 +249,7 @@ export const AdminProvider: React.FC<{ children: ReactNode }> = ({ children }) =
             return {
               ...mockStory,
               ...savedStory,
-              stepBudget: savedStory.stepBudget || mockStory.stepBudget,
-              stepChallenge: savedStory.stepChallenge || mockStory.stepChallenge,
-              stepApproach: savedStory.stepApproach || mockStory.stepApproach,
-              stepResearch: savedStory.stepResearch || mockStory.stepResearch,
-              stepOutcome: savedStory.stepOutcome || mockStory.stepOutcome,
-              stepKeyTakeaways: savedStory.stepKeyTakeaways || mockStory.stepKeyTakeaways,
+              steps: savedStory.steps && savedStory.steps.length > 0 ? savedStory.steps : mockStory.steps,
               metrics: savedStory.metrics && savedStory.metrics.length > 0 ? savedStory.metrics : mockStory.metrics,
             };
           }
@@ -205,10 +262,38 @@ export const AdminProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         
         const mergedStories = [...updatedStories, ...missingStories];
 
+        // Merge mockBlogs properties into parsed blogs to handle new fields (quote, subscribe, faqs)
+        const savedBlogs = parsed.blogs || [];
+        const updatedBlogs = savedBlogs.map((savedBlog: BlogArticle) => {
+          const mockBlog = mockBlogs.find(m => m.id === savedBlog.id || m.slug === savedBlog.slug);
+          if (mockBlog) {
+            return {
+              ...mockBlog,
+              ...savedBlog,
+              // For new add-on fields, fallback to mockData if not present in saved state
+              quoteText: savedBlog.quoteText !== undefined ? savedBlog.quoteText : mockBlog.quoteText,
+              showSubscribeBox: savedBlog.showSubscribeBox !== undefined ? savedBlog.showSubscribeBox : mockBlog.showSubscribeBox,
+              postFaqs: savedBlog.postFaqs !== undefined ? savedBlog.postFaqs : mockBlog.postFaqs,
+              // Force overwrite content for 'freehold-vs-leasehold-in-phuket' to reset to the shortcode version
+              // because react-quill strips out the complex HTML and corrupts the saved content.
+              content: savedBlog.slug === 'freehold-vs-leasehold-in-phuket' ? mockBlog.content : (savedBlog.content || mockBlog.content),
+            };
+          }
+          return savedBlog;
+        });
+        
+        const missingBlogs = mockBlogs.filter(
+          mockBlog => !savedBlogs.some((s: BlogArticle) => s.id === mockBlog.id || s.slug === mockBlog.slug)
+        );
+        
+        const mergedBlogs = [...updatedBlogs, ...missingBlogs];
+
         setState((prev) => ({
           ...prev,
           ...parsed,
           successStories: mergedStories,
+          blogs: mergedBlogs,
+          guideContent: parsed.guideContent || defaultGuideContent,
           // Make sure auth stays active if token is present
           isAuthenticated: parsed.isAuthenticated || false,
         }));
@@ -407,7 +492,17 @@ export const AdminProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   };
 
   const deleteNewsletterSubmission = (id: string) => {
-    setState((prev) => ({ ...prev, newsletterSubmissions: prev.newsletterSubmissions.filter((n) => n.id !== id) }));
+    setState((prev) => ({
+      ...prev,
+      newsletterSubmissions: prev.newsletterSubmissions.filter((n) => n.id !== id),
+    }));
+  };
+
+  const updateGuideContent = (updated: Partial<GuidePageContent>) => {
+    setState((prev) => ({
+      ...prev,
+      guideContent: { ...prev.guideContent, ...updated },
+    }));
   };
 
   const resetToDefaults = () => {
@@ -456,6 +551,7 @@ export const AdminProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         deleteContactSubmission,
         addNewsletterSubmission,
         deleteNewsletterSubmission,
+        updateGuideContent,
         resetToDefaults,
       }}
     >

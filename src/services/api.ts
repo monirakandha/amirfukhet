@@ -151,12 +151,7 @@ export function mergeSuccessStories(savedStories: SuccessStory[], mockStories: S
       return {
         ...mockStory,
         ...savedStory,
-        stepBudget: savedStory.stepBudget || mockStory.stepBudget,
-        stepChallenge: savedStory.stepChallenge || mockStory.stepChallenge,
-        stepApproach: savedStory.stepApproach || mockStory.stepApproach,
-        stepResearch: savedStory.stepResearch || mockStory.stepResearch,
-        stepOutcome: savedStory.stepOutcome || mockStory.stepOutcome,
-        stepKeyTakeaways: savedStory.stepKeyTakeaways || mockStory.stepKeyTakeaways,
+        steps: savedStory.steps && savedStory.steps.length > 0 ? savedStory.steps : mockStory.steps,
         metrics: savedStory.metrics && savedStory.metrics.length > 0 ? savedStory.metrics : mockStory.metrics,
       };
     }

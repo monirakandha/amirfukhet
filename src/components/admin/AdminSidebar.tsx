@@ -16,7 +16,9 @@ import {
   ExternalLink,
   ShieldAlert,
   RotateCcw,
-  Image as ImageIcon
+  Image as ImageIcon,
+  BookOpen,
+  Monitor
 } from 'lucide-react';
 
 interface AdminSidebarProps {
@@ -34,9 +36,11 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ activeTab, setActive
     { id: 'properties', label: 'Properties Manager', icon: Home },
     { id: 'blogs', label: 'Blog Posts Manager', icon: FileText },
     { id: 'stories', label: 'Success Stories', icon: Award },
+    { id: 'guide', label: 'Guide Page Content', icon: BookOpen },
     { id: 'media', label: 'Media Library', icon: ImageIcon },
     { id: 'faqs', label: 'FAQ Manager', icon: HelpCircle },
     { id: 'categories', label: 'Category Archives', icon: FolderTree },
+    { id: 'hero', label: 'Hero Area Slider', icon: Monitor },
     { id: 'inquiries', label: 'Contact Inquiries', icon: Mail, badge: newInquiriesCount > 0 ? newInquiriesCount : undefined },
     { id: 'newsletters', label: 'Newsletter Leads', icon: Users, badge: newsletterSubmissions.length },
     { id: 'settings', label: 'Site & Link Settings', icon: Settings },

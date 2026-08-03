@@ -135,7 +135,7 @@ export default function Navbar({ onOpenValuationModal }: NavbarProps) {
               rel="noopener noreferrer"
               className={`w-10 h-10 rounded-[16px] flex items-center justify-center transition-all shadow-xs ${
                 isLightNav
-                  ? 'border border-[#5870F7]/30 bg-[#5870F7]/10 text-[#5870F7] hover:bg-[#5870F7]/20'
+                  ? 'border border-[#E5E7EB] bg-white text-[#5870F7] hover:bg-[#F8FAFC]'
                   : 'border border-white/40 bg-white/15 hover:bg-white/25 text-white backdrop-blur-md'
               }`}
               aria-label="WhatsApp"
@@ -152,7 +152,7 @@ export default function Navbar({ onOpenValuationModal }: NavbarProps) {
               rel="noopener noreferrer"
               className={`w-10 h-10 rounded-[16px] flex items-center justify-center transition-all shadow-xs ${
                 isLightNav
-                  ? 'border border-[#5870F7]/30 bg-[#5870F7]/10 text-[#5870F7] hover:bg-[#5870F7]/20'
+                  ? 'border border-[#E5E7EB] bg-white text-[#5870F7] hover:bg-[#F8FAFC]'
                   : 'border border-white/40 bg-white/15 hover:bg-white/25 text-white backdrop-blur-md'
               }`}
               aria-label="LinkedIn"

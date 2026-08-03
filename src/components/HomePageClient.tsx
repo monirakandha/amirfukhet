@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -28,30 +28,121 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
 
   // Admin context provides runtime-editable images from localStorage (admin panel)
   // Falls back to defaults when accessed by search engines (server-rendered defaults below)
-  const { settings } = useAdmin();
-  const heroBg = settings.homepageImages?.heroBg || '/images/hero-bg.jpg';
+  const { settings, blogs: adminBlogs, successStories: adminStories, properties: adminProperties } = useAdmin();
+  const displayStories = adminStories && adminStories.length > 0 ? adminStories : stories;
+  const displayProperties = adminProperties && adminProperties.length > 0 ? adminProperties : properties;
+  const displayBlogs = adminBlogs && adminBlogs.length > 0 ? adminBlogs : blogs;
+
+  const heroSlides = settings.heroSlides && settings.heroSlides.length > 0 
+    ? settings.heroSlides 
+    : [{
+        id: 'default',
+        image: '/images/hero-bg.jpg',
+        subtitle: 'Welcome Property Investment Advisor Phuket',
+        title: 'Invest in Phuket Property with Trusted Advisors, Not Salespeople.',
+        description: 'Everything from ownership structures and the legal process to taxes, financing, due diligence and the real risks — the single resource every foreign buyer should read before sending a message.',
+        primaryButtonText: 'Talk to Amir on WhatsApp',
+        primaryButtonLink: 'https://wa.me/8801875189361',
+        secondaryButtonText: 'Read the free guide',
+        secondaryButtonLink: '/guide',
+      }];
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    if (heroSlides.length <= 1) return;
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 5000); // 5 seconds per slide
+    return () => clearInterval(interval);
+  }, [heroSlides.length]);
+
+  const activeSlide = heroSlides[currentSlide];
+
   const guideBannerBg = settings.homepageImages?.guideBannerBg || '/images/skyline-bg.png';
   const advisorImage = settings.homepageImages?.advisorImage || '/images/amir-seated.png';
   const meetAdvisorImage = settings.homepageImages?.meetAdvisorImage || '/images/amir-seated.png';
 
-  const featuredProperties = properties.slice(0, 3);
+  const featuredProperties = displayProperties.slice(0, 3);
 
   return (
     <div className="min-h-screen bg-white text-gray-900 flex flex-col font-sans">
       <Navbar onOpenValuationModal={() => setIsValuationOpen(true)} />
 
-      {/* Hero Section with exact Figma Villa Background */}
-      <section className="relative w-full h-screen min-h-[600px] max-h-[1080px] overflow-hidden flex flex-col justify-between">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src={heroBg}
-            alt="Luxury Phuket Villa Pool View"
-            className="w-full h-full object-cover object-center"
-          />
-          {/* Subtle gradient overlay to ensure menu visibility at top if needed */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/10 pointer-events-none" />
+      {/* Hero Section */}
+      <section className="relative w-full h-screen min-h-[600px] max-h-[1080px] overflow-hidden flex flex-col justify-center items-center text-center">
+        {/* Background Slider */}
+        {heroSlides.map((slide, index) => (
+          <div 
+            key={slide.id}
+            className={`absolute inset-0 z-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}
+          >
+            <img
+              src={slide.image}
+              alt="Hero Background"
+              className="w-full h-full object-cover object-center"
+            />
+            {/* Dark gradient overlay for text readability */}
+            <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+          </div>
+        ))}
+        
+        {/* Slide Content */}
+        <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+          {activeSlide.subtitle && (
+            <span className="inline-block py-1.5 px-4 rounded-full bg-white/20 backdrop-blur-md text-white text-sm font-semibold mb-6 shadow-sm border border-white/30">
+              {activeSlide.subtitle}
+            </span>
+          )}
+          
+          <h1 
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-[1.1] tracking-tight font-heading-bricolage drop-shadow-lg"
+            style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+          >
+            {activeSlide.title}
+          </h1>
+          
+          {activeSlide.description && (
+            <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto mb-10 leading-relaxed font-desc-mona drop-shadow-md">
+              {activeSlide.description}
+            </p>
+          )}
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            {activeSlide.primaryButtonText && (
+              <a
+                href={activeSlide.primaryButtonLink}
+                className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#5870F7] hover:bg-blue-600 text-white font-semibold text-base transition-colors shadow-lg shadow-[#5870F7]/30 text-center"
+              >
+                {activeSlide.primaryButtonText}
+              </a>
+            )}
+            {activeSlide.secondaryButtonText && (
+              <Link
+                href={activeSlide.secondaryButtonLink}
+                className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-white hover:bg-gray-50 text-gray-900 font-semibold text-base transition-colors shadow-lg text-center"
+              >
+                {activeSlide.secondaryButtonText}
+              </Link>
+            )}
+          </div>
         </div>
+
+        {/* Slider Controls (Dots) */}
+        {heroSlides.length > 1 && (
+          <div className="absolute bottom-10 left-0 right-0 z-20 flex justify-center gap-2">
+            {heroSlides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                  index === currentSlide ? 'bg-white w-8' : 'bg-white/50 hover:bg-white/80'
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        )}
       </section>
 
       {/* Stats Counter Section matching Figma mockup */}
@@ -244,7 +335,7 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
 
           {/* 3-Card Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-12">
-            {blogs.slice(0, 3).map((blog) => {
+            {(adminBlogs && adminBlogs.length > 0 ? adminBlogs : blogs).slice(0, 3).map((blog) => {
               const cleanSummary = (blog.summary || '')
                 .replace(/<[^>]*>/g, '')
                 .replace(/&nbsp;/g, ' ')
@@ -550,7 +641,7 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
       </section>
 
       {/* Success Stories Section */}
-      <SuccessStoriesSection stories={stories} limit={3} />
+      <SuccessStoriesSection stories={displayStories} limit={3} />
 
       {/* Meet Your Advisor Section matching exact Figma specs */}
       <section className="w-full bg-white py-16 sm:py-24 border-b border-gray-100">
@@ -628,7 +719,7 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            {featuredProperties.map((property) => (
+            {featuredProperties.slice(0, 3).map((property) => (
               <PropertyCard
                 key={property.id}
                 property={property}

@@ -23,7 +23,16 @@ export const BlogManager: React.FC = () => {
   const [coverImage, setCoverImage] = useState('/images/blog-luxury-villas.png');
   const [readTime, setReadTime] = useState('5');
   const [featured, setFeatured] = useState(false);
+  const [template, setTemplate] = useState<'default' | 'centered'>('default');
   const [toast, setToast] = useState('');
+  
+  // Post Add-ons
+  const [quoteText, setQuoteText] = useState('');
+  const [showSubscribeBox, setShowSubscribeBox] = useState(false);
+  const [postFaqs, setPostFaqs] = useState<{ question: string; answer: string }[]>([]);
+  const [contentSections, setContentSections] = useState<{ heading: string; content: string }[]>([]);
+  const [tags, setTags] = useState<string[]>([]);
+  const [tagInput, setTagInput] = useState('');
 
   const [customCategories, setCustomCategories] = useState<string[]>([]);
   const blogCategories = categories.filter((c) => c.type === 'blog');
@@ -50,6 +59,13 @@ export const BlogManager: React.FC = () => {
     setCoverImage('/images/blog-luxury-villas.png');
     setReadTime('6');
     setFeatured(true);
+    setTemplate('default');
+    setQuoteText('');
+    setShowSubscribeBox(false);
+    setPostFaqs([]);
+    setContentSections([]);
+    setTags(['Phuket Property', 'Real Estate Investment']);
+    setTagInput('');
     setIsModalOpen(true);
   };
 
@@ -63,6 +79,13 @@ export const BlogManager: React.FC = () => {
     setCoverImage(b.coverImage || '/images/blog-luxury-villas.png');
     setReadTime(b.readTimeMinutes.toString());
     setFeatured(b.featured || false);
+    setTemplate(b.template || 'default');
+    setQuoteText(b.quoteText || '');
+    setShowSubscribeBox(b.showSubscribeBox || false);
+    setPostFaqs(b.postFaqs || []);
+    setContentSections(b.contentSections || []);
+    setTags(b.tags || []);
+    setTagInput('');
     setIsModalOpen(true);
   };
 
@@ -76,8 +99,13 @@ export const BlogManager: React.FC = () => {
       content,
       coverImage: coverImage || '/images/blog-luxury-villas.png',
       readTimeMinutes: parseInt(readTime) || 5,
-      tags: ['Phuket Property', category, 'Real Estate Investment'],
+      tags: tags,
       featured,
+      template,
+      quoteText,
+      showSubscribeBox,
+      postFaqs,
+      contentSections,
       author: {
         name: 'Amir Ahmad Faisal',
         role: 'Property Investment Advisor',
@@ -167,6 +195,54 @@ export const BlogManager: React.FC = () => {
                 <option value="__add_new__" className="font-bold text-blue-600 bg-blue-50">+ Add New Category...</option>
               </select>
             </div>
+            
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Template Layout</label>
+              <select
+                value={template}
+                onChange={(e) => setTemplate(e.target.value as 'default' | 'centered')}
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20 font-medium"
+              >
+                <option value="default">Default (Sidebar Layout)</option>
+                <option value="centered">Centered (No Sidebar)</option>
+              </select>
+            </div>
+            
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Tags</label>
+              <div className="flex flex-col gap-2">
+                <div className="flex flex-wrap gap-2">
+                  {tags.map((tag, idx) => (
+                    <span key={idx} className="inline-flex items-center gap-1 px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-sm font-medium border border-blue-100">
+                      {tag}
+                      <button
+                        type="button"
+                        onClick={() => setTags(tags.filter((_, i) => i !== idx))}
+                        className="w-4 h-4 rounded-full hover:bg-blue-200 inline-flex items-center justify-center transition-colors"
+                      >
+                        <X className="w-3 h-3" />
+                      </button>
+                    </span>
+                  ))}
+                </div>
+                <input
+                  type="text"
+                  value={tagInput}
+                  onChange={(e) => setTagInput(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      e.preventDefault();
+                      if (tagInput.trim() && !tags.includes(tagInput.trim())) {
+                        setTags([...tags, tagInput.trim()]);
+                        setTagInput('');
+                      }
+                    }
+                  }}
+                  placeholder="Type a tag and press Enter"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20"
+                />
+              </div>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -206,6 +282,140 @@ export const BlogManager: React.FC = () => {
               placeholder="Write full deep-dive content here..."
               className="border border-slate-300 rounded-xl overflow-hidden [&_.ql-container]:min-h-[400px] [&_.ql-editor]:min-h-[400px]"
             />
+            <p className="text-xs text-slate-500 mt-2 font-medium">
+              💡 <strong className="text-slate-700">Tip:</strong> You can place the add-ons below anywhere in your content by typing <code className="bg-slate-100 px-1 py-0.5 rounded text-blue-600">[quote]</code>, <code className="bg-slate-100 px-1 py-0.5 rounded text-blue-600">[subscribe]</code>, or <code className="bg-slate-100 px-1 py-0.5 rounded text-blue-600">[faq]</code>. If you don't use the shortcodes, they will automatically appear at the bottom of the article.
+            </p>
+          </div>
+
+          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 space-y-6">
+            <h3 className="text-sm font-bold text-slate-800 uppercase font-heading-bricolage border-b border-slate-200 pb-3">Structured Content Sections</h3>
+            <p className="text-sm text-gray-600">Instead of writing HTML in the editor above, you can add structured sections here. These will automatically generate a Table of Contents.</p>
+            
+            <div className="space-y-4">
+              {contentSections.map((section, index) => (
+                <div key={index} className="flex gap-4 items-start bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                  <div className="flex-1 space-y-3">
+                    <input
+                      type="text"
+                      value={section.heading}
+                      onChange={(e) => {
+                        const newSections = [...contentSections];
+                        newSections[index].heading = e.target.value;
+                        setContentSections(newSections);
+                      }}
+                      placeholder="Section Heading (e.g. Cost comparison)"
+                      className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-gray-900 font-bold focus:outline-none focus:border-[#5870F7]"
+                    />
+                    <RichTextEditor
+                      value={section.content}
+                      onChange={(val) => {
+                        const newSections = [...contentSections];
+                        newSections[index].content = val;
+                        setContentSections(newSections);
+                      }}
+                      placeholder="Section Content..."
+                      className="border border-slate-200 rounded-lg overflow-hidden [&_.ql-container]:min-h-[150px]"
+                    />
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const newSections = [...contentSections];
+                      newSections.splice(index, 1);
+                      setContentSections(newSections);
+                    }}
+                    className="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                  >
+                    <Trash2 className="w-5 h-5" />
+                  </button>
+                </div>
+              ))}
+              <button
+                type="button"
+                onClick={() => setContentSections([...contentSections, { heading: '', content: '' }])}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-dashed border-slate-300 text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-colors text-sm font-medium"
+              >
+                <Plus className="w-4 h-4" />
+                Add Content Section
+              </button>
+            </div>
+          </div>
+
+          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 space-y-6">
+            <h3 className="text-sm font-bold text-slate-800 uppercase font-heading-bricolage border-b border-slate-200 pb-3">Post Add-ons (Optional)</h3>
+            
+            <div className="flex items-center gap-3">
+              <input
+                type="checkbox"
+                id="showSubscribeBox"
+                checked={showSubscribeBox}
+                onChange={(e) => setShowSubscribeBox(e.target.checked)}
+                className="w-5 h-5 rounded text-[#5870F7] bg-white border-slate-300 focus:ring-[#5870F7]"
+              />
+              <label htmlFor="showSubscribeBox" className="text-sm text-gray-800 font-medium cursor-pointer">
+                Show Subscribe Banner
+              </label>
+            </div>
+
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Highlight Quote Text</label>
+              <textarea
+                value={quoteText}
+                onChange={(e) => setQuoteText(e.target.value)}
+                placeholder="Enter a quote to highlight..."
+                className="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20 min-h-[80px]"
+              />
+            </div>
+
+            <div className="space-y-3">
+              <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Post FAQs</label>
+              {postFaqs.map((faq, index) => (
+                <div key={index} className="flex gap-4 items-start bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                  <div className="flex-1 space-y-3">
+                    <input
+                      type="text"
+                      value={faq.question}
+                      onChange={(e) => {
+                        const newFaqs = [...postFaqs];
+                        newFaqs[index].question = e.target.value;
+                        setPostFaqs(newFaqs);
+                      }}
+                      placeholder="Question"
+                      className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7]"
+                    />
+                    <textarea
+                      value={faq.answer}
+                      onChange={(e) => {
+                        const newFaqs = [...postFaqs];
+                        newFaqs[index].answer = e.target.value;
+                        setPostFaqs(newFaqs);
+                      }}
+                      placeholder="Answer"
+                      className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] min-h-[60px]"
+                    />
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const newFaqs = [...postFaqs];
+                      newFaqs.splice(index, 1);
+                      setPostFaqs(newFaqs);
+                    }}
+                    className="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                  >
+                    <Trash2 className="w-5 h-5" />
+                  </button>
+                </div>
+              ))}
+              <button
+                type="button"
+                onClick={() => setPostFaqs([...postFaqs, { question: '', answer: '' }])}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-dashed border-slate-300 text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-colors text-sm font-medium"
+              >
+                <Plus className="w-4 h-4" />
+                Add FAQ Item
+              </button>
+            </div>
           </div>
 
           <div className="flex items-center gap-3 pt-2">

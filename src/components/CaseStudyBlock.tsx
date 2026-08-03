@@ -9,13 +9,7 @@ interface CaseStudyBlockProps {
 }
 
 export default function CaseStudyBlock({ story, isFeaturedLabel = false }: CaseStudyBlockProps) {
-  const steps = [
-    { num: '01', title: 'Define budget, area and goal (lifestyle vs yield)', body: story.stepBudget },
-    { num: '02', title: 'The challenge', body: story.stepChallenge },
-    { num: '03', title: "Amir's approach", body: story.stepApproach },
-    { num: '04', title: 'Research & guidance', body: story.stepResearch },
-    { num: '05', title: 'The outcome', body: story.stepOutcome },
-  ].filter(s => s.body);
+  const steps = story.steps && story.steps.length > 0 ? story.steps : [];
 
   const metrics = story.metrics && story.metrics.length > 0 ? story.metrics : [];
 
@@ -55,10 +49,10 @@ export default function CaseStudyBlock({ story, isFeaturedLabel = false }: CaseS
         {/* Steps */}
         {steps.length > 0 && (
           <div className="space-y-8 mb-12">
-            {steps.map((step) => (
-              <div key={step.num} className="flex gap-4 sm:gap-5">
+            {steps.map((step, idx) => (
+              <div key={idx} className="flex gap-4 sm:gap-5">
                 <div className="shrink-0 w-8 h-8 rounded-full bg-[#EEF1FF] border border-[#D6E0FF] flex items-center justify-center font-desc-mona text-[13px] font-semibold text-[#5870F7] leading-none mt-0.5">
-                  {step.num}
+                  {step.stepNumber || (idx + 1).toString().padStart(2, '0')}
                 </div>
                 <div className="space-y-2">
                   <h3
@@ -91,25 +85,7 @@ export default function CaseStudyBlock({ story, isFeaturedLabel = false }: CaseS
           </div>
         )}
 
-        {/* Key Takeaways */}
-        {story.stepKeyTakeaways && (
-          <div className="flex gap-4 sm:gap-5 mb-14">
-            <div className="shrink-0 w-8 h-8 rounded-full bg-[#EEF1FF] border border-[#D6E0FF] flex items-center justify-center font-desc-mona text-[13px] font-semibold text-[#5870F7] leading-none mt-0.5">
-              07
-            </div>
-            <div className="space-y-2">
-              <h3
-                className="font-heading-bricolage text-[17px] font-semibold text-[#111827] leading-tight tracking-[-0.01em]"
-                style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
-              >
-                Key takeaways
-              </h3>
-              <p className="font-desc-mona text-[15px] font-normal text-[#6B7280] leading-[1.6] max-w-2xl">
-                {story.stepKeyTakeaways}
-              </p>
-            </div>
-          </div>
-        )}
+
 
         {/* CTA Block (Framed dark style) */}
         <div className="rounded-[24px] bg-[#2A2B2E] p-1.5 shadow-xl max-w-2xl mx-auto">

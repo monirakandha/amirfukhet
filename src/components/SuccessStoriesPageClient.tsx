@@ -7,11 +7,15 @@ import HomeValuationModal from '@/components/HomeValuationModal';
 import { useSearchParams } from 'next/navigation';
 import { SuccessStory } from '@/types';
 
+import { useAdmin } from '@/context/AdminContext';
+
 interface SuccessStoriesPageClientProps {
   initialStories: SuccessStory[];
 }
 
 export default function SuccessStoriesPageClient({ initialStories }: SuccessStoriesPageClientProps) {
+  const { successStories } = useAdmin();
+  const displayStories = successStories && successStories.length > 0 ? successStories : initialStories;
   const [isValuationOpen, setIsValuationOpen] = useState(false);
   const [visibleCount, setVisibleCount] = useState(3);
   const [selectedStory, setSelectedStory] = useState<SuccessStory | null>(null);
@@ -22,14 +26,14 @@ export default function SuccessStoriesPageClient({ initialStories }: SuccessStor
 
   // On mount, pick the story from URL param or fallback to featured
   useEffect(() => {
-    if (initialStories.length === 0) return;
+    if (displayStories.length === 0) return;
     if (storySlug) {
-      const matched = initialStories.find((s) => s.slug === storySlug || s.id === storySlug);
+      const matched = displayStories.find((s) => s.slug === storySlug || s.id === storySlug);
       if (matched) { setSelectedStory(matched); return; }
     }
-    const featured = initialStories.find((s) => s.isFeatured);
-    setSelectedStory(featured || initialStories[0]);
-  }, [storySlug, initialStories]);
+    const featured = displayStories.find((s) => s.isFeatured);
+    setSelectedStory(featured || displayStories[0]);
+  }, [storySlug, displayStories]);
 
   const handleSelectStory = (story: SuccessStory) => {
     setSelectedStory(story);
@@ -41,15 +45,7 @@ export default function SuccessStoriesPageClient({ initialStories }: SuccessStor
     }, 100);
   };
 
-  const steps = selectedStory
-    ? [
-        { num: '01', title: 'Define budget, area and goal (lifestyle vs yield)', body: selectedStory.stepBudget },
-        { num: '02', title: 'The challenge', body: selectedStory.stepChallenge },
-        { num: '03', title: "Amir's approach", body: selectedStory.stepApproach },
-        { num: '04', title: 'Research & guidance', body: selectedStory.stepResearch },
-        { num: '05', title: 'The outcome', body: selectedStory.stepOutcome },
-      ].filter((s) => s.body)
-    : [];
+  const steps = selectedStory?.steps && selectedStory.steps.length > 0 ? selectedStory.steps : [];
 
   const metrics = selectedStory?.metrics && selectedStory.metrics.length > 0 ? selectedStory.metrics : [];
   const gridColsClass =
@@ -80,7 +76,7 @@ export default function SuccessStoriesPageClient({ initialStories }: SuccessStor
       <section className="bg-[#fcfcfd] py-12 sm:py-16 border-b border-gray-200/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
-            {initialStories.slice(0, visibleCount).map((story) => {
+            {displayStories.slice(0, visibleCount).map((story) => {
               const isSelected = selectedStory?.id === story.id;
               return (
                 <div
@@ -137,7 +133,7 @@ export default function SuccessStoriesPageClient({ initialStories }: SuccessStor
           </div>
 
           <div className="text-center">
-            {visibleCount < initialStories.length ? (
+            {visibleCount < displayStories.length ? (
               <button
                 onClick={() => setVisibleCount((prev) => prev + 3)}
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-[#5870F7] hover:bg-blue-600 font-desc-mona text-[16px] font-medium text-white transition-colors shadow-2xs leading-none group"
@@ -150,7 +146,7 @@ export default function SuccessStoriesPageClient({ initialStories }: SuccessStor
             ) : (
               <button
                 disabled
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gray-50 font-desc-mona text-[16px] font-medium text-gray-400 border border-gray-100 shadow-2xs leading-none cursor-not-allowed"
+                className="inline-flex items-center justify-center px-12 py-3.5 rounded-full bg-[#EEF1FF] font-desc-mona text-[15px] font-medium text-[#5870F7] border border-[#D4DEFF] min-w-[240px] leading-none cursor-not-allowed"
               >
                 <span>No more stories</span>
               </button>
@@ -185,10 +181,10 @@ export default function SuccessStoriesPageClient({ initialStories }: SuccessStor
 
             {steps.length > 0 && (
               <div className="space-y-10 mb-12">
-                {steps.map((step) => (
-                  <div key={step.num} className="flex gap-5 items-start">
+                {steps.map((step, idx) => (
+                  <div key={idx} className="flex gap-5 items-start">
                     <div className="shrink-0 w-8 h-8 rounded-full border border-[#D6E0FF] bg-[#EEF1FF] flex items-center justify-center font-desc-mona text-[13px] font-bold text-[#5870F7] leading-none mt-1">
-                      {step.num}
+                      {step.stepNumber || (idx + 1).toString().padStart(2, '0')}
                     </div>
                     <div className="space-y-2 flex-1">
                       <h3
@@ -237,49 +233,40 @@ export default function SuccessStoriesPageClient({ initialStories }: SuccessStor
               </div>
             )}
 
-            {selectedStory.stepKeyTakeaways && (
-              <div className="flex gap-5 items-start mb-12 pt-4">
-                <div className="shrink-0 w-8 h-8 rounded-full border border-[#D6E0FF] bg-[#EEF1FF] flex items-center justify-center font-desc-mona text-[13px] font-bold text-[#5870F7] leading-none mt-1">
-                  07
-                </div>
-                <div className="space-y-2 flex-1">
-                  <h3
-                    className="font-heading-bricolage text-[18px] sm:text-[20px] font-semibold text-[#111827] leading-tight tracking-[-0.01em]"
-                    style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
-                  >
-                    Key takeaways
-                  </h3>
-                  <p className="font-desc-mona text-[15px] sm:text-[16px] font-normal text-[#4B5563] leading-[1.6]">
-                    {selectedStory.stepKeyTakeaways}
-                  </p>
-                </div>
-              </div>
-            )}
 
-            {selectedStory.testimonial && (
-              <div className="p-6 sm:p-8 rounded-2xl bg-[#F9FAFB] border border-gray-100/80 italic font-desc-mona text-[15px] sm:text-[16px] text-gray-700 relative mb-0 shadow-3xs">
-                <span className="text-4xl text-[#5870F7] font-serif absolute top-3 left-4 select-none opacity-20">"</span>
-                <div
-                  className="pl-6 relative z-10 font-normal leading-relaxed prose max-w-none text-gray-700 font-desc-mona text-[15px] sm:text-[16px]"
-                  dangerouslySetInnerHTML={{ __html: selectedStory.testimonial }}
-                />
-                {(selectedStory.clientName || selectedStory.clientRole) && (
-                  <div className="mt-4 pl-6 not-italic flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#5870F7]" />
-                    <span className="font-semibold text-[13px] sm:text-[14px] text-gray-900">{selectedStory.clientName}</span>
-                    {selectedStory.clientRole && (
-                      <span className="text-[13px] sm:text-[14px] text-gray-500">· {selectedStory.clientRole}</span>
-                    )}
-                  </div>
-                )}
+
+            {/* CTA Block (Framed dark style) */}
+            <div className="rounded-[24px] bg-[#2A2B2E] p-3 shadow-xl w-full mx-auto mt-12 mb-8">
+              <div className="rounded-[20px] border border-white/10 bg-[#313338] py-10 px-8 sm:py-14 sm:px-12 text-center flex flex-col items-center space-y-4">
+                <h3
+                  className="font-heading-bricolage text-[22px] sm:text-[26px] font-semibold text-white leading-tight tracking-[-0.01em]"
+                  style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+                >
+                  Thinking about your own purchase?
+                </h3>
+                <p className="font-desc-mona text-[14px] sm:text-[15px] font-normal text-[#A1A1AA] leading-[1.5] max-w-[360px] mx-auto mb-2">
+                  Message Amir to talk through your situation — honestly, no pressure.
+                </p>
+                <a
+                  href="https://wa.me/8801875189361"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#5870F7] hover:bg-blue-600 font-desc-mona text-[14px] font-medium text-white leading-none transition-all shadow-[inset_0px_2px_4px_0px_rgba(255,255,255,0.25)]"
+                >
+                  Contact Amir on WhatsApp
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </a>
               </div>
-            )}
+            </div>
 
           </div>
         </div>
       )}
 
-      <Footer />
+      <Footer hideCTA={true} />
       <HomeValuationModal isOpen={isValuationOpen} onClose={() => setIsValuationOpen(false)} />
     </div>
   );

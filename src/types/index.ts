@@ -74,11 +74,22 @@ export interface BlogArticle {
   readTimeMinutes: number;
   tags: string[];
   featured?: boolean;
+  template?: 'default' | 'centered';
+  quoteText?: string;
+  showSubscribeBox?: boolean;
+  contentSections?: { heading: string; content: string }[];
+  postFaqs?: { question: string; answer: string }[];
 }
 
 export interface CaseStudyMetric {
   value: string;
   label: string;
+}
+
+export interface CaseStudyStep {
+  stepNumber?: string;
+  title: string;
+  body: string;
 }
 
 export interface SuccessStory {
@@ -98,13 +109,8 @@ export interface SuccessStory {
   testimonial?: string;
   dateClosed?: string;
   highlights?: string[];
-  // Case study step fields
-  stepBudget?: string;
-  stepChallenge?: string;
-  stepApproach?: string;
-  stepResearch?: string;
-  stepOutcome?: string;
-  stepKeyTakeaways?: string;
+  // Dynamic case study steps
+  steps?: CaseStudyStep[];
   // 3 metrics for the metrics bar
   metrics?: CaseStudyMetric[];
   // Mark this as the featured story shown on the homepage
@@ -132,4 +138,48 @@ export interface HomeValuationPayload {
   ownerEmail: string;
   ownerPhone: string;
   notes?: string;
+}
+
+export interface GuidePageContent {
+  heroImage: string;
+  section1: {
+    heading: string;
+    paragraph1: string;
+    paragraph2: string;
+  };
+  section2: {
+    heading: string;
+    description: string;
+    freeholdCardTitle: string;
+    freeholdCardDesc: string;
+    leaseholdCardTitle: string;
+    leaseholdCardDesc: string;
+  };
+  section3: {
+    heading: string;
+    step1: string;
+    step2: string;
+    step3: string;
+    step4: string;
+  };
+  section4: {
+    heading: string;
+    content: string;
+  };
+  section5: {
+    heading: string;
+    content: string;
+  };
+  section6: {
+    heading: string;
+    content: string;
+  };
+  section7: {
+    heading: string;
+    content: string;
+  };
+  sectionFaq: {
+    heading: string;
+    description: string;
+  };
 }
