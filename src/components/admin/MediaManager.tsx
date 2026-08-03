@@ -78,8 +78,15 @@ export const MediaManager: React.FC<MediaManagerProps> = ({ onSelect, pickerMode
 
       try {
         const res = await fetch('/api/upload', { method: 'POST', body: formData });
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.error || 'Upload failed');
+        let data;
+        let textError = '';
+        try {
+          data = await res.json();
+        } catch(e) {
+          textError = ' (Server did not return JSON. This usually means the file is too large for Vercel, or there is a 500 Server Error)';
+        }
+        
+        if (!res.ok) throw new Error((data && data.error) ? data.error : `HTTP ${res.status}${textError}`);
         successCount++;
       } catch (err: any) {
         showToast(`Failed: ${file.name} - ${err.message || 'Error'}`, 'error');

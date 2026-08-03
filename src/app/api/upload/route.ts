@@ -2,8 +2,13 @@ import { NextRequest, NextResponse } from 'next/server';
 import { put, del, list } from '@vercel/blob';
 import fs from 'fs';
 import path from 'path';
-import { promisify } from 'util';
-import sharp from 'sharp';
+
+let sharp: any = null;
+try {
+  sharp = require('sharp');
+} catch (e) {
+  console.warn('Sharp is not installed or supported on this environment.');
+}
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
 const ALLOWED_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/gif'];
@@ -84,13 +89,15 @@ export async function POST(req: NextRequest) {
     let finalContentType = file.type;
 
     try {
-      processedBuffer = await sharp(originalBuffer)
-        .webp({ quality: 80 })
-        .toBuffer();
-        
-      const nameWithoutExt = file.name.substring(0, file.name.lastIndexOf('.')) || file.name;
-      finalFileName = `${nameWithoutExt}.webp`;
-      finalContentType = 'image/webp';
+      if (sharp) {
+        processedBuffer = await sharp(originalBuffer)
+          .webp({ quality: 80 })
+          .toBuffer();
+          
+        const nameWithoutExt = file.name.substring(0, file.name.lastIndexOf('.')) || file.name;
+        finalFileName = `${nameWithoutExt}.webp`;
+        finalContentType = 'image/webp';
+      }
     } catch (sharpError) {
       console.warn('Sharp compression failed, falling back to original file:', sharpError);
     }
