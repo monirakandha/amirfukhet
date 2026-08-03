@@ -125,9 +125,9 @@ export async function POST(req: NextRequest) {
         size: processedBuffer.length,
       });
     }
-  } catch (error) {
+  } catch (error: any) {
     console.error('Upload error:', error);
-    return NextResponse.json({ error: 'Upload failed' }, { status: 500 });
+    return NextResponse.json({ error: error.message || 'Upload failed' }, { status: 500 });
   }
 }
 
