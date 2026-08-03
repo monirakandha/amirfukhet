@@ -43,7 +43,7 @@ export default function GuidePage() {
 
           {/* Main Title */}
           <h1 className="hero-heading max-w-4xl mx-auto">
-            The Complete Guide to Buying Property in Phuket as a Foreigner
+            The Complete Guide to<br /> Buying Property in Phuket as a Foreigner
           </h1>
 
           {/* Subtitle / Subtext */}
