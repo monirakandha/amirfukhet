@@ -96,7 +96,7 @@ export default function Footer({ hideCTA = false }: { hideCTA?: boolean }) {
           {/* Column 4: Contact (3 Cols) */}
           <div className="md:col-span-3 lg:col-span-3 space-y-4">
             <h4 className="font-heading-bricolage text-white text-[24px] font-semibold leading-none mb-6">
-              Contact
+              Work With Me
             </h4>
             <ul className="space-y-4 font-desc-mona text-[16px] font-normal text-[#B3B3B3]">
               <li><a href={`tel:${settings?.contactPhone || '+8801875189361'}`} className="hover:text-white transition-colors">{settings?.contactPhone || '+880 1875 189 361'}</a></li>
