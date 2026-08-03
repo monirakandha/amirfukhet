@@ -206,7 +206,7 @@ export default function ContactPage() {
                       {isSubmitting ? 'Sending...' : 'Send inquiry'}
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" /></svg>
                     </button>
-                    <p className="text-[13px] text-gray-400 font-medium">Sends straight to Amir's inbox.</p>
+                    <p className="text-[13px] text-gray-400 font-medium">Sends straight to Amir&apos;s inbox.</p>
                   </div>
                 </form>
               )}
