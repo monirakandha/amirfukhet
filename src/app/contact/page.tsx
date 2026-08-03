@@ -64,19 +64,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Why work with an advisor, not a portal Section matching Figma mockup */}
-      <section className="py-20 bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          {/* Section Header */}
-          <div className="text-center space-y-3">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-              Why work with an advisor, not a portal
-            </h2>
-            <p className="text-sm sm:text-base text-gray-500 max-w-xl mx-auto leading-relaxed">
-              A listing site shows you what's for sale. An advisor tells you what's worth buying — and what to avoid.
-            </p>
-          </div>
-
       {/* Contact Section */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
