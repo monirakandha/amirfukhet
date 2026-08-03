@@ -282,8 +282,8 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
                   </div>
 
                   {/* HOVER OVERLAY CARD (Revealed on hover, matching Figma) */}
-                  <div className="absolute -inset-2 bg-white rounded-[24px] border border-gray-200/80 shadow-2xl opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300 ease-out z-30 flex flex-col overflow-hidden">
-                    <div className="relative w-full aspect-[4/3] bg-gray-100 shrink-0">
+                  <div className="absolute -top-2 -left-2 -right-2 bottom-auto min-h-[calc(100%+16px)] bg-white rounded-[24px] border border-gray-200/80 shadow-2xl opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300 ease-out z-30 flex flex-col overflow-hidden pb-5">
+                    <div className="relative w-full aspect-[4/5] bg-gray-100 shrink-0">
                       <img
                         src={blog.coverImage}
                         alt={blog.title}
@@ -298,7 +298,7 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
                       </div>
                     </div>
 
-                    <div className="p-5 pt-0 flex flex-col flex-grow justify-between">
+                    <div className="px-5 pt-0 flex flex-col flex-grow justify-between">
                       <div>
                         {/* Title */}
                         <h3
