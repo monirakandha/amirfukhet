@@ -436,10 +436,10 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
           <div className="text-center">
             <Link
               href="/blog"
-              className="group inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#f4f6fa] hover:bg-[#5870F7] font-desc-mona text-[16px] font-medium text-[#020202] hover:text-white border border-gray-200/80 hover:border-[#5870F7] transition-all shadow-2xs leading-none"
+              className="group inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#5870F7] hover:bg-blue-600 font-desc-mona text-[16px] font-medium text-white border border-transparent transition-all shadow-md shadow-blue-500/20 leading-none"
             >
               <span>View all insights</span>
-              <svg className="w-4 h-4 text-[#020202] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
               </svg>
             </Link>

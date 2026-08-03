@@ -287,8 +287,8 @@ export default function BlogDetailClient({ slug, serverBlog, serverRelatedBlogs 
           <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between mb-10">
               <h2 className="text-[32px] font-bold text-gray-900 tracking-tight">Related articles</h2>
-              <Link href="/blog" className="hidden sm:flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-gray-200 text-gray-900 text-[14px] font-medium hover:bg-gray-50 transition-colors">
-                View all insights <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" /></svg>
+              <Link href="/blog" className="hidden sm:flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#5870F7] hover:bg-blue-600 text-white border border-transparent shadow-md shadow-blue-500/20 text-[14px] font-medium transition-colors">
+                View all insights <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" /></svg>
               </Link>
             </div>
             
@@ -314,8 +314,8 @@ export default function BlogDetailClient({ slug, serverBlog, serverRelatedBlogs 
             </div>
 
             <div className="mt-8 text-center sm:hidden">
-              <Link href="/blog" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white border border-gray-200 text-gray-900 text-[15px] font-medium hover:bg-gray-50 transition-colors">
-                View all insights <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" /></svg>
+              <Link href="/blog" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#5870F7] hover:bg-blue-600 text-white border border-transparent shadow-md shadow-blue-500/20 text-[15px] font-medium transition-colors">
+                View all insights <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" /></svg>
               </Link>
             </div>
           </div>
