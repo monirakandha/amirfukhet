@@ -16,7 +16,7 @@ export default function AboutPage() {
       <Navbar onOpenValuationModal={() => setIsValuationOpen(true)} />
 
       {/* About Hero Area matching Figma mockup */}
-      <section className="relative w-full pt-24 sm:pt-32 lg:pt-36 pb-12 sm:pb-16 overflow-hidden bg-white border-b border-gray-200/60 block">
+      <section className="relative w-full pt-20 sm:pt-24 lg:pt-28 pb-8 sm:pb-10 overflow-hidden bg-white border-b border-gray-200/60 block">
         {/* Geometric grid background pattern */}
         <div className="absolute inset-0 pointer-events-none hero-grid-overlay" />
 
@@ -82,7 +82,7 @@ export default function AboutPage() {
 
             {/* Right Content Area (Image) */}
             <div className="hidden lg:block lg:col-span-5 relative h-full">
-               <img src="/images/amir-hero.png" alt="Amir Ahmed Faisal" className="absolute bottom-[-24px] right-4 xl:right-12 w-full h-auto max-w-[480px] xl:max-w-[540px] object-contain pointer-events-none drop-shadow-2xl" />
+               <img src="/images/amir-hero.png" alt="Amir Ahmed Faisal" className="absolute bottom-[-16px] right-4 xl:right-12 w-full h-auto max-w-[480px] xl:max-w-[540px] object-contain pointer-events-none drop-shadow-2xl" />
             </div>
           </div>
         </div>
