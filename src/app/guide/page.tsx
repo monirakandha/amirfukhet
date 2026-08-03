@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import HomeValuationModal from '@/components/HomeValuationModal';
-import { Clock, Calendar, PenTool, Download } from 'lucide-react';
+import { Clock, Calendar, PenTool, Download, Plus, Minus } from 'lucide-react';
 import { useAdmin } from '@/context/AdminContext';
 
 export default function GuidePage() {
@@ -349,8 +349,8 @@ export default function GuidePage() {
                       >
                         <div className="flex items-center justify-between font-bold text-gray-900 text-sm sm:text-base">
                           <span>{faq.question}</span>
-                          <span className={`text-lg font-bold ${isOpen ? 'text-gray-500' : 'text-[#4c70ff]'}`}>
-                            {isOpen ? '–' : '+'}
+                          <span className="text-[#4c70ff]">
+                            {isOpen ? <Minus className="w-5 h-5" strokeWidth={1.5} /> : <Plus className="w-5 h-5" strokeWidth={1.5} />}
                           </span>
                         </div>
                         {isOpen && (
