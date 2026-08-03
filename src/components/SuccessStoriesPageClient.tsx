@@ -60,7 +60,7 @@ export default function SuccessStoriesPageClient({ initialStories }: SuccessStor
       <Navbar onOpenValuationModal={() => setIsValuationOpen(true)} />
 
       {/* Hero — served in initial HTML for SEO */}
-      <section className="relative w-full pt-36 pb-16 sm:pt-40 sm:pb-20 overflow-hidden bg-white border-b border-gray-200/60">
+      <section className="relative w-full pt-28 pb-10 sm:pt-36 sm:pb-12 overflow-hidden bg-white border-b border-gray-200/60">
         <div className="absolute inset-0 pointer-events-none hero-grid-overlay" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
           <div className="section-pill mx-auto shadow-2xs">
@@ -68,18 +68,18 @@ export default function SuccessStoriesPageClient({ initialStories }: SuccessStor
             Success Stories
           </div>
           <h1 className="font-heading-bricolage text-[36px] sm:text-[44px] lg:text-[50px] font-semibold text-[#020202] leading-[1.15] tracking-[-0.01em] max-w-3xl mx-auto">
-            Client Success Stories &amp; Investment Case Studies
+            Real deals. Real<br className="hidden sm:inline" /> buyers. The full story.
           </h1>
           <p className="font-desc-mona text-[16px] font-normal text-[#6B7280] leading-[1.5] max-w-xl mx-auto">
-            Real experiences from foreign buyers and investors who navigated the Phuket property market safely with Amir's independent advisory.
+            Detailed case studies of foreign buyers Amir guided from first<br className="hidden sm:inline" /> contact to a successful purchase.
           </p>
         </div>
       </section>
 
       {/* Story Grid */}
-      <section className="bg-[#fcfcfd] py-16 sm:py-24 border-b border-gray-200/50">
+      <section className="bg-[#fcfcfd] py-12 sm:py-16 border-b border-gray-200/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
             {initialStories.slice(0, visibleCount).map((story) => {
               const isSelected = selectedStory?.id === story.id;
               return (
@@ -136,8 +136,8 @@ export default function SuccessStoriesPageClient({ initialStories }: SuccessStor
             })}
           </div>
 
-          {visibleCount < initialStories.length && (
-            <div className="text-center">
+          <div className="text-center">
+            {visibleCount < initialStories.length ? (
               <button
                 onClick={() => setVisibleCount((prev) => prev + 3)}
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white hover:bg-[#5870F7] hover:text-white hover:border-[#5870F7] font-desc-mona text-[16px] font-medium text-[#020202] border border-gray-200 transition-colors shadow-2xs leading-none group"
@@ -147,14 +147,21 @@ export default function SuccessStoriesPageClient({ initialStories }: SuccessStor
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-            </div>
-          )}
+            ) : (
+              <button
+                disabled
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gray-50 font-desc-mona text-[16px] font-medium text-gray-400 border border-gray-100 shadow-2xs leading-none cursor-not-allowed"
+              >
+                <span>No more stories</span>
+              </button>
+            )}
+          </div>
         </div>
       </section>
 
       {/* Case Study Detail */}
       {selectedStory && (
-        <div ref={detailsRef} id="details-section" className="bg-white py-16 sm:py-24 border-t border-gray-200/60 scroll-mt-20">
+        <div ref={detailsRef} id="details-section" className="bg-white py-12 sm:py-16 border-t border-gray-200/60 scroll-mt-20">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mb-6 flex">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#DFE3EB] font-desc-mona text-[13px] font-medium text-[#5870F7] leading-none shadow-xs">
@@ -250,7 +257,7 @@ export default function SuccessStoriesPageClient({ initialStories }: SuccessStor
             )}
 
             {selectedStory.testimonial && (
-              <div className="p-6 sm:p-8 rounded-2xl bg-[#F9FAFB] border border-gray-100/80 italic font-desc-mona text-[15px] sm:text-[16px] text-gray-700 relative mb-12 shadow-3xs">
+              <div className="p-6 sm:p-8 rounded-2xl bg-[#F9FAFB] border border-gray-100/80 italic font-desc-mona text-[15px] sm:text-[16px] text-gray-700 relative mb-8 shadow-3xs">
                 <span className="text-4xl text-[#5870F7] font-serif absolute top-3 left-4 select-none opacity-20">"</span>
                 <div
                   className="pl-6 relative z-10 font-normal leading-relaxed prose max-w-none text-gray-700 font-desc-mona text-[15px] sm:text-[16px]"
