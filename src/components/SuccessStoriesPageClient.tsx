@@ -161,7 +161,7 @@ export default function SuccessStoriesPageClient({ initialStories }: SuccessStor
 
       {/* Case Study Detail */}
       {selectedStory && (
-        <div ref={detailsRef} id="details-section" className="bg-white py-12 sm:py-16 border-t border-gray-200/60 scroll-mt-20">
+        <div ref={detailsRef} id="details-section" className="bg-white pt-12 sm:pt-16 pb-2 sm:pb-4 border-t border-gray-200/60 scroll-mt-20">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mb-6 flex">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#DFE3EB] font-desc-mona text-[13px] font-medium text-[#5870F7] leading-none shadow-xs">
@@ -257,7 +257,7 @@ export default function SuccessStoriesPageClient({ initialStories }: SuccessStor
             )}
 
             {selectedStory.testimonial && (
-              <div className="p-6 sm:p-8 rounded-2xl bg-[#F9FAFB] border border-gray-100/80 italic font-desc-mona text-[15px] sm:text-[16px] text-gray-700 relative mb-8 shadow-3xs">
+              <div className="p-6 sm:p-8 rounded-2xl bg-[#F9FAFB] border border-gray-100/80 italic font-desc-mona text-[15px] sm:text-[16px] text-gray-700 relative mb-0 shadow-3xs">
                 <span className="text-4xl text-[#5870F7] font-serif absolute top-3 left-4 select-none opacity-20">"</span>
                 <div
                   className="pl-6 relative z-10 font-normal leading-relaxed prose max-w-none text-gray-700 font-desc-mona text-[15px] sm:text-[16px]"
