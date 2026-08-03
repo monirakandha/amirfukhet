@@ -117,18 +117,26 @@ export async function POST(req: NextRequest) {
         size: processedBuffer.length,
       });
     } else {
-      // Upload locally
-      await ensureUploadDir();
-      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-      const filename = `${uniqueSuffix}-${finalFileName}`;
-      const filePath = path.join(UPLOAD_DIR, filename);
-      
-      fs.writeFileSync(filePath, processedBuffer);
+      // Fallback: Upload to Catbox (free, permanent, no API key) when local filesystem is read-only
+      const catboxFormData = new FormData();
+      catboxFormData.append('reqtype', 'fileupload');
+      catboxFormData.append('fileToUpload', new Blob([processedBuffer], { type: finalContentType }), finalFileName);
+
+      const catboxRes = await fetch('https://catbox.moe/user/api.php', {
+        method: 'POST',
+        body: catboxFormData
+      });
+
+      if (!catboxRes.ok) {
+        throw new Error('Catbox upload failed: ' + await catboxRes.text());
+      }
+
+      const catboxUrl = await catboxRes.text();
 
       return NextResponse.json({
         success: true,
-        filename,
-        url: `/uploads/${filename}`,
+        filename: finalFileName,
+        url: catboxUrl,
         size: processedBuffer.length,
       });
     }
