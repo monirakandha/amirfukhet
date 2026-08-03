@@ -264,7 +264,7 @@ export default function ContactUsPage() {
         </div>
       </section>
 
-      <Footer />
+      <Footer hideCTA />
 
       <HomeValuationModal isOpen={isValuationOpen} onClose={() => setIsValuationOpen(false)} />
     </div>
