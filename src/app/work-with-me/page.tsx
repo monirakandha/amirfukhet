@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import HomeValuationModal from '@/components/HomeValuationModal';
-import { Phone, Mail, MapPin } from 'lucide-react';
 
 export default function ContactPage() {
   const [isValuationOpen, setIsValuationOpen] = useState(false);
@@ -326,50 +325,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Content Form Section */}
-      <section id="contact-form" className="py-16 flex-grow bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-xl mx-auto">
-            {/* Advisor Card */}
-            <div className="space-y-8">
-              <div className="bg-[#f8fafc] border border-gray-200 rounded-3xl p-6 sm:p-8 space-y-6">
-                <div className="flex items-center gap-4">
-                  <img
-                    src="/images/amir.png"
-                    alt="Amir Ahmed Faisal"
-                    className="w-16 h-16 rounded-full object-cover border-2 border-blue-200 shrink-0 bg-white"
-                  />
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900">Amir Ahmed Faisal</h3>
-                    <p className="text-xs text-[#4c70ff] font-semibold">Independent Property Advisor · Phuket</p>
-                  </div>
-                </div>
 
-                <div className="space-y-4 pt-2 text-sm border-t border-gray-200 text-gray-600">
-                  <div className="flex items-center gap-3">
-                    <Phone className="w-4 h-4 text-[#4c70ff] shrink-0" />
-                    <a href="tel:+8801875189361" className="hover:text-[#4c70ff] transition-colors">
-                      +880 1875-189361
-                    </a>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <Mail className="w-4 h-4 text-[#4c70ff] shrink-0" />
-                    <a href="mailto:amir@fuketamir.com" className="hover:text-[#4c70ff] transition-colors">
-                      amir@fuketamir.com
-                    </a>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <MapPin className="w-4 h-4 text-[#4c70ff] shrink-0 mt-1" />
-                    <span>Bang Tao Beach, Cherngtalay, Phuket, Thailand</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <Footer hideCTA />
 
