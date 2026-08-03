@@ -118,19 +118,15 @@ export async function POST(req: NextRequest) {
       });
     } else {
       // Fallback: Upload to Imgur anonymously (free, permanent, robust) when local filesystem is read-only
-      const base64Image = processedBuffer.toString('base64');
+      const imgurFormData = new FormData();
+      imgurFormData.append('image', new Blob([processedBuffer], { type: finalContentType }), finalFileName);
       
       const imgurRes = await fetch('https://api.imgur.com/3/image', {
         method: 'POST',
         headers: {
-          'Authorization': 'Client-ID 546c25a59c58ad7',
-          'Content-Type': 'application/json'
+          'Authorization': 'Client-ID 546c25a59c58ad7'
         },
-        body: JSON.stringify({
-          image: base64Image,
-          type: 'base64',
-          name: finalFileName
-        })
+        body: imgurFormData
       });
 
       if (!imgurRes.ok) {
