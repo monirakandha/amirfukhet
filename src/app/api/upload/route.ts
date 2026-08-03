@@ -117,26 +117,33 @@ export async function POST(req: NextRequest) {
         size: processedBuffer.length,
       });
     } else {
-      // Fallback: Upload to Catbox (free, permanent, no API key) when local filesystem is read-only
-      const catboxFormData = new FormData();
-      catboxFormData.append('reqtype', 'fileupload');
-      catboxFormData.append('fileToUpload', new Blob([processedBuffer], { type: finalContentType }), finalFileName);
-
-      const catboxRes = await fetch('https://catbox.moe/user/api.php', {
+      // Fallback: Upload to Imgur anonymously (free, permanent, robust) when local filesystem is read-only
+      const base64Image = processedBuffer.toString('base64');
+      
+      const imgurRes = await fetch('https://api.imgur.com/3/image', {
         method: 'POST',
-        body: catboxFormData
+        headers: {
+          'Authorization': 'Client-ID 546c25a59c58ad7',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          image: base64Image,
+          type: 'base64',
+          name: finalFileName
+        })
       });
 
-      if (!catboxRes.ok) {
-        throw new Error('Catbox upload failed: ' + await catboxRes.text());
+      if (!imgurRes.ok) {
+        throw new Error('Imgur upload failed: ' + await imgurRes.text());
       }
 
-      const catboxUrl = await catboxRes.text();
+      const imgurData = await imgurRes.json();
+      const finalUrl = imgurData.data?.link || '';
 
       return NextResponse.json({
         success: true,
         filename: finalFileName,
-        url: catboxUrl,
+        url: finalUrl,
         size: processedBuffer.length,
       });
     }
