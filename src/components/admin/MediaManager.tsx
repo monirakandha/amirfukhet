@@ -51,7 +51,19 @@ export const MediaManager: React.FC<MediaManagerProps> = ({ onSelect, pickerMode
     try {
       const res = await fetch('/api/upload');
       const data = await res.json();
-      setFiles(data.files || []);
+      let allFiles = data.files || [];
+      
+      // Merge with localStorage Imgur uploads (since Vercel read-only system can't list them)
+      try {
+        const localUploads = JSON.parse(localStorage.getItem('externalUploads') || '[]');
+        if (localUploads.length > 0) {
+            allFiles = [...localUploads, ...allFiles];
+            // Sort by date
+            allFiles.sort((a: any, b: any) => new Date(b.uploadedAt).getTime() - new Date(a.uploadedAt).getTime());
+        }
+      } catch (e) {}
+
+      setFiles(allFiles);
     } catch {
       showToast('Failed to load media library', 'error');
     } finally {
@@ -87,6 +99,23 @@ export const MediaManager: React.FC<MediaManagerProps> = ({ onSelect, pickerMode
         }
         
         if (!res.ok) throw new Error((data && data.error) ? data.error : `HTTP ${res.status}${textError}`);
+        
+        // IF it's an external URL (Imgur), save it to localStorage so we can display it!
+        if (data.url && data.url.startsWith('http')) {
+            try {
+                const localUploads = JSON.parse(localStorage.getItem('externalUploads') || '[]');
+                localUploads.push({
+                    filename: data.filename || file.name,
+                    url: data.url,
+                    size: data.size || file.size,
+                    uploadedAt: new Date().toISOString()
+                });
+                localStorage.setItem('externalUploads', JSON.stringify(localUploads));
+            } catch (e) {
+                console.error('Failed to save to localStorage', e);
+            }
+        }
+
         successCount++;
       } catch (err: any) {
         showToast(`Failed: ${file.name} - ${err.message || 'Error'}`, 'error');
@@ -119,8 +148,18 @@ export const MediaManager: React.FC<MediaManagerProps> = ({ onSelect, pickerMode
     if (!window.confirm(`Delete "${file.filename}"? This cannot be undone.`)) return;
     setDeleting(file.filename);
     try {
-      const res = await fetch(`/api/upload?url=${encodeURIComponent(file.url)}`, { method: 'DELETE' });
-      if (!res.ok) throw new Error('Delete failed');
+      if (file.url.startsWith('http')) {
+        // Just remove it from localStorage for external files
+        try {
+          const localUploads = JSON.parse(localStorage.getItem('externalUploads') || '[]');
+          const updated = localUploads.filter((f: any) => f.url !== file.url);
+          localStorage.setItem('externalUploads', JSON.stringify(updated));
+        } catch (e) {}
+      } else {
+        // Delete from server (local filesystem or Vercel Blob)
+        const res = await fetch(`/api/upload?url=${encodeURIComponent(file.url)}`, { method: 'DELETE' });
+        if (!res.ok) throw new Error('Delete failed');
+      }
       showToast('File deleted.');
       if (selectedFile === file.url) setSelectedFile(null);
       await loadFiles();
