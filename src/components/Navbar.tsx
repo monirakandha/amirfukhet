@@ -37,6 +37,7 @@ export default function Navbar({ onOpenValuationModal }: NavbarProps) {
     { name: 'Listings', path: '/properties' },
     { name: 'About', path: '/about' },
     { name: 'Work With Me', path: '/work-with-me' },
+    { name: 'Contact', path: '/contact' },
   ];
 
   // Colors based on home vs inner page & scroll state
@@ -90,7 +91,7 @@ export default function Navbar({ onOpenValuationModal }: NavbarProps) {
               const isActive =
                 pathname === link.path ||
                 (link.path === '/guide' && (pathname === '/guide' || pathname === '/the-guide')) ||
-                (link.path === '/work-with-me' && (pathname === '/contact' || pathname === '/work-with-me' || pathname === '/contact-us'));
+                (link.path === '/contact' && (pathname === '/contact' || pathname === '/contact-us'));
 
               if (isLightNav) {
                 return (
