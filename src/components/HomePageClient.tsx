@@ -384,7 +384,7 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-start">
             {/* Column 1 */}
             <div className="flex flex-col gap-6 sm:gap-8">
-              <Link href="/blog" className="group bg-white rounded-[24px] p-6 sm:p-7 transition-all duration-300 border border-gray-200/70 shadow-xs hover:shadow-xl hover:-translate-y-1 flex items-start gap-5">
+              <Link href="/blog" className="group bg-white rounded-[24px] p-6 sm:p-7 transition-all duration-300 border border-gray-200/70 shadow-xs hover:border-[#5870F7] hover:shadow-xl hover:-translate-y-1 flex items-start gap-5">
                 <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-[#E5ECFF] flex items-center justify-center transition-colors shrink-0 shadow-2xs">
                   <TrendingUp className="w-7 h-7 text-[#5870F7] transition-colors" />
                 </div>
@@ -398,7 +398,7 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
                 </div>
               </Link>
 
-              <Link href="/blog" className="group bg-white rounded-[24px] p-6 sm:p-8 transition-all duration-300 border border-gray-200/70 shadow-xs hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between">
+              <Link href="/blog" className="group bg-white rounded-[24px] p-6 sm:p-8 transition-all duration-300 border border-gray-200/70 shadow-xs hover:border-[#5870F7] hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between">
                 <div>
                   <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-[#E5ECFF] flex items-center justify-center transition-colors mb-6 shrink-0 shadow-2xs">
                     <Scale className="w-7 h-7 text-[#5870F7] transition-colors" />
@@ -415,7 +415,7 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
 
             {/* Column 2 */}
             <div className="flex flex-col gap-6 sm:gap-8">
-              <Link href="/blog" className="group bg-white rounded-[24px] p-6 sm:p-8 transition-all duration-300 border border-gray-200/70 shadow-xs hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between">
+              <Link href="/blog" className="group bg-white rounded-[24px] p-6 sm:p-8 transition-all duration-300 border border-gray-200/70 shadow-xs hover:border-[#5870F7] hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between">
                 <div>
                   <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-[#E5ECFF] flex items-center justify-center transition-colors mb-6 shrink-0 shadow-2xs">
                     <Timer className="w-7 h-7 text-[#5870F7] transition-colors" />
@@ -429,7 +429,7 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
                 </div>
               </Link>
 
-              <Link href="/blog" className="group bg-white rounded-[24px] p-6 sm:p-7 transition-all duration-300 border border-gray-200/70 shadow-xs hover:shadow-xl hover:-translate-y-1 flex items-start gap-5">
+              <Link href="/blog" className="group bg-white rounded-[24px] p-6 sm:p-7 transition-all duration-300 border border-gray-200/70 shadow-xs hover:border-[#5870F7] hover:shadow-xl hover:-translate-y-1 flex items-start gap-5">
                 <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-[#E5ECFF] flex items-center justify-center transition-colors shrink-0 shadow-2xs">
                   <Building2 className="w-7 h-7 text-[#5870F7] transition-colors" />
                 </div>
@@ -446,7 +446,7 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
 
             {/* Column 3 */}
             <div className="flex flex-col gap-6 sm:gap-8">
-              <Link href="/blog" className="group bg-white rounded-[24px] p-6 sm:p-7 transition-all duration-300 border border-gray-200/70 shadow-xs hover:shadow-xl hover:-translate-y-1 flex items-start gap-5">
+              <Link href="/blog" className="group bg-white rounded-[24px] p-6 sm:p-7 transition-all duration-300 border border-gray-200/70 shadow-xs hover:border-[#5870F7] hover:shadow-xl hover:-translate-y-1 flex items-start gap-5">
                 <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-[#E5ECFF] flex items-center justify-center transition-colors shrink-0 shadow-2xs">
                   <MapPin className="w-7 h-7 text-[#5870F7] transition-colors" />
                 </div>
@@ -460,7 +460,7 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
                 </div>
               </Link>
 
-              <Link href="/blog" className="group bg-white rounded-[24px] p-6 sm:p-8 transition-all duration-300 border border-gray-200/70 shadow-xs hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between">
+              <Link href="/blog" className="group bg-white rounded-[24px] p-6 sm:p-8 transition-all duration-300 border border-gray-200/70 shadow-xs hover:border-[#5870F7] hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between">
                 <div>
                   <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-[#E5ECFF] flex items-center justify-center transition-colors mb-6 shrink-0 shadow-2xs">
                     <Newspaper className="w-7 h-7 text-[#5870F7] transition-colors" />
