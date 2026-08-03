@@ -709,27 +709,30 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
       </section>
 
       {/* Free Lead Magnet Section */}
-      {/* Free Lead Magnet Section */}
-      <section className="py-20 md:py-24 bg-white border-t border-gray-100 font-sans">
+      <section className="py-20 md:py-24 bg-[#1C2026] border-t border-gray-800/80 font-sans">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
-            className="rounded-[32px] p-8 md:p-14 lg:p-16 border border-gray-200/80 relative overflow-hidden shadow-xl bg-[#F8FAFC]"
+            className="rounded-[32px] p-8 md:p-14 lg:p-16 border border-gray-700/60 relative overflow-hidden shadow-2xl bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: "url('/images/lead-magnet-bg.png')",
+              boxShadow: "0px 24px 64px -12px rgba(0, 0, 0, 0.55), inset 0px 1px 1px 0px rgba(255, 255, 255, 0.12)"
+            }}
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center relative z-10">
               {/* Left Content */}
               <div className="lg:col-span-7 space-y-5 text-left">
-                <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-gray-200 bg-white text-[#6B7280] text-[13px] font-semibold uppercase tracking-wider shadow-sm">
+                <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-gray-600/60 bg-[#242A33]/80 text-[#B3B3B3] text-[13px] font-semibold uppercase tracking-wider">
                   Free Lead Magnet · Instant Download
                 </div>
 
                 <h2
-                  className="font-heading-bricolage text-[44px] font-semibold text-[#020202] leading-none tracking-[-0.01em] max-w-[480px]"
+                  className="font-heading-bricolage text-[44px] font-semibold text-white leading-none tracking-[-0.01em] max-w-[480px]"
                   style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
                 >
                   Get the Phuket investor's guide — free
                 </h2>
 
-                <p className="font-desc-mona text-[16px] font-normal text-[#6B7280] leading-[1.5] max-w-[540px]">
+                <p className="font-desc-mona text-[16px] font-normal text-[#B3B3B3] leading-[1.5] max-w-[540px]">
                   Join the list and get Amir's market updates and the complete<br className="hidden sm:inline" /> buying guide delivered to your inbox. No spam, unsubscribe anytime.
                 </p>
               </div>
@@ -751,18 +754,18 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
                   className="space-y-5 max-w-[460px] w-full lg:ml-auto"
                 >
                   <div>
-                    <label className="font-desc-mona text-[16px] font-medium text-[#020202] block mb-2 leading-none">Name</label>
-                    <input type="text" required placeholder="Enter your name" className="font-desc-mona text-[16px] font-medium text-[#020202] placeholder-gray-400 leading-none w-full bg-white border border-gray-200 rounded-[16px] px-5 py-3.5 focus:outline-none focus:border-[#5870F7] transition-colors shadow-sm" />
+                    <label className="font-desc-mona text-[16px] font-medium text-white block mb-2 leading-none">Name</label>
+                    <input type="text" required placeholder="Enter your name" className="font-desc-mona text-[16px] font-medium text-white placeholder-[#B3B3B3] leading-none w-full bg-[#272c33] border border-gray-600/50 rounded-[16px] px-5 py-3.5 focus:outline-none focus:border-[#5870F7] transition-colors" />
                   </div>
                   <div>
-                    <label className="font-desc-mona text-[16px] font-medium text-[#020202] block mb-2 leading-none">Email</label>
-                    <input type="email" required placeholder="Enter your email" className="font-desc-mona text-[16px] font-medium text-[#020202] placeholder-gray-400 leading-none w-full bg-white border border-gray-200 rounded-[16px] px-5 py-3.5 focus:outline-none focus:border-[#5870F7] transition-colors shadow-sm" />
+                    <label className="font-desc-mona text-[16px] font-medium text-white block mb-2 leading-none">Email</label>
+                    <input type="email" required placeholder="Enter your email" className="font-desc-mona text-[16px] font-medium text-white placeholder-[#B3B3B3] leading-none w-full bg-[#272c33] border border-gray-600/50 rounded-[16px] px-5 py-3.5 focus:outline-none focus:border-[#5870F7] transition-colors" />
                   </div>
                   <div>
-                    <label className="font-desc-mona text-[16px] font-medium text-[#020202] block mb-2 leading-none">Phone Number</label>
-                    <input type="tel" placeholder="+880" className="font-desc-mona text-[16px] font-medium text-[#020202] placeholder-gray-400 leading-none w-full bg-white border border-gray-200 rounded-[16px] px-5 py-3.5 focus:outline-none focus:border-[#5870F7] transition-colors shadow-sm" />
+                    <label className="font-desc-mona text-[16px] font-medium text-white block mb-2 leading-none">Phone Number</label>
+                    <input type="tel" placeholder="+880" className="font-desc-mona text-[16px] font-medium text-white placeholder-[#B3B3B3] leading-none w-full bg-[#272c33] border border-gray-600/50 rounded-[16px] px-5 py-3.5 focus:outline-none focus:border-[#5870F7] transition-colors" />
                   </div>
-                  <button type="submit" className="font-desc-mona text-[16px] font-medium text-white leading-none w-full py-4 px-6 rounded-full bg-[#5870F7] hover:bg-blue-600 transition-all flex items-center justify-center gap-2.5 mt-3 shadow-md">
+                  <button type="submit" className="font-desc-mona text-[16px] font-medium text-white leading-none w-full py-4 px-6 rounded-full bg-[#5870F7] hover:bg-blue-600 transition-all flex items-center justify-center gap-2.5 mt-3 shadow-[inset_0px_2px_4px_0px_rgba(255,255,255,0.35)]">
                     Send me the free guide
                     <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
