@@ -108,38 +108,45 @@ export default function GuidePage() {
               </div>
 
               {/* Get the PDF Version Widget Box matching Figma mockup */}
-              <div className="bg-[#212529] rounded-2xl p-6 text-white border border-gray-800 shadow-xl space-y-4">
-                <div>
-                  <h4 className="text-lg font-bold text-white">Get the PDF version</h4>
-                  <p className="text-xs text-gray-400 mt-1 leading-relaxed">
-                    A clean offline copy + Amir's market updates.
-                  </p>
-                </div>
+              <div className="bg-[#1C2026] rounded-[24px] p-2 sm:p-2.5 shadow-xl">
+                <div className="bg-[#2B2D33] border border-white/10 rounded-[18px] p-5 sm:p-6 text-white space-y-5">
+                  <div>
+                    <h4 
+                      className="text-[20px] font-semibold text-white tracking-[-0.01em] font-heading-bricolage"
+                      style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+                    >
+                      Get the PDF version
+                    </h4>
+                    <p className="text-[14px] text-gray-300 mt-1.5 leading-[1.6] font-desc-mona">
+                      A clean offline copy + Amir's market updates.
+                    </p>
+                  </div>
 
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    alert('PDF guide sent to your email!');
-                  }}
-                  className="space-y-3"
-                >
-                  <input
-                    type="email"
-                    required
-                    placeholder="Enter your email"
-                    className="w-full bg-[#2f343a] border border-gray-700/80 rounded-xl px-4 py-2.5 text-xs text-white placeholder-gray-400 focus:outline-none focus:border-[#4c70ff] transition-colors"
-                  />
-
-                  <button
-                    type="submit"
-                    className="w-full py-2.5 px-4 rounded-full bg-[#4c70ff] hover:bg-blue-600 text-white font-semibold text-xs transition-colors flex items-center justify-center gap-1.5 shadow-md shadow-blue-500/20"
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      alert('PDF guide sent to your email!');
+                    }}
+                    className="space-y-4"
                   >
-                    Send me the guide
-                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
-                    </svg>
-                  </button>
-                </form>
+                    <input
+                      type="email"
+                      required
+                      placeholder="Enter your email"
+                      className="w-full bg-[#36383E]/50 border border-white/20 rounded-[16px] px-4 py-3.5 text-[15px] font-desc-mona text-white placeholder-gray-400 focus:outline-none focus:border-[#5870F7] transition-colors"
+                    />
+
+                    <button
+                      type="submit"
+                      className="w-full py-3.5 px-4 rounded-full bg-[#5870F7] hover:bg-blue-600 text-white font-medium text-[15px] font-desc-mona transition-colors flex items-center justify-center gap-2"
+                    >
+                      Send me the guide
+                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                      </svg>
+                    </button>
+                  </form>
+                </div>
               </div>
             </aside>
 
