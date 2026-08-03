@@ -16,14 +16,14 @@ export default function AboutPage() {
       <Navbar onOpenValuationModal={() => setIsValuationOpen(true)} />
 
       {/* About Hero Area matching Figma mockup */}
-      <section className="relative w-full pt-24 sm:pt-32 lg:pt-36 pb-12 sm:pb-16 lg:pb-0 overflow-hidden bg-white border-b border-gray-200/60 block">
+      <section className="relative w-full pt-24 sm:pt-32 lg:pt-36 pb-12 sm:pb-16 overflow-hidden bg-white border-b border-gray-200/60 block">
         {/* Geometric grid background pattern */}
         <div className="absolute inset-0 pointer-events-none hero-grid-overlay" />
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left Content Area */}
-            <div className="lg:col-span-7 space-y-6 lg:pb-36">
+            <div className="lg:col-span-7 space-y-6">
               {/* About Amir Pill Badge */}
               <div className="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-white border border-[#E5E7EB] text-[14px] font-medium text-[#5870F7] shadow-xs">
                 About Amir
