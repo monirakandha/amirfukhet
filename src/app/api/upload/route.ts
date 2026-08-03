@@ -81,22 +81,32 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const originalBuffer = Buffer.from(await file.arrayBuffer());
+    const buffer = Buffer.from(await file.arrayBuffer());
     
-    // Process image with sharp: convert to WebP and compress
-    let processedBuffer = originalBuffer;
-    let finalFileName = file.name;
+    // Process image with sharp
+    let processedBuffer = buffer;
     let finalContentType = file.type;
+    let finalFileName = file.name;
+
+    const useImgurFallback = !process.env.BLOB_READ_WRITE_TOKEN;
 
     try {
       if (sharp) {
-        processedBuffer = await sharp(originalBuffer)
-          .webp({ quality: 80 })
-          .toBuffer();
-          
-        const nameWithoutExt = file.name.substring(0, file.name.lastIndexOf('.')) || file.name;
-        finalFileName = `${nameWithoutExt}.webp`;
-        finalContentType = 'image/webp';
+        if (useImgurFallback) {
+          // Imgur API strictly rejects WebP uploads, so we must compress as highly-optimized JPEG instead
+          processedBuffer = await sharp(buffer)
+            .jpeg({ quality: 80, mozjpeg: true })
+            .toBuffer();
+          finalContentType = 'image/jpeg';
+          finalFileName = file.name.replace(/\.[^/.]+$/, "") + '.jpg';
+        } else {
+          // Vercel Blob fully supports WebP, so we compress as WebP as requested
+          processedBuffer = await sharp(buffer)
+            .webp({ quality: 80 })
+            .toBuffer();
+          finalContentType = 'image/webp';
+          finalFileName = file.name.replace(/\.[^/.]+$/, "") + '.webp';
+        }
       }
     } catch (sharpError) {
       console.warn('Sharp compression failed, falling back to original file:', sharpError);
