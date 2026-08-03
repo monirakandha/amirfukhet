@@ -140,7 +140,7 @@ export default function SuccessStoriesPageClient({ initialStories }: SuccessStor
             {visibleCount < initialStories.length ? (
               <button
                 onClick={() => setVisibleCount((prev) => prev + 3)}
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white hover:bg-[#5870F7] hover:text-white hover:border-[#5870F7] font-desc-mona text-[16px] font-medium text-[#020202] border border-gray-200 transition-colors shadow-2xs leading-none group"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-[#5870F7] hover:bg-blue-600 font-desc-mona text-[16px] font-medium text-white transition-colors shadow-2xs leading-none group"
               >
                 <span>Load more stories</span>
                 <svg className="w-4 h-4 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
