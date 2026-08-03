@@ -539,11 +539,11 @@ export const BlogManager: React.FC = () => {
                           alt={b.title}
                           className="w-16 h-12 rounded-xl object-cover border border-slate-200 shrink-0"
                         />
-                        <div className="min-w-0">
-                          <div className="font-bold text-gray-900 truncate max-w-xs flex items-center gap-1.5">
-                            <span>{b.title}</span>
+                        <div className="min-w-0 max-w-xs sm:max-w-sm md:max-w-md">
+                          <div className="font-bold text-gray-900 truncate flex items-center gap-1.5">
+                            <span className="truncate">{b.title}</span>
                             {b.featured && (
-                              <span title="Featured Article" className="text-amber-500">
+                              <span title="Featured Article" className="text-amber-500 shrink-0">
                                 <Star className="w-3.5 h-3.5 fill-amber-500 inline" />
                               </span>
                             )}
@@ -555,24 +555,24 @@ export const BlogManager: React.FC = () => {
                         </div>
                       </div>
                     </td>
-                    <td className="py-4 px-6">
+                    <td className="py-4 px-6 whitespace-nowrap">
                       <span className="px-3 py-1 rounded-full bg-purple-50 text-purple-700 border border-purple-200 text-xs font-bold whitespace-nowrap inline-block">
                         {b.category}
                       </span>
                     </td>
-                    <td className="py-4 px-6 text-slate-600 text-xs font-medium">
+                    <td className="py-4 px-6 text-slate-600 text-xs font-medium whitespace-nowrap">
                       <div className="flex items-center gap-1.5">
                         <Calendar className="w-3.5 h-3.5 text-slate-400" />
                         <span>{b.publishedAt}</span>
                       </div>
                     </td>
-                    <td className="py-4 px-6 text-slate-600 text-xs font-medium">
+                    <td className="py-4 px-6 text-slate-600 text-xs font-medium whitespace-nowrap">
                       <div className="flex items-center gap-1.5">
                         <Clock className="w-3.5 h-3.5 text-slate-400" />
                         <span>{b.readTimeMinutes} min read</span>
                       </div>
                     </td>
-                    <td className="py-4 px-6 text-right">
+                    <td className="py-4 px-6 text-right whitespace-nowrap">
                       <div className="flex items-center justify-end gap-2">
                         <button
                           onClick={() => openEditModal(b)}
