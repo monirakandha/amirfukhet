@@ -381,7 +381,7 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
                         className="w-full h-full object-cover"
                       />
                       {/* Fade to white at the bottom of the image */}
-                      <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-white via-white/80 to-transparent pointer-events-none" />
+                      <div className="absolute inset-x-0 bottom-0 h-[80%] bg-gradient-to-t from-white via-white/90 to-transparent pointer-events-none" />
                       
                       {/* Category Badge */}
                       <div className="absolute top-4 left-4 px-3.5 py-1.5 rounded-xl bg-white/95 backdrop-blur-sm border border-white/50 font-desc-mona text-[14px] font-medium text-[#E05A4E] leading-none shadow-sm z-20">
@@ -389,7 +389,7 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
                       </div>
                     </div>
 
-                    <div className="px-5 pt-0 -mt-32 relative z-10 flex flex-col flex-grow justify-between">
+                    <div className="px-5 pt-0 -mt-48 relative z-10 flex flex-col flex-grow justify-between">
                       <div>
                         {/* Title */}
                         <h3
