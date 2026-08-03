@@ -46,7 +46,7 @@ export default function PropertiesPage() {
       {/* Interactive property grid with filters */}
       <PropertiesClient />
 
-      <Footer />
+      <Footer hideCTA />
     </div>
   );
 }

@@ -81,7 +81,7 @@ export default function PropertiesClient() {
   }
 
   return (
-    <section className="py-16 flex-grow bg-white">
+    <section className="pt-16 pb-8 flex-grow bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Filter Bar */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-gray-100">
