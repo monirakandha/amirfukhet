@@ -558,22 +558,22 @@ export const PropertiesManager: React.FC = () => {
                         </div>
                       </div>
                     </td>
-                    <td className="py-4 px-6">
+                    <td className="py-4 px-6 whitespace-nowrap">
                       <div className="font-bold text-gray-900">{prop.propertyType}</div>
                       <div className="text-xs text-slate-500 font-medium">{prop.ownershipType || 'Freehold'}</div>
                     </td>
-                    <td className="py-4 px-6">
+                    <td className="py-4 px-6 whitespace-nowrap">
                       <div className="font-bold text-emerald-600 font-mono text-base">{prop.formattedPrice}</div>
                     </td>
-                    <td className="py-4 px-6">
+                    <td className="py-4 px-6 whitespace-nowrap">
                       <div className="text-xs text-slate-700 flex items-center gap-3 font-medium">
-                        <span>🛏️ {prop.features.beds}</span>
-                        <span>🚿 {prop.features.baths}</span>
-                        <span>📐 {prop.areaSqM || 450}m²</span>
+                        <span className="whitespace-nowrap">🛏️ {prop.features.beds}</span>
+                        <span className="whitespace-nowrap">🚿 {prop.features.baths}</span>
+                        <span className="whitespace-nowrap">📐 {prop.areaSqM || 450}m²</span>
                       </div>
                     </td>
-                    <td className="py-4 px-6">
-                      <span className={`px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider inline-block ${
+                    <td className="py-4 px-6 whitespace-nowrap">
+                      <span className={`px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider inline-block whitespace-nowrap ${
                         prop.status === 'for-sale' ? 'bg-emerald-100 text-emerald-800 border border-emerald-200' :
                         prop.status === 'sold' ? 'bg-slate-200 text-slate-700' :
                         'bg-blue-100 text-blue-800 border border-blue-200'
@@ -581,7 +581,7 @@ export const PropertiesManager: React.FC = () => {
                         {prop.status.replace('-', ' ')}
                       </span>
                     </td>
-                    <td className="py-4 px-6 text-right">
+                    <td className="py-4 px-6 text-right whitespace-nowrap">
                       <div className="flex items-center justify-end gap-2">
                         <button
                           onClick={() => openEditModal(prop)}
