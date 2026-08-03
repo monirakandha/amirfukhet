@@ -48,34 +48,20 @@ export default function ContactPage() {
         <div className="absolute inset-0 pointer-events-none hero-grid-overlay" />
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          {/* Work with Amir Pill Badge */}
-          <div className="section-pill shadow-2xs mx-auto">
-            <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
-            Work with Amir
+          {/* Contact Pill Badge */}
+          <div className="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-white border border-blue-100 text-[14px] font-medium text-[#5870F7] shadow-xs mx-auto">
+            Contact Us
           </div>
 
           {/* Main Headline */}
           <h1 className="hero-heading max-w-4xl mx-auto">
-            An advisor in your corner — from first question to keys in hand
+            Get in touch with Amir
           </h1>
 
           {/* Subtitle / Paragraph */}
           <p className="hero-description max-w-2xl mx-auto pt-1">
-            No commission-chasing. No pressure. Just clear, independent guidance so you buy the right property under the right structure.
+            A straight, honest reply &ndash; usually within 24 hours. No sales pitch.
           </p>
-
-          {/* Primary Action CTA Button */}
-          <div className="pt-2">
-            <a
-              href="#contact-form"
-              className="hero-button inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full transition-all shadow-lg shadow-blue-600/25"
-            >
-              Book a free consultation
-              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
-              </svg>
-            </a>
-          </div>
         </div>
       </section>
 
