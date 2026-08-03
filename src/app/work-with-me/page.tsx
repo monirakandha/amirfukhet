@@ -4,39 +4,10 @@ import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import HomeValuationModal from '@/components/HomeValuationModal';
-import { submitInquiry } from '@/services/api';
-import { Phone, Mail, MapPin, Send, CheckCircle2 } from 'lucide-react';
+import { Phone, Mail, MapPin } from 'lucide-react';
 
 export default function ContactPage() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [inquiryType, setInquiryType] = useState<'schedule-tour' | 'ask-question' | 'home-valuation' | 'general'>('general');
-  const [message, setMessage] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-
   const [isValuationOpen, setIsValuationOpen] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      await submitInquiry({
-        name,
-        email,
-        phone,
-        type: inquiryType,
-        message,
-      });
-      setSubmitted(true);
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   return (
     <div className="min-h-screen bg-white text-gray-900 flex flex-col font-sans">
@@ -358,9 +329,9 @@ export default function ContactPage() {
       {/* Content Form Section */}
       <section id="contact-form" className="py-16 flex-grow bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            {/* Left Advisor Card */}
-            <div className="lg:col-span-5 space-y-8">
+          <div className="max-w-xl mx-auto">
+            {/* Advisor Card */}
+            <div className="space-y-8">
               <div className="bg-[#f8fafc] border border-gray-200 rounded-3xl p-6 sm:p-8 space-y-6">
                 <div className="flex items-center gap-4">
                   <img
@@ -394,104 +365,6 @@ export default function ContactPage() {
                     <span>Bang Tao Beach, Cherngtalay, Phuket, Thailand</span>
                   </div>
                 </div>
-              </div>
-            </div>
-
-            {/* Right Consultation Form */}
-            <div className="lg:col-span-7">
-              <div className="bg-[#f8fafc] border border-gray-200 rounded-3xl p-6 sm:p-10">
-                {submitted ? (
-                  <div className="text-center py-12 space-y-4">
-                    <CheckCircle2 className="w-16 h-16 text-emerald-500 mx-auto" />
-                    <h3 className="text-2xl font-bold text-gray-900">Consultation Requested!</h3>
-                    <p className="text-sm text-gray-500 max-w-md mx-auto">
-                      Thank you for reaching out. Amir will review your request and get back to you directly within 24 hours.
-                    </p>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div>
-                      <h3 className="text-xl font-bold text-gray-900">Schedule a Free Consultation</h3>
-                      <p className="text-xs text-gray-500 mt-1">
-                        Tell Amir about your target area, budget, or timeline.
-                      </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-xs font-semibold text-gray-700 mb-1.5">Full Name</label>
-                        <input
-                          type="text"
-                          required
-                          value={name}
-                          onChange={(e) => setName(e.target.value)}
-                          placeholder="Your name"
-                          className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-gray-900 focus:border-[#4c70ff] focus:outline-none"
-                        />
-                      </div>
-
-                      <div>
-                        <label className="block text-xs font-semibold text-gray-700 mb-1.5">Email Address</label>
-                        <input
-                          type="email"
-                          required
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          placeholder="Your email"
-                          className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-gray-900 focus:border-[#4c70ff] focus:outline-none"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-xs font-semibold text-gray-700 mb-1.5">Phone / WhatsApp</label>
-                        <input
-                          type="tel"
-                          value={phone}
-                          onChange={(e) => setPhone(e.target.value)}
-                          placeholder="+880 1875-189361"
-                          className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-gray-900 focus:border-[#4c70ff] focus:outline-none"
-                        />
-                      </div>
-
-                      <div>
-                        <label className="block text-xs font-semibold text-gray-700 mb-1.5">Topic</label>
-                        <select
-                          value={inquiryType}
-                          onChange={(e) => setInquiryType(e.target.value as any)}
-                          className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-gray-900 focus:border-[#4c70ff] focus:outline-none"
-                        >
-                          <option value="general">Buying Advice / General</option>
-                          <option value="schedule-tour">Schedule Property Viewing</option>
-                          <option value="ask-question">Legal & Tax Structure</option>
-                          <option value="home-valuation">Property Valuation</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-semibold text-gray-700 mb-1.5">Message / Details</label>
-                      <textarea
-                        rows={4}
-                        required
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
-                        placeholder="Tell Amir what type of property, budget range, or questions you have..."
-                        className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-gray-900 focus:border-[#4c70ff] focus:outline-none"
-                      />
-                    </div>
-
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full py-3.5 px-6 rounded-full bg-[#4c70ff] hover:bg-blue-600 text-white font-semibold text-sm transition-all shadow-md shadow-blue-600/30 flex items-center justify-center gap-2"
-                    >
-                      {isSubmitting ? 'Sending Request...' : 'Send Message to Amir'}
-                      <Send className="w-4 h-4" />
-                    </button>
-                  </form>
-                )}
               </div>
             </div>
           </div>
