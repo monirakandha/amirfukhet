@@ -162,18 +162,20 @@ export default function AboutPage() {
           </div>
 
           {/* Callout Box: Want to work together? */}
-          <div className="bg-[#F8FAFC] border border-gray-100 rounded-[28px] p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-sm">
-            <div className="flex items-center gap-5">
-              <img
-                src="/images/amir.png"
-                alt="Amir Ahmed Faisal"
-                className="w-16 h-16 rounded-full object-cover shrink-0"
-              />
+          <div className="bg-[#F8FAFC] border border-gray-100 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm">
+            <div className="flex items-center gap-4">
+              <div className="bg-[#d5cdc4] rounded-full shrink-0 overflow-hidden w-12 h-12 sm:w-14 sm:h-14">
+                <img
+                  src="/images/amir.png"
+                  alt="Amir Ahmed Faisal"
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
               <div>
-                <h4 className="font-semibold text-gray-900 text-xl sm:text-2xl leading-snug tracking-tight">
+                <h4 className="font-semibold text-gray-900 text-base sm:text-[17px] leading-snug tracking-tight">
                   Want to work together?
                 </h4>
-                <p className="text-[15px] text-gray-500 mt-1 font-medium">
+                <p className="text-[13px] sm:text-[14px] text-gray-500 mt-0.5 font-medium">
                   Start with a free, no-pressure conversation.
                 </p>
               </div>
@@ -183,10 +185,10 @@ export default function AboutPage() {
               href="https://wa.me/8801875189361"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#5870F7] hover:bg-blue-600 text-white font-medium text-[15px] px-7 py-3 rounded-full transition-colors shadow-sm shrink-0"
+              className="inline-flex items-center gap-1.5 bg-[#5870F7] hover:bg-blue-600 text-white font-medium text-[13.5px] sm:text-[14px] px-6 py-2.5 rounded-full transition-colors shadow-sm shrink-0"
             >
               Ask Amir
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M7 17L17 7M17 7H7M17 7V17" />
               </svg>
             </a>
