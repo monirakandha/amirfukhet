@@ -25,7 +25,7 @@ export default function AboutPage() {
             {/* Left Content Area */}
             <div className="lg:col-span-7 space-y-6">
               {/* About Amir Pill Badge */}
-              <div className="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-white border border-[#E5E7EB] text-[14px] font-medium text-[#5870F7] shadow-xs">
+              <div className="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-white border border-blue-100 text-xs font-semibold text-[#4c70ff] shadow-2xs">
                 About Amir
               </div>
 
