@@ -3,6 +3,7 @@ import { put, del, list } from '@vercel/blob';
 import fs from 'fs';
 import path from 'path';
 import { promisify } from 'util';
+import sharp from 'sharp';
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
 const ALLOWED_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/gif'];
@@ -75,34 +76,53 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    const originalBuffer = Buffer.from(await file.arrayBuffer());
+    
+    // Process image with sharp: convert to WebP and compress
+    let processedBuffer = originalBuffer;
+    let finalFileName = file.name;
+    let finalContentType = file.type;
+
+    try {
+      processedBuffer = await sharp(originalBuffer)
+        .webp({ quality: 80 })
+        .toBuffer();
+        
+      const nameWithoutExt = file.name.substring(0, file.name.lastIndexOf('.')) || file.name;
+      finalFileName = `${nameWithoutExt}.webp`;
+      finalContentType = 'image/webp';
+    } catch (sharpError) {
+      console.warn('Sharp compression failed, falling back to original file:', sharpError);
+    }
+
     if (process.env.BLOB_READ_WRITE_TOKEN) {
       // Upload to Vercel Blob
-      const blob = await put(file.name, file, {
+      const blob = await put(finalFileName, processedBuffer, {
         access: 'public',
         addRandomSuffix: true,
+        contentType: finalContentType,
       });
 
       return NextResponse.json({
         success: true,
         filename: blob.pathname,
         url: blob.url,
-        size: file.size,
+        size: processedBuffer.length,
       });
     } else {
       // Upload locally
       await ensureUploadDir();
-      const buffer = Buffer.from(await file.arrayBuffer());
       const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-      const filename = `${uniqueSuffix}-${file.name}`;
+      const filename = `${uniqueSuffix}-${finalFileName}`;
       const filePath = path.join(UPLOAD_DIR, filename);
       
-      fs.writeFileSync(filePath, buffer);
+      fs.writeFileSync(filePath, processedBuffer);
 
       return NextResponse.json({
         success: true,
         filename,
         url: `/uploads/${filename}`,
-        size: file.size,
+        size: processedBuffer.length,
       });
     }
   } catch (error) {
