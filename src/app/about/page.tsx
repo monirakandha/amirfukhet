@@ -80,10 +80,15 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Right Content Area (Image) */}
-            <div className="hidden lg:block lg:col-span-5 relative h-full">
-               <img src="/images/amir-hero.png" alt="Amir Ahmed Faisal" className="absolute bottom-[-16px] right-4 xl:right-12 w-full h-auto max-w-[480px] xl:max-w-[540px] object-contain pointer-events-none drop-shadow-2xl" />
-            </div>
+            {/* Right Column Spacer for Desktop */}
+            <div className="hidden lg:block lg:col-span-5" />
+          </div>
+        </div>
+
+        {/* Right Content Area (Image) absolutely positioned to the bottom of the section */}
+        <div className="hidden lg:block absolute bottom-0 right-0 w-full max-w-7xl mx-auto left-0 pointer-events-none z-10">
+          <div className="relative w-full h-full">
+            <img src="/images/amir-hero.png" alt="Amir Ahmed Faisal" className="absolute bottom-0 right-4 lg:right-12 xl:right-20 w-full h-auto max-w-[420px] xl:max-w-[480px] object-contain object-bottom drop-shadow-2xl" />
           </div>
         </div>
 
