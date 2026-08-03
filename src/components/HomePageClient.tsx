@@ -389,10 +389,10 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
                   <TrendingUp className="w-7 h-7 text-[#5870F7] transition-colors" />
                 </div>
                 <div className="flex flex-col">
-                  <h3 className="box-heading font-heading-bricolage text-[22px] sm:text-[24px] font-medium text-[#020202] leading-tight tracking-[-0.01em] group-hover:text-white transition-colors" style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}>
+                  <h3 className="box-heading font-heading-bricolage text-[22px] sm:text-[24px] font-medium text-[#020202] leading-tight tracking-[-0.01em] group-hover:!text-white transition-colors" style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}>
                     Market Insights
                   </h3>
-                  <p className="box-description font-desc-mona text-[15px] sm:text-[16px] font-normal text-[#6B7280] leading-[1.4] mt-1.5 group-hover:text-white/90 transition-colors">
+                  <p className="box-description font-desc-mona text-[15px] sm:text-[16px] font-normal text-[#6B7280] leading-[1.4] mt-1.5 group-hover:!text-white/90 transition-colors">
                     Prices, trends, area analysis, demand
                   </p>
                 </div>
@@ -403,10 +403,10 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
                   <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-white flex items-center justify-center transition-colors mb-6 shrink-0 shadow-2xs">
                     <Scale className="w-7 h-7 text-[#5870F7] transition-colors" />
                   </div>
-                  <h3 className="box-heading font-heading-bricolage text-[22px] sm:text-[24px] font-medium text-[#020202] leading-tight tracking-[-0.01em] group-hover:text-white transition-colors" style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}>
+                  <h3 className="box-heading font-heading-bricolage text-[22px] sm:text-[24px] font-medium text-[#020202] leading-tight tracking-[-0.01em] group-hover:!text-white transition-colors" style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}>
                     Ownership &amp; Legal
                   </h3>
-                  <p className="box-description font-desc-mona text-[15px] sm:text-[16px] font-normal text-[#6B7280] leading-[1.4] mt-2 group-hover:text-white/90 transition-colors">
+                  <p className="box-description font-desc-mona text-[15px] sm:text-[16px] font-normal text-[#6B7280] leading-[1.4] mt-2 group-hover:!text-white/90 transition-colors">
                     Freehold, leasehold, company structures
                   </p>
                 </div>
@@ -420,10 +420,10 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
                   <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-white flex items-center justify-center transition-colors mb-6 shrink-0 shadow-2xs">
                     <Timer className="w-7 h-7 text-[#5870F7] transition-colors" />
                   </div>
-                  <h3 className="box-heading font-heading-bricolage text-[22px] sm:text-[24px] font-medium text-[#020202] leading-tight tracking-[-0.01em] group-hover:text-white transition-colors" style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}>
+                  <h3 className="box-heading font-heading-bricolage text-[22px] sm:text-[24px] font-medium text-[#020202] leading-tight tracking-[-0.01em] group-hover:!text-white transition-colors" style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}>
                     Buyer Guides
                   </h3>
-                  <p className="box-description font-desc-mona text-[15px] sm:text-[16px] font-normal text-[#6B7280] leading-[1.4] mt-2 group-hover:text-white/90 transition-colors">
+                  <p className="box-description font-desc-mona text-[15px] sm:text-[16px] font-normal text-[#6B7280] leading-[1.4] mt-2 group-hover:!text-white/90 transition-colors">
                     Process, taxes, financing, bank accounts
                   </p>
                 </div>
@@ -434,10 +434,10 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
                   <Building2 className="w-7 h-7 text-[#5870F7] transition-colors" />
                 </div>
                 <div className="flex flex-col">
-                  <h3 className="box-heading font-heading-bricolage text-[22px] sm:text-[24px] font-medium text-[#020202] leading-tight tracking-[-0.01em] group-hover:text-white transition-colors" style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}>
+                  <h3 className="box-heading font-heading-bricolage text-[22px] sm:text-[24px] font-medium text-[#020202] leading-tight tracking-[-0.01em] group-hover:!text-white transition-colors" style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}>
                     Rental &amp; ROI
                   </h3>
-                  <p className="box-description font-desc-mona text-[15px] sm:text-[16px] font-normal text-[#6B7280] leading-[1.4] mt-1.5 group-hover:text-white/90 transition-colors">
+                  <p className="box-description font-desc-mona text-[15px] sm:text-[16px] font-normal text-[#6B7280] leading-[1.4] mt-1.5 group-hover:!text-white/90 transition-colors">
                     Yields, seasonality, rental strategy
                   </p>
                 </div>
@@ -451,10 +451,10 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
                   <MapPin className="w-7 h-7 text-[#5870F7] transition-colors" />
                 </div>
                 <div className="flex flex-col">
-                  <h3 className="box-heading font-heading-bricolage text-[22px] sm:text-[24px] font-medium text-[#020202] leading-tight tracking-[-0.01em] group-hover:text-white transition-colors" style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}>
+                  <h3 className="box-heading font-heading-bricolage text-[22px] sm:text-[24px] font-medium text-[#020202] leading-tight tracking-[-0.01em] group-hover:!text-white transition-colors" style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}>
                     Area Guides
                   </h3>
-                  <p className="box-description font-desc-mona text-[15px] sm:text-[16px] font-normal text-[#6B7280] leading-[1.4] mt-1.5 group-hover:text-white/90 transition-colors">
+                  <p className="box-description font-desc-mona text-[15px] sm:text-[16px] font-normal text-[#6B7280] leading-[1.4] mt-1.5 group-hover:!text-white/90 transition-colors">
                     Bang Tao, Kamala, Surin, Layan, Rawai
                   </p>
                 </div>
@@ -465,10 +465,10 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
                   <div className="w-14 h-14 rounded-2xl bg-[#F0F4FF] group-hover:bg-white flex items-center justify-center transition-colors mb-6 shrink-0 shadow-2xs">
                     <Newspaper className="w-7 h-7 text-[#5870F7] transition-colors" />
                   </div>
-                  <h3 className="box-heading font-heading-bricolage text-[22px] sm:text-[24px] font-medium text-[#020202] leading-tight tracking-[-0.01em] group-hover:text-white transition-colors" style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}>
+                  <h3 className="box-heading font-heading-bricolage text-[22px] sm:text-[24px] font-medium text-[#020202] leading-tight tracking-[-0.01em] group-hover:!text-white transition-colors" style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}>
                     News &amp; Updates
                   </h3>
-                  <p className="box-description font-desc-mona text-[15px] sm:text-[16px] font-normal text-[#6B7280] leading-[1.4] mt-2 group-hover:text-white/90 transition-colors">
+                  <p className="box-description font-desc-mona text-[15px] sm:text-[16px] font-normal text-[#6B7280] leading-[1.4] mt-2 group-hover:!text-white/90 transition-colors">
                     Launches, infrastructure, policy
                   </p>
                 </div>
