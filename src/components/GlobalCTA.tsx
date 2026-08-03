@@ -8,30 +8,33 @@ export default function GlobalCTA() {
     <section className="w-full bg-white px-4 sm:px-6 lg:px-8 pb-16 pt-8 font-sans">
       <div className="max-w-7xl mx-auto">
         {/* Bottom Dark CTA Card matching Figma mockup */}
-        <div className="bg-[#1c2024] rounded-[28px] sm:rounded-[32px] p-3 sm:p-4 shadow-2xl w-full">
-          <div className="bg-[#FFFFFF0D] border border-[#FFFFFF33] rounded-[20px] py-12 sm:py-16 px-6 sm:px-12 text-center text-white space-y-6 sm:space-y-8 w-full">
-            <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+        <div className="w-full lg:w-[60%] ml-auto bg-[#1C2026] rounded-[28px] sm:rounded-[32px] p-2.5 sm:p-3 shadow-2xl">
+          <div className="bg-[#2B2D33]/60 border border-white/10 rounded-[20px] py-12 sm:py-16 px-6 sm:px-12 text-center text-white space-y-6 sm:space-y-7 w-full">
+            <h3
+              className="text-[28px] sm:text-[32px] font-semibold text-white tracking-[-0.02em] leading-tight font-heading-bricolage"
+              style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+            >
               Ready to talk through your purchase?
             </h3>
-            <p className="text-sm text-gray-400 max-w-md mx-auto leading-relaxed">
+            <p className="text-[15px] text-gray-300 max-w-md mx-auto leading-relaxed font-desc-mona">
               Message Amir directly. Honest, advisory, no pressure.
             </p>
 
-            <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
               <a
                 href="https://wa.me/8801875189361"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 bg-[#4c70ff] hover:bg-blue-600 text-white font-semibold text-sm rounded-full transition-all shadow-md shadow-blue-500/20"
+                className="w-full sm:w-auto px-6 py-3.5 bg-[#5870F7] hover:bg-blue-600 text-white font-medium text-[15px] rounded-full transition-all font-desc-mona"
               >
                 Contact Amir on WhatsApp
               </a>
 
               <Link
                 href="/guide"
-                className="group px-6 py-3 bg-white hover:bg-[#5870F7] text-[#020202] hover:text-white font-semibold text-sm rounded-full transition-all shadow-md"
+                className="w-full sm:w-auto px-6 py-3.5 bg-white hover:bg-gray-50 text-[#1C2026] font-medium text-[15px] rounded-full transition-all font-desc-mona"
               >
-                See how I work
+                Read the free guide
               </Link>
             </div>
           </div>
