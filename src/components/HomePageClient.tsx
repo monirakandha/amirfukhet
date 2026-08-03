@@ -282,7 +282,7 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
                   </div>
 
                   {/* HOVER OVERLAY CARD (Revealed on hover, matching Figma) */}
-                  <div className="absolute -top-2 -left-2 -right-2 bottom-auto min-h-[calc(100%+16px)] bg-white rounded-[24px] border border-gray-200/80 shadow-2xl opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300 ease-out z-30 flex flex-col overflow-hidden pb-5">
+                  <div className="absolute -inset-2 bg-white rounded-[24px] border border-gray-200/80 shadow-2xl opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300 ease-out z-30 flex flex-col overflow-hidden pb-5">
                     <div className="relative w-full aspect-[4/5] bg-gray-100 shrink-0">
                       <img
                         src={blog.coverImage}
@@ -290,15 +290,15 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
                         className="w-full h-full object-cover"
                       />
                       {/* Fade to white at the bottom of the image */}
-                      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+                      <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-white via-white/80 to-transparent pointer-events-none" />
                       
                       {/* Category Badge */}
-                      <div className="absolute top-4 left-4 px-3.5 py-1.5 rounded-xl bg-white/95 backdrop-blur-sm border border-white/50 font-desc-mona text-[14px] font-medium text-[#E05A4E] leading-none shadow-sm">
+                      <div className="absolute top-4 left-4 px-3.5 py-1.5 rounded-xl bg-white/95 backdrop-blur-sm border border-white/50 font-desc-mona text-[14px] font-medium text-[#E05A4E] leading-none shadow-sm z-20">
                         {blog.category}
                       </div>
                     </div>
 
-                    <div className="px-5 pt-0 flex flex-col flex-grow justify-between">
+                    <div className="px-5 pt-0 -mt-32 relative z-10 flex flex-col flex-grow justify-between">
                       <div>
                         {/* Title */}
                         <h3
