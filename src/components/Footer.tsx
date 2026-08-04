@@ -110,7 +110,16 @@ export default function Footer({ hideCTA = false }: { hideCTA?: boolean }) {
               <li><a href={`tel:${settings?.contactPhone || '+8801875189361'}`} className="hover:text-white transition-colors">{settings?.contactPhone || '+880 1875 189 361'}</a></li>
               <li><a href={settings?.buttonLinks?.whatsappUrl || 'https://wa.me/8801875189361'} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">WhatsApp</a></li>
               <li><a href={`mailto:${settings?.contactEmail || 'amir@amirknowsphuket.com'}`} className="hover:text-white transition-colors">{settings?.contactEmail || 'amir@amirknowsphuket.com'}</a></li>
-              <li className="pt-1"><span>Address: {settings?.officeAddress || 'Laguna Phuket, Cherngtalay, Thailand'}</span></li>
+              <li className="pt-1">
+                <a 
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(settings?.officeAddress || 'Laguna Phuket, Cherngtalay, Thailand')}`} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="hover:text-white transition-colors"
+                >
+                  Address: {settings?.officeAddress || 'Laguna Phuket, Cherngtalay, Thailand'}
+                </a>
+              </li>
             </ul>
           </div>
         </div>
