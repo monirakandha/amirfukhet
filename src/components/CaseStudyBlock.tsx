@@ -17,7 +17,7 @@ export default function CaseStudyBlock({ story, isFeaturedLabel = false }: CaseS
 
   return (
     <section className="w-full bg-[#fcfcfd] py-16 sm:py-24 border-b border-gray-200/50">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Pill badge */}
         <div className="mb-5 flex">
