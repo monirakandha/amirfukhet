@@ -158,7 +158,7 @@ export default function SuccessStoriesPageClient({ initialStories }: SuccessStor
       {/* Case Study Detail */}
       {selectedStory && (
         <div ref={detailsRef} id="details-section" className="bg-white pt-12 sm:pt-16 pb-2 sm:pb-4 border-t border-gray-200/60 scroll-mt-20">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mb-6 flex">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#DFE3EB] font-desc-mona text-[13px] font-medium text-[#5870F7] leading-none shadow-xs">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#5870F7]" />
@@ -186,7 +186,7 @@ export default function SuccessStoriesPageClient({ initialStories }: SuccessStor
                     <div className="shrink-0 w-8 h-8 rounded-full border border-[#D6E0FF] bg-[#EEF1FF] flex items-center justify-center font-desc-mona text-[13px] font-bold text-[#5870F7] leading-none mt-1">
                       {step.stepNumber || (idx + 1).toString().padStart(2, '0')}
                     </div>
-                    <div className="space-y-2 flex-1">
+                    <div className="space-y-2 flex-1 min-w-0">
                       <h3
                         className="font-heading-bricolage text-[18px] sm:text-[20px] font-semibold text-[#111827] leading-tight tracking-[-0.01em]"
                         style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
