@@ -6,8 +6,8 @@ import { Lock, Mail, ArrowRight, ShieldCheck, AlertCircle } from 'lucide-react';
 
 export const AdminLogin: React.FC = () => {
   const { login } = useAdmin();
-  const [email, setEmail] = useState('admin@amirphuket.com');
-  const [password, setPassword] = useState('admin123');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -19,7 +19,7 @@ export const AdminLogin: React.FC = () => {
     setTimeout(() => {
       const success = login(email, password);
       if (!success) {
-        setError('Invalid credentials. Please use the demo credentials below.');
+        setError('Invalid credentials.');
       }
       setLoading(false);
     }, 400);
@@ -45,15 +45,6 @@ export const AdminLogin: React.FC = () => {
           </p>
         </div>
 
-        {/* Demo Badge Helper */}
-        <div className="mb-6 p-4 rounded-2xl bg-blue-50 border border-blue-200 text-blue-900 text-xs space-y-1">
-          <div className="font-semibold flex items-center gap-1.5 text-blue-700">
-            <span className="w-2 h-2 rounded-full bg-[#5870F7] animate-pulse" />
-            Demo Admin Credentials Enabled:
-          </div>
-          <div className="font-mono text-slate-700">Email: <span className="font-bold text-gray-900">admin@amirphuket.com</span></div>
-          <div className="font-mono text-slate-700">Password: <span className="font-bold text-gray-900">admin123</span></div>
-        </div>
 
         {/* Error Alert */}
         {error && (
