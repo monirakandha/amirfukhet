@@ -16,14 +16,14 @@ export default function Footer({ hideCTA = false }: { hideCTA?: boolean }) {
           {/* Top 4-Column Grid matching Figma pixel-for-pixel */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-14 pb-20">
           {/* Column 1: Brand Info & Socials (4 Cols) */}
-          <div className="md:col-span-4 lg:col-span-4 space-y-6">
+          <div className="md:col-span-4 lg:col-span-4 space-y-6 min-w-0">
             <h3 className="font-heading-bricolage text-white tracking-tight text-[24px] font-semibold leading-none">
               {settings?.siteTitle || 'Amir Knows Phuket'}
             </h3>
             {settings?.footerDescription ? (
               <div 
-                className="font-desc-mona text-[#B3B3B3] leading-[1.55] pr-4 text-[16px] font-normal prose prose-invert prose-p:my-1 prose-p:first:mt-0 prose-p:last:mb-0 max-w-none"
-                dangerouslySetInnerHTML={{ __html: settings.footerDescription }}
+                className="font-desc-mona text-[#B3B3B3] leading-[1.55] pr-4 text-[16px] font-normal prose prose-invert prose-p:my-1 prose-p:first:mt-0 prose-p:last:mb-0 max-w-none break-words"
+                dangerouslySetInnerHTML={{ __html: settings.footerDescription.replace(/&nbsp;/g, ' ') }}
               />
             ) : (
               <p className="font-desc-mona text-[#B3B3B3] leading-[1.55] pr-4 text-[16px] font-normal">
@@ -74,7 +74,7 @@ export default function Footer({ hideCTA = false }: { hideCTA?: boolean }) {
           </div>
 
           {/* Column 2: Insights (3 Cols) */}
-          <div className="md:col-span-3 lg:col-span-3 space-y-4">
+          <div className="md:col-span-3 lg:col-span-3 space-y-4 min-w-0">
             <h4 className="font-heading-bricolage text-white text-[24px] font-semibold leading-none mb-6">
               Insights
             </h4>
@@ -87,7 +87,7 @@ export default function Footer({ hideCTA = false }: { hideCTA?: boolean }) {
           </div>
 
           {/* Column 3: Site (2 Cols) */}
-          <div className="md:col-span-2 lg:col-span-2 space-y-4">
+          <div className="md:col-span-2 lg:col-span-2 space-y-4 min-w-0">
             <h4 className="font-heading-bricolage text-white text-[24px] font-semibold leading-none mb-6">
               Site
             </h4>
@@ -102,7 +102,7 @@ export default function Footer({ hideCTA = false }: { hideCTA?: boolean }) {
           </div>
 
           {/* Column 4: Contact (3 Cols) */}
-          <div className="md:col-span-3 lg:col-span-3 space-y-4">
+          <div className="md:col-span-3 lg:col-span-3 space-y-4 min-w-0">
             <h4 className="font-heading-bricolage text-white text-[24px] font-semibold leading-none mb-6">
               Work With Me
             </h4>
