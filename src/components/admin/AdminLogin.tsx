@@ -37,12 +37,9 @@ export const AdminLogin: React.FC = () => {
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#5870F7]/10 border border-[#5870F7]/30 text-[#5870F7] shadow-lg shadow-[#5870F7]/10 mb-2">
             <ShieldCheck className="w-8 h-8" />
           </div>
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-gray-900 font-heading-bricolage">
-            Amir Phuket OS
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 font-heading-bricolage tracking-tight mt-6 mb-2">
+            Amir Knows Phuket Admin Panel
           </h1>
-          <p className="text-sm text-slate-600">
-            Secure Backend Content & Investment Management Suite
-          </p>
         </div>
 
 

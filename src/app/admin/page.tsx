@@ -69,7 +69,7 @@ export default function AdminDashboardPage() {
           <div className="w-9 h-9 rounded-xl bg-[#5870F7] text-white flex items-center justify-center font-bold text-base font-heading-bricolage shadow-md shadow-[#5870F7]/20">
             AP
           </div>
-          <span className="font-bold text-gray-900 tracking-tight text-base font-heading-bricolage">Amir Phuket OS</span>
+          <span className="font-bold text-gray-900 tracking-tight text-base font-heading-bricolage">Amir Knows Phuket Admin Panel</span>
         </div>
         <div className="flex items-center gap-2">
           <a
