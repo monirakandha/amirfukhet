@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useAdmin } from '@/context/AdminContext';
 import { FAQItem } from '@/types/admin';
 import { Plus, Edit, Trash2, Check, X, HelpCircle } from 'lucide-react';
+import { RichTextEditor } from './RichTextEditor';
 
 export const FaqManager: React.FC = () => {
   const { faqs, addFaq, updateFaq, deleteFaq } = useAdmin();
@@ -203,13 +204,12 @@ export const FaqManager: React.FC = () => {
 
               <div className="space-y-1.5">
                 <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Answer</label>
-                <textarea
-                  rows={4}
-                  required
-                  value={answer}
-                  onChange={(e) => setAnswer(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-300 rounded-xl p-4 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7]"
-                />
+                <div className="border border-slate-300 rounded-xl overflow-hidden [&_.ql-container]:min-h-[120px] [&_.ql-editor]:min-h-[120px]">
+                  <RichTextEditor
+                    value={answer}
+                    onChange={(val) => setAnswer(val)}
+                  />
+                </div>
               </div>
 
               <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-200">

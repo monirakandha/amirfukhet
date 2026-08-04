@@ -103,9 +103,10 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
           </h1>
           
           {activeSlide.description && (
-            <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto mb-10 leading-relaxed font-desc-mona drop-shadow-md">
-              {activeSlide.description}
-            </p>
+            <div 
+              className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto mb-10 leading-relaxed font-desc-mona drop-shadow-md prose prose-invert prose-p:my-1 prose-p:first:mt-0 prose-p:last:mb-0 max-w-none text-center"
+              dangerouslySetInnerHTML={{ __html: activeSlide.description }}
+            />
           )}
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

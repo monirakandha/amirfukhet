@@ -193,7 +193,10 @@ export default function SuccessStoriesPageClient({ initialStories }: SuccessStor
                       >
                         {step.title}
                       </h3>
-                      <p className="font-desc-mona text-[15px] sm:text-[16px] font-normal text-[#4B5563] leading-[1.6]">{step.body}</p>
+                      <div 
+                        className="font-desc-mona text-[15px] sm:text-[16px] font-normal text-[#4B5563] leading-[1.6] prose prose-sm max-w-none prose-p:my-1 prose-p:first:mt-0 prose-p:last:mb-0"
+                        dangerouslySetInnerHTML={{ __html: step.body }}
+                      />
                     </div>
                   </div>
                 ))}

@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useAdmin } from '@/context/AdminContext';
 import { Save, Check, LayoutTemplate, ImageIcon, Type } from 'lucide-react';
 import { MediaPickerButton } from '@/components/admin/MediaManager';
+import { RichTextEditor } from './RichTextEditor';
 
 export const GuideManager: React.FC = () => {
   const { guideContent, updateGuideContent } = useAdmin();
@@ -33,6 +34,35 @@ export const GuideManager: React.FC = () => {
         [field]: value
       }
     }));
+  };
+
+  const updateStep = (index: number, value: string) => {
+    setFormData(prev => {
+      const newSteps = [...(prev.section3.steps || [])];
+      newSteps[index] = value;
+      return {
+        ...prev,
+        section3: { ...prev.section3, steps: newSteps }
+      };
+    });
+  };
+
+  const addStep = () => {
+    setFormData(prev => ({
+      ...prev,
+      section3: { ...prev.section3, steps: [...(prev.section3.steps || []), ''] }
+    }));
+  };
+
+  const removeStep = (index: number) => {
+    setFormData(prev => {
+      const newSteps = [...(prev.section3.steps || [])];
+      newSteps.splice(index, 1);
+      return {
+        ...prev,
+        section3: { ...prev.section3, steps: newSteps }
+      };
+    });
   };
 
   return (
@@ -72,15 +102,11 @@ export const GuideManager: React.FC = () => {
           <div className="p-6">
             <div className="space-y-2">
               <label className="text-sm font-semibold text-gray-700">Hero Image URL</label>
-              <div className="flex gap-2">
-                <input
-                  type="text"
-                  value={formData.heroImage}
-                  onChange={(e) => updateSection('heroImage', '', e.target.value)}
-                  className="flex-1 rounded-xl border border-slate-200 px-4 py-2 text-sm focus:border-[#5870F7] focus:ring-1 focus:ring-[#5870F7] outline-none"
+              <MediaPickerButton 
+                  value={formData.heroImage} 
+                  onChange={(url) => updateSection('heroImage', '', url)} 
+                  label="" 
                 />
-                <MediaPickerButton onSelect={(url) => updateSection('heroImage', '', url)} />
-              </div>
             </div>
           </div>
         </div>
@@ -103,21 +129,21 @@ export const GuideManager: React.FC = () => {
             </div>
             <div className="space-y-2">
               <label className="text-sm font-semibold text-gray-700">Paragraph 1</label>
-              <textarea
-                rows={3}
-                value={formData.section1.paragraph1}
-                onChange={(e) => updateSection('section1', 'paragraph1', e.target.value)}
-                className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm focus:border-[#5870F7] focus:ring-1 focus:ring-[#5870F7] outline-none"
-              />
+              <div className="border border-slate-300 rounded-xl overflow-hidden [&_.ql-container]:min-h-[120px] [&_.ql-editor]:min-h-[120px]">
+                <RichTextEditor
+                  value={formData.section1.paragraph1}
+                  onChange={(val) => updateSection('section1', 'paragraph1', val)}
+                />
+              </div>
             </div>
             <div className="space-y-2">
               <label className="text-sm font-semibold text-gray-700">Paragraph 2</label>
-              <textarea
-                rows={3}
-                value={formData.section1.paragraph2}
-                onChange={(e) => updateSection('section1', 'paragraph2', e.target.value)}
-                className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm focus:border-[#5870F7] focus:ring-1 focus:ring-[#5870F7] outline-none"
-              />
+              <div className="border border-slate-300 rounded-xl overflow-hidden [&_.ql-container]:min-h-[120px] [&_.ql-editor]:min-h-[120px]">
+                <RichTextEditor
+                  value={formData.section1.paragraph2}
+                  onChange={(val) => updateSection('section1', 'paragraph2', val)}
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -140,12 +166,12 @@ export const GuideManager: React.FC = () => {
             </div>
             <div className="space-y-2">
               <label className="text-sm font-semibold text-gray-700">Description</label>
-              <input
-                type="text"
-                value={formData.section2.description}
-                onChange={(e) => updateSection('section2', 'description', e.target.value)}
-                className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm focus:border-[#5870F7] focus:ring-1 focus:ring-[#5870F7] outline-none"
-              />
+              <div className="border border-slate-300 rounded-xl overflow-hidden [&_.ql-container]:min-h-[120px] [&_.ql-editor]:min-h-[120px]">
+                <RichTextEditor
+                  value={formData.section2.description}
+                  onChange={(val) => updateSection('section2', 'description', val)}
+                />
+              </div>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-slate-100">
@@ -162,12 +188,12 @@ export const GuideManager: React.FC = () => {
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-semibold text-gray-600">Card Description</label>
-                  <textarea
-                    rows={3}
-                    value={formData.section2.freeholdCardDesc}
-                    onChange={(e) => updateSection('section2', 'freeholdCardDesc', e.target.value)}
-                    className="w-full rounded-xl border border-slate-200 px-4 py-2 text-sm focus:border-[#5870F7] focus:ring-1 focus:ring-[#5870F7] outline-none"
-                  />
+                  <div className="border border-slate-300 rounded-xl overflow-hidden [&_.ql-container]:min-h-[120px] [&_.ql-editor]:min-h-[120px]">
+                    <RichTextEditor
+                      value={formData.section2.freeholdCardDesc}
+                      onChange={(val) => updateSection('section2', 'freeholdCardDesc', val)}
+                    />
+                  </div>
                 </div>
               </div>
               <div className="space-y-4">
@@ -183,12 +209,12 @@ export const GuideManager: React.FC = () => {
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-semibold text-gray-600">Card Description</label>
-                  <textarea
-                    rows={3}
-                    value={formData.section2.leaseholdCardDesc}
-                    onChange={(e) => updateSection('section2', 'leaseholdCardDesc', e.target.value)}
-                    className="w-full rounded-xl border border-slate-200 px-4 py-2 text-sm focus:border-[#5870F7] focus:ring-1 focus:ring-[#5870F7] outline-none"
-                  />
+                  <div className="border border-slate-300 rounded-xl overflow-hidden [&_.ql-container]:min-h-[120px] [&_.ql-editor]:min-h-[120px]">
+                    <RichTextEditor
+                      value={formData.section2.leaseholdCardDesc}
+                      onChange={(val) => updateSection('section2', 'leaseholdCardDesc', val)}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -213,17 +239,33 @@ export const GuideManager: React.FC = () => {
             </div>
             
             <div className="space-y-4 pt-2">
-              {[1, 2, 3, 4].map(num => (
-                <div key={num} className="space-y-2">
-                  <label className="text-xs font-semibold text-gray-600">Step 0{num}</label>
-                  <input
-                    type="text"
-                    value={formData.section3[`step${num}` as keyof typeof formData.section3]}
-                    onChange={(e) => updateSection('section3', `step${num}`, e.target.value)}
-                    className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm focus:border-[#5870F7] focus:ring-1 focus:ring-[#5870F7] outline-none"
-                  />
+              {formData.section3.steps?.map((step, index) => (
+                <div key={index} className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <label className="text-xs font-semibold text-gray-600">Step {String(index + 1).padStart(2, '0')}</label>
+                    <button
+                      type="button"
+                      onClick={() => removeStep(index)}
+                      className="text-xs text-rose-500 hover:text-rose-600 font-medium px-2 py-1 rounded bg-rose-50 hover:bg-rose-100 transition-colors"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                  <div className="border border-slate-300 rounded-xl overflow-hidden [&_.ql-container]:min-h-[120px] [&_.ql-editor]:min-h-[120px]">
+                    <RichTextEditor
+                      value={step}
+                      onChange={(val) => updateStep(index, val)}
+                    />
+                  </div>
                 </div>
               ))}
+              <button
+                type="button"
+                onClick={addStep}
+                className="w-full py-2.5 mt-2 border-2 border-dashed border-slate-200 rounded-xl text-sm font-medium text-[#5870F7] hover:border-[#5870F7] hover:bg-blue-50 transition-all flex items-center justify-center gap-2"
+              >
+                + Add Step
+              </button>
             </div>
           </div>
         </div>
@@ -245,19 +287,19 @@ export const GuideManager: React.FC = () => {
                 <label className="text-sm font-semibold text-gray-700">Heading</label>
                 <input
                   type="text"
-                  value={formData[sec.key as keyof typeof formData].heading as string}
+                  value={(formData as any)[sec.key]?.heading || ''}
                   onChange={(e) => updateSection(sec.key as keyof typeof formData, 'heading', e.target.value)}
                   className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm focus:border-[#5870F7] focus:ring-1 focus:ring-[#5870F7] outline-none"
                 />
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-semibold text-gray-700">Content</label>
-                <textarea
-                  rows={4}
-                  value={formData[sec.key as keyof typeof formData].content as string}
-                  onChange={(e) => updateSection(sec.key as keyof typeof formData, 'content', e.target.value)}
-                  className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm focus:border-[#5870F7] focus:ring-1 focus:ring-[#5870F7] outline-none"
-                />
+                <div className="border border-slate-300 rounded-xl overflow-hidden [&_.ql-container]:min-h-[120px] [&_.ql-editor]:min-h-[120px]">
+                  <RichTextEditor
+                    value={(formData as any)[sec.key]?.content || ''}
+                    onChange={(val) => updateSection(sec.key as keyof typeof formData, 'content', val)}
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -281,12 +323,12 @@ export const GuideManager: React.FC = () => {
             </div>
             <div className="space-y-2">
               <label className="text-sm font-semibold text-gray-700">Description</label>
-              <input
-                type="text"
-                value={formData.sectionFaq.description}
-                onChange={(e) => updateSection('sectionFaq', 'description', e.target.value)}
-                className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm focus:border-[#5870F7] focus:ring-1 focus:ring-[#5870F7] outline-none"
-              />
+              <div className="border border-slate-300 rounded-xl overflow-hidden [&_.ql-container]:min-h-[120px] [&_.ql-editor]:min-h-[120px]">
+                <RichTextEditor
+                  value={formData.sectionFaq.description}
+                  onChange={(val) => updateSection('sectionFaq', 'description', val)}
+                />
+              </div>
             </div>
             <p className="text-xs text-slate-500 italic mt-2">
               Note: The actual questions and answers are managed in the FAQ Manager tab.

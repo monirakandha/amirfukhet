@@ -167,13 +167,15 @@ export default function GuidePage() {
                   {guideContent.section1.heading}
                 </h2>
 
-                <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
-                  {guideContent.section1.paragraph1}
-                </p>
+                <div 
+                  className="text-gray-600 leading-relaxed text-sm sm:text-base prose prose-sm max-w-none [&>p]:mb-4 last:[&>p]:mb-0"
+                  dangerouslySetInnerHTML={{ __html: guideContent.section1.paragraph1 }}
+                />
 
-                <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
-                  {guideContent.section1.paragraph2}
-                </p>
+                <div 
+                  className="text-gray-600 leading-relaxed text-sm sm:text-base prose prose-sm max-w-none [&>p]:mb-4 last:[&>p]:mb-0"
+                  dangerouslySetInnerHTML={{ __html: guideContent.section1.paragraph2 }}
+                />
 
                 {/* Callout Box: Not sure which structure fits your situation? */}
                 <div className="bg-[#f4f6fa] rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border border-blue-100/60">
@@ -213,9 +215,10 @@ export default function GuidePage() {
                   <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-snug">
                     {guideContent.section2.heading}
                   </h2>
-                  <p className="text-sm text-gray-500 mt-2">
-                    {guideContent.section2.description}
-                  </p>
+                  <div 
+                    className="text-sm text-gray-500 mt-2 prose prose-sm max-w-none [&>p]:mb-2 last:[&>p]:mb-0"
+                    dangerouslySetInnerHTML={{ __html: guideContent.section2.description }}
+                  />
                 </div>
 
                 {/* 2 Comparison Cards Grid */}
@@ -225,9 +228,10 @@ export default function GuidePage() {
                     <h3 className="text-[#4c70ff] font-bold text-base">
                       {guideContent.section2.freeholdCardTitle}
                     </h3>
-                    <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
-                      {guideContent.section2.freeholdCardDesc}
-                    </p>
+                    <div 
+                      className="text-xs sm:text-sm text-gray-500 leading-relaxed prose prose-sm max-w-none [&>p]:mb-2 last:[&>p]:mb-0"
+                      dangerouslySetInnerHTML={{ __html: guideContent.section2.freeholdCardDesc }}
+                    />
                   </div>
 
                   {/* Card 2: Leasehold */}
@@ -235,9 +239,10 @@ export default function GuidePage() {
                     <h3 className="text-[#4c70ff] font-bold text-base">
                       {guideContent.section2.leaseholdCardTitle}
                     </h3>
-                    <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
-                      {guideContent.section2.leaseholdCardDesc}
-                    </p>
+                    <div 
+                      className="text-xs sm:text-sm text-gray-500 leading-relaxed prose prose-sm max-w-none [&>p]:mb-2 last:[&>p]:mb-0"
+                      dangerouslySetInnerHTML={{ __html: guideContent.section2.leaseholdCardDesc }}
+                    />
                   </div>
                 </div>
               </section>
@@ -249,45 +254,17 @@ export default function GuidePage() {
                 </h2>
 
                 <div className="space-y-4 pt-2">
-                  {/* Step 01 */}
-                  <div className="flex items-center gap-4">
-                    <div className="w-9 h-9 rounded-full bg-blue-50 text-[#4c70ff] border border-blue-200 flex items-center justify-center text-xs font-bold shrink-0">
-                      01
+                  {guideContent.section3.steps?.map((step, index) => (
+                    <div key={index} className="flex items-center gap-4">
+                      <div className="w-9 h-9 rounded-full bg-blue-50 text-[#4c70ff] border border-blue-200 flex items-center justify-center text-xs font-bold shrink-0">
+                        {String(index + 1).padStart(2, '0')}
+                      </div>
+                      <div 
+                        className="text-sm font-medium text-gray-700 prose prose-sm max-w-none [&>p]:mb-1 last:[&>p]:mb-0"
+                        dangerouslySetInnerHTML={{ __html: step }}
+                      />
                     </div>
-                    <span className="text-sm font-medium text-gray-700">
-                      {guideContent.section3.step1}
-                    </span>
-                  </div>
-
-                  {/* Step 02 */}
-                  <div className="flex items-center gap-4">
-                    <div className="w-9 h-9 rounded-full bg-blue-50 text-[#4c70ff] border border-blue-200 flex items-center justify-center text-xs font-bold shrink-0">
-                      02
-                    </div>
-                    <span className="text-sm font-medium text-gray-700">
-                      {guideContent.section3.step2}
-                    </span>
-                  </div>
-
-                  {/* Step 03 */}
-                  <div className="flex items-center gap-4">
-                    <div className="w-9 h-9 rounded-full bg-blue-50 text-[#4c70ff] border border-blue-200 flex items-center justify-center text-xs font-bold shrink-0">
-                      03
-                    </div>
-                    <span className="text-sm font-medium text-gray-700">
-                      {guideContent.section3.step3}
-                    </span>
-                  </div>
-
-                  {/* Step 04 */}
-                  <div className="flex items-center gap-4">
-                    <div className="w-9 h-9 rounded-full bg-blue-50 text-[#4c70ff] border border-blue-200 flex items-center justify-center text-xs font-bold shrink-0">
-                      04
-                    </div>
-                    <span className="text-sm font-medium text-gray-700">
-                      {guideContent.section3.step4}
-                    </span>
-                  </div>
+                  ))}
                 </div>
               </section>
 
@@ -296,9 +273,10 @@ export default function GuidePage() {
                 <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
                   {guideContent.section4.heading}
                 </h2>
-                <p className="text-gray-600 leading-relaxed text-sm sm:text-base whitespace-pre-line">
-                  {guideContent.section4.content}
-                </p>
+                <div 
+                  className="text-gray-600 leading-relaxed text-sm sm:text-base prose prose-sm max-w-none [&>p]:mb-4 last:[&>p]:mb-0"
+                  dangerouslySetInnerHTML={{ __html: guideContent.section4.content }}
+                />
               </section>
 
               {/* Section 5: Financing options */}
@@ -306,9 +284,10 @@ export default function GuidePage() {
                 <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
                   {guideContent.section5.heading}
                 </h2>
-                <p className="text-gray-600 leading-relaxed text-sm sm:text-base whitespace-pre-line">
-                  {guideContent.section5.content}
-                </p>
+                <div 
+                  className="text-gray-600 leading-relaxed text-sm sm:text-base prose prose-sm max-w-none [&>p]:mb-4 last:[&>p]:mb-0"
+                  dangerouslySetInnerHTML={{ __html: guideContent.section5.content }}
+                />
               </section>
 
               {/* Section 6: Due diligence checklist */}
@@ -316,9 +295,10 @@ export default function GuidePage() {
                 <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
                   {guideContent.section6.heading}
                 </h2>
-                <p className="text-gray-600 leading-relaxed text-sm sm:text-base whitespace-pre-line">
-                  {guideContent.section6.content}
-                </p>
+                <div 
+                  className="text-gray-600 leading-relaxed text-sm sm:text-base prose prose-sm max-w-none [&>p]:mb-4 last:[&>p]:mb-0"
+                  dangerouslySetInnerHTML={{ __html: guideContent.section6.content }}
+                />
               </section>
 
               {/* Section 7: The real risks */}
@@ -326,9 +306,10 @@ export default function GuidePage() {
                 <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
                   {guideContent.section7.heading}
                 </h2>
-                <p className="text-gray-600 leading-relaxed text-sm sm:text-base whitespace-pre-line">
-                  {guideContent.section7.content}
-                </p>
+                <div 
+                  className="text-gray-600 leading-relaxed text-sm sm:text-base prose prose-sm max-w-none [&>p]:mb-4 last:[&>p]:mb-0"
+                  dangerouslySetInnerHTML={{ __html: guideContent.section7.content }}
+                />
               </section>
 
               {/* Section 8: Frequently asked questions */}
@@ -337,9 +318,10 @@ export default function GuidePage() {
                   <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-snug">
                     {guideContent.sectionFaq.heading}
                   </h2>
-                  <p className="text-sm text-gray-500 mt-1">
-                    {guideContent.sectionFaq.description}
-                  </p>
+                  <div 
+                    className="text-sm text-gray-500 mt-1 prose prose-sm max-w-none [&>p]:mb-2 last:[&>p]:mb-0"
+                    dangerouslySetInnerHTML={{ __html: guideContent.sectionFaq.description }}
+                  />
                 </div>
 
                 {/* FAQ Accordion List */}
@@ -361,9 +343,10 @@ export default function GuidePage() {
                           </span>
                         </div>
                         {isOpen && (
-                          <p className="text-xs sm:text-sm text-gray-600 leading-relaxed pt-3">
-                            {faq.answer}
-                          </p>
+                          <div 
+                            className="text-xs sm:text-sm text-gray-600 leading-relaxed pt-3 prose prose-sm max-w-none prose-p:my-2 prose-p:first:mt-0 prose-p:last:mb-0"
+                            dangerouslySetInnerHTML={{ __html: faq.answer }}
+                          />
                         )}
                       </div>
                     );
@@ -371,12 +354,48 @@ export default function GuidePage() {
                 </div>
               </section>
 
+              {/* CTA Block (Framed dark style) */}
+              <div className="rounded-[24px] bg-[#1C2026] p-4 sm:p-6 shadow-xl w-full mt-16 mb-8">
+                <div className="rounded-[20px] border border-white/10 bg-[#2B2D33] py-10 px-8 sm:py-14 sm:px-12 text-center flex flex-col items-center">
+                  
+                  <div className="text-center space-y-3 mb-10">
+                    <h3
+                      className="font-heading-bricolage text-[26px] sm:text-[32px] font-semibold text-white leading-tight tracking-[-0.01em]"
+                      style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+                    >
+                      Ready to talk through your purchase?
+                    </h3>
+                    <p className="font-desc-mona text-[14px] sm:text-[15px] font-medium text-[#9CA3AF] leading-[1.6]">
+                      Message Amir directly. Honest, advisory, no pressure.
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
+                    <a
+                      href="https://wa.me/8801875189361"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-[#5870F7] hover:bg-blue-600 font-medium text-[15px] text-white transition-all shadow-sm w-full sm:w-auto"
+                    >
+                      Contact Amir on WhatsApp
+                    </a>
+                    <Link
+                      href="/the-guide"
+                      className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-white hover:bg-gray-50 font-medium text-[15px] text-gray-900 transition-all shadow-sm w-full sm:w-auto"
+                    >
+                      Read the free guide
+                    </Link>
+                  </div>
+
+                </div>
+              </div>
+
             </main>
           </div>
         </div>
       </section>
 
-      <Footer />
+      <Footer hideCTA={true} />
 
       {/* Modals */}
       <HomeValuationModal isOpen={isValuationOpen} onClose={() => setIsValuationOpen(false)} />

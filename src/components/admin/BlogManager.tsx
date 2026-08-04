@@ -33,6 +33,17 @@ export const BlogManager: React.FC = () => {
   const [contentSections, setContentSections] = useState<{ heading: string; content: string }[]>([]);
   const [tags, setTags] = useState<string[]>([]);
   const [tagInput, setTagInput] = useState('');
+  const [publishedAt, setPublishedAt] = useState(new Date().toISOString().split('T')[0]);
+  const [isReadTimeManual, setIsReadTimeManual] = useState(false);
+
+  React.useEffect(() => {
+    if (isReadTimeManual) return;
+    const allText = [summary, content, ...contentSections.map(s => s.heading + ' ' + s.content)].join(' ');
+    const textWithoutHtml = allText.replace(/<[^>]*>?/gm, '');
+    const words = textWithoutHtml.split(/\s+/).filter(Boolean).length;
+    const mins = Math.max(1, Math.ceil(words / 200));
+    setReadTime(mins.toString());
+  }, [summary, content, contentSections, isReadTimeManual]);
 
   const [customCategories, setCustomCategories] = useState<string[]>([]);
   const blogCategories = categories.filter((c) => c.type === 'blog');
@@ -66,6 +77,8 @@ export const BlogManager: React.FC = () => {
     setContentSections([]);
     setTags(['Phuket Property', 'Real Estate Investment']);
     setTagInput('');
+    setPublishedAt(new Date().toISOString().split('T')[0]);
+    setIsReadTimeManual(false);
     setIsModalOpen(true);
   };
 
@@ -86,6 +99,17 @@ export const BlogManager: React.FC = () => {
     setContentSections(b.contentSections || []);
     setTags(b.tags || []);
     setTagInput('');
+    
+    // Parse publishedAt to YYYY-MM-DD if possible
+    let parsedDate = new Date().toISOString().split('T')[0];
+    if (b.publishedAt) {
+      const d = new Date(b.publishedAt);
+      if (!isNaN(d.getTime())) {
+        parsedDate = d.toISOString().split('T')[0];
+      }
+    }
+    setPublishedAt(parsedDate);
+    setIsReadTimeManual(true); // Don't auto-overwrite existing blogs read time on open
     setIsModalOpen(true);
   };
 
@@ -111,6 +135,7 @@ export const BlogManager: React.FC = () => {
         role: 'Property Investment Advisor',
         avatar: '/images/amir.png',
       },
+      publishedAt: publishedAt,
     };
 
     if (editingBlog) {
@@ -245,7 +270,7 @@ export const BlogManager: React.FC = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             <MediaPickerButton
               label="Cover Image"
               required
@@ -253,12 +278,28 @@ export const BlogManager: React.FC = () => {
               onChange={setCoverImage}
             />
             <div className="space-y-1.5">
-              <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Estimated Read Time (Minutes)</label>
+              <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Publish / Update Date</label>
+              <input
+                type="date"
+                required
+                value={publishedAt}
+                onChange={(e) => setPublishedAt(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20"
+              />
+            </div>
+            <div className="space-y-1.5">
+              <div className="flex items-center justify-between">
+                <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Read Time (Min)</label>
+                {!isReadTimeManual && <span className="text-[10px] text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full font-bold">Auto</span>}
+              </div>
               <input
                 type="number"
                 required
                 value={readTime}
-                onChange={(e) => setReadTime(e.target.value)}
+                onChange={(e) => {
+                  setReadTime(e.target.value);
+                  setIsReadTimeManual(true);
+                }}
                 className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20"
               />
             </div>
@@ -359,12 +400,12 @@ export const BlogManager: React.FC = () => {
 
             <div className="space-y-1.5">
               <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Highlight Quote Text</label>
-              <textarea
-                value={quoteText}
-                onChange={(e) => setQuoteText(e.target.value)}
-                placeholder="Enter a quote to highlight..."
-                className="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] focus:ring-2 focus:ring-[#5870F7]/20 min-h-[80px]"
-              />
+              <div className="border border-slate-300 rounded-xl overflow-hidden [&_.ql-container]:min-h-[80px] [&_.ql-editor]:min-h-[80px]">
+                <RichTextEditor
+                  value={quoteText}
+                  onChange={(val) => setQuoteText(val)}
+                />
+              </div>
             </div>
 
             <div className="space-y-3">
@@ -383,16 +424,16 @@ export const BlogManager: React.FC = () => {
                       placeholder="Question"
                       className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7]"
                     />
-                    <textarea
-                      value={faq.answer}
-                      onChange={(e) => {
-                        const newFaqs = [...postFaqs];
-                        newFaqs[index].answer = e.target.value;
-                        setPostFaqs(newFaqs);
-                      }}
-                      placeholder="Answer"
-                      className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] min-h-[60px]"
-                    />
+                    <div className="border border-slate-300 rounded-xl overflow-hidden [&_.ql-container]:min-h-[80px] [&_.ql-editor]:min-h-[80px]">
+                      <RichTextEditor
+                        value={faq.answer}
+                        onChange={(val) => {
+                          const newFaqs = [...postFaqs];
+                          newFaqs[index].answer = val;
+                          setPostFaqs(newFaqs);
+                        }}
+                      />
+                    </div>
                   </div>
                   <button
                     type="button"

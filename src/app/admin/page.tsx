@@ -11,6 +11,7 @@ import { SuccessStoryManager } from '@/components/admin/SuccessStoryManager';
 import { FaqManager } from '@/components/admin/FaqManager';
 import { CategoryManager } from '@/components/admin/CategoryManager';
 import { SettingsManager } from '@/components/admin/SettingsManager';
+import { ProfileManager } from '@/components/admin/ProfileManager';
 import { InquiriesManager } from '@/components/admin/InquiriesManager';
 import { NewsletterManager } from '@/components/admin/NewsletterManager';
 import { MediaManager } from '@/components/admin/MediaManager';
@@ -47,6 +48,8 @@ export default function AdminDashboardPage() {
         return <HeroSliderManager />;
       case 'settings':
         return <SettingsManager />;
+      case 'profile':
+        return <ProfileManager />;
       case 'inquiries':
         return <InquiriesManager />;
       case 'newsletters':

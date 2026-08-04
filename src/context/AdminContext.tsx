@@ -4,6 +4,7 @@ import React, { createContext, useContext, useState, useEffect, ReactNode } from
 import { Property, BlogArticle, SuccessStory } from '@/types';
 import { 
   AdminUser, 
+  AdminProfile,
   FAQItem, 
   CategoryItem, 
   SiteSettings, 
@@ -150,10 +151,12 @@ const defaultGuideContent: GuidePageContent = {
   },
   section3: {
     heading: 'The step-by-step buying process',
-    step1: 'Define budget, area and goal (lifestyle vs yield)',
-    step2: 'Shortlist, view, and verify the developer / title',
-    step3: 'Legal due diligence & reservation agreement',
-    step4: 'Transfer of funds, contract & registration at Land Office',
+    steps: [
+      'Define budget, area and goal (lifestyle vs yield)',
+      'Shortlist, view, and verify the developer / title',
+      'Legal due diligence & reservation agreement',
+      'Transfer of funds, contract & registration at Land Office'
+    ],
   },
   section4: {
     heading: 'Taxes & transfer fees',
@@ -185,7 +188,7 @@ interface AdminContextType extends AdminStoreState {
   updateProperty: (id: string, updated: Partial<Property>) => void;
   deleteProperty: (id: string) => void;
   // Blogs
-  addBlog: (blog: Omit<BlogArticle, 'id' | 'publishedAt'>) => void;
+  addBlog: (blog: Omit<BlogArticle, 'id'>) => void;
   updateBlog: (id: string, updated: Partial<BlogArticle>) => void;
   deleteBlog: (id: string) => void;
   // Success Stories
@@ -212,15 +215,24 @@ interface AdminContextType extends AdminStoreState {
   deleteNewsletterSubmission: (id: string) => void;
   // Guide Content
   updateGuideContent: (updated: Partial<GuidePageContent>) => void;
-  resetToDefaults: () => void;
+  updateAdminProfile: (updated: Partial<AdminProfile>) => void;
 }
 
 const AdminContext = createContext<AdminContextType | undefined>(undefined);
+
+const defaultAdminProfile: AdminProfile = {
+  email: 'admin@amirphuket.com',
+  name: 'Amir Ahmed Faisal',
+  password: 'admin123',
+  role: 'Super Admin',
+  avatar: '/images/amir.png',
+};
 
 export const AdminProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [state, setState] = useState<AdminStoreState>({
     isAuthenticated: false,
     user: null,
+    adminProfile: defaultAdminProfile,
     properties: mockProperties,
     blogs: mockBlogs,
     successStories: mockSuccessStories,
@@ -294,6 +306,7 @@ export const AdminProvider: React.FC<{ children: ReactNode }> = ({ children }) =
           successStories: mergedStories,
           blogs: mergedBlogs,
           guideContent: parsed.guideContent || defaultGuideContent,
+          adminProfile: parsed.adminProfile || defaultAdminProfile,
           // Make sure auth stays active if token is present
           isAuthenticated: parsed.isAuthenticated || false,
         }));
@@ -316,7 +329,18 @@ export const AdminProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   }, [state, isLoaded]);
 
   const login = (email: string, pass: string): boolean => {
-    // Default admin login credentials
+    // Check against configured admin profile
+    if (state.adminProfile && email === state.adminProfile.email && pass === state.adminProfile.password) {
+      const adminUser: AdminUser = {
+        email: state.adminProfile.email,
+        name: state.adminProfile.name,
+        role: state.adminProfile.role,
+        avatar: state.adminProfile.avatar,
+      };
+      setState((prev) => ({ ...prev, isAuthenticated: true, user: adminUser }));
+      return true;
+    }
+    // Fallback default admin login credentials (if somehow locked out or empty state)
     if ((email === 'admin@amirphuket.com' || email === 'admin@amirphuket.org' || email === 'admin') && pass === 'admin123') {
       const adminUser: AdminUser = {
         email: 'admin@amirphuket.com',
@@ -356,11 +380,11 @@ export const AdminProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   };
 
   // Blog CRUD
-  const addBlog = (blog: Omit<BlogArticle, 'id' | 'publishedAt'>) => {
+  const addBlog = (blog: Omit<BlogArticle, 'id'>) => {
     const newBlog: BlogArticle = {
       ...blog,
       id: `blog-${Date.now()}`,
-      publishedAt: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+      publishedAt: blog.publishedAt || new Date().toISOString().split('T')[0],
     };
     setState((prev) => ({ ...prev, blogs: [newBlog, ...prev.blogs] }));
   };
@@ -505,22 +529,17 @@ export const AdminProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     }));
   };
 
-  const resetToDefaults = () => {
-    const defaultState: AdminStoreState = {
-      isAuthenticated: state.isAuthenticated,
-      user: state.user,
-      properties: mockProperties,
-      blogs: mockBlogs,
-      successStories: mockSuccessStories,
-      faqs: defaultFaqs,
-      categories: defaultCategories,
-      settings: defaultSettings,
-      contactSubmissions: defaultContactSubmissions,
-      newsletterSubmissions: defaultNewsletterSubmissions,
-    };
-    setState(defaultState);
-    localStorage.setItem(STORE_KEY, JSON.stringify(defaultState));
+  const updateAdminProfile = (updated: Partial<AdminProfile>) => {
+    setState((prev) => {
+      const newProfile = { ...prev.adminProfile, ...updated };
+      return {
+        ...prev,
+        adminProfile: newProfile,
+        user: prev.isAuthenticated && prev.user ? { ...prev.user, ...updated } : prev.user,
+      };
+    });
   };
+
 
   return (
     <AdminContext.Provider
@@ -552,7 +571,7 @@ export const AdminProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         addNewsletterSubmission,
         deleteNewsletterSubmission,
         updateGuideContent,
-        resetToDefaults,
+        updateAdminProfile,
       }}
     >
       {children}

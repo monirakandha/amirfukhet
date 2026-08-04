@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { MediaPickerButton } from '@/components/admin/MediaManager';
 import { HeroSlide } from '@/types/admin';
+import { RichTextEditor } from './RichTextEditor';
 
 export const HeroSliderManager: React.FC = () => {
   const { settings, updateSiteSettings } = useAdmin();
@@ -139,15 +140,16 @@ export const HeroSliderManager: React.FC = () => {
                     </div>
                     <div className="space-y-1.5">
                       <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Description Text</label>
-                      <textarea
-                        value={slide.description}
-                        onChange={(e) => {
-                          const newSlides = [...heroSlides];
-                          newSlides[index].description = e.target.value;
-                          setHeroSlides(newSlides);
-                        }}
-                        className="w-full bg-white border border-slate-300 rounded-xl px-4 py-2 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] min-h-[100px]"
-                      />
+                      <div className="border border-slate-300 rounded-xl overflow-hidden [&_.ql-container]:min-h-[100px] [&_.ql-editor]:min-h-[100px]">
+                        <RichTextEditor
+                          value={slide.description}
+                          onChange={(val) => {
+                            const newSlides = [...heroSlides];
+                            newSlides[index].description = val;
+                            setHeroSlides(newSlides);
+                          }}
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>

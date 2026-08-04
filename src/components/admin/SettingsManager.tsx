@@ -19,6 +19,7 @@ import {
 import { MediaPickerButton } from '@/components/admin/MediaManager';
 import { HeroSlide } from '@/types/admin';
 import { Plus, Trash2 } from 'lucide-react';
+import { RichTextEditor } from './RichTextEditor';
 
 export const SettingsManager: React.FC = () => {
   const { settings, updateSiteSettings, uploadLogo, uploadFavicon } = useAdmin();
@@ -371,12 +372,12 @@ export const SettingsManager: React.FC = () => {
 
           <div className="space-y-1.5">
             <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Footer About Description</label>
-            <textarea
-              rows={3}
-              value={footerDescription}
-              onChange={(e) => setFooterDescription(e.target.value)}
-              className="w-full bg-slate-50 border border-slate-300 rounded-xl p-4 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7]"
-            />
+            <div className="border border-slate-300 rounded-xl overflow-hidden [&_.ql-container]:min-h-[120px] [&_.ql-editor]:min-h-[120px]">
+              <RichTextEditor
+                value={footerDescription}
+                onChange={(val) => setFooterDescription(val)}
+              />
+            </div>
           </div>
 
           <div className="space-y-1.5">

@@ -18,7 +18,8 @@ import {
   RotateCcw,
   Image as ImageIcon,
   BookOpen,
-  Monitor
+  Monitor,
+  User
 } from 'lucide-react';
 
 interface AdminSidebarProps {
@@ -27,7 +28,7 @@ interface AdminSidebarProps {
 }
 
 export const AdminSidebar: React.FC<AdminSidebarProps> = ({ activeTab, setActiveTab }) => {
-  const { user, logout, contactSubmissions, newsletterSubmissions, resetToDefaults } = useAdmin();
+  const { user, logout, contactSubmissions, newsletterSubmissions } = useAdmin();
 
   const newInquiriesCount = contactSubmissions.filter(s => s.status === 'new').length;
 
@@ -46,12 +47,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ activeTab, setActive
     { id: 'settings', label: 'Site & Link Settings', icon: Settings },
   ];
 
-  const handleReset = () => {
-    if (window.confirm('Are you sure you want to restore original default properties, articles, and settings?')) {
-      resetToDefaults();
-      alert('Default mock data and settings restored.');
-    }
-  };
+
 
   return (
     <aside className="w-full lg:w-72 bg-white border-r border-slate-200 flex flex-col shrink-0 h-full shadow-sm">
@@ -114,6 +110,20 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ activeTab, setActive
             System & Tools
           </div>
           
+          <button
+            onClick={() => setActiveTab('profile')}
+            className={`w-full flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-medium transition-all ${
+              activeTab === 'profile'
+                ? 'bg-[#5870F7] text-white shadow-md shadow-[#5870F7]/25 font-semibold'
+                : 'text-slate-600 hover:text-gray-900 hover:bg-slate-100'
+            }`}
+          >
+            <div className="flex items-center gap-3">
+              <User className={`w-5 h-5 ${activeTab === 'profile' ? 'text-white' : 'text-slate-500'}`} />
+              <span>My Profile</span>
+            </div>
+          </button>
+          
           <a
             href="/"
             target="_blank"
@@ -127,32 +137,26 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ activeTab, setActive
             <span className="text-xs text-slate-400">↗</span>
           </a>
 
-          <button
-            onClick={handleReset}
-            className="w-full flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-medium text-amber-700 hover:text-amber-800 hover:bg-amber-50 transition-all text-left"
-          >
-            <div className="flex items-center gap-3">
-              <RotateCcw className="w-5 h-5" />
-              <span>Reset Default Data</span>
-            </div>
-          </button>
         </div>
       </div>
 
       {/* Footer Profile */}
       <div className="p-4 border-t border-slate-200 bg-slate-50">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3 min-w-0">
+          <button 
+            onClick={() => setActiveTab('profile')}
+            className="flex items-center gap-3 min-w-0 hover:opacity-80 transition-opacity text-left flex-1 group"
+          >
             <img
               src={user?.avatar || '/images/amir.png'}
               alt={user?.name || 'Admin'}
-              className="w-10 h-10 rounded-full object-cover border border-slate-300 bg-white shrink-0"
+              className="w-10 h-10 rounded-full object-cover border border-slate-300 bg-white shrink-0 group-hover:border-[#5870F7] transition-colors"
             />
-            <div className="min-w-0">
-              <div className="text-sm font-bold text-gray-900 truncate font-heading-bricolage">{user?.name || 'Admin User'}</div>
+            <div className="min-w-0 pr-2">
+              <div className="text-sm font-bold text-gray-900 truncate font-heading-bricolage group-hover:text-[#5870F7] transition-colors">{user?.name || 'Admin User'}</div>
               <div className="text-xs text-slate-500 truncate">{user?.email || 'admin@amirphuket.com'}</div>
             </div>
-          </div>
+          </button>
           <button
             onClick={logout}
             title="Log Out"

@@ -7,6 +7,10 @@ export interface AdminUser {
   avatar?: string;
 }
 
+export interface AdminProfile extends AdminUser {
+  password?: string;
+}
+
 export interface FAQItem {
   id: string;
   question: string;
@@ -91,6 +95,7 @@ export interface NewsletterSubmission {
 export interface AdminStoreState {
   isAuthenticated: boolean;
   user: AdminUser | null;
+  adminProfile: AdminProfile;
   properties: Property[];
   blogs: BlogArticle[];
   successStories: SuccessStory[];

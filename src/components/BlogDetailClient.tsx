@@ -10,8 +10,9 @@ import { useAdmin } from '@/context/AdminContext';
 import { BlogArticle } from '@/types';
 
 const QuoteBox = ({ text }: { text: string }) => (
-  <div className="bg-blue-50 border border-blue-100 rounded-2xl p-6 sm:p-8 my-8 text-[#5870F7] font-medium text-lg leading-relaxed">
-    "{text}"
+  <div className="bg-blue-50 border border-blue-100 rounded-2xl p-6 sm:p-8 my-8 text-[#5870F7] font-medium text-lg leading-relaxed relative">
+    <span className="absolute top-4 left-4 text-4xl text-blue-200 font-serif leading-none">"</span>
+    <div className="relative z-10 pl-6 prose prose-blue prose-p:my-1 prose-p:first:mt-0 prose-p:last:mb-0 max-w-none text-current" dangerouslySetInnerHTML={{ __html: text }} />
   </div>
 );
 
@@ -39,9 +40,10 @@ const FAQBox = ({ faqs }: { faqs: { question: string; answer: string }[] }) => {
             <span className="text-[#5870F7] text-xl font-light group-open:hidden">+</span>
             <span className="text-[#A1A3A7] text-xl font-light hidden group-open:block">&ndash;</span>
           </summary>
-          <div className="px-6 pb-6 text-[15px] text-gray-600 leading-relaxed border-t border-transparent group-open:border-gray-100 hidden group-open:block">
-            {faq.answer}
-          </div>
+          <div 
+            className="px-6 pb-6 text-[15px] text-gray-600 leading-relaxed border-t border-transparent group-open:border-gray-100 hidden group-open:block prose prose-sm max-w-none prose-p:my-2 prose-p:first:mt-0 prose-p:last:mb-0"
+            dangerouslySetInnerHTML={{ __html: faq.answer }}
+          />
         </details>
       ))}
     </div>

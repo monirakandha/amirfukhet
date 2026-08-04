@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useAdmin } from '@/context/AdminContext';
-import { SuccessStory } from '@/types';
+import { SuccessStory, CaseStudyStep } from '@/types';
 import { Plus, Edit, Trash2, Check, X, Award, MapPin, TrendingUp, ArrowLeft } from 'lucide-react';
 import { MediaPickerButton } from '@/components/admin/MediaManager';
 import { RichTextEditor } from './RichTextEditor';
@@ -22,7 +22,7 @@ export const SuccessStoryManager: React.FC = () => {
   const [clientName, setClientName] = useState('Dr. Marcus Vance');
   const [clientRole, setClientRole] = useState('International Investor from Singapore');
   const [testimonial, setTestimonial] = useState('');
-  const [steps, setSteps] = useState<{title: string; body: string}[]>([]);
+  const [steps, setSteps] = useState<CaseStudyStep[]>([]);
   const [metric1Value, setMetric1Value] = useState('');
   const [metric1Label, setMetric1Label] = useState('');
   const [metric2Value, setMetric2Value] = useState('');
@@ -299,17 +299,16 @@ export const SuccessStoryManager: React.FC = () => {
                 </div>
                 <div className="space-y-1.5">
                   <label className="text-[11px] font-bold text-slate-500 uppercase">Step {(idx + 1).toString().padStart(2, '0')} Description</label>
-                  <textarea
-                    value={step.body}
-                    onChange={(e) => {
-                      const newSteps = [...steps];
-                      newSteps[idx].body = e.target.value;
-                      setSteps(newSteps);
-                    }}
-                    placeholder="Describe what happened in this step..."
-                    rows={2}
-                    className="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] resize-none"
-                  />
+                  <div className="border border-slate-300 rounded-xl overflow-hidden [&_.ql-container]:min-h-[80px] [&_.ql-editor]:min-h-[80px]">
+                    <RichTextEditor
+                      value={step.body}
+                      onChange={(val) => {
+                        const newSteps = [...steps];
+                        newSteps[idx].body = val;
+                        setSteps(newSteps);
+                      }}
+                    />
+                  </div>
                 </div>
               </div>
             ))}

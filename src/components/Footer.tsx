@@ -20,9 +20,16 @@ export default function Footer({ hideCTA = false }: { hideCTA?: boolean }) {
             <h3 className="font-heading-bricolage text-white tracking-tight text-[24px] font-semibold leading-none">
               {settings?.siteTitle || 'Amir Knows Phuket'}
             </h3>
-            <p className="font-desc-mona text-[#B3B3B3] leading-[1.55] pr-4 text-[16px] font-normal">
-              {settings?.footerDescription || 'Independent property investment advice for foreigners buying in Phuket and Thailand.'}
-            </p>
+            {settings?.footerDescription ? (
+              <div 
+                className="font-desc-mona text-[#B3B3B3] leading-[1.55] pr-4 text-[16px] font-normal prose prose-invert prose-p:my-1 prose-p:first:mt-0 prose-p:last:mb-0 max-w-none"
+                dangerouslySetInnerHTML={{ __html: settings.footerDescription }}
+              />
+            ) : (
+              <p className="font-desc-mona text-[#B3B3B3] leading-[1.55] pr-4 text-[16px] font-normal">
+                Independent property investment advice for foreigners buying in Phuket and Thailand.
+              </p>
+            )}
             {/* Social icons: X, LinkedIn, WhatsApp */}
             <div className="flex items-center space-x-3 pt-2">
               {/* X / Twitter */}

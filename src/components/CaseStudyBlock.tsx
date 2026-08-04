@@ -61,7 +61,10 @@ export default function CaseStudyBlock({ story, isFeaturedLabel = false }: CaseS
                   >
                     {step.title}
                   </h3>
-                  <p className="font-desc-mona text-[15px] font-normal text-[#6B7280] leading-[1.6] max-w-2xl">{step.body}</p>
+                  <div 
+                    className="font-desc-mona text-[15px] font-normal text-[#6B7280] leading-[1.6] max-w-2xl prose prose-sm max-w-none prose-p:my-1 prose-p:first:mt-0 prose-p:last:mb-0"
+                    dangerouslySetInnerHTML={{ __html: step.body }}
+                  />
                 </div>
               </div>
             ))}
