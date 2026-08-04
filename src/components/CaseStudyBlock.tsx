@@ -17,7 +17,7 @@ export default function CaseStudyBlock({ story, isFeaturedLabel = false }: CaseS
 
   return (
     <section className="w-full bg-[#fcfcfd] py-16 sm:py-24 border-b border-gray-200/50">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Pill badge */}
         <div className="mb-5 flex">
@@ -62,7 +62,7 @@ export default function CaseStudyBlock({ story, isFeaturedLabel = false }: CaseS
                     {step.title}
                   </h3>
                   <div 
-                    className="font-desc-mona text-[15px] font-normal text-[#6B7280] leading-[1.6] max-w-2xl prose prose-sm max-w-none prose-p:my-1 prose-p:first:mt-0 prose-p:last:mb-0"
+                    className="font-desc-mona text-[15px] font-normal text-[#6B7280] leading-[1.6] prose prose-sm max-w-none prose-p:my-1 prose-p:first:mt-0 prose-p:last:mb-0"
                     dangerouslySetInnerHTML={{ __html: step.body }}
                   />
                 </div>
@@ -91,7 +91,7 @@ export default function CaseStudyBlock({ story, isFeaturedLabel = false }: CaseS
 
 
         {/* CTA Block (Framed dark style) */}
-        <div className="rounded-[24px] bg-[#2A2B2E] p-1.5 shadow-xl max-w-2xl mx-auto">
+        <div className="rounded-[24px] bg-[#2A2B2E] p-1.5 shadow-xl max-w-4xl mx-auto">
           <div className="rounded-[20px] border border-white/10 bg-[#313338] p-8 sm:p-12 text-center flex flex-col items-center space-y-4">
             <h3
               className="font-heading-bricolage text-[22px] sm:text-[26px] font-semibold text-white leading-tight tracking-[-0.01em]"
