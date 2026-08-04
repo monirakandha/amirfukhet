@@ -178,6 +178,13 @@ export const BlogManager: React.FC = () => {
               {editingBlog ? 'Edit Blog Article' : 'Publish New Article'}
             </h2>
           </div>
+          <button
+            onClick={handleSubmit}
+            className="px-6 py-2.5 rounded-xl bg-[#5870F7] hover:bg-blue-600 text-white font-semibold text-sm shadow-sm shadow-[#5870F7]/20 transition-all flex items-center gap-2"
+          >
+            <Check className="w-4 h-4" />
+            {editingBlog ? 'Save Changes' : 'Publish Article'}
+          </button>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-8 bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm">

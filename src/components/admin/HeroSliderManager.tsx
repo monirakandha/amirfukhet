@@ -233,6 +233,16 @@ export const HeroSliderManager: React.FC = () => {
             </button>
           </div>
         </div>
+
+        <div className="flex items-center justify-end">
+          <button
+            type="submit"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-2xl bg-[#5870F7] hover:bg-blue-600 text-white font-bold text-base shadow-md shadow-[#5870F7]/20 transition-all"
+          >
+            <Save className="w-5 h-5" />
+            <span>Save Slider</span>
+          </button>
+        </div>
       </form>
     </div>
   );

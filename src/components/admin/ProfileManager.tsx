@@ -79,9 +79,22 @@ export const ProfileManager = () => {
 
   return (
     <div className="p-6 sm:p-8 max-w-4xl mx-auto space-y-8">
-      <div>
-        <h1 className="text-2xl font-bold text-gray-900 font-heading-bricolage">My Profile</h1>
-        <p className="text-slate-500 mt-1">Manage your admin account details and password.</p>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h1 className="text-2xl font-bold text-gray-900 font-heading-bricolage">My Profile</h1>
+          <p className="text-slate-500 mt-1">Manage your admin account details and password.</p>
+        </div>
+        <button
+          onClick={handleSaveProfile}
+          className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold transition-all self-start ${
+            isSaved
+              ? 'bg-emerald-500 text-white'
+              : 'bg-[#5870F7] hover:bg-blue-600 text-white shadow-sm shadow-[#5870F7]/20'
+          }`}
+        >
+          <Save className="w-4 h-4" />
+          {isSaved ? 'Saved!' : 'Save Changes'}
+        </button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
