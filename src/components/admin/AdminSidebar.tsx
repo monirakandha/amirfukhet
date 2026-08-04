@@ -159,10 +159,9 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ activeTab, setActive
           </button>
           <button
             onClick={logout}
-            title="Log Out"
-            className="p-2 rounded-lg text-slate-500 hover:text-red-600 hover:bg-red-50 transition-colors"
+            className="px-3 py-1.5 rounded-lg text-sm font-medium text-slate-600 border border-slate-200 bg-white hover:text-red-600 hover:border-red-200 hover:bg-red-50 transition-all shadow-xs shrink-0 ml-2"
           >
-            <LogOut className="w-5 h-5" />
+            Log Out
           </button>
         </div>
       </div>
