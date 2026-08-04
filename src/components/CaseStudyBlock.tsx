@@ -54,7 +54,7 @@ export default function CaseStudyBlock({ story, isFeaturedLabel = false }: CaseS
                 <div className="shrink-0 w-8 h-8 rounded-full bg-[#EEF1FF] border border-[#D6E0FF] flex items-center justify-center font-desc-mona text-[13px] font-semibold text-[#5870F7] leading-none mt-0.5">
                   {step.stepNumber || (idx + 1).toString().padStart(2, '0')}
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-2 flex-1 min-w-0">
                   <h3
                     className="font-heading-bricolage text-[17px] font-semibold text-[#111827] leading-tight tracking-[-0.01em]"
                     style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
