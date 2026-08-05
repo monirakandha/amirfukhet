@@ -117,6 +117,21 @@ export interface AboutPageContent {
   heroHeadline?: string;
   heroDescription?: string;
   heroImage?: string;
+  stat1Value?: string;
+  stat1Label?: string;
+  stat2Value?: string;
+  stat2Label?: string;
+  stat3Value?: string;
+  stat3Label?: string;
+  storyHeadline?: string;
+  storyDescription?: string;
+  approachHeadline?: string;
+  approachDescription?: string;
+  calloutHeadline?: string;
+  calloutSubheading?: string;
+  calloutButtonText?: string;
+  calloutButtonLink?: string;
+  calloutImage?: string;
 }
 
 export interface WorkWithMePageContent {

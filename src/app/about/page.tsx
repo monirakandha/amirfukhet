@@ -13,7 +13,7 @@ export default function AboutPage() {
   const { settings } = useAdmin();
   const [isValuationOpen, setIsValuationOpen] = useState(false);
 
-  const hero = settings.pagesContent?.aboutPage || {
+  const content = settings.pagesContent?.aboutPage || {
     heroPill: 'About Amir',
     heroHeadline: 'The advisor foreigners<br />trust to buy in Phuket',
     heroDescription: 'I\'m Amir Ahmed Faisal. I help international buyers understand the Phuket market and invest in it safely – explaining the structures, flagging the risks, and staying in their corner from first message to handover.',
@@ -36,18 +36,18 @@ export default function AboutPage() {
               {/* About Amir Pill Badge */}
               <div className="section-pill shadow-2xs">
                 <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
-                {hero.heroPill}
+                {content.heroPill || 'About Amir'}
               </div>
 
               {/* Main Headline */}
               <h1 
                 className="font-heading-bricolage text-[36px] sm:text-[44px] lg:text-[50px] font-semibold text-[#020202] leading-[1.15] tracking-[-0.01em] text-left"
-                dangerouslySetInnerHTML={{ __html: hero.heroHeadline || '' }}
+                dangerouslySetInnerHTML={{ __html: content.heroHeadline || '' }}
               />
 
               {/* Description Paragraph */}
               <p className="font-desc-mona text-[16px] font-normal text-[#6B7280] leading-[1.5] max-w-xl text-left">
-                {hero.heroDescription}
+                {content.heroDescription}
               </p>
 
               {/* Social Circle Buttons */}
@@ -103,8 +103,8 @@ export default function AboutPage() {
         {/* Right Content Area (Image) absolutely positioned to the bottom of the section */}
         <div className="hidden lg:block absolute bottom-0 right-0 w-full max-w-7xl mx-auto left-0 pointer-events-none z-10">
           <div className="relative w-full h-full">
-            {hero.heroImage && (
-              <img src={hero.heroImage} alt={settings.adminProfile?.name || "Amir Ahmed Faisal"} className="absolute bottom-0 right-4 lg:right-12 xl:right-20 w-full h-auto max-w-[420px] xl:max-w-[480px] object-contain object-bottom drop-shadow-2xl" />
+            {content.heroImage && (
+              <img src={content.heroImage} alt={settings.adminProfile?.name || "Amir Ahmed Faisal"} className="absolute bottom-0 right-4 lg:right-12 xl:right-20 w-full h-auto max-w-[420px] xl:max-w-[480px] object-contain object-bottom drop-shadow-2xl" />
             )}
           </div>
         </div>
@@ -129,30 +129,42 @@ export default function AboutPage() {
               {/* Stat 1 */}
               <div className="pt-4 sm:pt-0 sm:px-4 space-y-1">
                 <div className="text-3xl sm:text-[40px] font-bold text-[#5870F7]">
-                  <AnimatedCounter value="7+ yrs" />
+                  {content.stat1Value?.includes('+') ? (
+                    <AnimatedCounter value={content.stat1Value} />
+                  ) : (
+                    content.stat1Value || '7+ yrs'
+                  )}
                 </div>
                 <div className="text-xs sm:text-sm text-gray-600 font-medium">
-                  In the Phuket market
+                  {content.stat1Label || 'In the Phuket market'}
                 </div>
               </div>
 
               {/* Stat 2 */}
               <div className="pt-4 sm:pt-0 sm:px-4 space-y-1">
                 <div className="text-3xl sm:text-[40px] font-bold text-[#5870F7]">
-                  <AnimatedCounter value="50+" />
+                  {content.stat2Value?.includes('+') ? (
+                    <AnimatedCounter value={content.stat2Value} />
+                  ) : (
+                    content.stat2Value || '50+'
+                  )}
                 </div>
                 <div className="text-xs sm:text-sm text-gray-600 font-medium">
-                  Foreign buyers guided
+                  {content.stat2Label || 'Foreign buyers guided'}
                 </div>
               </div>
 
               {/* Stat 3 */}
               <div className="pt-4 sm:pt-0 sm:px-4 space-y-1">
                 <div className="text-3xl sm:text-[40px] font-bold text-[#5870F7]">
-                  <AnimatedCounter value="12" />
+                  {content.stat3Value ? (
+                    <AnimatedCounter value={content.stat3Value} />
+                  ) : (
+                    <AnimatedCounter value="12" />
+                  )}
                 </div>
                 <div className="text-xs sm:text-sm text-gray-600 font-medium">
-                  Nationalities served
+                  {content.stat3Label || 'Nationalities served'}
                 </div>
               </div>
             </div>
@@ -161,20 +173,20 @@ export default function AboutPage() {
           {/* Section 1: My story */}
           <div className="space-y-4">
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-snug">
-              My story
+              {content.storyHeadline || 'My story'}
             </h2>
-            <p className="text-sm sm:text-base text-gray-500 leading-relaxed max-w-3xl">
-              Placeholder biography. The published page tells how Amir came to Phuket, the years spent learning the market from the inside, and why he chose to work as an independent advisor rather than an agent.
+            <p className="text-sm sm:text-base text-gray-500 leading-relaxed max-w-3xl whitespace-pre-wrap">
+              {content.storyDescription || 'Placeholder biography. The published page tells how Amir came to Phuket, the years spent learning the market from the inside, and why he chose to work as an independent advisor rather than an agent.'}
             </p>
           </div>
 
           {/* Section 2: My approach & philosophy */}
           <div className="space-y-4">
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-snug">
-              My approach & philosophy
+              {content.approachHeadline || 'My approach & philosophy'}
             </h2>
-            <p className="text-sm sm:text-base text-gray-500 leading-relaxed max-w-3xl">
-              Advisory, not transactional. Honest about risk. Foreigner-focused. The goal is a client who refers their friends – not a quick commission.
+            <p className="text-sm sm:text-base text-gray-500 leading-relaxed max-w-3xl whitespace-pre-wrap">
+              {content.approachDescription || 'Advisory, not transactional. Honest about risk. Foreigner-focused. The goal is a client who refers their friends – not a quick commission.'}
             </p>
           </div>
 
@@ -183,28 +195,28 @@ export default function AboutPage() {
             <div className="flex items-center gap-4">
               <div className="bg-[#d5cdc4] rounded-full shrink-0 overflow-hidden w-12 h-12 sm:w-14 sm:h-14">
                 <img
-                  src="/images/amir.png"
-                  alt="Amir Ahmed Faisal"
+                  src={content.calloutImage || "/images/amir.png"}
+                  alt={settings.adminProfile?.name || "Amir Ahmed Faisal"}
                   className="w-full h-full object-cover object-top"
                 />
               </div>
               <div>
                 <h4 className="font-semibold text-gray-900 text-base sm:text-[17px] leading-snug tracking-tight">
-                  Want to work together?
+                  {content.calloutHeadline || 'Want to work together?'}
                 </h4>
                 <p className="text-[13px] sm:text-[14px] text-gray-500 mt-0.5 font-medium">
-                  Start with a free, no-pressure conversation.
+                  {content.calloutSubheading || 'Start with a free, no-pressure conversation.'}
                 </p>
               </div>
             </div>
 
             <a
-              href="https://wa.me/8801875189361"
+              href={content.calloutButtonLink || "https://wa.me/8801875189361"}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 bg-[#5870F7] hover:bg-blue-600 text-white font-medium text-[13.5px] sm:text-[14px] px-6 py-2.5 rounded-full transition-colors shadow-sm shrink-0"
             >
-              Ask Amir
+              {content.calloutButtonText || 'Ask Amir'}
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M7 17L17 7M17 7H7M17 7V17" />
               </svg>

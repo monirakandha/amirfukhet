@@ -97,6 +97,174 @@ export default function PagesManager() {
       </div>
     );
   };
+  const renderAboutFields = () => {
+    const pageData = formData.aboutPage || {};
+    return (
+      <div className="space-y-6">
+        {renderHeroFields('aboutPage', 'About Page')}
+
+        <div className="bg-white rounded-xl shadow-xs border border-gray-100 p-6 space-y-6">
+          <h3 className="text-lg font-semibold text-gray-900 border-b pb-4 mb-4">Stats Section</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Stat 1 Value</label>
+              <input
+                type="text"
+                value={pageData.stat1Value || ''}
+                onChange={(e) => handleNestedChange('aboutPage', 'stat1Value', e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Stat 1 Label</label>
+              <input
+                type="text"
+                value={pageData.stat1Label || ''}
+                onChange={(e) => handleNestedChange('aboutPage', 'stat1Label', e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none"
+              />
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Stat 2 Value</label>
+              <input
+                type="text"
+                value={pageData.stat2Value || ''}
+                onChange={(e) => handleNestedChange('aboutPage', 'stat2Value', e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Stat 2 Label</label>
+              <input
+                type="text"
+                value={pageData.stat2Label || ''}
+                onChange={(e) => handleNestedChange('aboutPage', 'stat2Label', e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none"
+              />
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Stat 3 Value</label>
+              <input
+                type="text"
+                value={pageData.stat3Value || ''}
+                onChange={(e) => handleNestedChange('aboutPage', 'stat3Value', e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Stat 3 Label</label>
+              <input
+                type="text"
+                value={pageData.stat3Label || ''}
+                onChange={(e) => handleNestedChange('aboutPage', 'stat3Label', e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-xl shadow-xs border border-gray-100 p-6 space-y-6">
+          <h3 className="text-lg font-semibold text-gray-900 border-b pb-4 mb-4">Content Sections</h3>
+          
+          <div className="space-y-4">
+            <h4 className="font-medium text-gray-800">My Story</h4>
+            <input
+              type="text"
+              placeholder="Headline"
+              value={pageData.storyHeadline || ''}
+              onChange={(e) => handleNestedChange('aboutPage', 'storyHeadline', e.target.value)}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none"
+            />
+            <textarea
+              rows={3}
+              placeholder="Description"
+              value={pageData.storyDescription || ''}
+              onChange={(e) => handleNestedChange('aboutPage', 'storyDescription', e.target.value)}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none"
+            />
+          </div>
+
+          <div className="space-y-4 pt-4 border-t border-gray-100">
+            <h4 className="font-medium text-gray-800">My Approach & Philosophy</h4>
+            <input
+              type="text"
+              placeholder="Headline"
+              value={pageData.approachHeadline || ''}
+              onChange={(e) => handleNestedChange('aboutPage', 'approachHeadline', e.target.value)}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none"
+            />
+            <textarea
+              rows={3}
+              placeholder="Description"
+              value={pageData.approachDescription || ''}
+              onChange={(e) => handleNestedChange('aboutPage', 'approachDescription', e.target.value)}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none"
+            />
+          </div>
+        </div>
+
+        <div className="bg-white rounded-xl shadow-xs border border-gray-100 p-6 space-y-6">
+          <h3 className="text-lg font-semibold text-gray-900 border-b pb-4 mb-4">Callout Section</h3>
+          <div className="grid grid-cols-1 gap-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Headline</label>
+              <input
+                type="text"
+                value={pageData.calloutHeadline || ''}
+                onChange={(e) => handleNestedChange('aboutPage', 'calloutHeadline', e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Subheading</label>
+              <input
+                type="text"
+                value={pageData.calloutSubheading || ''}
+                onChange={(e) => handleNestedChange('aboutPage', 'calloutSubheading', e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none"
+              />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Button Text</label>
+                <input
+                  type="text"
+                  value={pageData.calloutButtonText || ''}
+                  onChange={(e) => handleNestedChange('aboutPage', 'calloutButtonText', e.target.value)}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Button Link</label>
+                <input
+                  type="text"
+                  value={pageData.calloutButtonLink || ''}
+                  onChange={(e) => handleNestedChange('aboutPage', 'calloutButtonLink', e.target.value)}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none"
+                />
+              </div>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Callout Image</label>
+              <div className="flex items-center gap-4">
+                {pageData.calloutImage && (
+                  <img src={pageData.calloutImage} alt="Callout" className="h-16 w-16 object-cover rounded-full border border-gray-200" />
+                )}
+                <MediaPickerButton 
+                  onSelect={(url) => handleNestedChange('aboutPage', 'calloutImage', url)} 
+                  className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   const renderWorkWithMeFields = () => {
     const pageData = formData.workWithMePage || {};
@@ -260,7 +428,7 @@ export default function PagesManager() {
         {activeTab === 'insights' && renderHeroFields('insightsHero', 'Insights Page')}
         {activeTab === 'listings' && renderHeroFields('listingsHero', 'Listings Page')}
         {activeTab === 'successStories' && renderHeroFields('successStoriesHero', 'Success Stories Page')}
-        {activeTab === 'about' && renderHeroFields('aboutPage', 'About Page')}
+        {activeTab === 'about' && renderAboutFields()}
         {activeTab === 'contact' && renderHeroFields('contactPage', 'Contact Page')}
         {activeTab === 'workWithMe' && renderWorkWithMeFields()}
       </div>
