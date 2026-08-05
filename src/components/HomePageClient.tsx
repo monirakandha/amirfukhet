@@ -63,6 +63,7 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
   const guideBannerBg = settings.homepageImages?.guideBannerBg || '/images/skyline-bg.png';
   const advisorImage = settings.homepageImages?.advisorImage || '/images/amir-seated.png';
   const meetAdvisorImage = settings.homepageImages?.meetAdvisorImage || '/images/amir-seated.png';
+  const readyBannerBg = settings.homepageImages?.readyBannerBg || '/images/resort-cta-bg.png';
 
   const featuredProperties = displayProperties.slice(0, 3);
 
@@ -755,7 +756,7 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
       <section className="relative w-full py-20 lg:py-28 overflow-hidden text-white bg-[#43a19b]">
         <div className="absolute inset-0 z-0">
           <img
-            src={settings.homepageContent?.contactCtaBg || '/images/ready-banner-bg.jpg'}
+            src={readyBannerBg}
             alt="Phuket Oceanfront Resort Coastline View"
             className="w-full h-full object-cover object-center"
           />
