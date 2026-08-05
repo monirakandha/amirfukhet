@@ -138,19 +138,55 @@ export interface WorkWithMePageContent {
   heroPill?: string;
   heroHeadline?: string;
   heroDescription?: string;
+  heroButtonText?: string;
+  heroButtonLink?: string;
   advisorSectionTitle?: string;
   advisorSectionDescription?: string;
+  advisorCard1Title?: string;
+  advisorCard1Desc?: string;
+  advisorCard2Title?: string;
+  advisorCard2Desc?: string;
+  advisorCard3Title?: string;
+  advisorCard3Desc?: string;
   confidenceSectionPill?: string;
   confidenceSectionHeadline?: string;
   confidenceSectionImage?: string;
+  confidenceItem1?: string;
+  confidenceItem2?: string;
+  confidenceItem3?: string;
+  confidenceItem4?: string;
+  confidenceItem5?: string;
+  confidenceButtonText?: string;
+  confidenceButtonLink?: string;
   processSectionPill?: string;
   processSectionHeadline?: string;
+  processStep1Title?: string;
+  processStep1Desc?: string;
+  processStep2Title?: string;
+  processStep2Desc?: string;
+  processStep3Title?: string;
+  processStep3Desc?: string;
+  processStep4Title?: string;
+  processStep4Desc?: string;
+  ctaHeadline?: string;
+  ctaDescription?: string;
+  ctaButton1Text?: string;
+  ctaButton1Link?: string;
+  ctaButton2Text?: string;
+  ctaButton2Link?: string;
 }
 
 export interface ContactPageContent {
   heroPill?: string;
   heroHeadline?: string;
   heroDescription?: string;
+  fastestWaysHeadline?: string;
+  whatsappCardTitle?: string;
+  whatsappCardDesc?: string;
+  emailCardTitle?: string;
+  emailCardDesc?: string;
+  formTitle?: string;
+  formButtonText?: string;
 }
 
 export interface SiteSettings {

@@ -19,10 +19,10 @@ export default function ContactPage() {
 
   const [isValuationOpen, setIsValuationOpen] = useState(false);
 
-  const hero = settings.pagesContent?.contactHero || {
-    pill: 'Contact Us',
-    headline: 'Get in touch with Amir',
-    description: 'A straight, honest reply &ndash; usually within 24 hours. No sales pitch.'
+  const content = settings.pagesContent?.contactPage || {
+    heroPill: 'Contact Us',
+    heroHeadline: 'Get in touch with Amir',
+    heroDescription: 'A straight, honest reply &ndash; usually within 24 hours. No sales pitch.'
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -58,18 +58,18 @@ export default function ContactPage() {
           {/* Contact Pill Badge */}
           <div className="section-pill shadow-2xs mx-auto">
             <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
-            {hero.pill}
+            {content.heroPill || 'Contact Us'}
           </div>
 
           {/* Main Headline */}
           <h1 
             className="hero-heading max-w-4xl mx-auto"
-            dangerouslySetInnerHTML={{ __html: hero.headline || '' }}
+            dangerouslySetInnerHTML={{ __html: content.heroHeadline || '' }}
           />
 
           {/* Subtitle / Paragraph */}
           <p className="hero-description max-w-2xl mx-auto pt-1">
-            {hero.description}
+            {content.heroDescription}
           </p>
         </div>
       </section>
@@ -82,7 +82,7 @@ export default function ContactPage() {
             {/* Left Column: Fastest ways to reach me */}
             <div className="space-y-8">
               <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">
-                Fastest ways to reach me
+                {content.fastestWaysHeadline || 'Fastest ways to reach me'}
               </h2>
 
               <div className="space-y-3">
@@ -93,8 +93,8 @@ export default function ContactPage() {
                       <img src={settings.adminProfile?.image || "/images/amir.png"} alt={settings.adminProfile?.name || "Amir"} className="w-full h-full object-cover object-top" />
                     </div>
                     <div>
-                      <h3 className="text-[20px] font-semibold text-gray-900 group-hover:text-blue-600 transition-colors tracking-tight">WhatsApp</h3>
-                      <p className="text-[15px] text-gray-500 mt-0.5">Message or call directly</p>
+                      <h3 className="text-[20px] font-semibold text-gray-900 group-hover:text-blue-600 transition-colors tracking-tight">{content.whatsappCardTitle || 'WhatsApp'}</h3>
+                      <p className="text-[15px] text-gray-500 mt-0.5">{content.whatsappCardDesc || 'Message or call directly'}</p>
                     </div>
                   </div>
                 </a>
@@ -112,8 +112,8 @@ export default function ContactPage() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-[20px] font-semibold text-gray-900 group-hover:text-blue-600 transition-colors tracking-tight">amir@amirknowsphuket.com</h3>
-                      <p className="text-[15px] text-gray-500 mt-0.5">Email Amir directly</p>
+                      <h3 className="text-[20px] font-semibold text-gray-900 group-hover:text-blue-600 transition-colors tracking-tight">{content.emailCardTitle || settings.contactEmail || 'amir@amirknowsphuket.com'}</h3>
+                      <p className="text-[15px] text-gray-500 mt-0.5">{content.emailCardDesc || 'Email Amir directly'}</p>
                     </div>
                   </div>
                 </a>
@@ -146,7 +146,7 @@ export default function ContactPage() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
-                    <h3 className="text-[28px] font-semibold text-white mb-6">Send an inquiry</h3>
+                    <h3 className="text-[28px] font-semibold text-white mb-6">{content.formTitle || 'Send an inquiry'}</h3>
                   
                   <div className="space-y-5">
                     <div>
@@ -203,7 +203,7 @@ export default function ContactPage() {
                       disabled={isSubmitting}
                       className="w-full py-3.5 px-6 rounded-full bg-[#5870F7] hover:bg-blue-600 text-white font-medium text-[16px] transition-all flex items-center justify-center gap-2"
                     >
-                      {isSubmitting ? 'Sending...' : 'Send inquiry'}
+                      {isSubmitting ? 'Sending...' : (content.formButtonText || 'Send inquiry')}
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" /></svg>
                     </button>
                     <p className="text-[14px] text-[#A1A3A7]">Sends straight to Amir&apos;s inbox.</p>

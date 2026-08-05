@@ -273,6 +273,30 @@ export default function PagesManager() {
         {renderHeroFields('workWithMePage', 'Work With Me')}
 
         <div className="bg-white rounded-xl shadow-xs border border-gray-100 p-6 space-y-6">
+          <h3 className="text-lg font-semibold text-gray-900 border-b pb-4 mb-4">Hero CTA Button</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Button Text</label>
+              <input
+                type="text"
+                value={pageData.heroButtonText || ''}
+                onChange={(e) => handleNestedChange('workWithMePage', 'heroButtonText', e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none transition-all"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Button Link</label>
+              <input
+                type="text"
+                value={pageData.heroButtonLink || ''}
+                onChange={(e) => handleNestedChange('workWithMePage', 'heroButtonLink', e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none transition-all"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-xl shadow-xs border border-gray-100 p-6 space-y-6">
           <h3 className="text-lg font-semibold text-gray-900 border-b pb-4 mb-4">Advisor vs Portal Section</h3>
           <div className="grid grid-cols-1 gap-6">
             <div>
@@ -281,7 +305,7 @@ export default function PagesManager() {
                 type="text"
                 value={pageData.advisorSectionTitle || ''}
                 onChange={(e) => handleNestedChange('workWithMePage', 'advisorSectionTitle', e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] focus:border-[#5870F7] outline-none transition-all"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none transition-all"
               />
             </div>
             <div>
@@ -290,8 +314,27 @@ export default function PagesManager() {
                 rows={2}
                 value={pageData.advisorSectionDescription || ''}
                 onChange={(e) => handleNestedChange('workWithMePage', 'advisorSectionDescription', e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] focus:border-[#5870F7] outline-none transition-all"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none transition-all"
               />
+            </div>
+
+            {/* Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t border-gray-100">
+              <div className="space-y-4">
+                <h4 className="font-medium text-gray-800">Card 1</h4>
+                <input type="text" placeholder="Title" value={pageData.advisorCard1Title || ''} onChange={(e) => handleNestedChange('workWithMePage', 'advisorCard1Title', e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none" />
+                <textarea rows={2} placeholder="Description" value={pageData.advisorCard1Desc || ''} onChange={(e) => handleNestedChange('workWithMePage', 'advisorCard1Desc', e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none" />
+              </div>
+              <div className="space-y-4">
+                <h4 className="font-medium text-gray-800">Card 2</h4>
+                <input type="text" placeholder="Title" value={pageData.advisorCard2Title || ''} onChange={(e) => handleNestedChange('workWithMePage', 'advisorCard2Title', e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none" />
+                <textarea rows={2} placeholder="Description" value={pageData.advisorCard2Desc || ''} onChange={(e) => handleNestedChange('workWithMePage', 'advisorCard2Desc', e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none" />
+              </div>
+              <div className="space-y-4">
+                <h4 className="font-medium text-gray-800">Card 3</h4>
+                <input type="text" placeholder="Title" value={pageData.advisorCard3Title || ''} onChange={(e) => handleNestedChange('workWithMePage', 'advisorCard3Title', e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none" />
+                <textarea rows={2} placeholder="Description" value={pageData.advisorCard3Desc || ''} onChange={(e) => handleNestedChange('workWithMePage', 'advisorCard3Desc', e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none" />
+              </div>
             </div>
           </div>
         </div>
@@ -299,24 +342,52 @@ export default function PagesManager() {
         <div className="bg-white rounded-xl shadow-xs border border-gray-100 p-6 space-y-6">
           <h3 className="text-lg font-semibold text-gray-900 border-b pb-4 mb-4">Confidence Section</h3>
           <div className="grid grid-cols-1 gap-6">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Pill Badge</label>
-              <input
-                type="text"
-                value={pageData.confidenceSectionPill || ''}
-                onChange={(e) => handleNestedChange('workWithMePage', 'confidenceSectionPill', e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] focus:border-[#5870F7] outline-none transition-all"
-              />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Pill Badge</label>
+                <input
+                  type="text"
+                  value={pageData.confidenceSectionPill || ''}
+                  onChange={(e) => handleNestedChange('workWithMePage', 'confidenceSectionPill', e.target.value)}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none transition-all"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Headline</label>
+                <input
+                  type="text"
+                  value={pageData.confidenceSectionHeadline || ''}
+                  onChange={(e) => handleNestedChange('workWithMePage', 'confidenceSectionHeadline', e.target.value)}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none transition-all"
+                />
+              </div>
             </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Headline</label>
-              <input
-                type="text"
-                value={pageData.confidenceSectionHeadline || ''}
-                onChange={(e) => handleNestedChange('workWithMePage', 'confidenceSectionHeadline', e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] focus:border-[#5870F7] outline-none transition-all"
-              />
+            
+            <div className="space-y-4 pt-4 border-t border-gray-100">
+              <h4 className="font-medium text-gray-800">Checklist Items</h4>
+              {[1, 2, 3, 4, 5].map((i) => (
+                <input
+                  key={i}
+                  type="text"
+                  placeholder={`Item ${i}`}
+                  value={(pageData as any)[`confidenceItem${i}`] || ''}
+                  onChange={(e) => handleNestedChange('workWithMePage', `confidenceItem${i}`, e.target.value)}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none"
+                />
+              ))}
             </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-gray-100">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Button Text</label>
+                <input type="text" value={pageData.confidenceButtonText || ''} onChange={(e) => handleNestedChange('workWithMePage', 'confidenceButtonText', e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none" />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Button Link</label>
+                <input type="text" value={pageData.confidenceButtonLink || ''} onChange={(e) => handleNestedChange('workWithMePage', 'confidenceButtonLink', e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none" />
+              </div>
+            </div>
+
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Section Image</label>
               <div className="flex items-center gap-4">
@@ -335,22 +406,132 @@ export default function PagesManager() {
         <div className="bg-white rounded-xl shadow-xs border border-gray-100 p-6 space-y-6">
           <h3 className="text-lg font-semibold text-gray-900 border-b pb-4 mb-4">Process Section</h3>
           <div className="grid grid-cols-1 gap-6">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Pill Badge</label>
-              <input
-                type="text"
-                value={pageData.processSectionPill || ''}
-                onChange={(e) => handleNestedChange('workWithMePage', 'processSectionPill', e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] focus:border-[#5870F7] outline-none transition-all"
-              />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Pill Badge</label>
+                <input
+                  type="text"
+                  value={pageData.processSectionPill || ''}
+                  onChange={(e) => handleNestedChange('workWithMePage', 'processSectionPill', e.target.value)}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none transition-all"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Headline</label>
+                <input
+                  type="text"
+                  value={pageData.processSectionHeadline || ''}
+                  onChange={(e) => handleNestedChange('workWithMePage', 'processSectionHeadline', e.target.value)}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none transition-all"
+                />
+              </div>
             </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-gray-100">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="space-y-4">
+                  <h4 className="font-medium text-gray-800">Step {i}</h4>
+                  <input type="text" placeholder="Title" value={(pageData as any)[`processStep${i}Title`] || ''} onChange={(e) => handleNestedChange('workWithMePage', `processStep${i}Title`, e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none" />
+                  <textarea rows={2} placeholder="Description" value={(pageData as any)[`processStep${i}Desc`] || ''} onChange={(e) => handleNestedChange('workWithMePage', `processStep${i}Desc`, e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-xl shadow-xs border border-gray-100 p-6 space-y-6">
+          <h3 className="text-lg font-semibold text-gray-900 border-b pb-4 mb-4">CTA Section</h3>
+          <div className="grid grid-cols-1 gap-6">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Headline</label>
               <input
                 type="text"
-                value={pageData.processSectionHeadline || ''}
-                onChange={(e) => handleNestedChange('workWithMePage', 'processSectionHeadline', e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] focus:border-[#5870F7] outline-none transition-all"
+                value={pageData.ctaHeadline || ''}
+                onChange={(e) => handleNestedChange('workWithMePage', 'ctaHeadline', e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Description</label>
+              <textarea
+                rows={2}
+                value={pageData.ctaDescription || ''}
+                onChange={(e) => handleNestedChange('workWithMePage', 'ctaDescription', e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none"
+              />
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-gray-100">
+              <div className="space-y-4">
+                <h4 className="font-medium text-gray-800">Primary Button</h4>
+                <input type="text" placeholder="Text" value={pageData.ctaButton1Text || ''} onChange={(e) => handleNestedChange('workWithMePage', 'ctaButton1Text', e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none" />
+                <input type="text" placeholder="Link" value={pageData.ctaButton1Link || ''} onChange={(e) => handleNestedChange('workWithMePage', 'ctaButton1Link', e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none" />
+              </div>
+              <div className="space-y-4">
+                <h4 className="font-medium text-gray-800">Secondary Button</h4>
+                <input type="text" placeholder="Text" value={pageData.ctaButton2Text || ''} onChange={(e) => handleNestedChange('workWithMePage', 'ctaButton2Text', e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none" />
+                <input type="text" placeholder="Link" value={pageData.ctaButton2Link || ''} onChange={(e) => handleNestedChange('workWithMePage', 'ctaButton2Link', e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    );
+  };
+
+  const renderContactFields = () => {
+    const pageData = formData.contactPage || {};
+    return (
+      <div className="space-y-6">
+        {renderHeroFields('contactPage', 'Contact Page')}
+
+        <div className="bg-white rounded-xl shadow-xs border border-gray-100 p-6 space-y-6">
+          <h3 className="text-lg font-semibold text-gray-900 border-b pb-4 mb-4">Contact Info Section</h3>
+          
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Headline</label>
+            <input
+              type="text"
+              value={pageData.fastestWaysHeadline || ''}
+              onChange={(e) => handleNestedChange('contactPage', 'fastestWaysHeadline', e.target.value)}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none"
+            />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-gray-100">
+            <div className="space-y-4">
+              <h4 className="font-medium text-gray-800">WhatsApp Card</h4>
+              <input type="text" placeholder="Title" value={pageData.whatsappCardTitle || ''} onChange={(e) => handleNestedChange('contactPage', 'whatsappCardTitle', e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none" />
+              <input type="text" placeholder="Description" value={pageData.whatsappCardDesc || ''} onChange={(e) => handleNestedChange('contactPage', 'whatsappCardDesc', e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none" />
+            </div>
+            <div className="space-y-4">
+              <h4 className="font-medium text-gray-800">Email Card</h4>
+              <input type="text" placeholder="Title" value={pageData.emailCardTitle || ''} onChange={(e) => handleNestedChange('contactPage', 'emailCardTitle', e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none" />
+              <input type="text" placeholder="Description" value={pageData.emailCardDesc || ''} onChange={(e) => handleNestedChange('contactPage', 'emailCardDesc', e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-xl shadow-xs border border-gray-100 p-6 space-y-6">
+          <h3 className="text-lg font-semibold text-gray-900 border-b pb-4 mb-4">Contact Form</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Form Title</label>
+              <input
+                type="text"
+                value={pageData.formTitle || ''}
+                onChange={(e) => handleNestedChange('contactPage', 'formTitle', e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Submit Button Text</label>
+              <input
+                type="text"
+                value={pageData.formButtonText || ''}
+                onChange={(e) => handleNestedChange('contactPage', 'formButtonText', e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none"
               />
             </div>
           </div>
@@ -429,7 +610,7 @@ export default function PagesManager() {
         {activeTab === 'listings' && renderHeroFields('listingsHero', 'Listings Page')}
         {activeTab === 'successStories' && renderHeroFields('successStoriesHero', 'Success Stories Page')}
         {activeTab === 'about' && renderAboutFields()}
-        {activeTab === 'contact' && renderHeroFields('contactPage', 'Contact Page')}
+        {activeTab === 'contact' && renderContactFields()}
         {activeTab === 'workWithMe' && renderWorkWithMeFields()}
       </div>
     </div>

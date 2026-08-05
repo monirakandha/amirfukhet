@@ -10,10 +10,10 @@ export default function ContactPage() {
   const { settings } = useAdmin();
   const [isValuationOpen, setIsValuationOpen] = useState(false);
 
-  const hero = settings.pagesContent?.workWithMeHero || {
-    pill: 'Work with Amir',
-    headline: 'An advisor in your corner — from first question to keys in hand',
-    description: 'No commission-chasing. No pressure. Just clear, independent guidance so you buy the right property under the right structure.'
+  const content = settings.pagesContent?.workWithMePage || {
+    heroPill: 'Work with Amir',
+    heroHeadline: 'An advisor in your corner — from first question to keys in hand',
+    heroDescription: 'No commission-chasing. No pressure. Just clear, independent guidance so you buy the right property under the right structure.'
   };
 
   return (
@@ -29,27 +29,27 @@ export default function ContactPage() {
           {/* Work with Amir Pill Badge */}
           <div className="section-pill shadow-2xs mx-auto">
             <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
-            {hero.pill}
+            {content.heroPill || 'Work with Amir'}
           </div>
 
           {/* Main Headline */}
           <h1 
             className="hero-heading max-w-4xl mx-auto"
-            dangerouslySetInnerHTML={{ __html: hero.headline || '' }}
+            dangerouslySetInnerHTML={{ __html: content.heroHeadline || '' }}
           />
 
           {/* Subtitle / Paragraph */}
           <p className="hero-description max-w-2xl mx-auto pt-1">
-            {hero.description}
+            {content.heroDescription}
           </p>
 
           {/* Primary Action CTA Button */}
           <div className="pt-2">
             <a
-              href="#contact-form"
+              href={content.heroButtonLink || "#contact-form"}
               className="hero-button inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full transition-all shadow-lg shadow-blue-600/25"
             >
-              Book a free consultation
+              {content.heroButtonText || 'Book a free consultation'}
               <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
               </svg>
@@ -64,10 +64,10 @@ export default function ContactPage() {
           {/* Section Header */}
           <div className="text-center space-y-3">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-              Why work with an advisor, not a portal
+              {content.advisorSectionTitle || "Why work with an advisor, not a portal"}
             </h2>
             <p className="text-sm sm:text-base text-gray-500 max-w-xl mx-auto leading-relaxed">
-              A listing site shows you what's for sale. An advisor tells you what's worth buying — and what to avoid.
+              {content.advisorSectionDescription || "A listing site shows you what's for sale. An advisor tells you what's worth buying — and what to avoid."}
             </p>
           </div>
 
@@ -81,10 +81,10 @@ export default function ContactPage() {
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-gray-900">
-                Independent
+                {content.advisorCard1Title || 'Independent'}
               </h3>
               <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
-                I'm paid to advise you well, not to push one developer's stock. You hear the downsides too.
+                {content.advisorCard1Desc || "I'm paid to advise you well, not to push one developer's stock. You hear the downsides too."}
               </p>
             </div>
 
@@ -96,10 +96,10 @@ export default function ContactPage() {
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-gray-900">
-                Due-diligence first
+                {content.advisorCard2Title || 'Due-diligence first'}
               </h3>
               <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
-                Title checks, developer track record, lease terms — the unglamorous work that protects your money.
+                {content.advisorCard2Desc || "Title checks, developer track record, lease terms — the unglamorous work that protects your money."}
               </p>
             </div>
 
@@ -111,10 +111,10 @@ export default function ContactPage() {
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-gray-900">
-                On the ground
+                {content.advisorCard3Title || 'On the ground'}
               </h3>
               <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
-                Based in Phuket. I view the property, meet the people, and represent your interests locally.
+                {content.advisorCard3Desc || "Based in Phuket. I view the property, meet the people, and represent your interests locally."}
               </p>
             </div>
           </div>
@@ -130,12 +130,12 @@ export default function ContactPage() {
               {/* What you get Pill Badge */}
               <div className="section-pill shadow-2xs">
                 <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
-                What you get
+                {content.confidenceSectionPill || 'What you get'}
               </div>
 
               {/* Headline */}
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                Everything you need to buy with confidence
+                {content.confidenceSectionHeadline || 'Everything you need to buy with confidence'}
               </h2>
 
               {/* 5 Checklist Items */}
@@ -147,7 +147,7 @@ export default function ContactPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <span>A clear read on your goals – lifestyle, yield, or both</span>
+                  <span>{content.confidenceItem1 || 'A clear read on your goals – lifestyle, yield, or both'}</span>
                 </div>
 
                 {/* Item 2 */}
@@ -157,7 +157,7 @@ export default function ContactPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <span>A shortlist of properties that genuinely fit, with the trade-offs spelled out</span>
+                  <span>{content.confidenceItem2 || 'A shortlist of properties that genuinely fit, with the trade-offs spelled out'}</span>
                 </div>
 
                 {/* Item 3 */}
@@ -167,7 +167,7 @@ export default function ContactPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <span>Due diligence on title, developer and ownership structure</span>
+                  <span>{content.confidenceItem3 || 'Due diligence on title, developer and ownership structure'}</span>
                 </div>
 
                 {/* Item 4 */}
@@ -177,7 +177,7 @@ export default function ContactPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <span>Guidance through negotiation, contracts and transfer</span>
+                  <span>{content.confidenceItem4 || 'Guidance through negotiation, contracts and transfer'}</span>
                 </div>
 
                 {/* Item 5 */}
@@ -187,19 +187,19 @@ export default function ContactPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <span>Introductions to vetted lawyers, and rental management if you need it</span>
+                  <span>{content.confidenceItem5 || 'Introductions to vetted lawyers, and rental management if you need it'}</span>
                 </div>
               </div>
 
               {/* Action Button */}
               <div className="pt-2">
                 <a
-                  href="https://wa.me/8801875189361"
+                  href={content.confidenceButtonLink || "https://wa.me/8801875189361"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-[#4c70ff] hover:bg-blue-600 text-white font-semibold text-xs sm:text-sm rounded-full transition-all shadow-md shadow-blue-600/25"
                 >
-                  Ask Amir
+                  {content.confidenceButtonText || 'Ask Amir'}
                   <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
                   </svg>
@@ -211,7 +211,7 @@ export default function ContactPage() {
             <div className="lg:col-span-6">
               <div className="rounded-3xl overflow-hidden shadow-2xl border border-gray-200 bg-gray-100 h-[380px] sm:h-[460px] w-full">
                 <img
-                  src="/images/confidence-villa.png"
+                  src={content.confidenceSectionImage || "/images/confidence-villa.png"}
                   alt="Luxury Villa Pool - Buy with confidence"
                   className="w-full h-full object-cover"
                 />
@@ -226,12 +226,12 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           {/* Section Header */}
           <div className="text-center space-y-3">
-            <div className="section-pill shadow-2xs">
+            <div className="section-pill shadow-2xs mx-auto">
               <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
-              How to get started
+              {content.processSectionPill || 'How to get started'}
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-              A simple, no-pressure process
+              {content.processSectionHeadline || 'A simple, no-pressure process'}
             </h2>
           </div>
 
@@ -244,10 +244,10 @@ export default function ContactPage() {
               </div>
               <div className="space-y-2">
                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-white transition-colors">
-                  Reach out
+                  {content.processStep1Title || 'Reach out'}
                 </h3>
                 <p className="text-xs sm:text-sm text-gray-500 group-hover:text-white/90 leading-relaxed transition-colors">
-                  A message on WhatsApp or the form. Tell me what you're considering.
+                  {content.processStep1Desc || "A message on WhatsApp or the form. Tell me what you're considering."}
                 </p>
               </div>
             </div>
@@ -259,10 +259,10 @@ export default function ContactPage() {
               </div>
               <div className="space-y-2">
                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-white transition-colors">
-                  Free consultation
+                  {content.processStep2Title || 'Free consultation'}
                 </h3>
                 <p className="text-xs sm:text-sm text-gray-500 group-hover:text-white/90 leading-relaxed transition-colors">
-                  We talk through goals, budget and areas. No obligation.
+                  {content.processStep2Desc || 'We talk through goals, budget and areas. No obligation.'}
                 </p>
               </div>
             </div>
@@ -274,10 +274,10 @@ export default function ContactPage() {
               </div>
               <div className="space-y-2">
                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-white transition-colors">
-                  Research & shortlist
+                  {content.processStep3Title || 'Research & shortlist'}
                 </h3>
                 <p className="text-xs sm:text-sm text-gray-500 group-hover:text-white/90 leading-relaxed transition-colors">
-                  I do the legwork and bring you properties that actually fit.
+                  {content.processStep3Desc || 'I do the legwork and bring you properties that actually fit.'}
                 </p>
               </div>
             </div>
@@ -289,10 +289,10 @@ export default function ContactPage() {
               </div>
               <div className="space-y-2">
                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-white transition-colors">
-                  Buy with confidence
+                  {content.processStep4Title || 'Buy with confidence'}
                 </h3>
                 <p className="text-xs sm:text-sm text-gray-500 group-hover:text-white/90 leading-relaxed transition-colors">
-                  Due diligence, negotiation and transfer – I'm with you throughout.
+                  {content.processStep4Desc || "Due diligence, negotiation and transfer – I'm with you throughout."}
                 </p>
               </div>
             </div>
@@ -306,27 +306,27 @@ export default function ContactPage() {
           <div className="bg-[#1c2024] rounded-[28px] sm:rounded-[32px] p-3 sm:p-4 shadow-2xl w-full">
             <div className="bg-[#FFFFFF0D] border border-[#FFFFFF33] rounded-[20px] py-12 sm:py-16 px-6 sm:px-12 text-center text-white space-y-6 sm:space-y-8 w-full">
               <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">
-                Let's talk about your purchase
+                {content.ctaHeadline || "Let's talk about your purchase"}
               </h3>
               <p className="text-xs sm:text-sm text-gray-400 max-w-md mx-auto leading-relaxed">
-                The first conversation is free, and there's no pressure to go further.
+                {content.ctaDescription || "The first conversation is free, and there's no pressure to go further."}
               </p>
 
               <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
                 <a
-                  href="https://wa.me/8801875189361"
+                  href={content.ctaButton1Link || "https://wa.me/8801875189361"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-3 bg-[#4c70ff] hover:bg-blue-600 text-white font-semibold text-xs sm:text-sm rounded-full transition-all shadow-md shadow-blue-500/20"
                 >
-                  WhatsApp Amir
+                  {content.ctaButton1Text || 'WhatsApp Amir'}
                 </a>
 
                 <a
-                  href="#contact-form"
+                  href={content.ctaButton2Link || "#contact-form"}
                   className="group px-6 py-3 bg-white hover:bg-[#5870F7] text-[#020202] hover:text-white font-semibold text-xs sm:text-sm rounded-full transition-all shadow-md"
                 >
-                  Book a consultation
+                  {content.ctaButton2Text || 'Book a consultation'}
                 </a>
               </div>
             </div>
