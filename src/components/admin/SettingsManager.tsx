@@ -56,6 +56,14 @@ export const SettingsManager: React.FC = () => {
   const [meetAdvisorImage, setMeetAdvisorImage] = useState(settings.homepageImages?.meetAdvisorImage || '/images/amir-seated.png');
   const [readyBannerBg, setReadyBannerBg] = useState(settings.homepageImages?.readyBannerBg || '/images/resort-cta-bg.png');
 
+  // Global CTA
+  const [globalCtaHeadline, setGlobalCtaHeadline] = useState(settings.globalCTA?.headline || 'Ready to talk through your purchase?');
+  const [globalCtaDescription, setGlobalCtaDescription] = useState(settings.globalCTA?.description || 'Message Amir directly. Honest, advisory, no pressure.');
+  const [globalCtaPrimaryBtnText, setGlobalCtaPrimaryBtnText] = useState(settings.globalCTA?.primaryButtonText || 'Contact Amir on WhatsApp');
+  const [globalCtaPrimaryBtnLink, setGlobalCtaPrimaryBtnLink] = useState(settings.globalCTA?.primaryButtonLink || 'https://wa.me/8801875189361');
+  const [globalCtaSecondaryBtnText, setGlobalCtaSecondaryBtnText] = useState(settings.globalCTA?.secondaryButtonText || 'See how I work');
+  const [globalCtaSecondaryBtnLink, setGlobalCtaSecondaryBtnLink] = useState(settings.globalCTA?.secondaryButtonLink || '/about');
+
   const [toast, setToast] = useState('');
 
   const showToast = (msg: string) => {
@@ -119,6 +127,14 @@ export const SettingsManager: React.FC = () => {
       },
       heroSlides,
       navbarLinks,
+      globalCTA: {
+        headline: globalCtaHeadline,
+        description: globalCtaDescription,
+        primaryButtonText: globalCtaPrimaryBtnText,
+        primaryButtonLink: globalCtaPrimaryBtnLink,
+        secondaryButtonText: globalCtaSecondaryBtnText,
+        secondaryButtonLink: globalCtaSecondaryBtnLink,
+      },
     });
     showToast('All site settings, branding, and button links saved successfully!');
   };
@@ -511,6 +527,69 @@ export const SettingsManager: React.FC = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+        <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
+          <div className="flex items-center gap-2 pb-3 border-b border-slate-200">
+            <LayoutTemplate className="w-5 h-5 text-[#5870F7]" />
+            <h2 className="text-lg font-bold text-gray-900 font-heading-bricolage">Global Footer CTA</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="space-y-1.5 sm:col-span-2">
+              <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Headline</label>
+              <input
+                type="text"
+                value={globalCtaHeadline}
+                onChange={(e) => setGlobalCtaHeadline(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7]"
+              />
+            </div>
+            <div className="space-y-1.5 sm:col-span-2">
+              <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Description</label>
+              <RichTextEditor
+                value={globalCtaDescription}
+                onChange={setGlobalCtaDescription}
+              />
+            </div>
+            
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Primary Button Text</label>
+              <input
+                type="text"
+                value={globalCtaPrimaryBtnText}
+                onChange={(e) => setGlobalCtaPrimaryBtnText(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7]"
+              />
+            </div>
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Primary Button Link</label>
+              <input
+                type="text"
+                value={globalCtaPrimaryBtnLink}
+                onChange={(e) => setGlobalCtaPrimaryBtnLink(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7]"
+              />
+            </div>
+
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Secondary Button Text</label>
+              <input
+                type="text"
+                value={globalCtaSecondaryBtnText}
+                onChange={(e) => setGlobalCtaSecondaryBtnText(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7]"
+              />
+            </div>
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Secondary Button Link</label>
+              <input
+                type="text"
+                value={globalCtaSecondaryBtnLink}
+                onChange={(e) => setGlobalCtaSecondaryBtnLink(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7]"
+              />
+            </div>
           </div>
         </div>
 

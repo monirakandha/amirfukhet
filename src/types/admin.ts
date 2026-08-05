@@ -230,6 +230,14 @@ export interface SiteSettings {
     workWithMePage?: WorkWithMePageContent;
     contactPage?: ContactPageContent;
   };
+  globalCTA?: {
+    headline?: string;
+    description?: string;
+    primaryButtonText?: string;
+    primaryButtonLink?: string;
+    secondaryButtonText?: string;
+    secondaryButtonLink?: string;
+  };
 }
 
 export interface ContactSubmission {
