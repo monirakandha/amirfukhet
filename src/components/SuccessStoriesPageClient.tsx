@@ -14,8 +14,14 @@ interface SuccessStoriesPageClientProps {
 }
 
 export default function SuccessStoriesPageClient({ initialStories }: SuccessStoriesPageClientProps) {
-  const { successStories } = useAdmin();
+  const { successStories, settings } = useAdmin();
   const displayStories = successStories && successStories.length > 0 ? successStories : initialStories;
+  
+  const hero = settings.pagesContent?.successStoriesHero || {
+    pill: 'Success Stories',
+    headline: 'Real deals. Real<br /> buyers. The full story.',
+    description: 'Detailed case studies of foreign buyers Amir guided from first contact to a successful purchase.'
+  };
   const [isValuationOpen, setIsValuationOpen] = useState(false);
   const [visibleCount, setVisibleCount] = useState(3);
   const [selectedStory, setSelectedStory] = useState<SuccessStory | null>(null);
@@ -61,13 +67,14 @@ export default function SuccessStoriesPageClient({ initialStories }: SuccessStor
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
           <div className="section-pill mx-auto shadow-2xs">
             <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
-            Success Stories
+            {hero.pill}
           </div>
-          <h1 className="font-heading-bricolage text-[36px] sm:text-[44px] lg:text-[50px] font-semibold text-[#020202] leading-[1.15] tracking-[-0.01em] max-w-3xl mx-auto">
-            Real deals. Real<br className="hidden sm:inline" /> buyers. The full story.
-          </h1>
+          <h1 
+            className="font-heading-bricolage text-[36px] sm:text-[44px] lg:text-[50px] font-semibold text-[#020202] leading-[1.15] tracking-[-0.01em] max-w-3xl mx-auto"
+            dangerouslySetInnerHTML={{ __html: hero.headline || '' }}
+          />
           <p className="font-desc-mona text-[16px] font-normal text-[#6B7280] leading-[1.5] max-w-xl mx-auto">
-            Detailed case studies of foreign buyers Amir guided from first<br className="hidden sm:inline" /> contact to a successful purchase.
+            {hero.description}
           </p>
         </div>
       </section>

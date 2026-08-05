@@ -28,7 +28,7 @@ function getCategoryColor(cat: string) {
 import { useAdmin } from '@/context/AdminContext';
 
 export default function BlogPageClient({ initialBlogs }: BlogPageClientProps) {
-  const { blogs } = useAdmin();
+  const { blogs, settings } = useAdmin();
   const [category, setCategory] = useState('All');
   const [search, setSearch] = useState('');
 
@@ -46,8 +46,36 @@ export default function BlogPageClient({ initialBlogs }: BlogPageClientProps) {
     return list;
   }, [blogs, initialBlogs, category, search]);
 
+  const hero = settings.pagesContent?.insightsHero || {
+    pill: 'Market Intelligence',
+    headline: 'Research the market<br /> before you commit',
+    description: 'Expert analysis on Phuket real estate trends, ownership structures, rental yields, and area guides — written for serious investors.'
+  };
+
   return (
     <>
+      {/* Header Section */}
+      <section className="pt-32 pb-14 bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center space-y-4">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#f4f6fa] border border-blue-100 font-desc-mona text-[16px] font-medium text-[#5870F7] leading-none shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
+              {hero.pill}
+            </div>
+
+            <h1
+              className="font-heading-bricolage text-[36px] sm:text-[48px] font-semibold text-[#020202] leading-[1.1] tracking-[-0.01em]"
+              style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+              dangerouslySetInnerHTML={{ __html: hero.headline || '' }}
+            />
+
+            <p className="font-desc-mona text-[16px] font-normal text-[#6B7280] max-w-2xl mx-auto leading-[1.5]">
+              {hero.description}
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Controls Bar */}
       <section className="bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">

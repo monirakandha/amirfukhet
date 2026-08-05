@@ -46,6 +46,9 @@ export const SettingsManager: React.FC = () => {
   const [facebook, setFacebook] = useState(settings.socialLinks.facebook || '');
   const [twitter, setTwitter] = useState(settings.socialLinks.twitter || '');
 
+  // Navbar Links
+  const [navbarLinks, setNavbarLinks] = useState(settings.navbarLinks || []);
+
   // Homepage Images & Sliders
   const [heroSlides, setHeroSlides] = useState<HeroSlide[]>(settings.heroSlides || []);
   const [guideBannerBg, setGuideBannerBg] = useState(settings.homepageImages?.guideBannerBg || '/images/skyline-bg.png');
@@ -115,6 +118,7 @@ export const SettingsManager: React.FC = () => {
         readyBannerBg,
       },
       heroSlides,
+      navbarLinks,
     });
     showToast('All site settings, branding, and button links saved successfully!');
   };
@@ -453,6 +457,60 @@ export const SettingsManager: React.FC = () => {
                 className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm font-mono focus:outline-none focus:border-[#5870F7]"
               />
             </div>
+          </div>
+        </div>
+
+        {/* Section 5: Navbar Settings */}
+        <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
+          <div className="flex items-center gap-2 pb-3 border-b border-slate-200">
+            <Globe className="w-5 h-5 text-[#5870F7]" />
+            <h2 className="text-lg font-bold text-gray-900 font-heading-bricolage">Navbar Links</h2>
+          </div>
+          
+          <div className="space-y-4">
+            {navbarLinks.map((link, idx) => (
+              <div key={idx} className="flex items-center gap-4 bg-slate-50 p-4 rounded-xl border border-slate-200">
+                <div className="flex-1 space-y-1.5">
+                  <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Label</label>
+                  <input
+                    type="text"
+                    value={link.name}
+                    onChange={(e) => {
+                      const newLinks = [...navbarLinks];
+                      newLinks[idx].name = e.target.value;
+                      setNavbarLinks(newLinks);
+                    }}
+                    className="w-full bg-white border border-slate-300 rounded-xl px-4 py-2 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7]"
+                  />
+                </div>
+                <div className="flex-1 space-y-1.5">
+                  <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Path</label>
+                  <input
+                    type="text"
+                    value={link.path}
+                    onChange={(e) => {
+                      const newLinks = [...navbarLinks];
+                      newLinks[idx].path = e.target.value;
+                      setNavbarLinks(newLinks);
+                    }}
+                    className="w-full bg-white border border-slate-300 rounded-xl px-4 py-2 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7]"
+                  />
+                </div>
+                <div className="space-y-1.5 flex flex-col items-center">
+                  <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Visible</label>
+                  <input
+                    type="checkbox"
+                    checked={link.isVisible}
+                    onChange={(e) => {
+                      const newLinks = [...navbarLinks];
+                      newLinks[idx].isVisible = e.target.checked;
+                      setNavbarLinks(newLinks);
+                    }}
+                    className="w-5 h-5 mt-2 rounded text-[#5870F7] focus:ring-[#5870F7]"
+                  />
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 

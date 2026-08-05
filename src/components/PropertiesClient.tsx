@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useAdmin } from '@/context/AdminContext';
 
 const PROPERTY_LIST = [
   {
@@ -66,11 +67,33 @@ const PROPERTY_LIST = [
 ];
 
 export default function PropertiesClient() {
+  const { settings, properties } = useAdmin();
   const [areaFilter, setAreaFilter] = useState('all');
   const [tenureFilter, setTenureFilter] = useState('all');
 
-  const filtered = PROPERTY_LIST.filter((item) => {
-    if (areaFilter !== 'all' && !item.location.toLowerCase().includes(areaFilter.toLowerCase())) return false;
+  const hero = settings.pagesContent?.listingsHero || {
+    pill: 'Selected Listings',
+    headline: 'A few hand-picked properties',
+    description: 'Not a portal – a small, curated selection. Every property here is one Amir would be comfortable recommending.'
+  };
+
+  const listToUse = properties && properties.length > 0 
+    ? properties.map((p: any) => ({
+        id: p.id,
+        title: p.title,
+        location: typeof p.location === 'object' ? (p.locationName || `Thailand ,${p.location.city}`) : p.location,
+        beds: p.features?.beds ?? p.beds,
+        baths: p.features?.baths ?? p.baths,
+        sqm: p.areaSqM ?? p.features?.sqft ?? p.sqm,
+        tenure: p.ownershipType ?? p.tenure,
+        originalPrice: p.originalPriceFormatted ?? p.originalPrice,
+        price: p.formattedPrice ?? p.price,
+        image: p.images?.[0] ?? p.image,
+      }))
+    : PROPERTY_LIST;
+
+  const filtered = listToUse.filter((item: any) => {
+    if (areaFilter !== 'all' && typeof item.location === 'string' && !item.location.toLowerCase().includes(areaFilter.toLowerCase())) return false;
     if (tenureFilter !== 'all' && item.tenure !== tenureFilter) return false;
     return true;
   });
@@ -81,8 +104,31 @@ export default function PropertiesClient() {
   }
 
   return (
-    <section className="pt-16 pb-8 flex-grow bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    <>
+      {/* Hero Area */}
+      <section className="relative w-full pt-36 pb-20 sm:pt-40 sm:pb-24 overflow-hidden bg-[#f8fafc] border-b border-gray-200/60">
+        <div className="absolute inset-0 pointer-events-none hero-grid-overlay" />
+
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
+          <div className="section-pill shadow-2xs mx-auto">
+            <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
+            {hero.pill}
+          </div>
+
+          <h1
+            className="font-heading-bricolage text-[36px] sm:text-[48px] font-semibold text-[#020202] leading-[1.1] tracking-[-0.01em] max-w-4xl mx-auto"
+            style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
+            dangerouslySetInnerHTML={{ __html: hero.headline || '' }}
+          />
+
+          <p className="font-desc-mona text-[16px] font-normal text-[#6B7280] max-w-2xl mx-auto leading-[1.5] pt-1">
+            {hero.description}
+          </p>
+        </div>
+      </section>
+
+      <section className="pt-16 pb-8 flex-grow bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Filter Bar */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-gray-100">
           <h2 className="text-xl sm:text-2xl font-bold text-gray-900 leading-snug max-w-xs">
@@ -179,5 +225,6 @@ export default function PropertiesClient() {
         </div>
       </div>
     </section>
+    </>
   );
 }

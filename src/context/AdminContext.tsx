@@ -59,6 +59,120 @@ const defaultSettings: SiteSettings = {
       secondaryButtonLink: '/guide',
     }
   ],
+  homepageContent: {
+    statsSection: {
+      stat1Value: '32+', stat1Label: 'In-depth investor articles',
+      stat2Value: '07+', stat2Label: 'Phuket areas covered in depth',
+      stat3Value: 'A–Z', stat3Label: 'Buying process, fully explained',
+      stat4Value: '24h', stat4Label: 'Replies within 24h',
+    },
+    advisorIntroSection: {
+      pill: 'Property Investment Advisor - Phuket',
+      headline: 'Invest in Phuket Property<br />with Trusted Advisors, Guided by Expertise.',
+      description: 'Independent research, honest guidance, and the full picture from ownership<br />structures to rental yields so international buyers invest in Thailand with confidence.',
+      primaryButtonText: 'Talk to Amir on WhatsApp',
+      primaryButtonLink: 'https://wa.me/8801875189361',
+      secondaryButtonText: 'Read the free guide',
+      secondaryButtonLink: '/blog',
+    },
+    guideBannerSection: {
+      pill: 'Start here · The complete reference',
+      headline: 'The Complete Guide to<br /> Buying Property in Phuket as a Foreigner',
+      description: 'Ownership structures, the step-by-step buying process, taxes and transfer fees, financing, due diligence and the real risks – the single resource that answers almost every question before you ever send a message.',
+      primaryButtonText: 'Read the guide',
+      primaryButtonLink: '/blog',
+      secondaryButtonText: 'Explore market insights',
+      secondaryButtonLink: '/blog',
+    },
+    blogSection: {
+      pill: 'Latest insights',
+      headline: 'Research the market before you commit',
+    },
+    categoriesSection: {
+      pill: 'Latest insights',
+      headline: 'Research the<br /> market before you commit',
+    },
+    researchMetricsSection: {
+      pill: 'Market Insights',
+      headline: 'Depth of research<br className="hidden sm:inline" /> you won\'t find on a portal',
+      subheading: 'Price trends by area, rental demand and seasonality, ownership law, and how global<br className="hidden md:inline" /> events move the Phuket market — tracked and explained, not hyped.',
+      stat1Value: '+7.4%', stat1Label: 'Avg. villa price growth, prime west coast (YoY)*',
+      stat2Value: '6–8%', stat2Label: 'Typical gross rental yield range*',
+      stat3Value: 'Nov–Mar', stat3Label: 'Peak rental season, high-occupancy window*',
+      stat4Value: '30yx3', stat4Label: 'Standard leasehold term & renewals',
+      buttonText: 'Explore market insights',
+      buttonLink: '/blog',
+    },
+    meetAdvisorSection: {
+      pill: 'Meet your advisor',
+      headline: 'I help foreigners buy in Phuket the right way — eyes open.',
+      description: "I'm Amir Ahmed Faisal, a property investment advisor based in Phuket. I'm not an agent chasing a commission — I'm the person who explains the structures, flags the risks, and stays in your corner from first question to handover. My job is to make sure your money goes into the right property, in the right area, under the right ownership.",
+      primaryButtonText: 'My story & approach',
+      primaryButtonLink: '/about',
+      secondaryButtonText: 'Explore market insights',
+      secondaryButtonLink: '/blog',
+    },
+    featuredPropertiesSection: {
+      pill: 'A few selected properties',
+      headline: 'Hand-picked, not a portal',
+    },
+    contactCtaSection: {
+      pill: 'Ready when you are',
+      headline: 'One message<br className="hidden sm:inline" /> is all it takes to start',
+      description: 'Tell me what you\'re looking for, or just ask the questions you can\'t find straight answers to. No pressure, no mailing lists, just clear advice.',
+      buttonText: 'Message Amir on WhatsApp',
+      buttonLink: 'https://wa.me/8801875189361',
+    },
+  },
+  navbarLinks: [
+    { name: 'Insights', path: '/blog', isVisible: true, order: 1 },
+    { name: 'The Guide', path: '/guide', isVisible: true, order: 2 },
+    { name: 'Success Stories', path: '/success-stories', isVisible: true, order: 3 },
+    { name: 'Listings', path: '/properties', isVisible: true, order: 4 },
+    { name: 'About', path: '/about', isVisible: true, order: 5 },
+    { name: 'Work With Me', path: '/work-with-me', isVisible: true, order: 6 },
+    { name: 'Contact', path: '/contact', isVisible: true, order: 7 },
+  ],
+  pagesContent: {
+    insightsHero: {
+      pill: 'Insights',
+      headline: 'The latest market research<br />and insights',
+      description: 'Explore our latest findings, guides, and updates on the Phuket property market.',
+    },
+    listingsHero: {
+      pill: 'Properties',
+      headline: 'Explore prime real estate<br />in Phuket',
+      description: 'View hand-picked luxury villas, beachfront condos, and premium land.',
+    },
+    successStoriesHero: {
+      pill: 'Success Stories',
+      headline: 'How investors succeeded<br />with the right advice',
+      description: 'Read the case studies of international buyers navigating the market.',
+    },
+    aboutPage: {
+      heroPill: 'About Amir',
+      heroHeadline: 'The advisor foreigners<br />trust to buy in Phuket',
+      heroDescription: 'I\'m Amir Ahmed Faisal. I help international buyers understand the Phuket market and invest in it safely – explaining the structures, flagging the risks, and staying in their corner from first message to handover.',
+      heroImage: '/images/amir-hero.png',
+    },
+    workWithMePage: {
+      heroPill: 'Work with Amir',
+      heroHeadline: 'An advisor in your corner — from first question to keys in hand',
+      heroDescription: 'No commission-chasing. No pressure. Just clear, independent guidance so you buy the right property under the right structure.',
+      advisorSectionTitle: 'Why work with an advisor, not a portal',
+      advisorSectionDescription: 'A listing site shows you what\'s for sale. An advisor tells you what\'s worth buying — and what to avoid.',
+      confidenceSectionPill: 'What you get',
+      confidenceSectionHeadline: 'Everything you need to buy with confidence',
+      confidenceSectionImage: '/images/confidence-villa.png',
+      processSectionPill: 'How to get started',
+      processSectionHeadline: 'A simple, no-pressure process',
+    },
+    contactPage: {
+      heroPill: 'Contact Us',
+      heroHeadline: 'Get in touch with Amir',
+      heroDescription: 'A straight, honest reply – usually within 24 hours. No sales pitch.',
+    }
+  },
 };
 
 const defaultFaqs: FAQItem[] = [
@@ -303,6 +417,19 @@ export const AdminProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         setState((prev) => ({
           ...prev,
           ...parsed,
+          settings: {
+            ...defaultSettings,
+            ...(parsed.settings || {}),
+            navbarLinks: parsed.settings?.navbarLinks || defaultSettings.navbarLinks,
+            homepageContent: {
+              ...(defaultSettings.homepageContent || {}),
+              ...(parsed.settings?.homepageContent || {})
+            },
+            pagesContent: {
+              ...(defaultSettings.pagesContent || {}),
+              ...(parsed.settings?.pagesContent || {})
+            }
+          },
           successStories: mergedStories,
           blogs: mergedBlogs,
           guideContent: parsed.guideContent || defaultGuideContent,

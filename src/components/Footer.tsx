@@ -92,12 +92,16 @@ export default function Footer({ hideCTA = false }: { hideCTA?: boolean }) {
               Site
             </h4>
             <ul className="space-y-4 font-desc-mona text-[16px] font-normal text-[#B3B3B3]">
-              <li><Link href="/guide" className="hover:text-white transition-colors">The Guide</Link></li>
-              <li><Link href="/success-stories" className="hover:text-white transition-colors">Success Stories</Link></li>
-              <li><Link href="/properties" className="hover:text-white transition-colors">Listings</Link></li>
-              <li><Link href="/about" className="hover:text-white transition-colors">About</Link></li>
-              <li><Link href="/work-with-me" className="hover:text-white transition-colors">Work With Me</Link></li>
-              <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
+              {(settings?.navbarLinks || [])
+                .filter(link => link.isVisible && link.path !== '/blog')
+                .sort((a, b) => a.order - b.order)
+                .map((link, idx) => (
+                  <li key={idx}>
+                    <Link href={link.path} className="hover:text-white transition-colors">
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
             </ul>
           </div>
 

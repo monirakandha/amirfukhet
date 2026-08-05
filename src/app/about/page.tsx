@@ -7,9 +7,18 @@ import Footer from '@/components/Footer';
 import HomeValuationModal from '@/components/HomeValuationModal';
 
 import AnimatedCounter from '@/components/AnimatedCounter';
+import { useAdmin } from '@/context/AdminContext';
 
 export default function AboutPage() {
+  const { settings } = useAdmin();
   const [isValuationOpen, setIsValuationOpen] = useState(false);
+
+  const hero = settings.pagesContent?.aboutPage || {
+    heroPill: 'About Amir',
+    heroHeadline: 'The advisor foreigners<br />trust to buy in Phuket',
+    heroDescription: 'I\'m Amir Ahmed Faisal. I help international buyers understand the Phuket market and invest in it safely – explaining the structures, flagging the risks, and staying in their corner from first message to handover.',
+    heroImage: '/images/amir-hero.png',
+  };
 
   return (
     <div className="min-h-screen bg-white text-gray-900 flex flex-col font-sans">
@@ -27,49 +36,53 @@ export default function AboutPage() {
               {/* About Amir Pill Badge */}
               <div className="section-pill shadow-2xs">
                 <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
-                About Amir
+                {hero.heroPill}
               </div>
 
               {/* Main Headline */}
-              <h1 className="font-heading-bricolage text-[36px] sm:text-[44px] lg:text-[50px] font-semibold text-[#020202] leading-[1.15] tracking-[-0.01em] text-left">
-                The advisor foreigners<br />
-                trust to buy in Phuket
-              </h1>
+              <h1 
+                className="font-heading-bricolage text-[36px] sm:text-[44px] lg:text-[50px] font-semibold text-[#020202] leading-[1.15] tracking-[-0.01em] text-left"
+                dangerouslySetInnerHTML={{ __html: hero.heroHeadline || '' }}
+              />
 
               {/* Description Paragraph */}
               <p className="font-desc-mona text-[16px] font-normal text-[#6B7280] leading-[1.5] max-w-xl text-left">
-                I'm Amir Ahmed Faisal. I help international buyers understand the Phuket market and invest in it safely – explaining the structures, flagging the risks, and staying in their corner from first message to handover.
+                {hero.heroDescription}
               </p>
 
               {/* Social Circle Buttons */}
               <div className="flex items-center gap-4 pt-2">
                 {/* X (Twitter) */}
-                <a
-                  href="https://x.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-11 h-11 rounded-full border border-[#E5E7EB] bg-white hover:border-[#5870F7] text-[#5870F7] flex items-center justify-center font-bold text-sm shadow-xs transition-colors"
-                  aria-label="Twitter / X"
-                >
-                  𝕏
-                </a>
+                {settings.socialLinks?.twitter && (
+                  <a
+                    href={settings.socialLinks.twitter}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-11 h-11 rounded-full border border-[#E5E7EB] bg-white hover:border-[#5870F7] text-[#5870F7] flex items-center justify-center font-bold text-sm shadow-xs transition-colors"
+                    aria-label="Twitter / X"
+                  >
+                    𝕏
+                  </a>
+                )}
 
                 {/* LinkedIn */}
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-11 h-11 rounded-full border border-[#E5E7EB] bg-white hover:border-[#5870F7] text-[#5870F7] flex items-center justify-center shadow-xs transition-colors"
-                  aria-label="LinkedIn"
-                >
-                  <svg className="w-[18px] h-[18px] fill-current" viewBox="0 0 24 24">
-                    <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
-                  </svg>
-                </a>
+                {settings.socialLinks?.linkedin && (
+                  <a
+                    href={settings.socialLinks.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-11 h-11 rounded-full border border-[#E5E7EB] bg-white hover:border-[#5870F7] text-[#5870F7] flex items-center justify-center shadow-xs transition-colors"
+                    aria-label="LinkedIn"
+                  >
+                    <svg className="w-[18px] h-[18px] fill-current" viewBox="0 0 24 24">
+                      <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+                    </svg>
+                  </a>
+                )}
 
                 {/* WhatsApp */}
                 <a
-                  href="https://wa.me/8801875189361"
+                  href={settings.buttonLinks?.whatsappUrl || "https://wa.me/8801875189361"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-11 h-11 rounded-full border border-[#E5E7EB] bg-white hover:border-[#5870F7] text-[#5870F7] flex items-center justify-center shadow-xs transition-colors"
@@ -90,7 +103,9 @@ export default function AboutPage() {
         {/* Right Content Area (Image) absolutely positioned to the bottom of the section */}
         <div className="hidden lg:block absolute bottom-0 right-0 w-full max-w-7xl mx-auto left-0 pointer-events-none z-10">
           <div className="relative w-full h-full">
-            <img src="/images/amir-hero.png" alt="Amir Ahmed Faisal" className="absolute bottom-0 right-4 lg:right-12 xl:right-20 w-full h-auto max-w-[420px] xl:max-w-[480px] object-contain object-bottom drop-shadow-2xl" />
+            {hero.heroImage && (
+              <img src={hero.heroImage} alt={settings.adminProfile?.name || "Amir Ahmed Faisal"} className="absolute bottom-0 right-4 lg:right-12 xl:right-20 w-full h-auto max-w-[420px] xl:max-w-[480px] object-contain object-bottom drop-shadow-2xl" />
+            )}
           </div>
         </div>
 

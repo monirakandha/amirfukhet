@@ -17,6 +17,8 @@ import { NewsletterManager } from '@/components/admin/NewsletterManager';
 import { MediaManager } from '@/components/admin/MediaManager';
 import { GuideManager } from '@/components/admin/GuideManager';
 import { HeroSliderManager } from '@/components/admin/HeroSliderManager';
+import { HomeEditorManager } from '@/components/admin/HomeEditorManager';
+import PagesManager from '@/components/admin/PagesManager';
 import { Menu, X, ShieldCheck, ExternalLink } from 'lucide-react';
 
 export default function AdminDashboardPage() {
@@ -46,6 +48,10 @@ export default function AdminDashboardPage() {
         return <CategoryManager />;
       case 'hero':
         return <HeroSliderManager />;
+      case 'home-editor':
+        return <HomeEditorManager />;
+      case 'pages':
+        return <PagesManager />;
       case 'settings':
         return <SettingsManager />;
       case 'profile':

@@ -4,9 +4,17 @@ import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import HomeValuationModal from '@/components/HomeValuationModal';
+import { useAdmin } from '@/context/AdminContext';
 
 export default function ContactPage() {
+  const { settings } = useAdmin();
   const [isValuationOpen, setIsValuationOpen] = useState(false);
+
+  const hero = settings.pagesContent?.workWithMeHero || {
+    pill: 'Work with Amir',
+    headline: 'An advisor in your corner — from first question to keys in hand',
+    description: 'No commission-chasing. No pressure. Just clear, independent guidance so you buy the right property under the right structure.'
+  };
 
   return (
     <div className="min-h-screen bg-white text-gray-900 flex flex-col font-sans">
@@ -21,17 +29,18 @@ export default function ContactPage() {
           {/* Work with Amir Pill Badge */}
           <div className="section-pill shadow-2xs mx-auto">
             <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
-            Work with Amir
+            {hero.pill}
           </div>
 
           {/* Main Headline */}
-          <h1 className="hero-heading max-w-4xl mx-auto">
-            An advisor in your corner — from first question to keys in hand
-          </h1>
+          <h1 
+            className="hero-heading max-w-4xl mx-auto"
+            dangerouslySetInnerHTML={{ __html: hero.headline || '' }}
+          />
 
           {/* Subtitle / Paragraph */}
           <p className="hero-description max-w-2xl mx-auto pt-1">
-            No commission-chasing. No pressure. Just clear, independent guidance so you buy the right property under the right structure.
+            {hero.description}
           </p>
 
           {/* Primary Action CTA Button */}

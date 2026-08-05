@@ -39,6 +39,105 @@ export interface HeroSlide {
   secondaryButtonLink: string;
 }
 
+export interface HomepageContent {
+  statsSection: {
+    stat1Value: string; stat1Label: string;
+    stat2Value: string; stat2Label: string;
+    stat3Value: string; stat3Label: string;
+    stat4Value: string; stat4Label: string;
+  };
+  advisorIntroSection: {
+    pill: string;
+    headline: string;
+    description: string;
+    primaryButtonText: string;
+    primaryButtonLink: string;
+    secondaryButtonText: string;
+    secondaryButtonLink: string;
+  };
+  guideBannerSection: {
+    pill: string;
+    headline: string;
+    description: string;
+    primaryButtonText: string;
+    primaryButtonLink: string;
+    secondaryButtonText: string;
+    secondaryButtonLink: string;
+  };
+  blogSection: {
+    pill: string;
+    headline: string;
+  };
+  categoriesSection: {
+    pill: string;
+    headline: string;
+  };
+  researchMetricsSection: {
+    pill: string;
+    headline: string;
+    subheading: string;
+    stat1Value: string; stat1Label: string;
+    stat2Value: string; stat2Label: string;
+    stat3Value: string; stat3Label: string;
+    stat4Value: string; stat4Label: string;
+    buttonText: string;
+    buttonLink: string;
+  };
+  meetAdvisorSection: {
+    pill: string;
+    headline: string;
+    description: string;
+    primaryButtonText: string;
+    primaryButtonLink: string;
+    secondaryButtonText: string;
+    secondaryButtonLink: string;
+  };
+  featuredPropertiesSection: {
+    pill: string;
+    headline: string;
+  };
+  contactCtaSection: {
+    pill: string;
+    headline: string;
+    description: string;
+    buttonText: string;
+    buttonLink: string;
+  };
+}
+
+export interface PageHeroContent {
+  pill?: string;
+  headline?: string;
+  description?: string;
+  bgImage?: string;
+}
+
+export interface AboutPageContent {
+  heroPill?: string;
+  heroHeadline?: string;
+  heroDescription?: string;
+  heroImage?: string;
+}
+
+export interface WorkWithMePageContent {
+  heroPill?: string;
+  heroHeadline?: string;
+  heroDescription?: string;
+  advisorSectionTitle?: string;
+  advisorSectionDescription?: string;
+  confidenceSectionPill?: string;
+  confidenceSectionHeadline?: string;
+  confidenceSectionImage?: string;
+  processSectionPill?: string;
+  processSectionHeadline?: string;
+}
+
+export interface ContactPageContent {
+  heroPill?: string;
+  heroHeadline?: string;
+  heroDescription?: string;
+}
+
 export interface SiteSettings {
   siteTitle: string;
   tagline: string;
@@ -70,6 +169,16 @@ export interface SiteSettings {
     readyBannerBg: string;
   };
   heroSlides?: HeroSlide[];
+  homepageContent?: HomepageContent;
+  navbarLinks?: { name: string; path: string; isVisible: boolean; order: number; }[];
+  pagesContent?: {
+    insightsHero?: PageHeroContent;
+    listingsHero?: PageHeroContent;
+    successStoriesHero?: PageHeroContent;
+    aboutPage?: AboutPageContent;
+    workWithMePage?: WorkWithMePageContent;
+    contactPage?: ContactPageContent;
+  };
 }
 
 export interface ContactSubmission {

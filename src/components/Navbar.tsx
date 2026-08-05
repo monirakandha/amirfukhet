@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
+import { useAdmin } from '@/context/AdminContext';
 
 interface NavbarProps {
   onOpenValuationModal?: () => void;
@@ -30,15 +31,8 @@ export default function Navbar({ onOpenValuationModal }: NavbarProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks: { name: string; path: string }[] = [
-    { name: 'Insights', path: '/blog' },
-    { name: 'The Guide', path: '/guide' },
-    { name: 'Success Stories', path: '/success-stories' },
-    { name: 'Listings', path: '/properties' },
-    { name: 'About', path: '/about' },
-    { name: 'Work With Me', path: '/work-with-me' },
-    { name: 'Contact', path: '/contact' },
-  ];
+  const { settings } = useAdmin();
+  const navLinks = (settings.navbarLinks || []).filter(link => link.isVisible).sort((a, b) => a.order - b.order);
 
   // Colors based on home vs inner page & scroll state
   const isDarkNav = isHomePage && isScrolled;
@@ -130,7 +124,7 @@ export default function Navbar({ onOpenValuationModal }: NavbarProps) {
           <div className="hidden md:flex items-center space-x-3">
             {/* WhatsApp */}
             <a
-              href="https://wa.me/8801875189361"
+              href={settings.buttonLinks?.whatsappUrl || "https://wa.me/8801875189361"}
               target="_blank"
               rel="noopener noreferrer"
               className={`w-10 h-10 rounded-[16px] flex items-center justify-center transition-all shadow-xs ${
@@ -146,10 +140,11 @@ export default function Navbar({ onOpenValuationModal }: NavbarProps) {
             </a>
 
             {/* LinkedIn */}
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
+            {settings.socialLinks?.linkedin && (
+              <a
+                href={settings.socialLinks.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
               className={`w-10 h-10 rounded-[16px] flex items-center justify-center transition-all shadow-xs ${
                 isLightNav
                   ? 'border border-[#E5E7EB] bg-white text-[#5870F7] hover:bg-[#F8FAFC]'
@@ -160,7 +155,8 @@ export default function Navbar({ onOpenValuationModal }: NavbarProps) {
               <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
                 <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
               </svg>
-            </a>
+              </a>
+            )}
           </div>
 
           {/* Mobile menu toggle */}

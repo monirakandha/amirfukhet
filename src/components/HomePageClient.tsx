@@ -59,6 +59,7 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
 
   const activeSlide = heroSlides[currentSlide];
 
+  const content = settings.homepageContent!;
   const guideBannerBg = settings.homepageImages?.guideBannerBg || '/images/skyline-bg.png';
   const advisorImage = settings.homepageImages?.advisorImage || '/images/amir-seated.png';
   const meetAdvisorImage = settings.homepageImages?.meetAdvisorImage || '/images/amir-seated.png';
@@ -146,7 +147,7 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
         )}
       </section>
 
-      {/* Stats Counter Section matching Figma mockup */}
+      {/* Stats Counter Section */}
       <section className="w-full bg-[#f6f8fb] py-14 border-b border-gray-200/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
@@ -156,10 +157,14 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
                 className="font-heading-bricolage text-[44px] font-light text-[#5870F7] leading-none tracking-[-0.01em]"
                 style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
               >
-                <AnimatedCounter value="32+" />
+                {content.statsSection?.stat1Value.includes('+') ? (
+                  <AnimatedCounter value={content.statsSection.stat1Value} />
+                ) : (
+                  content.statsSection?.stat1Value || '32+'
+                )}
               </div>
               <p className="font-desc-mona text-[18px] font-normal text-[#6B7280] leading-none">
-                In-depth investor articles
+                {content.statsSection?.stat1Label || 'In-depth investor articles'}
               </p>
             </div>
 
@@ -169,10 +174,14 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
                 className="font-heading-bricolage text-[44px] font-light text-[#5870F7] leading-none tracking-[-0.01em]"
                 style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
               >
-                <AnimatedCounter value="07+" />
+                {content.statsSection?.stat2Value.includes('+') ? (
+                  <AnimatedCounter value={content.statsSection.stat2Value} />
+                ) : (
+                  content.statsSection?.stat2Value || '07+'
+                )}
               </div>
               <p className="font-desc-mona text-[18px] font-normal text-[#6B7280] leading-none">
-                Phuket areas covered in depth
+                {content.statsSection?.stat2Label || 'Phuket areas covered in depth'}
               </p>
             </div>
 
@@ -182,10 +191,10 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
                 className="font-heading-bricolage text-[44px] font-light text-[#5870F7] leading-none tracking-[-0.01em]"
                 style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
               >
-                A–Z
+                {content.statsSection?.stat3Value || 'A–Z'}
               </div>
               <p className="font-desc-mona text-[18px] font-normal text-[#6B7280] leading-none">
-                Buying process, fully explained
+                {content.statsSection?.stat3Label || 'Buying process, fully explained'}
               </p>
             </div>
 
@@ -195,17 +204,21 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
                 className="font-heading-bricolage text-[44px] font-light text-[#5870F7] leading-none tracking-[-0.01em]"
                 style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
               >
-                <AnimatedCounter value="24h" />
+                {content.statsSection?.stat4Value.includes('h') ? (
+                  <AnimatedCounter value={content.statsSection.stat4Value} />
+                ) : (
+                  content.statsSection?.stat4Value || '24h'
+                )}
               </div>
               <p className="font-desc-mona text-[18px] font-normal text-[#6B7280] leading-none">
-                Replies within 24h
+                {content.statsSection?.stat4Label || 'Replies within 24h'}
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Advisor Intro Section matching Figma mockup */}
+      {/* Advisor Intro Section */}
       <section className="w-full bg-[#f4f6fa] pt-8 lg:pt-10 pb-0 relative overflow-hidden border-b border-gray-200/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-stretch justify-between gap-8 lg:gap-4">
@@ -214,40 +227,38 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
               {/* Pill Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 border border-[#E5E9F2] section-pill font-desc-mona text-[14px] sm:text-[16px] font-medium text-[#5870F7] leading-none shadow-2xs">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#5870F7]" />
-                Property Investment Advisor - Phuket
+                {content.advisorIntroSection?.pill || 'Property Investment Advisor - Phuket'}
               </div>
 
               {/* Headline */}
               <h2
                 className="font-heading-bricolage text-[40px] sm:text-[48px] lg:text-[54px] font-semibold text-[#020202] leading-[1.1] sm:leading-[1.15] tracking-[-0.02em] max-w-[800px]"
                 style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
-              >
-                Invest in Phuket Property<br />
-                with Trusted Advisors, Guided by Expertise.
-              </h2>
+                dangerouslySetInnerHTML={{ __html: content.advisorIntroSection?.headline || 'Invest in Phuket Property<br />with Trusted Advisors, Guided by Expertise.' }}
+              />
 
               {/* Sub-description */}
-              <p className="font-desc-mona text-[16px] font-normal text-[#6B7280] max-w-[700px] leading-[1.6]">
-                Independent research, honest guidance, and the full picture from ownership<br />
-                structures to rental yields so international buyers invest in Thailand with confidence.
-              </p>
+              <p 
+                className="font-desc-mona text-[16px] font-normal text-[#6B7280] max-w-[700px] leading-[1.6]"
+                dangerouslySetInnerHTML={{ __html: content.advisorIntroSection?.description || 'Independent research, honest guidance, and the full picture from ownership<br />structures to rental yields so international buyers invest in Thailand with confidence.' }}
+              />
 
               {/* CTA Buttons */}
               <div className="flex flex-wrap items-center gap-4 pt-4">
                 <a
-                  href="https://wa.me/8801875189361"
+                  href={content.advisorIntroSection?.primaryButtonLink || 'https://wa.me/8801875189361'}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-[#5870F7] hover:bg-blue-600 font-desc-mona text-[16px] font-medium text-white leading-none transition-all shadow-[inset_0px_2px_4px_0px_rgba(255,255,255,0.25)]"
                 >
-                  Talk to Amir on WhatsApp
+                  {content.advisorIntroSection?.primaryButtonText || 'Talk to Amir on WhatsApp'}
                 </a>
 
                 <Link
-                  href="/blog"
+                  href={content.advisorIntroSection?.secondaryButtonLink || '/blog'}
                   className="group inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-transparent hover:bg-[#F4F6F7] font-desc-mona text-[16px] font-medium text-[#020202] leading-none border border-[#DFE3EB] transition-all"
                 >
-                  Read the free guide
+                  {content.advisorIntroSection?.secondaryButtonText || 'Read the free guide'}
                 </Link>
               </div>
             </div>
@@ -264,7 +275,7 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
         </div>
       </section>
 
-      {/* Foreigner Property Guide Banner Section matching Figma mockup */}
+      {/* Foreigner Property Guide Banner Section */}
       <section className="relative w-full overflow-hidden text-center text-white bg-[#7cb5ec] flex items-center justify-center" style={{ height: '723px' }}>
         {/* Skyline Background Image */}
         <div className="absolute inset-0 z-0">
@@ -282,56 +293,55 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
           {/* Translucent Pill Badge */}
           <div className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/40 font-desc-mona text-[16px] font-medium text-white leading-none shadow-xs">
             <span className="w-2 h-2 rounded-full bg-white" />
-            Start here · The complete reference
+            {content.guideBannerSection?.pill || 'Start here · The complete reference'}
           </div>
 
           {/* Heading */}
           <h2
             className="font-heading-bricolage text-[44px] font-semibold text-white leading-none tracking-[-0.01em] text-center max-w-4xl mx-auto drop-shadow-sm"
             style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
-          >
-            The Complete Guide to<br /> Buying Property in Phuket as a Foreigner
-          </h2>
+            dangerouslySetInnerHTML={{ __html: content.guideBannerSection?.headline || 'The Complete Guide to<br /> Buying Property in Phuket as a Foreigner' }}
+          />
 
           {/* Description */}
-          <p className="font-desc-mona text-[16px] font-normal text-white leading-[1.5] text-center max-w-[680px] mx-auto drop-shadow-xs">
-            Ownership structures, the step-by-step buying process, taxes and transfer fees, financing, due diligence and the real risks – the single resource that answers almost every question before you ever send a message.
-          </p>
+          <p 
+            className="font-desc-mona text-[16px] font-normal text-white leading-[1.5] text-center max-w-[680px] mx-auto drop-shadow-xs"
+            dangerouslySetInnerHTML={{ __html: content.guideBannerSection?.description || 'Ownership structures, the step-by-step buying process, taxes and transfer fees, financing, due diligence and the real risks – the single resource that answers almost every question before you ever send a message.' }}
+          />
           {/* CTA Buttons */}
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <Link
-              href="/blog"
+              href={content.guideBannerSection?.primaryButtonLink || '/blog'}
               className="font-desc-mona text-[16px] font-medium text-white leading-none px-7 py-3.5 bg-[#5870F7] hover:bg-blue-600 rounded-full transition-all shadow-[inset_0px_2px_4px_0px_rgba(255,255,255,0.25)] inline-flex items-center justify-center"
             >
-              Read the guide
+              {content.guideBannerSection?.primaryButtonText || 'Read the guide'}
             </Link>
 
             <Link
-              href="/blog"
+              href={content.guideBannerSection?.secondaryButtonLink || '/blog'}
               className="group font-desc-mona text-[16px] font-medium text-[#020202] hover:text-white leading-none px-7 py-3.5 bg-[#F4F6F7] hover:bg-[#5870F7] rounded-full border border-[#DFE3EB] hover:border-[#5870F7] transition-all inline-flex items-center justify-center shadow-2xs"
             >
-              Explore market insights
+              {content.guideBannerSection?.secondaryButtonText || 'Explore market insights'}
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Blog / Market Insights Section matching Figma mockup */}
+      {/* Blog / Market Insights Section */}
       <section className="w-full bg-white py-16 sm:py-24 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="text-center space-y-3 mb-12 sm:mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#f4f6fa] border border-blue-100 section-pill font-desc-mona text-[16px] font-medium text-[#5870F7] leading-none shadow-2xs">
               <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
-              Latest insights
+              {content.blogSection?.pill || 'Latest insights'}
             </div>
 
             <h2
               className="section-heading font-heading-bricolage text-[44px] font-semibold text-[#020202] leading-[100%] tracking-[-0.01em]"
               style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
-            >
-              Research the market before you commit
-            </h2>
+              dangerouslySetInnerHTML={{ __html: content.blogSection?.headline || 'Research the market before you commit' }}
+            />
           </div>
 
           {/* 3-Card Grid */}
@@ -448,7 +458,7 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
         </div>
       </section>
 
-      {/* Category Topics Grid Section matching Figma mockup */}
+      {/* Category Topics Grid Section */}
       <section
         className="w-full bg-[#f4f6fa] py-16 sm:py-24 border-b border-gray-200/50"
         style={{
@@ -461,15 +471,14 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
           <div className="text-center space-y-3 mb-12 sm:mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-blue-100 section-pill font-desc-mona text-[16px] font-medium text-[#5870F7] leading-none shadow-2xs">
               <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
-              Latest insights
+              {content.categoriesSection?.pill || 'Latest insights'}
             </div>
 
             <h2
               className="section-heading font-heading-bricolage text-[44px] font-semibold text-[#020202] leading-[1.1] tracking-[-0.01em]"
               style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
-            >
-              Research the<br /> market before you commit
-            </h2>
+              dangerouslySetInnerHTML={{ __html: content.categoriesSection?.headline || 'Research the<br /> market before you commit' }}
+            />
           </div>
 
           {/* 6 Category Cards Grid */}
@@ -570,69 +579,69 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
         </div>
       </section>
 
-      {/* Research Depth Metrics Section matching exact Figma specs */}
+      {/* Research Depth Metrics Section */}
       <section className="w-full bg-white py-16 sm:py-24 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-3 mb-12 sm:mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#f4f6fa] border border-blue-100 section-pill font-desc-mona text-[16px] font-medium text-[#5870F7] leading-none shadow-2xs">
               <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
-              Market Insights
+              {content.researchMetricsSection?.pill || 'Market Insights'}
             </div>
 
             <h2
               className="section-heading font-heading-bricolage text-[36px] sm:text-[44px] font-semibold text-[#020202] leading-[1.1] tracking-[-0.01em] max-w-4xl mx-auto"
               style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
-            >
-              Depth of research<br className="hidden sm:inline" /> you won't find on a portal
-            </h2>
+              dangerouslySetInnerHTML={{ __html: content.researchMetricsSection?.headline || 'Depth of research<br className="hidden sm:inline" /> you won\'t find on a portal' }}
+            />
 
-            <p className="section-subheading font-desc-mona text-[16px] font-normal text-[#6B7280] max-w-[700px] mx-auto leading-[1.5] pt-2 text-center">
-              Price trends by area, rental demand and seasonality, ownership law, and how global<br className="hidden md:inline" /> events move the Phuket market — tracked and explained, not hyped.
-            </p>
+            <p 
+              className="section-subheading font-desc-mona text-[16px] font-normal text-[#6B7280] max-w-[700px] mx-auto leading-[1.5] pt-2 text-center"
+              dangerouslySetInnerHTML={{ __html: content.researchMetricsSection?.subheading || 'Price trends by area, rental demand and seasonality, ownership law, and how global<br className="hidden md:inline" /> events move the Phuket market — tracked and explained, not hyped.' }}
+            />
           </div>
 
           {/* 4 Stat Metric Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center mb-12">
             <div className="bg-white border border-gray-200/80 rounded-2xl p-8 flex flex-col justify-center items-center shadow-2xs hover:shadow-md transition-shadow">
               <div className="stat-metric-value font-heading-bricolage text-[32px] font-normal text-[#5870F7] leading-none tracking-[-0.01em] mb-2.5" style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}>
-                +7.4%
+                {content.researchMetricsSection?.stat1Value || '+7.4%'}
               </div>
               <p className="stat-metric-label font-desc-mona text-[16px] font-normal text-[#6B7280] leading-[1.4] text-center max-w-[210px]">
-                Avg. villa price growth, prime west coast (YoY)*
+                {content.researchMetricsSection?.stat1Label || 'Avg. villa price growth, prime west coast (YoY)*'}
               </p>
             </div>
             <div className="bg-white border border-gray-200/80 rounded-2xl p-8 flex flex-col justify-center items-center shadow-2xs hover:shadow-md transition-shadow">
               <div className="stat-metric-value font-heading-bricolage text-[32px] font-normal text-[#5870F7] leading-none tracking-[-0.01em] mb-2.5" style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}>
-                6–8%
+                {content.researchMetricsSection?.stat2Value || '6–8%'}
               </div>
               <p className="stat-metric-label font-desc-mona text-[16px] font-normal text-[#6B7280] leading-[1.4] text-center max-w-[210px]">
-                Typical gross rental yield range*
+                {content.researchMetricsSection?.stat2Label || 'Typical gross rental yield range*'}
               </p>
             </div>
             <div className="bg-white border border-gray-200/80 rounded-2xl p-8 flex flex-col justify-center items-center shadow-2xs hover:shadow-md transition-shadow">
               <div className="stat-metric-value font-heading-bricolage text-[32px] font-normal text-[#5870F7] leading-none tracking-[-0.01em] mb-2.5" style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}>
-                Nov–Mar
+                {content.researchMetricsSection?.stat3Value || 'Nov–Mar'}
               </div>
               <p className="stat-metric-label font-desc-mona text-[16px] font-normal text-[#6B7280] leading-[1.4] text-center max-w-[210px]">
-                Peak rental season, high-occupancy window*
+                {content.researchMetricsSection?.stat3Label || 'Peak rental season, high-occupancy window*'}
               </p>
             </div>
             <div className="bg-white border border-gray-200/80 rounded-2xl p-8 flex flex-col justify-center items-center shadow-2xs hover:shadow-md transition-shadow">
               <div className="stat-metric-value font-heading-bricolage text-[32px] font-normal text-[#5870F7] leading-none tracking-[-0.01em] mb-2.5" style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}>
-                30yx3
+                {content.researchMetricsSection?.stat4Value || '30yx3'}
               </div>
-              <p className="stat-metric-label font-desc-mona text-[16px] font-normal text-[#6B7280] leading-[1.4] text-center max-w-[210px]">
-                Standard leasehold term &amp; renewals
+              <p className="stat-metric-label font-desc-mona text-[16px] font-normal text-[#6B7280] leading-none text-center max-w-[210px]">
+                {content.researchMetricsSection?.stat4Label || 'Standard leasehold term & renewals'}
               </p>
             </div>
           </div>
 
           <div className="text-center">
             <Link
-              href="/blog"
+              href={content.researchMetricsSection?.buttonLink || '/blog'}
               className="group inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#f4f6fa] hover:bg-[#5870F7] font-desc-mona text-[16px] font-medium text-[#020202] hover:text-white border border-gray-200/80 hover:border-[#5870F7] transition-all shadow-2xs leading-none"
             >
-              <span>Explore market insights</span>
+              <span>{content.researchMetricsSection?.buttonText || 'Explore market insights'}</span>
               <svg className="w-4 h-4 text-[#020202] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
               </svg>
@@ -644,7 +653,7 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
       {/* Success Stories Section */}
       <SuccessStoriesSection stories={displayStories} limit={3} />
 
-      {/* Meet Your Advisor Section matching exact Figma specs */}
+      {/* Meet Your Advisor Section */}
       <section className="w-full bg-white py-16 sm:py-24 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -654,7 +663,7 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
                 <div className="w-full overflow-hidden rounded-[16px]">
                   <img
                     src={meetAdvisorImage}
-                    alt="Amir Ahmed Faisal - Property Investment Advisor"
+                    alt="Property Investment Advisor"
                     className="w-full h-auto object-cover object-center"
                   />
                 </div>
@@ -665,33 +674,33 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
             <div className="lg:col-span-7 space-y-6">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-blue-100 font-desc-mona text-[16px] font-medium text-[#5870F7] leading-none shadow-2xs">
                 <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
-                Meet your advisor
+                {content.meetAdvisorSection?.pill || 'Meet your advisor'}
               </div>
 
               <h2
                 className="font-heading-bricolage text-[44px] font-semibold text-[#020202] leading-[100%] tracking-[-0.01em]"
                 style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
-              >
-                I help foreigners buy in Phuket the right way — eyes open.
-              </h2>
+                dangerouslySetInnerHTML={{ __html: content.meetAdvisorSection?.headline || 'I help foreigners buy in Phuket the right way — eyes open.' }}
+              />
 
-              <p className="font-desc-mona text-[20px] font-normal text-[#6B7280] leading-[1.4] max-w-2xl">
-                I'm Amir Ahmed Faisal, a property investment advisor based in Phuket. I'm not an agent chasing a commission — I'm the person who explains the structures, flags the risks, and stays in your corner from first question to handover. My job is to make sure your money goes into the right property, in the right area, under the right ownership.
-              </p>
+              <p 
+                className="font-desc-mona text-[20px] font-normal text-[#6B7280] leading-[1.4] max-w-2xl"
+                dangerouslySetInnerHTML={{ __html: content.meetAdvisorSection?.description || "I'm Amir Ahmed Faisal, a property investment advisor based in Phuket. I'm not an agent chasing a commission — I'm the person who explains the structures, flags the risks, and stays in your corner from first question to handover. My job is to make sure your money goes into the right property, in the right area, under the right ownership." }}
+              />
 
               <div className="flex flex-wrap items-center gap-4 pt-2">
                 <Link
-                  href="/about"
+                  href={content.meetAdvisorSection?.primaryButtonLink || '/about'}
                   className="font-desc-mona text-[16px] font-medium text-white leading-none px-7 py-3.5 bg-[#5870F7] hover:bg-blue-600 rounded-full transition-all shadow-md shadow-blue-500/20 inline-flex items-center justify-center"
                 >
-                  My story &amp; approach
+                  {content.meetAdvisorSection?.primaryButtonText || 'My story & approach'}
                 </Link>
 
                 <Link
-                  href="/blog"
+                  href={content.meetAdvisorSection?.secondaryButtonLink || '/blog'}
                   className="group font-desc-mona text-[16px] font-medium text-[#020202] hover:text-white leading-none px-7 py-3.5 bg-[#DFE3EB] hover:bg-[#5870F7] rounded-full transition-all border border-transparent shadow-2xs inline-flex items-center justify-center gap-2"
                 >
-                  <span>Explore market insights</span>
+                  <span>{content.meetAdvisorSection?.secondaryButtonText || 'Explore market insights'}</span>
                   <svg className="w-4 h-4 text-[#020202] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
                   </svg>
@@ -708,15 +717,14 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
           <div className="text-center space-y-3 mb-12 sm:mb-16">
             <div className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-[#f4f6fa] border border-blue-100 section-pill font-desc-mona text-[16px] font-medium text-[#5870F7] leading-none shadow-2xs">
               <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
-              A few selected properties
+              {content.featuredPropertiesSection?.pill || 'A few selected properties'}
             </div>
 
             <h2
               className="section-heading font-heading-bricolage text-[44px] font-semibold text-[#020202] leading-[100%] tracking-[-0.01em]"
               style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
-            >
-              Hand-picked, not a portal
-            </h2>
+              dangerouslySetInnerHTML={{ __html: content.featuredPropertiesSection?.headline || 'Hand-picked, not a portal' }}
+            />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
@@ -734,7 +742,7 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
               href="/properties"
               className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white hover:bg-[#5870F7] hover:text-white hover:border-[#5870F7] font-desc-mona text-[16px] font-normal text-[#020202] border border-gray-200 transition-colors shadow-2xs leading-none group"
             >
-              View listings
+              {settings.homepageContent?.featuredButtonText || 'View listings'}
               <svg className="w-4 h-4 text-[#020202] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
               </svg>
@@ -743,13 +751,11 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
         </div>
       </section>
 
-
-
       {/* WhatsApp Contact CTA Banner Section */}
       <section className="relative w-full py-20 lg:py-28 overflow-hidden text-white bg-[#43a19b]">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/resort-cta-bg.png"
+            src={settings.homepageContent?.contactCtaBg || '/images/ready-banner-bg.jpg'}
             alt="Phuket Oceanfront Resort Coastline View"
             className="w-full h-full object-cover object-center"
           />
@@ -759,28 +765,28 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
           <div className="max-w-xl space-y-6">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/40 font-desc-mona text-[16px] font-normal text-white leading-none shadow-xs">
               <span className="w-2 h-2 rounded-full bg-white" />
-              Ready when you are
+              {settings.homepageContent?.contactCtaPill || 'Ready when you are'}
             </div>
 
             <h2
               className="font-heading-bricolage text-[44px] font-semibold text-white leading-[1.1] tracking-[-0.01em] drop-shadow-sm max-w-[420px]"
               style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
-            >
-              One message<br className="hidden sm:inline" /> is all it takes to start
-            </h2>
+              dangerouslySetInnerHTML={{ __html: settings.homepageContent?.contactCtaHeadline || 'One message<br className="hidden sm:inline" /> is all it takes to start' }}
+            />
 
-            <p className="font-desc-mona text-[18px] font-normal text-white/95 leading-[1.45] drop-shadow-xs max-w-[440px]">
-              Have a question about an area, a structure, or a specific property? Message Amir directly. You'll get a straight, honest answer – not a sales pitch.
-            </p>
+            <p 
+              className="font-desc-mona text-[18px] font-normal text-white/95 leading-[1.45] drop-shadow-xs max-w-[440px]"
+              dangerouslySetInnerHTML={{ __html: settings.homepageContent?.contactCtaDescription || 'Tell me what you\'re looking for, or just ask the questions you can\'t find straight answers to. No pressure, no mailing lists, just clear advice.' }}
+            />
 
             <div className="flex flex-col items-start gap-3.5 pt-2 w-full max-w-[400px]">
               <a
-                href="https://wa.me/8801875189361"
+                href={settings.homepageContent?.contactCtaButtonLink || 'https://wa.me/8801875189361'}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-desc-mona text-[16px] font-medium text-white leading-none w-full inline-flex items-center justify-center gap-3 px-6 py-3.5 bg-[#5870F7] hover:bg-blue-600 rounded-full transition-all shadow-[inset_0px_2px_4px_0px_rgba(255,255,255,0.35)] whitespace-nowrap"
               >
-                <span className="whitespace-nowrap">Chat on WhatsApp — replies within 24h</span>
+                <span className="whitespace-nowrap">{settings.homepageContent?.contactCtaButtonText || 'Message Amir on WhatsApp'}</span>
                 <svg className="w-4 h-4 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
                 </svg>

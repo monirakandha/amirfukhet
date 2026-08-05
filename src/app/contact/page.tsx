@@ -6,8 +6,10 @@ import Footer from '@/components/Footer';
 import HomeValuationModal from '@/components/HomeValuationModal';
 import { submitInquiry } from '@/services/api';
 import { CheckCircle2 } from 'lucide-react';
+import { useAdmin } from '@/context/AdminContext';
 
 export default function ContactPage() {
+  const { settings } = useAdmin();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -16,6 +18,12 @@ export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
 
   const [isValuationOpen, setIsValuationOpen] = useState(false);
+
+  const hero = settings.pagesContent?.contactHero || {
+    pill: 'Contact Us',
+    headline: 'Get in touch with Amir',
+    description: 'A straight, honest reply &ndash; usually within 24 hours. No sales pitch.'
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,17 +58,18 @@ export default function ContactPage() {
           {/* Contact Pill Badge */}
           <div className="section-pill shadow-2xs mx-auto">
             <span className="w-2 h-2 rounded-full bg-[#5870F7]" />
-            Contact Us
+            {hero.pill}
           </div>
 
           {/* Main Headline */}
-          <h1 className="hero-heading max-w-4xl mx-auto">
-            Get in touch with Amir
-          </h1>
+          <h1 
+            className="hero-heading max-w-4xl mx-auto"
+            dangerouslySetInnerHTML={{ __html: hero.headline || '' }}
+          />
 
           {/* Subtitle / Paragraph */}
           <p className="hero-description max-w-2xl mx-auto pt-1">
-            A straight, honest reply &ndash; usually within 24 hours. No sales pitch.
+            {hero.description}
           </p>
         </div>
       </section>
@@ -78,10 +87,10 @@ export default function ContactPage() {
 
               <div className="space-y-3">
                 {/* WhatsApp Card */}
-                <a href="https://wa.me/8801875189361" target="_blank" rel="noopener noreferrer" className="block group">
+                <a href={settings.buttonLinks?.whatsappUrl || "https://wa.me/8801875189361"} target="_blank" rel="noopener noreferrer" className="block group">
                   <div className="bg-white border border-[#E5E7EB] rounded-3xl p-5 flex items-center gap-5 transition-all group-hover:shadow-md">
                     <div className="w-[68px] h-[68px] shrink-0 rounded-full bg-[#F3F4F6] overflow-hidden flex items-center justify-center">
-                      <img src="/images/amir.png" alt="Amir" className="w-full h-full object-cover object-top" />
+                      <img src={settings.adminProfile?.image || "/images/amir.png"} alt={settings.adminProfile?.name || "Amir"} className="w-full h-full object-cover object-top" />
                     </div>
                     <div>
                       <h3 className="text-[20px] font-semibold text-gray-900 group-hover:text-blue-600 transition-colors tracking-tight">WhatsApp</h3>
@@ -91,7 +100,7 @@ export default function ContactPage() {
                 </a>
 
                 {/* Email Card */}
-                <a href="mailto:amir@amirknowsphuket.com" className="block group">
+                <a href={`mailto:${settings.contactEmail || "amir@amirknowsphuket.com"}`} className="block group">
                   <div className="bg-white border border-[#E5E7EB] rounded-3xl p-5 flex items-center gap-5 transition-all group-hover:shadow-md">
                     <div className="w-[68px] h-[68px] shrink-0 rounded-full bg-white border border-[#E5E7EB] flex items-center justify-center">
                       <svg width="34" height="34" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">

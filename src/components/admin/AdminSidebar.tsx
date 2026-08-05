@@ -19,7 +19,8 @@ import {
   Image as ImageIcon,
   BookOpen,
   Monitor,
-  User
+  User,
+  LayoutTemplate
 } from 'lucide-react';
 
 interface AdminSidebarProps {
@@ -34,14 +35,16 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ activeTab, setActive
 
   const navItems = [
     { id: 'overview', label: 'Dashboard Overview', icon: LayoutDashboard },
-    { id: 'properties', label: 'Properties Manager', icon: Home },
-    { id: 'blogs', label: 'Blog Posts Manager', icon: FileText },
+    { id: 'properties', label: 'Listings Manager', icon: Home },
+    { id: 'blogs', label: 'Insights Manager', icon: FileText },
     { id: 'stories', label: 'Success Stories', icon: Award },
     { id: 'guide', label: 'Guide Page Content', icon: BookOpen },
+    { id: 'pages', label: 'Inner Pages Editor', icon: LayoutTemplate },
     { id: 'media', label: 'Media Library', icon: ImageIcon },
     { id: 'faqs', label: 'FAQ Manager', icon: HelpCircle },
     { id: 'categories', label: 'Category Archives', icon: FolderTree },
     { id: 'hero', label: 'Hero Area Slider', icon: Monitor },
+    { id: 'home-editor', label: 'Home Page Editor', icon: LayoutTemplate },
     { id: 'inquiries', label: 'Contact Inquiries', icon: Mail, badge: newInquiriesCount > 0 ? newInquiriesCount : undefined },
     { id: 'newsletters', label: 'Newsletter Leads', icon: Users, badge: newsletterSubmissions.length },
     { id: 'settings', label: 'Site & Link Settings', icon: Settings },
