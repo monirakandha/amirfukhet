@@ -222,25 +222,27 @@ export default function GuidePage() {
                 </div>
 
                 {/* 2 Comparison Cards Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                   {/* Card 1: Freehold */}
-                  <div className="bg-[#f4f6fa] rounded-2xl p-6 border border-gray-200/60 space-y-2">
-                    <h3 className="text-[#4c70ff] font-bold text-base">
+                  <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E5E7EB] shadow-sm hover:shadow-md transition-shadow h-full flex flex-col relative overflow-hidden group">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#4c70ff] to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <h3 className="text-[#4c70ff] font-bold text-lg sm:text-xl mb-3 tracking-tight">
                       {guideContent.section2.freeholdCardTitle}
                     </h3>
                     <div 
-                      className="text-xs sm:text-sm text-gray-500 leading-relaxed prose prose-sm max-w-none [&>p]:mb-2 last:[&>p]:mb-0"
+                      className="text-sm sm:text-base text-gray-600 leading-relaxed break-words [&>p]:mb-3 last:[&>p]:mb-0 flex-grow"
                       dangerouslySetInnerHTML={{ __html: guideContent.section2.freeholdCardDesc }}
                     />
                   </div>
 
                   {/* Card 2: Leasehold */}
-                  <div className="bg-[#f4f6fa] rounded-2xl p-6 border border-gray-200/60 space-y-2">
-                    <h3 className="text-[#4c70ff] font-bold text-base">
+                  <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E5E7EB] shadow-sm hover:shadow-md transition-shadow h-full flex flex-col relative overflow-hidden group">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#4c70ff] to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <h3 className="text-[#4c70ff] font-bold text-lg sm:text-xl mb-3 tracking-tight">
                       {guideContent.section2.leaseholdCardTitle}
                     </h3>
                     <div 
-                      className="text-xs sm:text-sm text-gray-500 leading-relaxed prose prose-sm max-w-none [&>p]:mb-2 last:[&>p]:mb-0"
+                      className="text-sm sm:text-base text-gray-600 leading-relaxed break-words [&>p]:mb-3 last:[&>p]:mb-0 flex-grow"
                       dangerouslySetInnerHTML={{ __html: guideContent.section2.leaseholdCardDesc }}
                     />
                   </div>
