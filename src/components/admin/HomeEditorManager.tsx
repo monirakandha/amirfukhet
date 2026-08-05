@@ -22,7 +22,13 @@ export const HomeEditorManager: React.FC = () => {
     meetAdvisorSection: { pill: '', headline: '', description: '', primaryButtonText: '', primaryButtonLink: '', secondaryButtonText: '', secondaryButtonLink: '' },
     featuredPropertiesSection: { pill: '', headline: '' },
     contactCtaSection: { pill: '', headline: '', description: '', buttonText: '', buttonLink: '' },
+    freeLeadMagnetSection: { pill: '', headline: '', description: '', buttonText: '', footerText: '' },
   };
+
+  // Ensure freeLeadMagnetSection exists even if settings.homepageContent is populated but missing it
+  if (initialContent && !initialContent.freeLeadMagnetSection) {
+    initialContent.freeLeadMagnetSection = { pill: '', headline: '', description: '', buttonText: '', footerText: '' };
+  }
 
   const [content, setContent] = useState<HomepageContent>(initialContent);
   const [guideBannerBg, setGuideBannerBg] = useState(settings.homepageImages?.guideBannerBg || '');
@@ -63,12 +69,14 @@ export const HomeEditorManager: React.FC = () => {
   };
 
   const renderInput = (section: keyof HomepageContent, field: string, label: string, type = 'text') => {
+    const sectionData = (content[section] as any) || {};
+    
     return (
       <div className="space-y-1">
         <label className="text-sm font-semibold text-slate-700">{label}</label>
         {type === 'textarea' ? (
           <textarea
-            value={(content[section] as any)[field] || ''}
+            value={sectionData[field] || ''}
             onChange={(e) => handleChange(section, field, e.target.value)}
             className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#5870F7]/50"
             rows={3}
@@ -76,7 +84,7 @@ export const HomeEditorManager: React.FC = () => {
         ) : (
           <input
             type="text"
-            value={(content[section] as any)[field] || ''}
+            value={sectionData[field] || ''}
             onChange={(e) => handleChange(section, field, e.target.value)}
             className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#5870F7]/50"
           />
