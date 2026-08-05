@@ -64,6 +64,11 @@ export const SettingsManager: React.FC = () => {
   const [globalCtaSecondaryBtnText, setGlobalCtaSecondaryBtnText] = useState(settings.globalCTA?.secondaryButtonText || 'See how I work');
   const [globalCtaSecondaryBtnLink, setGlobalCtaSecondaryBtnLink] = useState(settings.globalCTA?.secondaryButtonLink || '/about');
 
+  // Sidebar CTA
+  const [sidebarCtaTitle, setSidebarCtaTitle] = useState(settings.sidebarCTA?.title || 'Get the PDF version');
+  const [sidebarCtaDescription, setSidebarCtaDescription] = useState(settings.sidebarCTA?.description || 'Download this guide as a PDF with extra checklists to read later.');
+  const [sidebarCtaButtonText, setSidebarCtaButtonText] = useState(settings.sidebarCTA?.buttonText || 'Download Free PDF');
+
   const [toast, setToast] = useState('');
 
   const showToast = (msg: string) => {
@@ -135,6 +140,11 @@ export const SettingsManager: React.FC = () => {
         secondaryButtonText: globalCtaSecondaryBtnText,
         secondaryButtonLink: globalCtaSecondaryBtnLink,
       },
+      sidebarCTA: {
+        title: sidebarCtaTitle,
+        description: sidebarCtaDescription,
+        buttonText: sidebarCtaButtonText,
+      }
     });
     showToast('All site settings, branding, and button links saved successfully!');
   };
@@ -529,6 +539,45 @@ export const SettingsManager: React.FC = () => {
             ))}
           </div>
         </div>
+        
+        {/* Sidebar CTA Section */}
+        <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
+          <div className="flex items-center gap-2 pb-3 border-b border-slate-200">
+            <LayoutTemplate className="w-5 h-5 text-[#5870F7]" />
+            <h2 className="text-lg font-bold text-gray-900 font-heading-bricolage">Sidebar CTA (Blog)</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="space-y-1.5 sm:col-span-2">
+              <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Title</label>
+              <input
+                type="text"
+                value={sidebarCtaTitle}
+                onChange={(e) => setSidebarCtaTitle(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7]"
+              />
+            </div>
+            <div className="space-y-1.5 sm:col-span-2">
+              <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Description</label>
+              <textarea
+                value={sidebarCtaDescription}
+                onChange={(e) => setSidebarCtaDescription(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7] min-h-[100px]"
+              />
+            </div>
+            
+            <div className="space-y-1.5 sm:col-span-2">
+              <label className="text-xs font-bold text-slate-700 uppercase font-heading-bricolage">Button Text</label>
+              <input
+                type="text"
+                value={sidebarCtaButtonText}
+                onChange={(e) => setSidebarCtaButtonText(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-[#5870F7]"
+              />
+            </div>
+          </div>
+        </div>
+
         <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
           <div className="flex items-center gap-2 pb-3 border-b border-slate-200">
             <LayoutTemplate className="w-5 h-5 text-[#5870F7]" />

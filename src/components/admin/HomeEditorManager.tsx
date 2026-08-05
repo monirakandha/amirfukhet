@@ -351,6 +351,22 @@ export const HomeEditorManager: React.FC = () => {
             </div>
           </div>
         </section>
+
+        {/* Free Lead Magnet Section */}
+        <section className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+          <h2 className="text-lg font-bold text-gray-900 mb-6 pb-3 border-b border-slate-100 flex items-center gap-2">
+            Free Lead Magnet Section
+          </h2>
+          <div className="space-y-6">
+            {renderInput('freeLeadMagnetSection', 'pill', 'Pill Text')}
+            {renderInput('freeLeadMagnetSection', 'headline', 'Headline', 'textarea')}
+            {renderInput('freeLeadMagnetSection', 'description', 'Description', 'textarea')}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {renderInput('freeLeadMagnetSection', 'buttonText', 'Button Text')}
+              {renderInput('freeLeadMagnetSection', 'footerText', 'Footer Text')}
+            </div>
+          </div>
+        </section>
         
         {/* Save button at bottom */}
         <div className="flex justify-end mt-8">

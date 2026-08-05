@@ -103,6 +103,13 @@ export interface HomepageContent {
     buttonText: string;
     buttonLink: string;
   };
+  freeLeadMagnetSection?: {
+    pill: string;
+    headline: string;
+    description: string;
+    buttonText: string;
+    footerText: string;
+  };
 }
 
 export interface PageHeroContent {
@@ -237,6 +244,11 @@ export interface SiteSettings {
     primaryButtonLink?: string;
     secondaryButtonText?: string;
     secondaryButtonLink?: string;
+  };
+  sidebarCTA?: {
+    title?: string;
+    description?: string;
+    buttonText?: string;
   };
 }
 

@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { useAdmin } from '@/context/AdminContext';
 
 interface SidebarCTAProps {
   title?: string;
@@ -10,18 +11,24 @@ interface SidebarCTAProps {
 }
 
 export default function SidebarCTA({
-  title = 'Get the PDF version',
-  description = "A clean offline copy + Amir's market updates.",
-  buttonText = 'Send me the guide',
+  title: propsTitle,
+  description: propsDescription,
+  buttonText: propsButtonText,
   onSubmit,
 }: SidebarCTAProps) {
+  const { settings } = useAdmin();
+  
+  const title = propsTitle || settings.sidebarCTA?.title || 'Get the PDF version';
+  const description = propsDescription || settings.sidebarCTA?.description || "A clean offline copy + Amir's market updates.";
+  const buttonText = propsButtonText || settings.sidebarCTA?.buttonText || 'Send me the guide';
+
   return (
     <div className="rounded-[32px] bg-[#1C2026] p-3 sm:p-4 shadow-xl w-full">
       <div className="rounded-[24px] bg-[#FFFFFF0D] border border-[#FFFFFF0D] p-6 w-full flex flex-col">
         <h4 className="font-bold text-white text-[20px] leading-tight mb-2 tracking-tight">
           {title}
         </h4>
-        <p className="text-[14px] text-gray-400 mb-6 leading-relaxed">
+        <p className="text-[14px] text-gray-400 mb-6 leading-relaxed whitespace-pre-wrap">
           {description}
         </p>
         <form 

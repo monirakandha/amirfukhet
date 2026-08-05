@@ -822,19 +822,26 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
               <div className="lg:col-span-7 space-y-5 text-left">
                 <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 bg-transparent text-white text-[14px] font-medium tracking-wide">
                   <span className="w-1.5 h-1.5 rounded-full bg-white"></span>
-                  Free lead magnet
+                  {content.freeLeadMagnetSection?.pill || 'Free lead magnet'}
                 </div>
 
                 <h2
                   className="font-heading-bricolage text-[44px] sm:text-[48px] font-semibold text-white leading-[1.1] tracking-[-0.01em] max-w-[480px]"
                   style={{ fontFamily: "var(--font-bricolage), 'Bricolage Grotesque', sans-serif" }}
                 >
-                  Get the Phuket investor's guide — free
+                  {content.freeLeadMagnetSection?.headline || "Get the Phuket investor's guide — free"}
                 </h2>
-
-                <p className="font-desc-mona text-[16px] font-normal text-gray-400 leading-[1.6] max-w-[540px]">
-                  Join the list and get Amir's market updates and the complete buying guide delivered to your inbox. No spam, unsubscribe anytime.
-                </p>
+                
+                {content.freeLeadMagnetSection?.description?.includes('<p>') ? (
+                  <div 
+                    className="font-desc-mona text-[16px] font-normal text-gray-400 leading-[1.6] max-w-[540px] prose prose-invert"
+                    dangerouslySetInnerHTML={{ __html: content.freeLeadMagnetSection.description }}
+                  />
+                ) : (
+                  <p className="font-desc-mona text-[16px] font-normal text-gray-400 leading-[1.6] max-w-[540px]">
+                    {content.freeLeadMagnetSection?.description || "Join the list and get Amir's market updates and the complete buying guide delivered to your inbox. No spam, unsubscribe anytime."}
+                  </p>
+                )}
               </div>
 
               {/* Right Form */}
@@ -867,7 +874,7 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
                       <input type="tel" placeholder="+880" className="font-desc-mona text-[15px] font-normal text-white placeholder-gray-500 leading-none w-full bg-[#2A2D33] border border-gray-600/50 rounded-[16px] px-5 py-3.5 focus:outline-none focus:border-[#5870F7] transition-colors" />
                     </div>
                     <button type="submit" className="font-desc-mona text-[16px] font-medium text-white leading-none w-full py-4 px-6 rounded-full bg-[#5870F7] hover:bg-blue-600 transition-all flex items-center justify-center gap-2 mt-5">
-                      Send me the free guide
+                      {content.freeLeadMagnetSection?.buttonText || "Send me the free guide"}
                       <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
                       </svg>
@@ -875,7 +882,7 @@ export default function HomePageClient({ properties, blogs, stories }: HomePageC
                   </form>
                   
                   <p className="text-[13.5px] text-gray-400 text-center mt-5 font-desc-mona">
-                    Connects to Mailchimp / Brevo · 500+ investors on the list
+                    {content.freeLeadMagnetSection?.footerText || "Connects to Mailchimp / Brevo · 500+ investors on the list"}
                   </p>
                 </div>
               </div>
