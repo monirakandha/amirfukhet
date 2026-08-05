@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useAdmin } from '@/context/AdminContext';
 import { Save, CheckCircle2, AlertCircle, LayoutTemplate } from 'lucide-react';
 import { MediaPickerButton } from '@/components/admin/MediaManager';
+import { RichTextEditor } from '@/components/admin/RichTextEditor';
 
 type TabId = 'insights' | 'listings' | 'successStories' | 'about' | 'workWithMe' | 'contact';
 
@@ -61,21 +62,17 @@ export default function PagesManager() {
           </div>
           <div className="col-span-2">
             <label className="block text-sm font-medium text-gray-700 mb-2">Headline</label>
-            <input
-              type="text"
+            <RichTextEditor
               value={pageData.headline || pageData.heroHeadline || ''}
-              onChange={(e) => handleNestedChange(pageKey, pageKey.endsWith('Page') ? 'heroHeadline' : 'headline', e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] focus:border-[#5870F7] outline-none transition-all"
+              onChange={(value) => handleNestedChange(pageKey, pageKey.endsWith('Page') ? 'heroHeadline' : 'headline', value)}
               placeholder="Use <br /> for line breaks"
             />
           </div>
           <div className="col-span-2">
             <label className="block text-sm font-medium text-gray-700 mb-2">Description</label>
-            <textarea
-              rows={3}
+            <RichTextEditor
               value={pageData.description || pageData.heroDescription || ''}
-              onChange={(e) => handleNestedChange(pageKey, pageKey.endsWith('Page') ? 'heroDescription' : 'description', e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] focus:border-[#5870F7] outline-none transition-all"
+              onChange={(value) => handleNestedChange(pageKey, pageKey.endsWith('Page') ? 'heroDescription' : 'description', value)}
             />
           </div>
 
@@ -179,13 +176,13 @@ export default function PagesManager() {
               onChange={(e) => handleNestedChange('aboutPage', 'storyHeadline', e.target.value)}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none"
             />
-            <textarea
-              rows={3}
-              placeholder="Description"
-              value={pageData.storyDescription || ''}
-              onChange={(e) => handleNestedChange('aboutPage', 'storyDescription', e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none"
-            />
+            <div className="pt-2">
+              <RichTextEditor
+                placeholder="Description"
+                value={pageData.storyDescription || ''}
+                onChange={(value) => handleNestedChange('aboutPage', 'storyDescription', value)}
+              />
+            </div>
           </div>
 
           <div className="space-y-4 pt-4 border-t border-gray-100">
@@ -197,13 +194,13 @@ export default function PagesManager() {
               onChange={(e) => handleNestedChange('aboutPage', 'approachHeadline', e.target.value)}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none"
             />
-            <textarea
-              rows={3}
-              placeholder="Description"
-              value={pageData.approachDescription || ''}
-              onChange={(e) => handleNestedChange('aboutPage', 'approachDescription', e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none"
-            />
+            <div className="pt-2">
+              <RichTextEditor
+                placeholder="Description"
+                value={pageData.approachDescription || ''}
+                onChange={(value) => handleNestedChange('aboutPage', 'approachDescription', value)}
+              />
+            </div>
           </div>
         </div>
 
@@ -310,11 +307,9 @@ export default function PagesManager() {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Section Description</label>
-              <textarea
-                rows={2}
+              <RichTextEditor
                 value={pageData.advisorSectionDescription || ''}
-                onChange={(e) => handleNestedChange('workWithMePage', 'advisorSectionDescription', e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none transition-all"
+                onChange={(value) => handleNestedChange('workWithMePage', 'advisorSectionDescription', value)}
               />
             </div>
 
@@ -323,17 +318,17 @@ export default function PagesManager() {
               <div className="space-y-4">
                 <h4 className="font-medium text-gray-800">Card 1</h4>
                 <input type="text" placeholder="Title" value={pageData.advisorCard1Title || ''} onChange={(e) => handleNestedChange('workWithMePage', 'advisorCard1Title', e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none" />
-                <textarea rows={2} placeholder="Description" value={pageData.advisorCard1Desc || ''} onChange={(e) => handleNestedChange('workWithMePage', 'advisorCard1Desc', e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none" />
+                <div className="pt-2"><RichTextEditor placeholder="Description" value={pageData.advisorCard1Desc || ''} onChange={(value) => handleNestedChange('workWithMePage', 'advisorCard1Desc', value)} /></div>
               </div>
               <div className="space-y-4">
                 <h4 className="font-medium text-gray-800">Card 2</h4>
                 <input type="text" placeholder="Title" value={pageData.advisorCard2Title || ''} onChange={(e) => handleNestedChange('workWithMePage', 'advisorCard2Title', e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none" />
-                <textarea rows={2} placeholder="Description" value={pageData.advisorCard2Desc || ''} onChange={(e) => handleNestedChange('workWithMePage', 'advisorCard2Desc', e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none" />
+                <div className="pt-2"><RichTextEditor placeholder="Description" value={pageData.advisorCard2Desc || ''} onChange={(value) => handleNestedChange('workWithMePage', 'advisorCard2Desc', value)} /></div>
               </div>
               <div className="space-y-4">
                 <h4 className="font-medium text-gray-800">Card 3</h4>
                 <input type="text" placeholder="Title" value={pageData.advisorCard3Title || ''} onChange={(e) => handleNestedChange('workWithMePage', 'advisorCard3Title', e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none" />
-                <textarea rows={2} placeholder="Description" value={pageData.advisorCard3Desc || ''} onChange={(e) => handleNestedChange('workWithMePage', 'advisorCard3Desc', e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none" />
+                <div className="pt-2"><RichTextEditor placeholder="Description" value={pageData.advisorCard3Desc || ''} onChange={(value) => handleNestedChange('workWithMePage', 'advisorCard3Desc', value)} /></div>
               </div>
             </div>
           </div>
@@ -432,7 +427,7 @@ export default function PagesManager() {
                 <div key={i} className="space-y-4">
                   <h4 className="font-medium text-gray-800">Step {i}</h4>
                   <input type="text" placeholder="Title" value={(pageData as any)[`processStep${i}Title`] || ''} onChange={(e) => handleNestedChange('workWithMePage', `processStep${i}Title`, e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none" />
-                  <textarea rows={2} placeholder="Description" value={(pageData as any)[`processStep${i}Desc`] || ''} onChange={(e) => handleNestedChange('workWithMePage', `processStep${i}Desc`, e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none" />
+                  <div className="pt-2"><RichTextEditor placeholder="Description" value={(pageData as any)[`processStep${i}Desc`] || ''} onChange={(value) => handleNestedChange('workWithMePage', `processStep${i}Desc`, value)} /></div>
                 </div>
               ))}
             </div>
@@ -453,11 +448,9 @@ export default function PagesManager() {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Description</label>
-              <textarea
-                rows={2}
+              <RichTextEditor
                 value={pageData.ctaDescription || ''}
-                onChange={(e) => handleNestedChange('workWithMePage', 'ctaDescription', e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none"
+                onChange={(value) => handleNestedChange('workWithMePage', 'ctaDescription', value)}
               />
             </div>
             
@@ -503,12 +496,12 @@ export default function PagesManager() {
             <div className="space-y-4">
               <h4 className="font-medium text-gray-800">WhatsApp Card</h4>
               <input type="text" placeholder="Title" value={pageData.whatsappCardTitle || ''} onChange={(e) => handleNestedChange('contactPage', 'whatsappCardTitle', e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none" />
-              <input type="text" placeholder="Description" value={pageData.whatsappCardDesc || ''} onChange={(e) => handleNestedChange('contactPage', 'whatsappCardDesc', e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none" />
+              <div className="pt-2"><RichTextEditor placeholder="Description" value={pageData.whatsappCardDesc || ''} onChange={(value) => handleNestedChange('contactPage', 'whatsappCardDesc', value)} /></div>
             </div>
             <div className="space-y-4">
               <h4 className="font-medium text-gray-800">Email Card</h4>
               <input type="text" placeholder="Title" value={pageData.emailCardTitle || ''} onChange={(e) => handleNestedChange('contactPage', 'emailCardTitle', e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none" />
-              <input type="text" placeholder="Description" value={pageData.emailCardDesc || ''} onChange={(e) => handleNestedChange('contactPage', 'emailCardDesc', e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5870F7] outline-none" />
+              <div className="pt-2"><RichTextEditor placeholder="Description" value={pageData.emailCardDesc || ''} onChange={(value) => handleNestedChange('contactPage', 'emailCardDesc', value)} /></div>
             </div>
           </div>
         </div>

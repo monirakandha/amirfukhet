@@ -39,9 +39,10 @@ export default function ContactPage() {
           />
 
           {/* Subtitle / Paragraph */}
-          <p className="hero-description max-w-2xl mx-auto pt-1">
-            {content.heroDescription}
-          </p>
+          <div 
+            className="hero-description max-w-2xl mx-auto pt-1 prose prose-sm prose-gray"
+            dangerouslySetInnerHTML={{ __html: content.heroDescription || '' }}
+          />
 
           {/* Primary Action CTA Button */}
           <div className="pt-2">
@@ -66,9 +67,10 @@ export default function ContactPage() {
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
               {content.advisorSectionTitle || "Why work with an advisor, not a portal"}
             </h2>
-            <p className="text-sm sm:text-base text-gray-500 max-w-xl mx-auto leading-relaxed">
-              {content.advisorSectionDescription || "A listing site shows you what's for sale. An advisor tells you what's worth buying — and what to avoid."}
-            </p>
+            <div 
+              className="text-sm sm:text-base text-gray-500 max-w-xl mx-auto leading-relaxed prose prose-sm prose-gray"
+              dangerouslySetInnerHTML={{ __html: content.advisorSectionDescription || "A listing site shows you what's for sale. An advisor tells you what's worth buying — and what to avoid." }}
+            />
           </div>
 
           {/* 3 Cards Grid */}
@@ -83,9 +85,7 @@ export default function ContactPage() {
               <h3 className="text-xl font-bold text-gray-900">
                 {content.advisorCard1Title || 'Independent'}
               </h3>
-              <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
-                {content.advisorCard1Desc || "I'm paid to advise you well, not to push one developer's stock. You hear the downsides too."}
-              </p>
+              <div className="text-xs sm:text-sm text-gray-500 leading-relaxed prose prose-sm prose-gray" dangerouslySetInnerHTML={{ __html: content.advisorCard1Desc || "I'm paid to advise you well, not to push one developer's stock. You hear the downsides too." }} />
             </div>
 
             {/* Card 2: Due-diligence first */}
@@ -98,9 +98,7 @@ export default function ContactPage() {
               <h3 className="text-xl font-bold text-gray-900">
                 {content.advisorCard2Title || 'Due-diligence first'}
               </h3>
-              <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
-                {content.advisorCard2Desc || "Title checks, developer track record, lease terms — the unglamorous work that protects your money."}
-              </p>
+              <div className="text-xs sm:text-sm text-gray-500 leading-relaxed prose prose-sm prose-gray" dangerouslySetInnerHTML={{ __html: content.advisorCard2Desc || "Title checks, developer track record, lease terms — the unglamorous work that protects your money." }} />
             </div>
 
             {/* Card 3: On the ground */}
@@ -113,9 +111,7 @@ export default function ContactPage() {
               <h3 className="text-xl font-bold text-gray-900">
                 {content.advisorCard3Title || 'On the ground'}
               </h3>
-              <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
-                {content.advisorCard3Desc || "Based in Phuket. I view the property, meet the people, and represent your interests locally."}
-              </p>
+              <div className="text-xs sm:text-sm text-gray-500 leading-relaxed prose prose-sm prose-gray" dangerouslySetInnerHTML={{ __html: content.advisorCard3Desc || "Based in Phuket. I view the property, meet the people, and represent your interests locally." }} />
             </div>
           </div>
         </div>
@@ -246,9 +242,7 @@ export default function ContactPage() {
                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-white transition-colors">
                   {content.processStep1Title || 'Reach out'}
                 </h3>
-                <p className="text-xs sm:text-sm text-gray-500 group-hover:text-white/90 leading-relaxed transition-colors">
-                  {content.processStep1Desc || "A message on WhatsApp or the form. Tell me what you're considering."}
-                </p>
+                <div className="text-xs sm:text-sm text-gray-500 group-hover:text-white/90 leading-relaxed transition-colors prose prose-sm prose-gray" dangerouslySetInnerHTML={{ __html: content.processStep1Desc || "A message on WhatsApp or the form. Tell me what you're considering." }} />
               </div>
             </div>
 
@@ -261,9 +255,7 @@ export default function ContactPage() {
                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-white transition-colors">
                   {content.processStep2Title || 'Free consultation'}
                 </h3>
-                <p className="text-xs sm:text-sm text-gray-500 group-hover:text-white/90 leading-relaxed transition-colors">
-                  {content.processStep2Desc || 'We talk through goals, budget and areas. No obligation.'}
-                </p>
+                <div className="text-xs sm:text-sm text-gray-500 group-hover:text-white/90 leading-relaxed transition-colors prose prose-sm prose-gray" dangerouslySetInnerHTML={{ __html: content.processStep2Desc || 'We talk through goals, budget and areas. No obligation.' }} />
               </div>
             </div>
 
@@ -276,9 +268,7 @@ export default function ContactPage() {
                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-white transition-colors">
                   {content.processStep3Title || 'Research & shortlist'}
                 </h3>
-                <p className="text-xs sm:text-sm text-gray-500 group-hover:text-white/90 leading-relaxed transition-colors">
-                  {content.processStep3Desc || 'I do the legwork and bring you properties that actually fit.'}
-                </p>
+                <div className="text-xs sm:text-sm text-gray-500 group-hover:text-white/90 leading-relaxed transition-colors prose prose-sm prose-gray" dangerouslySetInnerHTML={{ __html: content.processStep3Desc || 'I do the legwork and bring you properties that actually fit.' }} />
               </div>
             </div>
 
@@ -291,9 +281,7 @@ export default function ContactPage() {
                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-white transition-colors">
                   {content.processStep4Title || 'Buy with confidence'}
                 </h3>
-                <p className="text-xs sm:text-sm text-gray-500 group-hover:text-white/90 leading-relaxed transition-colors">
-                  {content.processStep4Desc || "Due diligence, negotiation and transfer – I'm with you throughout."}
-                </p>
+                <div className="text-xs sm:text-sm text-gray-500 group-hover:text-white/90 leading-relaxed transition-colors prose prose-sm prose-gray" dangerouslySetInnerHTML={{ __html: content.processStep4Desc || "Due diligence, negotiation and transfer – I'm with you throughout." }} />
               </div>
             </div>
           </div>
@@ -308,9 +296,10 @@ export default function ContactPage() {
               <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">
                 {content.ctaHeadline || "Let's talk about your purchase"}
               </h3>
-              <p className="text-xs sm:text-sm text-gray-400 max-w-md mx-auto leading-relaxed">
-                {content.ctaDescription || "The first conversation is free, and there's no pressure to go further."}
-              </p>
+              <div 
+                className="text-xs sm:text-sm text-gray-400 max-w-md mx-auto leading-relaxed prose prose-sm prose-gray"
+                dangerouslySetInnerHTML={{ __html: content.ctaDescription || "The first conversation is free, and there's no pressure to go further." }}
+              />
 
               <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
                 <a

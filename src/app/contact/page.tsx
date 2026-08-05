@@ -68,9 +68,10 @@ export default function ContactPage() {
           />
 
           {/* Subtitle / Paragraph */}
-          <p className="hero-description max-w-2xl mx-auto pt-1">
-            {content.heroDescription}
-          </p>
+          <div 
+            className="hero-description max-w-2xl mx-auto pt-1 prose prose-sm prose-gray"
+            dangerouslySetInnerHTML={{ __html: content.heroDescription || '' }}
+          />
         </div>
       </section>
 
@@ -94,7 +95,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="text-[20px] font-semibold text-gray-900 group-hover:text-blue-600 transition-colors tracking-tight">{content.whatsappCardTitle || 'WhatsApp'}</h3>
-                      <p className="text-[15px] text-gray-500 mt-0.5">{content.whatsappCardDesc || 'Message or call directly'}</p>
+                      <div className="text-[15px] text-gray-500 mt-0.5 prose prose-sm prose-gray" dangerouslySetInnerHTML={{ __html: content.whatsappCardDesc || 'Message or call directly' }} />
                     </div>
                   </div>
                 </a>
@@ -113,7 +114,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="text-[20px] font-semibold text-gray-900 group-hover:text-blue-600 transition-colors tracking-tight">{content.emailCardTitle || settings.contactEmail || 'amir@amirknowsphuket.com'}</h3>
-                      <p className="text-[15px] text-gray-500 mt-0.5">{content.emailCardDesc || 'Email Amir directly'}</p>
+                      <div className="text-[15px] text-gray-500 mt-0.5 prose prose-sm prose-gray" dangerouslySetInnerHTML={{ __html: content.emailCardDesc || 'Email Amir directly' }} />
                     </div>
                   </div>
                 </a>

@@ -46,9 +46,10 @@ export default function AboutPage() {
               />
 
               {/* Description Paragraph */}
-              <p className="font-desc-mona text-[16px] font-normal text-[#6B7280] leading-[1.5] max-w-xl text-left">
-                {content.heroDescription}
-              </p>
+              <div 
+                className="font-desc-mona text-[16px] font-normal text-[#6B7280] leading-[1.5] max-w-xl text-left prose prose-sm prose-gray"
+                dangerouslySetInnerHTML={{ __html: content.heroDescription || '' }}
+              />
 
               {/* Social Circle Buttons */}
               <div className="flex items-center gap-4 pt-2">
@@ -175,9 +176,10 @@ export default function AboutPage() {
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-snug">
               {content.storyHeadline || 'My story'}
             </h2>
-            <p className="text-sm sm:text-base text-gray-500 leading-relaxed max-w-3xl whitespace-pre-wrap">
-              {content.storyDescription || 'Placeholder biography. The published page tells how Amir came to Phuket, the years spent learning the market from the inside, and why he chose to work as an independent advisor rather than an agent.'}
-            </p>
+            <div 
+              className="text-sm sm:text-base text-gray-500 leading-relaxed max-w-3xl prose prose-sm prose-gray"
+              dangerouslySetInnerHTML={{ __html: content.storyDescription || 'Placeholder biography.' }}
+            />
           </div>
 
           {/* Section 2: My approach & philosophy */}
@@ -185,9 +187,10 @@ export default function AboutPage() {
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-snug">
               {content.approachHeadline || 'My approach & philosophy'}
             </h2>
-            <p className="text-sm sm:text-base text-gray-500 leading-relaxed max-w-3xl whitespace-pre-wrap">
-              {content.approachDescription || 'Advisory, not transactional. Honest about risk. Foreigner-focused. The goal is a client who refers their friends – not a quick commission.'}
-            </p>
+            <div 
+              className="text-sm sm:text-base text-gray-500 leading-relaxed max-w-3xl prose prose-sm prose-gray"
+              dangerouslySetInnerHTML={{ __html: content.approachDescription || 'Advisory, not transactional.' }}
+            />
           </div>
 
           {/* Callout Box: Want to work together? */}

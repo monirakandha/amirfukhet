@@ -123,7 +123,7 @@ export const HomeEditorManager: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-6">
               {renderInput('advisorIntroSection', 'pill', 'Pill Text')}
-              {renderInput('advisorIntroSection', 'headline', 'Headline')}
+              {renderInput('advisorIntroSection', 'headline', 'Headline', 'textarea')}
               {renderInput('advisorIntroSection', 'description', 'Description', 'textarea')}
               <div className="grid grid-cols-2 gap-4">
                 {renderInput('advisorIntroSection', 'primaryButtonText', 'Primary Button Text')}
@@ -187,7 +187,7 @@ export const HomeEditorManager: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-6">
               {renderInput('guideBannerSection', 'pill', 'Pill Text')}
-              {renderInput('guideBannerSection', 'headline', 'Headline')}
+              {renderInput('guideBannerSection', 'headline', 'Headline', 'textarea')}
               {renderInput('guideBannerSection', 'description', 'Description', 'textarea')}
               <div className="grid grid-cols-2 gap-4">
                 {renderInput('guideBannerSection', 'primaryButtonText', 'Primary Button Text')}
@@ -250,7 +250,7 @@ export const HomeEditorManager: React.FC = () => {
           <div className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {renderInput('researchMetricsSection', 'pill', 'Pill Text')}
-              {renderInput('researchMetricsSection', 'headline', 'Headline')}
+              {renderInput('researchMetricsSection', 'headline', 'Headline', 'textarea')}
               {renderInput('researchMetricsSection', 'subheading', 'Subheading', 'textarea')}
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 pt-4 border-t border-slate-100">
